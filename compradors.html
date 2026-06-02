@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVERA — Canal Compradors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/novera.css">
+<link rel="stylesheet" href="assets/canal.css">
+</head>
+<body>
+
+<!-- ░░ NAV ░░ -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html#top" class="wordmark" aria-label="NOVERA — inici">NOVERA</a>
+    <nav class="nav-links">
+      <a href="index.html#model" class="hide-sm">El model</a>
+      <a href="index.html#plans" class="hide-sm">Plans</a>
+      <a href="index.html" class="hide-sm">Venedors</a>
+      <a href="#tool" class="nav-cta">Crear perfil <span class="ar">→</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- ░░ HERO ░░ -->
+<section class="hero cc-hero" id="top" data-screen-label="Canal Compradors — Hero">
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-orb o3"></div>
+  <div class="wrap">
+    <div class="hero-chip reveal"><span class="dot"></span> Canal Compradors · Sistema NOVERA</div>
+    <h1 class="display reveal" data-d="1">NOVERA <span class="soft">Canal Compradors</span></h1>
+    <p class="lead hero-sub reveal" data-d="2">Rep abans que ningú les propietats que encaixen amb tu. Sense portals. Sense soroll. Només oportunitats reals.</p>
+    <p class="cc-secondary reveal" data-d="2">Aquesta és la teva subpàgina de perfil dins del sistema NOVERA. Com més precís és el teu perfil, més eficient és el sistema.</p>
+    <div class="hero-actions reveal" data-d="3">
+      <a href="#tool" class="btn-primary">Crear el meu perfil de cerca
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#how" class="btn-ghost">Com funciona
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ COM FUNCIONA ░░ -->
+<section class="cc-how" id="how" data-screen-label="Com funciona">
+  <div class="wrap grid">
+    <div>
+      <span class="kicker kicker--gold reveal">Com funciona</span>
+      <h2 class="reveal" data-d="1" style="margin-top:1.1rem;">El mercat no es busca.<br>S'anticipa.</h2>
+      <p class="lead reveal" data-d="2">NOVERA analitza propietats actives i futures entrades al mercat. Quan detecta coincidències amb el teu perfil, t'avisa abans que arribin als portals públics.</p>
+    </div>
+    <div class="cc-how-figure reveal" data-d="2">
+      <p class="keyphrase">El teu perfil treballa <span class="grad-text">mentre tu fas la teva vida.</span>
+        <span class="sub">Tu no busques pisos cada dia. El sistema ho fa per tu i només t'avisa quan val la pena.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ TOOL — onboarding ░░ -->
+<section class="cc-tool" id="tool" data-screen-label="Perfil de cerca">
+  <div class="wrap">
+    <div class="cc-tool-head reveal">
+      <span class="kicker">El teu perfil</span>
+      <h2>Crea el teu perfil de cerca</h2>
+      <p>Menys d'un minut. Com més ens expliques, més precises són les teves alertes.</p>
+    </div>
+
+    <div class="tool reveal" data-d="1">
+      <div class="tool-top">
+        <span class="tool-steplabel">Pas 1 de 6</span>
+        <div class="tool-progress" aria-hidden="true">
+          <div class="seg"><i></i></div><div class="seg"><i></i></div><div class="seg"><i></i></div>
+          <div class="seg"><i></i></div><div class="seg"><i></i></div><div class="seg"><i></i></div>
+        </div>
+      </div>
+
+      <div class="tool-stage">
+        <!-- STEP 1 — zona -->
+        <div class="tool-step active" data-kind="zones">
+          <h3>On vols comprar?</h3>
+          <p class="tsub">Afegeix les zones que t'interessen. Pots escriure les teves o triar-ne de ràpides.</p>
+          <div class="tf-label">📍 Zona d'interès</div>
+          <input class="tf-input" id="zone-input" type="text" autocomplete="off"
+            placeholder="Lloret centre, Fenals, urbanitzacions, Costa Brava…">
+          <div class="tf-suggest">
+            <button class="sg" data-zone="Lloret centre">Lloret centre</button>
+            <button class="sg" data-zone="Fenals">Fenals</button>
+            <button class="sg" data-zone="Urbanitzacions">Urbanitzacions</button>
+            <button class="sg" data-zone="Primera línia de mar">Primera línia de mar</button>
+            <button class="sg" data-zone="Costa Brava">Costa Brava</button>
+          </div>
+          <div class="tf-tags"></div>
+          <div class="tool-nav">
+            <button class="tool-back" hidden>← Enrere</button>
+            <button class="tool-next" disabled>Continuar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2 — pressupost -->
+        <div class="tool-step" data-kind="budget">
+          <h3>Quin és el teu pressupost?</h3>
+          <p class="tsub">Arrossega per definir el teu rang. Sempre el pots ajustar més endavant.</p>
+          <div class="budget">
+            <div class="budget-vals">
+              <div class="bv"><div class="l">Des de</div><div class="v" id="out-min">150.000 €</div></div>
+              <div class="bv hi"><div class="l">Fins a</div><div class="v" id="out-max">600.000 €</div></div>
+            </div>
+            <div class="range-wrap">
+              <div class="range-track"></div>
+              <div class="range-fill"></div>
+              <input type="range" id="b-min" min="50000" max="1500000" step="10000" value="150000">
+              <input type="range" id="b-max" min="50000" max="1500000" step="10000" value="600000">
+            </div>
+            <div class="budget-foot"><span>50.000 €</span><span>1.500.000 €+</span></div>
+          </div>
+          <div class="tool-nav">
+            <button class="tool-back">← Enrere</button>
+            <button class="tool-next">Continuar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3 — tipus -->
+        <div class="tool-step" data-kind="tipus">
+          <h3>Quin tipus d'habitatge busques?</h3>
+          <p class="tsub">Pots triar-ne més d'un.</p>
+          <div class="ms-grid">
+            <button class="ms-card" data-val="pis"><span class="box"></span> Pis</button>
+            <button class="ms-card" data-val="casa"><span class="box"></span> Casa</button>
+            <button class="ms-card" data-val="inversio"><span class="box"></span> Inversió</button>
+            <button class="ms-card" data-val="segona"><span class="box"></span> Segona residència</button>
+          </div>
+          <div class="tool-nav">
+            <button class="tool-back">← Enrere</button>
+            <button class="tool-next" disabled>Continuar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4 — prioritats -->
+        <div class="tool-step" data-kind="prior">
+          <h3>Què prioritzes?</h3>
+          <p class="tsub">Tria fins a 5 coses que més valores.</p>
+          <div class="chips">
+            <button class="chip" data-val="ubicacio"><span class="ck"></span> Ubicació</button>
+            <button class="chip" data-val="preu"><span class="ck"></span> Preu</button>
+            <button class="chip" data-val="vistes"><span class="ck"></span> Vistes</button>
+            <button class="chip" data-val="piscina"><span class="ck"></span> Piscina</button>
+            <button class="chip" data-val="garatge"><span class="ck"></span> Garatge</button>
+            <button class="chip" data-val="reforma"><span class="ck"></span> Per reformar</button>
+            <button class="chip" data-val="entrar"><span class="ck"></span> Llest per entrar</button>
+          </div>
+          <p class="chips-count">Seleccionades · <b>0 / 5</b></p>
+          <div class="tool-nav">
+            <button class="tool-back">← Enrere</button>
+            <button class="tool-next" disabled>Continuar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 5 — hipoteca -->
+        <div class="tool-step" data-kind="hipoteca">
+          <h3>En quin punt estàs amb la hipoteca?</h3>
+          <p class="tsub">Ens ajuda a prioritzar les oportunitats que de veritat pots tancar.</p>
+          <div class="ss-list">
+            <button class="ss-opt" data-val="aprovada"><span class="rd"></span> Sí, aprovada</button>
+            <button class="ss-opt" data-val="proces"><span class="rd"></span> En procés</button>
+            <button class="ss-opt" data-val="no"><span class="rd"></span> Encara no</button>
+            <button class="ss-opt" data-val="assessorament"><span class="rd"></span> Necessito assessorament</button>
+          </div>
+          <div class="tool-nav">
+            <button class="tool-back">← Enrere</button>
+            <button class="tool-next" disabled>Continuar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 6 — dades -->
+        <div class="tool-step" data-kind="form">
+          <h3>Ja gairebé estem.</h3>
+          <p class="tsub">On t'enviem la teva proposta personalitzada?</p>
+          <div class="tf-grid">
+            <div><div class="tf-label">Nom</div>
+              <input class="tf-input" name="nom" type="text" required placeholder="El teu nom"></div>
+            <div><div class="tf-label">Correu electrònic</div>
+              <input class="tf-input" name="email" type="email" required placeholder="nom@correu.com"></div>
+            <div><div class="tf-label">Telèfon</div>
+              <input class="tf-input" name="tel" type="tel" required placeholder="+34 ___ __ __ __"></div>
+          </div>
+          <label class="consent">
+            <input type="checkbox" name="consent" required>
+            <span class="cbox"></span>
+            <span class="ctext">Accepto la <a href="legal.html#privacitat">Política de privacitat</a> i el tractament de les meves dades per rebre alertes personalitzades de propietats.</span>
+          </label>
+          <div class="tool-nav">
+            <button class="tool-back">← Enrere</button>
+            <button class="tool-next" disabled>Activar alertes personalitzades
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          <p class="tool-fine">Sense compromís. Pots desactivar les alertes quan vulguis.</p>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="tool-done">
+        <div class="done-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>
+        </div>
+        <h3 class="done-hello">Ja hi ets dins.</h3>
+        <p>Perfecte. Ja formes part del sistema NOVERA Canal Compradors. T'avisarem quan aparegui una propietat que encaixi amb tu.</p>
+        <div class="done-profile"></div>
+        <div class="done-actions">
+          <a href="index.html#descobreix" class="btn-primary" style="background:linear-gradient(100deg,var(--blue),var(--navy)); box-shadow:0 14px 32px -14px rgba(10,37,64,.5);">Vols vendre també?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <button class="done-restart">Editar el meu perfil</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer data-screen-label="Footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-mark">NOVERA</div>
+      <p class="foot-claim">La nova manera de comprar i vendre propietats.</p>
+      <nav class="foot-links">
+        <a href="index.html#model">El model</a>
+        <a href="index.html#plans">Plans</a>
+        <a href="index.html#descobreix">Vendre</a>
+        <a href="#tool">Canal Compradors</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 NOVERA · Lloret de Mar · Costa Brava</span>
+      <span>clubnovera.com</span>
+    </div>
+    <div class="foot-legal">
+      <a href="legal.html#avis-legal">Avís legal</a><span class="sep">·</span>
+      <a href="legal.html#privacitat">Política de privacitat</a><span class="sep">·</span>
+      <a href="legal.html#cookies">Política de cookies</a><span class="sep">·</span>
+      <a href="#" data-open-cookies>Configurar cookies</a><span class="sep">·</span>
+      <a href="legal.html#canal-etic">Canal ètic</a><span class="sep">·</span>
+      <a href="legal.html#baixa">Baixa del Canal Compradors</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ░░ COOKIE BANNER ░░ -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentiment de cookies">
+  <h4>Respectem la teva privacitat</h4>
+  <p>Fem servir cookies tècniques necessàries i, amb el teu permís, cookies analítiques i de màrqueting. Pots acceptar-les, rebutjar-les o configurar-les. Més informació a la <a href="legal.html#cookies">Política de cookies</a>.</p>
+  <div class="cookie-config">
+    <div class="ck-row">
+      <div><div class="t">Tècniques (necessàries)</div><div class="d">Imprescindibles perquè el web funcioni. Sempre actives.</div></div>
+      <button class="ck-toggle on locked" aria-disabled="true" title="Sempre actives"></button>
+    </div>
+    <div class="ck-row">
+      <div><div class="t">Analítiques</div><div class="d">Ens ajuden a entendre l'ús del web de manera agregada i anònima.</div></div>
+      <button class="ck-toggle" data-cat="analytics" aria-label="Activar analítiques"></button>
+    </div>
+    <div class="ck-row">
+      <div><div class="t">Màrqueting</div><div class="d">Permeten mostrar comunicacions rellevants sobre el sistema NOVERA.</div></div>
+      <button class="ck-toggle" data-cat="marketing" aria-label="Activar màrqueting"></button>
+    </div>
+    <button class="ck-btn primary" data-ck="save" style="margin-top:16px;">Desar preferències</button>
+  </div>
+  <div class="cookie-acts">
+    <button class="ck-btn primary" data-ck="accept">Acceptar-ho tot</button>
+    <button class="ck-btn ghost" data-ck="reject">Rebutjar</button>
+    <button class="ck-btn link" data-ck="config">Configurar</button>
+  </div>
+</div>
+
+<script src="assets/canal.js"></script>
+<script src="assets/legal.js"></script>
+<script>
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 24);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(el => io.observe(el));
+  }
+</script>
+
+</body>
+</html>
