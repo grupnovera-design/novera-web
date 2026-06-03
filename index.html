@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/novera.css">
+<link rel="stylesheet" href="assets/equip.css">
 </head>
 <body>
 
@@ -51,7 +52,7 @@
 <!-- ░░ PLATE — cinematic ░░ -->
 <section class="plate">
   <div class="plate-inner reveal">
-    <image-slot id="hero-plate" shape="rect" fit="cover"
+    <image-slot id="hero-plate" shape="rect" fit="cover" src="assets/hero-plate.webp"
       placeholder="Fotografia cinematogràfica — façana o interior amb llum mediterrània"></image-slot>
     <div class="scrim"></div>
   </div>
@@ -71,7 +72,7 @@
       <p class="reveal" data-d="3">NOVERA no ve a competir. Ve a canviar la manera de fer-ho.</p>
     </div>
     <div class="figure reveal" data-d="2">
-      <image-slot id="manifest-fig" shape="rect" fit="cover"
+      <image-slot id="manifest-fig" shape="rect" fit="cover" src="assets/manifest-fig.webp"
         placeholder="Detall arquitectònic o interior luminós"></image-slot>
       <div class="frame"></div>
     </div>
@@ -151,21 +152,45 @@
   </div>
 </section>
 
-<!-- ░░ EQUIP ░░ -->
+<!-- ░░ EQUIP — el nucli de coordinació ░░ -->
 <section class="team" id="equip" data-screen-label="L'equip">
   <div class="wrap">
-    <div class="head">
+    <div class="team-intro">
       <span class="kicker kicker--light reveal">L'equip</span>
-      <h2 class="h2 reveal" data-d="1">No som una immobiliària.<br>Som un equip coordinat per tu.</h2>
-      <p class="lead reveal" data-d="2">Gestories, advocats, arquitectes tècnics, fotògrafs i experts en mercat local. Cadascú en el seu ofici, treballant per una sola cosa: vendre bé la teva propietat.</p>
+      <h2 class="h2 reveal" data-d="1">Una propietat.<br>Un equip complet.</h2>
+      <p class="lead reveal" data-d="2">No creiem en la figura d'una sola persona intentant fer-ho tot. Cada operació activa els professionals que realment necessita, coordinats al voltant d'un únic objectiu: vendre bé la teva propietat.</p>
     </div>
-    <div class="team-grid">
-      <div class="team-item reveal"><div class="idx">01</div><h3>Advocat immobiliari</h3><p>Revisa cada contracte, detecta càrregues ocultes i protegeix els teus interessos de principi a fi.</p></div>
-      <div class="team-item reveal" data-d="1"><div class="idx">02</div><h3>Gestoria</h3><p>Tota la documentació coordinada — cèdula, certificat energètic, plusvàlua i tràmits municipals.</p></div>
-      <div class="team-item reveal" data-d="2"><div class="idx">03</div><h3>Arquitecte tècnic</h3><p>Cèdula d'habitabilitat, informe tècnic i certificats. Si cal una intervenció, ho coordinem.</p></div>
-      <div class="team-item reveal"><div class="idx">04</div><h3>Fotògraf professional</h3><p>Reportatge i vídeo que posen l'immoble al seu millor nivell davant dels compradors.</p></div>
-      <div class="team-item reveal" data-d="1"><div class="idx">05</div><h3>Col·laboradors de confiança</h3><p>Si l'immoble necessita una reforma per millorar-ne el valor, comptem amb empreses de confiança.</p></div>
-      <div class="team-item reveal" data-d="2"><div class="idx">06</div><h3>Expert de mercat local</h3><p>Coneixement real de Lloret de Mar i la Costa Brava. Valoració honesta, basada en dades.</p></div>
+
+    <div class="system reveal" data-d="1">
+      <div class="system-orbit" id="systemOrbit"></div>
+      <p class="system-hint">Passa el cursor per cada especialitat</p>
+    </div>
+
+    <div class="team-reinforce">
+      <h3 class="reveal">Ningú ho fa tot.</h3>
+      <p class="reveal" data-d="1">Per això hem construït una estructura on cada especialista treballa en allò que millor sap fer. Mentre tu tens un únic punt de contacte, darrere hi ha un equip complet coordinant cada fase del procés.</p>
+    </div>
+
+    <div class="team-benefits">
+      <div class="benefit reveal">
+        <div class="b-bar"></div>
+        <div class="b-title">Més control</div>
+        <p class="b-text">Cada fase és gestionada per l'especialista adequat.</p>
+      </div>
+      <div class="benefit reveal" data-d="1">
+        <div class="b-bar"></div>
+        <div class="b-title">Menys errors</div>
+        <p class="b-text">La documentació, els aspectes legals i els processos tècnics estan coordinats.</p>
+      </div>
+      <div class="benefit reveal" data-d="2">
+        <div class="b-bar"></div>
+        <div class="b-title">Més valor</div>
+        <p class="b-text">Cada decisió busca maximitzar el resultat final de la venda.</p>
+      </div>
+    </div>
+
+    <div class="team-close reveal">
+      <p>No contractes una immobiliària.<br><span class="grad">Actives una estructura completa al servei de la teva propietat.</span></p>
     </div>
   </div>
 </section>
@@ -491,6 +516,7 @@
 </div>
 
 <script src="image-slot.js"></script>
+<script src="assets/equip.js"></script>
 <script src="assets/questionnaire.js"></script>
 <script src="assets/legal.js"></script>
 <script>
