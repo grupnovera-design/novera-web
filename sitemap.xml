@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://clubnovera.com/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://clubnovera.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://clubnovera.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://clubnovera.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://clubnovera.com/"/>
+  </url>
+
+  <url>
+    <loc>https://clubnovera.com/compradors.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://clubnovera.com/compradors.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://clubnovera.com/compradors.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://clubnovera.com/compradors.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://clubnovera.com/compradors.html"/>
+  </url>
+
+  <url>
+    <loc>https://clubnovera.com/legal.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!--
+    ░░ Estructura SEO preparada per a la Fase 2 (afegir quan les pàgines existeixin) ░░
+    Landing pages locals:
+      /vendre-pis-lloret-de-mar.html
+      /vendre-casa-blanes.html
+      /vendre-propietat-tossa-de-mar.html
+      /vendre-casa-platja-daro.html
+      /vendre-propietat-begur.html
+      /vendre-casa-palafrugell.html
+      /vendre-propietat-sant-feliu-de-guixols.html
+      /vendre-propietat-costa-brava.html
+    Continguts (blog):
+      /blog/quant-val-casa-meva.html
+      /blog/valorar-habitatge.html
+      /blog/com-vendre-una-propietat.html
+      /blog/alternatives-immobiliaries-tradicionals.html
+      /blog/honoraris-immobiliaris.html
+      /blog/comissions-immobiliaries.html
+      /blog/guia-per-vendre-un-habitatge.html
+  -->
+
+</urlset>

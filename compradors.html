@@ -3,12 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVERA — Canal Compradors</title>
+
+<!-- ░░ SEO · primary ░░ -->
+<title>Canal Compradors · Propietats off-market a la Costa Brava | NOVERA</title>
+<meta name="description" content="Crea el teu perfil de comprador i rep abans que ningú les propietats que encaixen amb tu a la Costa Brava. Oportunitats off-market a Lloret de Mar, Blanes, Tossa, Begur i més. Gratuït i sense compromís.">
+<meta name="keywords" content="comprar propietat Costa Brava, comprar pis Lloret de Mar, propietats off-market, comprar casa Costa Brava, alertes immobiliàries">
+<meta name="author" content="NOVERA">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#0A2540">
+<link rel="canonical" href="https://clubnovera.com/compradors.html">
+<link rel="alternate" hreflang="ca" href="https://clubnovera.com/compradors.html">
+<link rel="alternate" hreflang="es" href="https://clubnovera.com/compradors.html?lang=es">
+<link rel="alternate" hreflang="en" href="https://clubnovera.com/compradors.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://clubnovera.com/compradors.html">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NOVERA">
+<meta property="og:title" content="Canal Compradors · Propietats off-market a la Costa Brava | NOVERA">
+<meta property="og:description" content="Rep abans que ningú les propietats que encaixen amb tu a la Costa Brava. Sense portals, sense soroll.">
+<meta property="og:url" content="https://clubnovera.com/compradors.html">
+<meta property="og:image" content="https://clubnovera.com/assets/og-novera.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ca_ES">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Canal Compradors · Propietats off-market a la Costa Brava | NOVERA">
+<meta name="twitter:description" content="Rep abans que ningú les propietats que encaixen amb tu a la Costa Brava.">
+<meta name="twitter:image" content="https://clubnovera.com/assets/og-novera.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/novera-hero.webp">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/novera.css">
 <link rel="stylesheet" href="assets/canal.css">
+
+<!-- ░░ Schema.org · Service + Breadcrumb ░░ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "NOVERA Canal Compradors",
+  "serviceType": "Cerca personalitzada de propietats off-market",
+  "provider": { "@type": "RealEstateAgent", "name": "NOVERA", "url": "https://clubnovera.com/" },
+  "areaServed": ["Lloret de Mar","Blanes","Tossa de Mar","Platja d'Aro","Begur","Palafrugell","Sant Feliu de Guíxols","Costa Brava"],
+  "url": "https://clubnovera.com/compradors.html",
+  "description": "Crea el teu perfil de comprador i rep abans que ningú les propietats que encaixen amb tu a la Costa Brava."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inici", "item": "https://clubnovera.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Canal Compradors", "item": "https://clubnovera.com/compradors.html" }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -20,45 +80,105 @@
       <a href="index.html#model" class="hide-sm">El model</a>
       <a href="index.html#plans" class="hide-sm">Plans</a>
       <a href="index.html" class="hide-sm">Venedors</a>
-      <a href="#tool" class="nav-cta">Crear perfil <span class="ar">→</span></a>
+      <a href="#tool" class="nav-cta hide-sm">Crear perfil <span class="ar">→</span></a>
+      <button class="nav-burger" id="navBurger" aria-label="Obrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+  </div>
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <a href="index.html#model">El model</a>
+    <a href="index.html#plans">Plans</a>
+    <a href="index.html#top">Venedors</a>
+    <a href="#how">Com funciona</a>
+    <a href="#tool" class="nm-cta">Crear el meu perfil <span>→</span></a>
   </div>
 </header>
 
 <!-- ░░ HERO ░░ -->
-<section class="hero cc-hero" id="top" data-screen-label="Canal Compradors — Hero">
-  <div class="hero-orb o1"></div>
-  <div class="hero-orb o2"></div>
-  <div class="hero-orb o3"></div>
-  <div class="wrap">
-    <div class="hero-chip reveal"><span class="dot"></span> Canal Compradors · Sistema NOVERA</div>
-    <h1 class="display reveal" data-d="1">NOVERA <span class="soft">Canal Compradors</span></h1>
-    <p class="lead hero-sub reveal" data-d="2">Rep abans que ningú les propietats que encaixen amb tu. Sense portals. Sense soroll. Només oportunitats reals.</p>
-    <p class="cc-secondary reveal" data-d="2">Aquesta és la teva subpàgina de perfil dins del sistema NOVERA. Com més precís és el teu perfil, més eficient és el sistema.</p>
-    <div class="hero-actions reveal" data-d="3">
-      <a href="#tool" class="btn-primary">Crear el meu perfil de cerca
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="#how" class="btn-ghost">Com funciona
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-      </a>
+<section class="cc-hero" id="top" data-screen-label="Canal Compradors — Hero">
+  <div class="cc-hero-bg"></div>
+  <div class="cc-hero-orb a"></div>
+  <div class="cc-hero-orb b"></div>
+  <div class="wrap cc-hero-grid">
+    <div class="cc-hero-copy">
+      <span class="cc-kicker"><span class="cck-dot"></span> Canal Compradors · Sistema NOVERA</span>
+      <h1 class="cc-title">
+        <span class="cct-line"><span>Les millors propietats,</span></span>
+        <span class="cct-line"><span><em>abans que ningú.</em></span></span>
+      </h1>
+      <p class="cc-sub">Rep abans que ningú les propietats que encaixen amb tu. Sense portals. Sense soroll. Només oportunitats reals.</p>
+      <div class="cc-hero-cta">
+        <a href="#tool" class="cta-main">
+          <span class="cta-label">Crear el meu perfil de cerca</span>
+          <span class="cta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="cta-shine" aria-hidden="true"></span>
+        </a>
+        <a href="#how" class="cta-sub"><span>Com funciona</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <p class="cc-note">La teva subpàgina de perfil dins del sistema NOVERA. Com més precís és el teu perfil, més eficient és el sistema.</p>
+      <a href="index.html" class="cc-home-link">Ets venedor? Torna a la <strong>pàgina principal</strong> <span>→</span></a>
+    </div>
+
+    <div class="cc-hero-visual">
+      <div class="cc-card-ghost" aria-hidden="true"></div>
+      <article class="cc-alert">
+        <div class="ca-top">
+          <span class="ca-badge"><span class="dot"></span> NOVERA Canal</span>
+          <span class="ca-time">ara mateix</span>
+        </div>
+        <div class="ca-photo">
+          <image-slot id="cc-match" shape="rect" fit="cover" src="assets/novera-hero.webp"
+            placeholder="Fotografia de la propietat"></image-slot>
+          <span class="ca-match"><b>97%</b> match</span>
+          <span class="ca-off">Off-market</span>
+        </div>
+        <div class="ca-body">
+          <h4>Vil·la amb vistes al mar · Fenals</h4>
+          <p class="ca-meta">4 hab · 320 m² · piscina · primera línia</p>
+          <div class="ca-foot">
+            <span class="ca-price">685.000 €</span>
+            <span class="ca-go">Veure-la <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+      </article>
+      <div class="cc-pulse" aria-hidden="true"><span></span><span></span><span></span></div>
     </div>
   </div>
 </section>
 
 <!-- ░░ COM FUNCIONA ░░ -->
 <section class="cc-how" id="how" data-screen-label="Com funciona">
-  <div class="wrap grid">
-    <div>
+  <div class="wrap">
+    <div class="cc-how-head">
       <span class="kicker kicker--gold reveal">Com funciona</span>
-      <h2 class="reveal" data-d="1" style="margin-top:1.1rem;">El mercat no es busca.<br>S'anticipa.</h2>
+      <h2 class="reveal" data-d="1">El mercat no es busca. <span class="grad-text">S'anticipa.</span></h2>
       <p class="lead reveal" data-d="2">NOVERA analitza propietats actives i futures entrades al mercat. Quan detecta coincidències amb el teu perfil, t'avisa abans que arribin als portals públics.</p>
     </div>
-    <div class="cc-how-figure reveal" data-d="2">
-      <p class="keyphrase">El teu perfil treballa <span class="grad-text">mentre tu fas la teva vida.</span>
-        <span class="sub">Tu no busques pisos cada dia. El sistema ho fa per tu i només t'avisa quan val la pena.</span>
-      </p>
+
+    <div class="cc-steps">
+      <article class="cc-step reveal">
+        <div class="cs-num">01</div>
+        <h3>Defineixes el teu perfil</h3>
+        <p>Zones, pressupost, tipus d'immoble i prioritats. En menys d'un minut.</p>
+      </article>
+      <div class="cs-link reveal" data-d="1" aria-hidden="true"></div>
+      <article class="cc-step reveal" data-d="1">
+        <div class="cs-num">02</div>
+        <h3>El sistema vigila el mercat</h3>
+        <p>Propietats actives i futures entrades, monitoritzades de manera contínua.</p>
+      </article>
+      <div class="cs-link reveal" data-d="2" aria-hidden="true"></div>
+      <article class="cc-step reveal" data-d="2">
+        <div class="cs-num">03</div>
+        <h3>Reps l'alerta abans que ningú</h3>
+        <p>Quan apareix una coincidència real, ets el primer a saber-ho.</p>
+      </article>
     </div>
+
+    <p class="cc-keyline reveal">El teu perfil treballa <span class="grad-text">mentre tu fas la teva vida.</span> Tu no busques pisos cada dia: el sistema ho fa per tu i només t'avisa quan val la pena.</p>
   </div>
 </section>
 
@@ -287,13 +407,33 @@
   </div>
 </div>
 
+<script src="image-slot.js"></script>
+<script src="assets/forms.js"></script>
 <script src="assets/canal.js"></script>
 <script src="assets/legal.js"></script>
+<script src="assets/i18n.js"></script>
 <script>
   const hdr = document.getElementById('hdr');
   const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 24);
   onScroll();
   window.addEventListener('scroll', onScroll, { passive:true });
+
+  // Mobile menu
+  const burger = document.getElementById('navBurger');
+  const navMobile = document.getElementById('navMobile');
+  if (burger && navMobile){
+    const setMenu = (open) => {
+      hdr.classList.toggle('menu-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navMobile.setAttribute('aria-hidden', open ? 'false' : 'true');
+    };
+    burger.addEventListener('click', () => setMenu(!hdr.classList.contains('menu-open')));
+    navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  }
+
+  // Hero cinematic entrance
+  const ccHero = document.querySelector('.cc-hero');
+  if (ccHero) requestAnimationFrame(() => requestAnimationFrame(() => ccHero.classList.add('cc-in')));
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const items = document.querySelectorAll('.reveal');

@@ -214,6 +214,25 @@
     segs.forEach(s => s.classList.add('done'));
     done.classList.add('active');
     root.scrollIntoView({ behavior:'smooth', block:'center' });
+
+    // → envia el perfil de comprador als correus de NOVERA
+    if (window.NOVERAforms) {
+      window.NOVERAforms.send({
+        subject: 'Nou perfil de comprador · ' + (state.nom || 'sense nom'),
+        replyto: state.email,
+        fields: {
+          'Tipus de formulari': 'Comprador — Canal Compradors',
+          'Nom': state.nom,
+          'Email': state.email,
+          'Telèfon': state.tel,
+          'Zones': state.zones.join(', '),
+          'Pressupost': euro(state.budgetMin) + ' – ' + euro(state.budgetMax),
+          'Tipus d\'immoble': state.tipus.map(t => TIPUS_LABEL[t] || t).join(', '),
+          'Prioritats': state.prioritats.join(', '),
+          'Hipoteca': HIP_LABEL[state.hipoteca] || state.hipoteca || ''
+        }
+      });
+    }
   }
 
   function restart() {

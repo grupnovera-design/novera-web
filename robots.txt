@@ -1,0 +1,13 @@
+# robots.txt · clubnovera.com
+# NOVERA — un nou model immobiliari a la Costa Brava
+
+User-agent: *
+Allow: /
+
+# Recursos que no aporten valor d'indexació
+Disallow: /uploads/
+Disallow: /scraps/
+Disallow: /*.napkin$
+
+# Sitemap
+Sitemap: https://clubnovera.com/sitemap.xml

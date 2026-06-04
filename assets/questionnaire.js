@@ -170,6 +170,25 @@
     segs.forEach(s => s.classList.add('done'));
     result.classList.add('active');
     root.scrollIntoView({ behavior:'smooth', block:'center' });
+
+    // → envia el lead als correus de NOVERA
+    if (window.NOVERAforms) {
+      const LABELS = { adreca:'Adreça immoble', situacio:'Situació', gestio:'Gestió actual', important:'Prioritat', termini:'Termini' };
+      const fields = { 'Tipus de formulari': 'Venedor — Descobreix el teu camí' };
+      Object.keys(state.answers).forEach(k => {
+        if (['nom','email','tel'].includes(k)) return;
+        fields[LABELS[k] || k] = state.answers[k];
+      });
+      fields['Nom'] = state.answers.nom || '';
+      fields['Email'] = state.answers.email || '';
+      fields['Telèfon'] = state.answers.tel || '';
+      fields['Pla recomanat'] = 'NOVERA ' + p.name;
+      window.NOVERAforms.send({
+        subject: 'Nova anàlisi de venedor · ' + (state.answers.nom || 'sense nom'),
+        replyto: state.answers.email,
+        fields
+      });
+    }
   }
 
   function restart() {
