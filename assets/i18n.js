@@ -476,12 +476,8 @@
       var burger = navLinks.querySelector(".nav-burger");
       navLinks.insertBefore(make(), burger || null);
     }
-    var navMobile = document.querySelector(".nav-mobile");
-    if (navMobile) {
-      var mw = make();
-      mw.classList.add("lang-switch--mobile");
-      navMobile.insertBefore(mw, navMobile.firstChild);
-    }
+    // Nota: no dupliquem el selector dins del menú mòbil; el de la capçalera
+    // ja és visible en mòbil (just a dalt), i així el menú guanya espai.
   }
 
   function start() {

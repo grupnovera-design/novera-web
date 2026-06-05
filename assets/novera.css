@@ -173,7 +173,7 @@ header.menu-open .nav-burger span:nth-child(3){ transform:translateY(-7px) rotat
   border-bottom:1px solid var(--line);
   max-height:0; overflow:hidden; transition:max-height .5s var(--ease), padding .5s var(--ease);
 }
-header.menu-open .nav-mobile{ max-height:60vh; padding-block:14px 22px; }
+header.menu-open .nav-mobile{ max-height:85vh; overflow-y:auto; padding-block:14px 22px; }
 /* llegibilitat del menú obert sobre el hero (capçalera transparent) */
 header.menu-open{
   background:rgba(252,251,248,0.97);
