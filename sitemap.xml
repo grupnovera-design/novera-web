@@ -31,6 +31,50 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- ░░ Recursos ░░ -->
+  <url>
+    <loc>https://clubnovera.com/recursos/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/com-vendre-un-pis-a-lloret-de-mar.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/quant-cobra-una-immobiliaria-a-catalunya.html</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/quant-val-casa-meva-valoracio.html</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/com-funciona-exclusiva-immobiliaria.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/documents-per-vendre-una-casa.html</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/quant-es-triga-a-vendre-una-casa.html</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!--
     ░░ Estructura SEO preparada per a la Fase 2 (afegir quan les pàgines existeixin) ░░
     Landing pages locals:
@@ -42,14 +86,7 @@
       /vendre-casa-palafrugell.html
       /vendre-propietat-sant-feliu-de-guixols.html
       /vendre-propietat-costa-brava.html
-    Continguts (blog):
-      /blog/quant-val-casa-meva.html
-      /blog/valorar-habitatge.html
-      /blog/com-vendre-una-propietat.html
-      /blog/alternatives-immobiliaries-tradicionals.html
-      /blog/honoraris-immobiliaris.html
-      /blog/comissions-immobiliaries.html
-      /blog/guia-per-vendre-un-habitatge.html
+      /vendre-propietat-girona.html
   -->
 
 </urlset>

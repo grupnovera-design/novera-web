@@ -1,0 +1,232 @@
+/* ════════════════════════════════════════════════════════════
+   NOVERA — Recursos (hub + lectura d'articles)
+   Hereta les variables de novera.css (carregat abans)
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Capçalera fixa: sòlida des de l'inici en pàgines de recursos ── */
+body.rec header{
+  background:rgba(252,251,248,0.82);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--line);
+}
+body.rec header .wordmark{ color:var(--navy); }
+body.rec header .nav-links a{ color:var(--ink-2); }
+body.rec header .nav-links a:hover{ color:var(--navy); }
+body.rec header .nav-cta{
+  background:var(--navy); border-color:var(--navy); color:#fff;
+}
+body.rec header .nav-burger span{ background:var(--navy); }
+
+/* ── Molla per sota del nav ── */
+.rec-top{ padding-top:clamp(120px, 15vw, 168px); }
+
+/* ── Contingut visible per defecte (l'animació d'entrada és opcional) ── */
+body.rec .reveal{ opacity:1; transform:none; }
+
+/* ── Breadcrumb ── */
+.crumbs{
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+  font-size:0.8rem; color:var(--ink-3); letter-spacing:0.01em; margin-bottom:26px;
+}
+.crumbs a{ color:var(--ink-3); transition:color .3s var(--ease); }
+.crumbs a:hover{ color:var(--amber); }
+.crumbs .sep{ opacity:.5; }
+.crumbs [aria-current]{ color:var(--ink-2); }
+
+/* ════════════════════ HUB ════════════════════ */
+.rec-hero{ padding-bottom:clamp(40px, 6vw, 70px); }
+.rec-hero h1{
+  font-weight:600; letter-spacing:-0.035em; line-height:1.02;
+  font-size:clamp(2.6rem, 6.4vw, 5rem); color:var(--navy);
+  margin:14px 0 22px; max-width:16ch; text-wrap:balance;
+}
+.rec-hero .lead{ max-width:60ch; }
+
+/* ── Tira de zones (narrativa d'expansió) ── */
+.rec-zones{
+  display:flex; flex-wrap:wrap; gap:12px;
+  margin-top:clamp(38px, 5vw, 56px);
+  padding-top:clamp(30px, 4vw, 44px);
+  border-top:1px solid var(--line);
+}
+.rec-zone{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:10px 18px 10px 14px; border-radius:100px;
+  border:1px solid var(--line); background:var(--paper-2);
+  font-size:0.86rem; font-weight:500; color:var(--ink-2);
+}
+.rec-zone .dot{ width:8px; height:8px; border-radius:50%; flex:none; }
+.rec-zone .st{ font-size:0.72rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; opacity:.7; }
+.rec-zone.is-live{ border-color:rgba(46,140,99,.4); background:rgba(46,140,99,.07); color:var(--green-d); }
+.rec-zone.is-live .dot{ background:var(--green); box-shadow:0 0 0 4px rgba(46,140,99,.16); }
+.rec-zone.is-soon .dot{ background:var(--gold); }
+.rec-zone.is-next{ opacity:.78; }
+.rec-zone.is-next .dot{ background:var(--ink-3); }
+
+/* ── Graella d'articles ── */
+.rec-grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(330px, 1fr));
+  gap:clamp(20px, 2.4vw, 30px);
+  margin-top:clamp(54px, 7vw, 84px);
+}
+.rec-card{
+  display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:20px;
+  background:#fff; padding:clamp(26px, 2.4vw, 34px);
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease);
+  position:relative; overflow:hidden;
+}
+.rec-card::after{
+  content:''; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg, var(--amber), var(--gold-2));
+  transform:scaleX(0); transform-origin:left; transition:transform .55s var(--ease);
+}
+.rec-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 26px 50px -28px rgba(10,37,64,.35);
+  border-color:transparent;
+}
+.rec-card:hover::after{ transform:scaleX(1); }
+.rec-tag{
+  align-self:flex-start; font-size:0.68rem; font-weight:600;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--amber); margin-bottom:18px;
+}
+.rec-card h3{
+  font-size:clamp(1.28rem, 1.7vw, 1.52rem); font-weight:600;
+  letter-spacing:-0.02em; line-height:1.18; color:var(--navy);
+  text-wrap:balance;
+}
+.rec-card p{
+  margin-top:13px; font-size:0.96rem; line-height:1.6; color:var(--ink-2);
+  flex:1;
+}
+.rec-meta{
+  display:flex; align-items:center; gap:14px;
+  margin-top:24px; padding-top:18px; border-top:1px solid var(--line);
+  font-size:0.8rem; color:var(--ink-3);
+}
+.rec-meta .arrow{
+  margin-left:auto; display:inline-flex; align-items:center; gap:6px;
+  font-weight:600; color:var(--navy);
+}
+.rec-meta .arrow svg{ width:16px; height:16px; transition:transform .4s var(--ease); }
+.rec-card:hover .rec-meta .arrow svg{ transform:translateX(4px); }
+
+/* ════════════════════ ARTICLE ════════════════════ */
+.art-head{ position:static; inset:auto; z-index:auto; padding-bottom:clamp(34px, 4vw, 52px); border-bottom:1px solid var(--line); }
+.art-head .rec-tag{ margin-bottom:20px; }
+.art-head h1{
+  font-weight:600; letter-spacing:-0.03em; line-height:1.06;
+  font-size:clamp(2.2rem, 4.8vw, 3.7rem); color:var(--navy);
+  max-width:20ch; text-wrap:balance;
+}
+.art-sub{
+  margin-top:22px; font-size:clamp(1.08rem, 1.5vw, 1.3rem);
+  line-height:1.55; color:var(--ink-2); max-width:62ch; font-weight:400;
+}
+.art-byline{
+  display:flex; flex-wrap:wrap; align-items:center; gap:9px 16px;
+  margin-top:28px; font-size:0.84rem; color:var(--ink-3);
+}
+.art-byline strong{ color:var(--ink-2); font-weight:600; }
+.art-byline .sep{ opacity:.45; }
+
+/* ── Cos / prosa ── */
+.art-body{ max-width:720px; margin:clamp(40px,5vw,60px) auto 0; }
+.art-body > * + *{ margin-top:1.5em; }
+.art-body h2{
+  font-size:clamp(1.55rem, 2.6vw, 2.1rem); font-weight:600;
+  letter-spacing:-0.02em; line-height:1.18; color:var(--navy);
+  margin-top:2.1em; text-wrap:balance;
+}
+.art-body h3{
+  font-size:clamp(1.18rem, 1.7vw, 1.4rem); font-weight:600;
+  letter-spacing:-0.01em; color:var(--navy); margin-top:1.7em;
+}
+.art-body p, .art-body li{
+  font-size:1.075rem; line-height:1.72; color:var(--ink);
+}
+.art-body a{ color:var(--blue); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; }
+.art-body a:hover{ color:var(--amber); }
+.art-body strong{ font-weight:600; color:var(--navy); }
+.art-body ul, .art-body ol{ padding-left:1.3em; }
+.art-body li{ margin-top:.5em; }
+.art-body li::marker{ color:var(--amber); }
+.art-body blockquote{
+  border-left:3px solid var(--gold); padding:4px 0 4px 24px;
+  font-size:1.18rem; line-height:1.5; color:var(--navy);
+  font-weight:500; font-style:italic;
+}
+
+/* ── Callout clau ── */
+.art-key{
+  border:1px solid var(--line); border-radius:16px;
+  background:var(--paper-2); padding:24px 26px;
+  display:flex; gap:16px; align-items:flex-start;
+}
+.art-key svg{ width:24px; height:24px; flex:none; color:var(--amber); margin-top:2px; }
+.art-key p{ font-size:1.01rem !important; line-height:1.6; margin:0; }
+.art-key strong{ display:block; margin-bottom:4px; }
+
+/* ── Taula simple ── */
+.art-body .art-table{ width:100%; border-collapse:collapse; font-size:0.98rem; }
+.art-body .art-table th, .art-body .art-table td{
+  text-align:left; padding:13px 16px; border-bottom:1px solid var(--line); vertical-align:top;
+}
+.art-body .art-table thead th{
+  color:var(--navy); font-weight:600; border-bottom:2px solid var(--line);
+  font-size:0.85rem; letter-spacing:0.02em; text-transform:uppercase;
+}
+.art-body .art-table tbody tr:last-child td{ border-bottom:none; }
+
+/* ── CTA valoració dins article ── */
+.art-cta{
+  margin:clamp(56px,7vw,84px) auto 0; max-width:720px;
+  border-radius:24px; padding:clamp(34px,4vw,52px);
+  background:linear-gradient(135deg, var(--navy), var(--navy-2));
+  color:#fff; position:relative; overflow:hidden;
+}
+.art-cta::before{
+  content:''; position:absolute; right:-80px; top:-80px; width:280px; height:280px;
+  background:radial-gradient(circle, rgba(226,161,75,.4), transparent 70%);
+  filter:blur(20px); pointer-events:none;
+}
+.art-cta h2{
+  color:#fff; font-size:clamp(1.5rem,2.4vw,2.1rem); font-weight:600;
+  letter-spacing:-0.02em; line-height:1.14; margin:0 0 12px; position:relative;
+}
+.art-cta p{ color:rgba(255,255,255,.8); font-size:1.05rem; line-height:1.6; margin:0 0 26px; max-width:48ch; position:relative; }
+.art-cta .cta-row{ display:flex; flex-wrap:wrap; gap:14px; position:relative; }
+.art-cta .btn-primary{
+  background:linear-gradient(100deg, var(--amber), var(--gold)); color:var(--navy);
+  border:none; box-shadow:0 16px 34px -16px rgba(226,161,75,.6);
+}
+.art-cta .btn-line{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:15px 26px; border-radius:100px; font-weight:600; font-size:0.94rem;
+  border:1px solid rgba(255,255,255,.3); color:#fff;
+  transition:background .35s var(--ease), border-color .35s var(--ease);
+}
+.art-cta .btn-line:hover{ background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.55); }
+
+/* ── Relacionats ── */
+.art-related{ margin-top:clamp(60px,8vw,96px); }
+.art-related .kicker{ margin-bottom:30px; }
+
+/* ── Buttons base (per si la pàgina no carrega altres CSS) ── */
+.btn-primary{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:15px 28px; border-radius:100px;
+  background:linear-gradient(100deg, var(--blue), var(--navy)); color:#fff;
+  font-weight:600; font-size:0.94rem; letter-spacing:0.01em;
+  box-shadow:0 16px 34px -16px rgba(10,37,64,.55);
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+}
+.btn-primary svg{ width:18px; height:18px; }
+.btn-primary:hover{ transform:translateY(-2px); }
+
+@media (max-width:560px){
+  .rec-grid{ grid-template-columns:1fr; }
+}
