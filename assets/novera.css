@@ -249,10 +249,6 @@ header.menu-open .nav-mobile{ max-height:60vh; padding-block:14px 22px; }
   position:absolute; inset:0; background-size:cover; background-position:50% 44%;
   transform:scale(1.06); animation:heroZoom 26s ease-in-out infinite alternate;
 }
-/* mobile: serve the lighter hero (faster LCP) */
-@media (max-width:760px){
-  .hero-img{ background-image:url('novera-hero-mobile.webp') !important; }
-}
 @keyframes heroZoom{ from{ transform:scale(1.06);} to{ transform:scale(1.13);} }
 .hero-grain{
   position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
