@@ -212,6 +212,26 @@ header.menu-open .nav-mobile{ max-height:60vh; padding-block:14px 22px; }
 .btn-ghost:hover{ gap:15px; border-color:#fff; }
 .btn-ghost svg{ width:14px; height:14px; }
 
+/* WhatsApp button */
+.btn-wsp{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:inherit; font-size:0.98rem; font-weight:600; color:#fff; cursor:pointer;
+  padding:14px 26px; border-radius:100px; border:none; letter-spacing:0.005em;
+  background:#25D366; box-shadow:0 14px 32px -16px rgba(37,211,102,.65), inset 0 1px 0 rgba(255,255,255,.25);
+  transition:transform .35s var(--ease), filter .35s var(--ease), box-shadow .35s var(--ease);
+}
+.btn-wsp svg{ width:20px; height:20px; }
+.btn-wsp:hover{ transform:translateY(-2px); filter:brightness(1.04);
+  box-shadow:0 22px 44px -18px rgba(37,211,102,.75), inset 0 1px 0 rgba(255,255,255,.3); }
+
+/* quiz result — reassurança de contacte */
+.r-contact{
+  display:flex; align-items:center; justify-content:center; gap:11px;
+  margin:clamp(20px,2.6vw,28px) auto 0; max-width:48ch;
+  font-size:1rem; line-height:1.5; color:var(--ink-2); text-wrap:pretty;
+}
+.r-contact svg{ width:22px; height:22px; flex:none; color:var(--green); }
+
 /* ════════════════════════════════════════════════════════════
    HERO — portada cinematogràfica premium
    ════════════════════════════════════════════════════════════ */
