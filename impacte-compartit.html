@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Habitatge Just — vendre una llar pot ajudar a construir-ne una altra | NOVERA</title>
+<meta name="description" content="A NOVERA mantenim el preu fix i transparent. Quan superem el preu pactat, el 95% de l'extra és per a tu i el 5% va a Habitatge Just, un fons per facilitar l'accés a l'habitatge als joves de la província de Girona. Calcula el teu impacte.">
+<meta name="theme-color" content="#0A2540">
+<link rel="canonical" href="https://clubnovera.com/impacte-compartit.html">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NOVERA">
+<meta property="og:title" content="Habitatge Just — vendre una llar pot ajudar a construir-ne una altra">
+<meta property="og:description" content="Quan superem el preu pactat, el 95% és per a tu i el 5% ajuda un jove de la província de Girona a accedir a un habitatge. Transparent i traçable.">
+<meta property="og:url" content="https://clubnovera.com/impacte-compartit.html">
+<meta property="og:image" content="https://clubnovera.com/assets/og-novera.jpg">
+<meta property="og:locale" content="ca_ES">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/cover-coast.jpg" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/novera.css">
+
+<style>
+/* ════════════════════════════════════════════════════════════
+   IMPACTE COMPARTIT — pàgina de campanya
+   Hereta el sistema NOVERA (novera.css). Verd = el teu 95%.
+   Daurat = Habitatge Just (5%). Navy = panell focal.
+   ════════════════════════════════════════════════════════════ */
+:root{
+  --own:    var(--green);      /* 95% propietari */
+  --own-d:  var(--green-d);
+  --fund:   var(--gold);       /* 5% Habitatge Just */
+  --fund-2: var(--gold-2);
+}
+
+/* ── HERO de campanya ────────────────────────────────────────── */
+.ic-hero{
+  position:relative; overflow:hidden; background:#06121F;
+  min-height:88svh; display:flex; flex-direction:column;
+  padding:clamp(132px,16vh,180px) 0 clamp(40px,5vh,64px);
+}
+.ic-hero-bg{ position:absolute; inset:-6% -4%; z-index:0; will-change:transform;
+  transition:transform .9s cubic-bezier(.2,.8,.2,1); }
+.ic-hero-img{ position:absolute; inset:0; background-size:cover; background-position:50% 56%;
+  transform:scale(1.06); animation:heroZoom 28s ease-in-out infinite alternate; }
+.ic-hero-grain{ position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E"); }
+.ic-hero-veil{ position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:
+    linear-gradient(rgba(5,13,24,.34), rgba(5,13,24,.34)),
+    linear-gradient(180deg, rgba(6,18,31,.58) 0%, rgba(6,18,31,0) 22%),
+    linear-gradient(74deg, rgba(5,13,24,.8) 0%, rgba(5,13,24,.34) 38%, rgba(5,13,24,0) 64%),
+    linear-gradient(0deg, rgba(4,11,20,.97) 0%, rgba(4,11,20,.7) 22%, rgba(4,11,20,.3) 46%, rgba(4,11,20,0) 68%); }
+.ic-hero-inner{ position:relative; z-index:3; width:100%; margin-top:auto; max-width:var(--maxw); }
+
+.ic-hero-kicker{
+  display:inline-flex; align-items:center; gap:12px;
+  font-size:clamp(11px,.92vw,13px); font-weight:600; letter-spacing:.26em; text-transform:uppercase;
+  color:rgba(255,255,255,.84); margin-bottom:clamp(22px,3vw,32px);
+  text-shadow:0 1px 16px rgba(5,14,26,.8); }
+.ic-hero-kicker .hk-dot{ width:7px; height:7px; border-radius:50%; flex:none;
+  background:var(--gold-2); box-shadow:0 0 0 4px rgba(240,192,116,.2); }
+
+.ic-hero-title{
+  color:#fff; font-weight:600; letter-spacing:-.04em; line-height:1.0;
+  font-size:clamp(2.7rem,7.4vw,6.1rem); text-wrap:balance; margin:0 0 clamp(22px,3vw,32px); }
+.ic-hero-title em{ font-style:normal;
+  background:linear-gradient(96deg, var(--gold-2) 4%, #FBE3B6 40%, var(--blue-sky) 96%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; }
+.ic-hero-sub{ max-width:60ch; color:rgba(255,255,255,.9); font-weight:400;
+  font-size:clamp(1.12rem,1.55vw,1.4rem); line-height:1.62; letter-spacing:-.005em;
+  text-shadow:0 1px 22px rgba(5,14,26,.78); }
+.ic-hero-cta{ display:flex; align-items:center; gap:clamp(16px,2.4vw,28px); flex-wrap:wrap;
+  margin-top:clamp(30px,4vw,44px); }
+.ic-hero-link{ display:inline-flex; align-items:center; gap:11px; color:#fff;
+  font-size:1.02rem; font-weight:500; padding:6px 2px; text-shadow:0 1px 14px rgba(5,14,26,.6); }
+.ic-hero-link span{ position:relative; }
+.ic-hero-link span::after{ content:''; position:absolute; left:0; bottom:-5px; height:1.5px; width:100%;
+  background:rgba(255,255,255,.5); transform:scaleX(0); transform-origin:left; transition:transform .5s var(--ease); }
+.ic-hero-link svg{ width:16px; height:16px; transition:transform .45s var(--ease); }
+.ic-hero-link:hover span::after{ transform:scaleX(1); }
+.ic-hero-link:hover svg{ transform:translateX(5px); }
+
+/* meta bar */
+.ic-hero-meta{ position:relative; z-index:3; width:100%; max-width:var(--maxw);
+  margin-top:clamp(34px,5vh,58px); padding-top:clamp(18px,2vw,24px);
+  border-top:1px solid rgba(255,255,255,.16);
+  display:flex; align-items:center; gap:clamp(20px,3.4vw,52px); flex-wrap:wrap; }
+.ic-hero-meta li{ list-style:none; display:inline-flex; align-items:center; gap:10px;
+  font-size:.78rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase; color:rgba(255,255,255,.76); }
+.ic-hero-meta .hm-dot{ width:5px; height:5px; border-radius:50%; flex:none;
+  background:var(--gold-2); box-shadow:0 0 0 3px rgba(240,192,116,.16); }
+
+/* entrance */
+.ic-hero-kicker,.ic-hero-title,.ic-hero-sub,.ic-hero-cta,.ic-hero-meta{ opacity:0; transform:translateY(20px); }
+.ic-hero.in .ic-hero-kicker,.ic-hero.in .ic-hero-title,.ic-hero.in .ic-hero-sub,
+.ic-hero.in .ic-hero-cta,.ic-hero.in .ic-hero-meta{ opacity:1; transform:none;
+  transition:opacity 1s var(--ease), transform 1.1s var(--ease); }
+.ic-hero.in .ic-hero-title{ transition-delay:.18s; }
+.ic-hero.in .ic-hero-sub{ transition-delay:.42s; }
+.ic-hero.in .ic-hero-cta{ transition-delay:.58s; }
+.ic-hero.in .ic-hero-meta{ transition-delay:.72s; }
+
+/* ── secció genèrica capçalera ───────────────────────────────── */
+.sec-head{ max-width:64ch; margin:0 auto clamp(30px,3.4vw,46px); text-align:center; }
+.sec-head .kicker{ justify-content:center; }
+.sec-head h2{ margin-top:.9rem; }
+.sec-head .lead{ margin-top:1rem; max-width:56ch; margin-inline:auto; }
+
+/* ── COM FUNCIONA — 3 passos ─────────────────────────────────── */
+.how{ background:var(--paper); }
+.how-steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2.2vw,26px);
+  max-width:1120px; margin:0 auto; counter-reset:hs; }
+.how-step{ position:relative; background:var(--paper); border:1px solid var(--line);
+  border-radius:22px; padding:clamp(26px,2.8vw,38px);
+  box-shadow:0 30px 60px -44px rgba(10,37,64,.34);
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s; }
+.how-step:hover{ transform:translateY(-5px); box-shadow:0 44px 84px -44px rgba(10,37,64,.42); }
+.how-step .hs-num{ width:46px; height:46px; border-radius:14px; display:grid; place-items:center;
+  font-size:1.05rem; font-weight:700; font-variant-numeric:tabular-nums; margin-bottom:22px;
+  color:var(--navy); background:var(--paper-2); border:1px solid var(--line); }
+.how-step:nth-child(3) .hs-num{ color:#fff; border-color:transparent;
+  background:linear-gradient(145deg, var(--fund), var(--amber)); box-shadow:0 12px 26px -12px rgba(226,161,75,.6); }
+.how-step h3{ font-size:1.18rem; font-weight:600; letter-spacing:-.02em; line-height:1.25; color:var(--navy); }
+.how-step p{ font-size:.98rem; line-height:1.6; color:var(--ink-2); margin-top:11px; }
+.how-step .hs-hi{ color:var(--own-d); font-weight:600; }
+.how-step .hs-hi.f{ color:var(--amber); }
+
+/* split chip in step 3 */
+.hs-split{ margin-top:20px; }
+.hs-split-bar{ height:10px; border-radius:99px; overflow:hidden; display:flex; gap:2px; background:var(--paper-2); }
+.hs-split-bar .o{ width:95%; background:linear-gradient(90deg, var(--own), var(--own-d)); border-radius:99px; }
+.hs-split-bar .f{ width:5%; background:linear-gradient(90deg, var(--fund-2), var(--fund)); border-radius:99px; }
+.hs-split-leg{ display:flex; justify-content:space-between; margin-top:9px;
+  font-size:.74rem; font-weight:600; letter-spacing:.02em; }
+.hs-split-leg .o{ color:var(--own-d); }
+.hs-split-leg .f{ color:var(--amber); }
+
+/* nota múltiples interessats */
+.how-note{ max-width:1120px; margin:clamp(26px,3vw,38px) auto 0;
+  display:flex; gap:16px; align-items:flex-start;
+  background:var(--paper-2); border:1px solid var(--line); border-radius:18px;
+  padding:22px clamp(20px,2.4vw,30px); }
+.how-note .hn-ico{ width:38px; height:38px; flex:none; border-radius:11px; display:grid; place-items:center;
+  background:#fff; border:1px solid var(--line); color:var(--blue-br); }
+.how-note .hn-ico svg{ width:19px; height:19px; }
+.how-note h4{ font-size:1rem; font-weight:600; color:var(--navy); margin-bottom:5px; }
+.how-note p{ font-size:.95rem; line-height:1.6; color:var(--ink-2); max-width:88ch; }
+
+/* ── CALCULADORA D'IMPACTE (panell focal) ────────────────────── */
+.impact{ background:linear-gradient(180deg, var(--paper) 0%, #F7F4ED 60%, var(--paper-2) 100%); }
+.impact-calc{
+  position:relative; overflow:hidden; color:#fff; max-width:1080px; margin:0 auto;
+  border-radius:30px; padding:clamp(34px,4.6vw,64px) clamp(24px,4.4vw,64px);
+  background:
+    radial-gradient(95% 130% at 100% 0%, rgba(226,161,75,.26), transparent 56%),
+    radial-gradient(85% 130% at 0% 100%, rgba(46,140,99,.24), transparent 55%),
+    linear-gradient(165deg, #0F3157 0%, #0A2540 68%, #081E36 100%);
+  box-shadow:0 56px 130px -52px rgba(8,26,48,.7); }
+.impact-calc::before{ content:''; position:absolute; inset:0; border-radius:30px; pointer-events:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14); }
+
+.ic-grid{ display:grid; grid-template-columns:0.84fr 1.16fr; gap:clamp(28px,4vw,60px); align-items:center; }
+
+/* controls */
+.ic-field{ margin-bottom:clamp(24px,3vw,34px); }
+.ic-field:last-child{ margin-bottom:0; }
+.ic-field-lbl{ display:flex; align-items:center; gap:9px; font-size:.8rem; font-weight:600;
+  letter-spacing:.04em; color:rgba(255,255,255,.74); margin-bottom:14px; }
+.ic-field-lbl .dot{ width:9px; height:9px; border-radius:50%; flex:none; }
+.ic-field-lbl .dot.base{ background:rgba(255,255,255,.4); }
+.ic-field-lbl .dot.final{ background:var(--gold-2); box-shadow:0 0 0 4px rgba(240,192,116,.18); }
+.ic-amount-input{ display:inline-flex; align-items:baseline; gap:6px;
+  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.24); border-radius:13px;
+  padding:11px 16px; transition:border-color .25s, background .25s, box-shadow .25s; }
+.ic-amount-input:focus-within{ border-color:var(--gold-2); background:rgba(255,255,255,.12);
+  box-shadow:0 0 0 4px rgba(240,192,116,.16); }
+.ic-amount-input input{ border:none; background:transparent; font-family:inherit;
+  font-size:clamp(1.4rem,2.2vw,1.85rem); font-weight:600; letter-spacing:-.02em; color:#fff;
+  width:clamp(120px,15vw,180px); outline:none; -moz-appearance:textfield; font-variant-numeric:tabular-nums; }
+.ic-amount-input input::-webkit-outer-spin-button,
+.ic-amount-input input::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
+.ic-amount-input .cur{ font-size:1.1rem; font-weight:500; color:rgba(255,255,255,.55); }
+
+input[type=range].ic-range{ -webkit-appearance:none; appearance:none; width:100%; height:4px; margin-top:18px;
+  border-radius:99px; background:rgba(255,255,255,.18); outline:none; cursor:pointer; }
+input[type=range].ic-range::-webkit-slider-thumb{ -webkit-appearance:none; appearance:none;
+  width:22px; height:22px; border-radius:50%; background:#fff; border:none; cursor:grab;
+  box-shadow:0 4px 14px -2px rgba(0,0,0,.5), 0 0 0 4px rgba(240,192,116,.0); transition:box-shadow .25s, transform .15s; }
+input[type=range].ic-range::-webkit-slider-thumb:active{ cursor:grabbing; transform:scale(1.08); }
+input[type=range].ic-range::-moz-range-thumb{ width:22px; height:22px; border-radius:50%; background:#fff; border:none; cursor:grab; box-shadow:0 4px 14px -2px rgba(0,0,0,.5); }
+input[type=range].ic-range.gold::-webkit-slider-thumb{ box-shadow:0 4px 14px -2px rgba(0,0,0,.5), 0 0 0 4px rgba(240,192,116,.28); }
+.ic-range-labels{ display:flex; justify-content:space-between; margin-top:9px; }
+.ic-range-labels span{ font-size:.74rem; color:rgba(255,255,255,.5); font-variant-numeric:tabular-nums; }
+.ic-overprice{ display:inline-flex; align-items:center; gap:7px; margin-top:14px;
+  font-size:.82rem; font-weight:600; color:var(--gold-2);
+  background:rgba(240,192,116,.12); border:1px solid rgba(240,192,116,.3); border-radius:99px; padding:6px 14px; }
+.ic-overprice b{ font-variant-numeric:tabular-nums; }
+.ic-hint{ margin-top:13px; font-size:.8rem; line-height:1.5; color:rgba(255,255,255,.52); max-width:42ch; }
+.ic-hint b{ color:rgba(255,255,255,.8); font-weight:600; }
+
+/* viz: stacked bar + results */
+.ic-viz-label{ font-size:.78rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:rgba(255,255,255,.6); margin-bottom:16px; }
+.ic-viz-total{ font-size:.92rem; color:rgba(255,255,255,.6); margin-bottom:8px; }
+.ic-viz-total b{ color:#fff; font-weight:600; font-variant-numeric:tabular-nums; }
+.ic-bar{ height:18px; border-radius:99px; overflow:hidden; display:flex; gap:3px; background:rgba(255,255,255,.06); }
+.ic-bar .seg{ height:100%; transition:width .5s cubic-bezier(.4,0,.2,1); }
+.ic-bar .seg.base{ background:rgba(255,255,255,.2); border-radius:99px; }
+.ic-bar .seg.owner{ background:linear-gradient(90deg, #56CF99, var(--own)); border-radius:99px; }
+.ic-bar .seg.fund{ background:linear-gradient(90deg, var(--fund-2), var(--fund)); border-radius:99px; min-width:3px; }
+.ic-bar-leg{ display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:14px; }
+.ic-bar-leg .bl{ display:inline-flex; align-items:center; gap:7px; font-size:.78rem; color:rgba(255,255,255,.62); }
+.ic-bar-leg .bldot{ width:9px; height:9px; border-radius:3px; flex:none; }
+
+/* the two outcome cards */
+.ic-out{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:clamp(24px,3vw,32px); }
+.ic-out-card{ position:relative; border-radius:18px; padding:20px clamp(16px,1.6vw,22px);
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); overflow:hidden; }
+.ic-out-card .oc-top{ display:flex; align-items:center; gap:9px; font-size:.82rem; font-weight:600; line-height:1.3; }
+.ic-out-card .oc-top .pct{ font-size:.72rem; font-weight:700; padding:2px 9px; border-radius:99px; }
+.ic-out-card.owner .oc-top{ color:#7BE3B4; }
+.ic-out-card.owner .oc-top .pct{ background:rgba(46,140,99,.22); color:#7BE3B4; }
+.ic-out-card.fund .oc-top{ color:var(--gold-2); }
+.ic-out-card.fund .oc-top .pct{ background:rgba(240,192,116,.18); color:var(--gold-2); }
+.ic-out-card .oc-amt{ font-size:clamp(1.9rem,3.6vw,2.7rem); font-weight:600; letter-spacing:-.04em;
+  line-height:1; margin-top:14px; font-variant-numeric:tabular-nums; }
+.ic-out-card.owner .oc-amt{ color:#fff; }
+.ic-out-card.fund .oc-amt{ color:var(--gold-2); }
+.ic-out-card .oc-sub{ font-size:.8rem; color:rgba(255,255,255,.52); margin-top:8px; line-height:1.4; }
+
+.ic-reassure{ display:flex; align-items:center; justify-content:center; gap:10px; text-align:center;
+  margin-top:clamp(26px,3vw,34px); padding-top:clamp(22px,2.6vw,30px);
+  border-top:1px solid rgba(255,255,255,.12);
+  font-size:.96rem; color:rgba(255,255,255,.78); }
+.ic-reassure svg{ width:20px; height:20px; flex:none; color:#7BE3B4; }
+.ic-reassure .re-pos{ display:inline-flex; align-items:center; gap:10px; }
+.ic-reassure b{ color:#fff; font-weight:600; }
+
+.ic-zero{ margin-top:clamp(24px,3vw,32px); padding:18px 20px; border-radius:14px;
+  background:rgba(255,255,255,.05); border:1px dashed rgba(255,255,255,.2);
+  font-size:.92rem; line-height:1.55; color:rgba(255,255,255,.6); font-style:italic; }
+
+/* ── EXEMPLE REAL — història d'en Pere i la Maria ────────────── */
+.ex{ background:var(--paper-2); }
+.ex-card{ max-width:1080px; margin:0 auto; background:var(--paper); border:1px solid var(--line);
+  border-radius:28px; padding:clamp(28px,4vw,56px); box-shadow:0 46px 100px -56px rgba(10,37,64,.4); }
+
+.ex-people{ display:flex; align-items:center; gap:13px; justify-content:center; margin-bottom:6px; }
+.ex-people .av{ width:38px; height:38px; border-radius:50%; display:grid; place-items:center;
+  font-size:.86rem; font-weight:700; color:#fff; border:2px solid var(--paper); }
+.ex-people .av.p{ background:linear-gradient(145deg,#3E7BB5,var(--blue-br)); }
+.ex-people .av.m{ background:linear-gradient(145deg,var(--green),var(--green-d)); margin-left:-16px; }
+.ex-people .nm{ font-size:.82rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-2); }
+
+/* flux de 3 nodes */
+.ex-flow{ display:grid; grid-template-columns:1fr auto 1fr auto 1fr; align-items:stretch; gap:0;
+  margin:clamp(30px,4vw,44px) 0 clamp(26px,3vw,36px); }
+.ex-node{ text-align:center; padding:clamp(18px,2vw,26px) 12px; border-radius:18px; background:var(--paper-2);
+  border:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; gap:7px; }
+.ex-node.accent{ background:linear-gradient(160deg,#0F3157,#0A2540); border-color:transparent; }
+.ex-node .nl{ font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); }
+.ex-node.accent .nl{ color:rgba(255,255,255,.62); }
+.ex-node .nv{ font-size:clamp(1.5rem,3.1vw,2.15rem); font-weight:600; letter-spacing:-.03em; color:var(--navy);
+  font-variant-numeric:tabular-nums; line-height:1; }
+.ex-node.accent .nv{ color:var(--gold-2); }
+.ex-node .ns{ font-size:.78rem; color:var(--ink-3); }
+.ex-node.accent .ns{ color:rgba(255,255,255,.55); }
+.ex-arrow{ display:grid; place-items:center; padding:0 clamp(8px,1.4vw,18px); color:var(--ink-3); }
+.ex-arrow svg{ width:22px; height:22px; }
+
+/* split del valor extra */
+.ex-split{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.ex-split-card{ position:relative; border-radius:18px; padding:clamp(18px,2vw,24px); overflow:hidden;
+  border:1px solid var(--line); }
+.ex-split-card.own{ background:linear-gradient(160deg,rgba(46,140,99,.08),rgba(46,140,99,.02)); border-color:rgba(46,140,99,.28); }
+.ex-split-card.fund{ background:linear-gradient(160deg,rgba(226,161,75,.1),rgba(226,161,75,.03)); border-color:rgba(226,161,75,.32); }
+.ex-split-card .sc-top{ display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; }
+.ex-split-card .sc-top .pct{ font-size:.7rem; font-weight:700; padding:2px 8px; border-radius:99px; }
+.ex-split-card.own .sc-top{ color:var(--green-d); } .ex-split-card.own .sc-top .pct{ background:rgba(46,140,99,.16); color:var(--green-d); }
+.ex-split-card.fund .sc-top{ color:var(--amber); } .ex-split-card.fund .sc-top .pct{ background:rgba(226,161,75,.18); color:var(--amber); }
+.ex-split-card .sc-amt{ font-size:clamp(1.6rem,3vw,2.2rem); font-weight:600; letter-spacing:-.03em; margin-top:11px;
+  font-variant-numeric:tabular-nums; line-height:1; }
+.ex-split-card.own .sc-amt{ color:var(--navy); } .ex-split-card.fund .sc-amt{ color:var(--amber); }
+.ex-split-card .sc-sub{ font-size:.82rem; color:var(--ink-2); margin-top:9px; line-height:1.45; }
+
+/* destí dels diners */
+.ex-dest{ margin-top:14px; border-radius:18px; padding:clamp(20px,2.4vw,28px);
+  background:linear-gradient(160deg,#0F3157,#0A2540); color:#fff; }
+.ex-dest-head{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.ex-dest-head .dh-ico{ width:42px; height:42px; flex:none; border-radius:12px; display:grid; place-items:center;
+  background:rgba(240,192,116,.16); color:var(--gold-2); }
+.ex-dest-head .dh-ico svg{ width:22px; height:22px; }
+.ex-dest-head h4{ font-size:1.06rem; font-weight:600; color:#fff; line-height:1.3; }
+.ex-dest-head p{ font-size:.86rem; color:rgba(255,255,255,.62); margin-top:3px; }
+.ex-needs{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.ex-need{ display:flex; flex-direction:column; align-items:center; gap:9px; text-align:center;
+  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.13); border-radius:13px; padding:16px 8px; }
+.ex-need svg{ width:24px; height:24px; color:var(--blue-sky); }
+.ex-need span{ font-size:.8rem; font-weight:500; color:rgba(255,255,255,.84); }
+
+.ex-quote{ max-width:62ch; margin:clamp(26px,3vw,34px) auto 0; text-align:center;
+  font-size:clamp(1.05rem,1.7vw,1.32rem); font-weight:500; line-height:1.5; letter-spacing:-.01em; color:var(--navy);
+  text-wrap:balance; }
+.ex-quote b{ color:var(--green-d); font-weight:600; }
+.ex-disc{ max-width:60ch; margin:16px auto 0; text-align:center; font-size:.84rem; line-height:1.55; color:var(--ink-3); }
+
+@media (max-width:760px){
+  .ex-flow{ grid-template-columns:1fr; gap:0; }
+  .ex-arrow{ padding:10px 0; transform:rotate(90deg); }
+  .ex-split{ grid-template-columns:1fr; }
+  .ex-needs{ grid-template-columns:repeat(2,1fr); }
+}
+
+/* ── HABITATGE JUST (secció navy) ────────────────────────────── */
+.fund-sec{ color:#fff; overflow:hidden;
+  background:radial-gradient(110% 80% at 88% 0%, rgba(226,161,75,.22), transparent 55%), linear-gradient(165deg,#0A2540,#081E36); }
+.fund-grid{ display:grid; grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);
+  gap:clamp(40px,6vw,90px); align-items:start; }
+.fund-intro{ position:sticky; top:clamp(96px,11vh,124px); }
+.fund-intro .kicker{ color:var(--gold-2); }
+.fund-intro h2{ color:#fff; margin-top:1.2rem; }
+.fund-intro .lead{ color:rgba(255,255,255,.7); margin-top:1.4rem; max-width:42ch; }
+.fund-tag{ display:inline-flex; align-items:center; gap:9px; margin-top:clamp(24px,3vw,34px);
+  font-size:.84rem; color:rgba(255,255,255,.85); background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.2); border-radius:99px; padding:9px 16px; }
+.fund-tag svg{ width:16px; height:16px; color:var(--gold-2); }
+
+.fund-cards{ display:grid; gap:16px; }
+.fund-card{ border-radius:20px; padding:clamp(24px,2.6vw,34px);
+  background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.13);
+  backdrop-filter:blur(12px); transition:transform .5s var(--ease), background .5s, border-color .5s; }
+.fund-card:hover{ transform:translateY(-4px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.26); }
+.fund-card h3{ display:flex; align-items:center; gap:11px; font-size:1.12rem; font-weight:600; color:#fff; margin-bottom:18px; }
+.fund-card h3 .fc-ico{ width:34px; height:34px; flex:none; border-radius:10px; display:grid; place-items:center;
+  background:rgba(240,192,116,.14); color:var(--gold-2); }
+.fund-card h3 .fc-ico svg{ width:18px; height:18px; }
+.fund-card.report h3 .fc-ico{ background:rgba(92,168,224,.16); color:var(--blue-sky); }
+.fund-list{ list-style:none; display:grid; gap:12px; }
+.fund-list li{ position:relative; padding-left:28px; font-size:.97rem; line-height:1.5; color:rgba(255,255,255,.82); }
+.fund-list li::before{ content:''; position:absolute; left:0; top:.45em; width:15px; height:15px; border-radius:50%;
+  background:rgba(46,140,99,.22); }
+.fund-list li::after{ content:''; position:absolute; left:4px; top:.72em; width:6px; height:3px;
+  border-left:1.5px solid #7BE3B4; border-bottom:1.5px solid #7BE3B4; transform:rotate(-45deg); }
+.fund-card.report .fund-list li::before{ background:rgba(92,168,224,.2); }
+.fund-card.report .fund-list li::after{ border-color:var(--blue-sky); }
+.fund-quote{ margin-top:18px; font-size:1.02rem; font-style:italic; line-height:1.55;
+  color:rgba(255,255,255,.66); max-width:50ch; }
+
+@media (max-width:900px){
+  .ic-grid{ grid-template-columns:1fr; gap:clamp(28px,5vw,40px); }
+  .how-steps{ grid-template-columns:1fr; }
+  .fund-grid{ grid-template-columns:1fr; gap:clamp(34px,6vw,46px); }
+  .fund-intro{ position:static; }
+}
+@media (max-width:560px){
+  .ic-out{ grid-template-columns:1fr; }
+  .ic-amount-input input{ width:auto; max-width:160px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .ic-hero-img{ animation:none; transform:scale(1.04); }
+  .ic-hero-bg{ transition:none; }
+  .ic-hero-kicker,.ic-hero-title,.ic-hero-sub,.ic-hero-cta,.ic-hero-meta{ opacity:1; transform:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ░░ NAV ░░ -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html#top" class="wordmark" aria-label="NOVERA — inici">NOVERA</a>
+    <nav class="nav-links">
+      <a href="index.html#model" class="hide-sm">El model</a>
+      <a href="index.html#equip" class="hide-sm">L'equip</a>
+      <a href="index.html#plans" class="hide-sm">Plans</a>
+      <a href="impacte-compartit.html" class="hide-sm" aria-current="page" style="color:var(--amber)">Habitatge Just</a>
+      <a href="recursos/index.html" class="hide-sm">Guia</a>
+      <a href="index.html#descobreix" class="nav-cta hide-sm">Descobreix <span class="ar">→</span></a>
+      <button class="nav-burger" id="navBurger" aria-label="Obrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <a href="index.html#model">El model</a>
+    <a href="index.html#equip">L'equip</a>
+    <a href="index.html#plans">Plans</a>
+    <a href="impacte-compartit.html">Habitatge Just</a>
+    <a href="recursos/index.html">Guia</a>
+    <a href="compradors.html">Canal Compradors</a>
+    <a href="index.html#descobreix" class="nm-cta">Descobreix el teu camí <span>→</span></a>
+  </div>
+</header>
+
+<!-- ░░ HERO ░░ -->
+<section class="ic-hero" id="top" data-screen-label="Hero — Impacte Compartit">
+  <div class="ic-hero-bg"><div class="ic-hero-img" style="background-image:url('assets/cover-coast.jpg')"></div></div>
+  <div class="ic-hero-grain" aria-hidden="true"></div>
+  <div class="ic-hero-veil"></div>
+
+  <div class="ic-hero-inner wrap">
+    <span class="ic-hero-kicker"><span class="hk-dot"></span>NOVERA · Habitatge Just</span>
+    <h1 class="ic-hero-title">Vendre una llar també pot<br>ajudar <em>a construir-ne una altra.</em></h1>
+    <p class="ic-hero-sub">Mantenim el preu fix, transparent i sense sorpreses. Però quan aconseguim superar el preu que hem pactat junts, pots decidir que una part d'aquest valor extra es converteixi en oportunitats reals per a joves de la província.</p>
+    <div class="ic-hero-cta">
+      <a href="#calculadora" class="cta-main">
+        <span class="cta-label">Calcula el teu impacte</span>
+        <span class="cta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="cta-shine" aria-hidden="true"></span>
+      </a>
+      <a href="#com-funciona" class="ic-hero-link"><span>Com funciona</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <ul class="ic-hero-meta">
+      <li><span class="hm-dot"></span>El 95% sempre és teu</li>
+      <li><span class="hm-dot"></span>El 5% va a Habitatge Just</li>
+      <li><span class="hm-dot"></span>Cada euro és traçable</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ░░ COM FUNCIONA ░░ -->
+<section class="how" id="com-funciona" data-screen-label="Com funciona">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker kicker--gold">Com funciona</span>
+      <h2 class="h2">Senzill i transparent<br>des del primer dia.</h2>
+      <p class="lead">El mecanisme s'activa només quan venem per sobre del que havíem acordat. Mai surt del que ja és teu.</p>
+    </div>
+
+    <div class="how-steps">
+      <article class="how-step reveal">
+        <div class="hs-num">1</div>
+        <h3>Acordem un preu de venda junts</h3>
+        <p>A la primera trobada fixem el preu objectiu a partir de la valoració del teu habitatge. És el <span class="hs-hi">preu de referència</span> a partir del qual s'activa el mecanisme.</p>
+      </article>
+      <article class="how-step reveal" data-d="1">
+        <div class="hs-num">2</div>
+        <h3>NOVERA treballa per superar-lo</h3>
+        <p>El nostre incentiu és clar: com més valor generem per a tu, millor per a tothom. <span class="hs-hi">No cobrem comissions</span> ni bonificacions sobre el preu base.</p>
+      </article>
+      <article class="how-step reveal" data-d="2">
+        <div class="hs-num">3</div>
+        <h3>Repartim el valor extra</h3>
+        <p>Si superem el preu acordat, el <span class="hs-hi">95% de la diferència és íntegrament teu</span> i el <span class="hs-hi f">5% va a Habitatge Just</span>.</p>
+        <div class="hs-split">
+          <div class="hs-split-bar"><div class="o"></div><div class="f"></div></div>
+          <div class="hs-split-leg"><span class="o">95% per a tu</span><span class="f">5% Habitatge Just</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="how-note reveal">
+      <div class="hn-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div>
+        <h4>Quan hi ha diversos interessats</h4>
+        <p>De vegades un habitatge desperta l'interès de diversos compradors alhora. Treballem per obtenir les millors condicions en cada oferta. No sempre serà possible activar el mecanisme —depèn de com evolucioni el procés— però si la venda final supera el preu acordat, Habitatge Just s'aplica igual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CALCULADORA D'IMPACTE ░░ -->
+<section class="impact" id="calculadora" data-screen-label="Calculadora d'impacte">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker kicker--gold">Calcula el teu impacte</span>
+      <h2 class="h2">Descobreix com una venda pot generar noves oportunitats.</h2>
+      <p class="lead">Introdueix el preu que acordaríem i un preu final de venda. Veuràs a l'instant com es distribueix el valor extra que generem.</p>
+    </div>
+
+    <div class="impact-calc reveal">
+      <div class="ic-grid">
+        <!-- CONTROLS -->
+        <div class="ic-controls">
+          <div class="ic-field">
+            <div class="ic-field-lbl"><span class="dot base"></span>Preu acordat amb NOVERA</div>
+            <div class="ic-amount-input">
+              <input type="number" id="baseInput" value="300000" min="50000" max="5000000" step="500" inputmode="numeric" aria-label="Preu acordat">
+              <span class="cur">€</span>
+            </div>
+            <input type="range" class="ic-range" id="baseRange" min="50000" max="2000000" step="1000" value="300000" aria-label="Preu acordat (control lliscant)">
+            <div class="ic-range-labels"><span>50.000 €</span><span>2.000.000 €</span></div>
+            <p class="ic-hint">Escriu el preu exacte o mou el control. La valoració de NOVERA és el <b>preu real de mercat</b>.</p>
+          </div>
+
+          <div class="ic-field">
+            <div class="ic-field-lbl"><span class="dot final"></span>Preu final de venda</div>
+            <div class="ic-amount-input">
+              <input type="number" id="finalInput" value="320000" min="50000" max="5050000" step="500" inputmode="numeric" aria-label="Preu final de venda">
+              <span class="cur">€</span>
+            </div>
+            <input type="range" class="ic-range gold" id="finalRange" min="300000" max="350000" step="500" value="320000" aria-label="Preu final de venda (control lliscant)">
+            <div class="ic-range-labels"><span id="flMin">300.000 € (pactat)</span><span id="flMax">350.000 € (màx.)</span></div>
+            <span class="ic-overprice" id="overprice">+<b>10%</b> sobre el preu acordat</span>
+          </div>
+        </div>
+
+        <!-- VIZ -->
+        <div class="ic-viz">
+          <div class="ic-viz-label">Distribució de la venda final</div>
+          <div class="ic-viz-total">Venda final: <b id="vizTotal">330.000 €</b></div>
+          <div class="ic-bar">
+            <div class="seg base" id="segBase" style="width:91%"></div>
+            <div class="seg owner" id="segOwner" style="width:8.5%"></div>
+            <div class="seg fund" id="segFund" style="width:0.5%"></div>
+          </div>
+          <div class="ic-bar-leg">
+            <span class="bl"><span class="bldot" style="background:rgba(255,255,255,.35)"></span>Preu acordat</span>
+            <span class="bl"><span class="bldot" style="background:var(--own)"></span>El teu extra</span>
+            <span class="bl"><span class="bldot" style="background:var(--fund)"></span>Habitatge Just</span>
+          </div>
+
+          <div class="ic-out" id="outCards">
+            <div class="ic-out-card owner">
+              <div class="oc-top">Benefici extra per a tu <span class="pct">95%</span></div>
+              <div class="oc-amt" id="ownAmt">+28.500 €</div>
+              <div class="oc-sub">per sobre del preu acordat</div>
+            </div>
+            <div class="ic-out-card fund">
+              <div class="oc-top">NOVERA Habitatge Just <span class="pct">5%</span></div>
+              <div class="oc-amt" id="fundAmt">1.500 €</div>
+              <div class="oc-sub">aportació al fons social</div>
+            </div>
+          </div>
+
+          <div class="ic-reassure" id="reassure">
+            <span class="re-pos" id="rePos">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:20px;height:20px;flex:none;color:#7BE3B4"><path d="M20 6L9 17l-5-5"/></svg>
+              <span>Valor extra generat: <b id="diffAmt">30.000 €</b> — i el 95% és per a tu.</span>
+            </span>
+            <span class="re-zero" id="reZero" hidden style="color:rgba(255,255,255,.62);font-style:italic">El preu final coincideix amb el pactat. Quan la venda el superi, aquí veuràs com es reparteix el valor extra.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ EXEMPLE REAL ░░ -->
+<section class="ex" id="exemple-real" data-screen-label="Exemple real">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker kicker--gold">Un cas</span>
+      <h2 class="h2">En Pere i la Maria,<br>una venda amb empremta.</h2>
+      <p class="lead">Així va funcionar Habitatge Just en una operació real: propera, transparent i amb un destí concret.</p>
+    </div>
+
+    <div class="ex-card reveal">
+      <div class="ex-people">
+        <span class="av p">P</span><span class="av m">M</span>
+        <span class="nm">Pere &amp; Maria · venedors</span>
+      </div>
+
+      <!-- flux de l'operació -->
+      <div class="ex-flow">
+        <div class="ex-node">
+          <span class="nl">Preu objectiu</span>
+          <span class="nv">280.000 €</span>
+          <span class="ns">acordat junts</span>
+        </div>
+        <div class="ex-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="ex-node">
+          <span class="nl">Venda tancada</span>
+          <span class="nv">300.000 €</span>
+          <span class="ns">preu final real</span>
+        </div>
+        <div class="ex-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="ex-node accent">
+          <span class="nl">Valor extra</span>
+          <span class="nv">+20.000 €</span>
+          <span class="ns">generat per a tothom</span>
+        </div>
+      </div>
+
+      <!-- repartiment -->
+      <div class="ex-split">
+        <div class="ex-split-card own">
+          <div class="sc-top">Per a en Pere i la Maria <span class="pct">95%</span></div>
+          <div class="sc-amt">19.000 €</div>
+          <div class="sc-sub">íntegrament per a ells, per sobre del preu objectiu.</div>
+        </div>
+        <div class="ex-split-card fund">
+          <div class="sc-top">NOVERA Habitatge Just <span class="pct">5%</span></div>
+          <div class="sc-amt">1.000 €</div>
+          <div class="sc-sub">destinats directament a una entitat, en nom seu.</div>
+        </div>
+      </div>
+
+      <!-- destí dels diners -->
+      <div class="ex-dest">
+        <div class="ex-dest-head">
+          <span class="dh-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+          <div>
+            <h4>A on van anar els 1.000 €</h4>
+            <p>A cobrir despeses bàsiques d'habitatge d'una jove estudiant del territori.</p>
+          </div>
+        </div>
+        <div class="ex-needs">
+          <div class="ex-need"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg><span>Llum</span></div>
+          <div class="ex-need"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2.7s6 5.7 6 10.3a6 6 0 0 1-12 0c0-4.6 6-10.3 6-10.3z"/></svg><span>Aigua</span></div>
+          <div class="ex-need"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2v4M15 2v4M7 8h10l-1 12a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2L7 8z"/><path d="M12 13a2 2 0 1 0 0 4"/></svg><span>Gas</span></div>
+          <div class="ex-need"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 9.5a15 15 0 0 1 20 0"/><circle cx="12" cy="20" r="1"/></svg><span>Internet</span></div>
+        </div>
+      </div>
+
+      <p class="ex-quote">Una operació real, propera i transparent, on <b>tothom hi guanya una mica més</b>.</p>
+      <p class="ex-disc">NOVERA envia els diners directament a l'entitat, pública o privada, en nom dels venedors. Sempre que ho desitgin, escoltem a on els agradaria destinar-los i —amb el seu permís i el de les persones beneficiades— documentem el cas per inspirar més gent a ajudar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ HABITATGE JUST ░░ -->
+<section class="fund-sec" id="habitatge-just" data-screen-label="NOVERA Habitatge Just">
+  <div class="wrap fund-grid">
+    <div class="fund-intro reveal">
+      <span class="kicker">NOVERA Habitatge Just</span>
+      <h2 class="h2">Un fons concret,<br>amb impacte traçable.</h2>
+      <p class="lead">Destinat exclusivament a facilitar l'accés a l'habitatge als joves de la província de Girona. Cada euro és traçable i cada acció és pública.</p>
+      <span class="fund-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg>
+        Gestionat amb entitats locals del territori
+      </span>
+    </div>
+
+    <div class="fund-cards reveal" data-d="1">
+      <article class="fund-card">
+        <h3><span class="fc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>A on van els recursos</h3>
+        <ul class="fund-list">
+          <li>Ajudes per a fiances de lloguer per a joves</li>
+          <li>Programes d'emancipació i orientació en habitatge</li>
+          <li>Assessorament gratuït sobre drets i opcions d'accés</li>
+          <li>Suport a projectes d'habitatge assequible a la zona</li>
+        </ul>
+      </article>
+
+      <article class="fund-card report">
+        <h3><span class="fc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 14l2 2 4-4"/></svg></span>Informe trimestral públic</h3>
+        <ul class="fund-list">
+          <li>Imports recaptats i destinats al fons</li>
+          <li>Nombre d'operacions participants</li>
+          <li>Projectes finançats i entitats col·laboradores</li>
+          <li>Joves i famílies beneficiades</li>
+        </ul>
+        <p class="fund-quote">"La transparència no hauria d'existir només en les comissions. Ha d'existir també en l'impacte que generem."</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CTA ░░ -->
+<section class="cta" id="contacte" data-screen-label="Parlem">
+  <div class="wrap">
+    <span class="kicker kicker--light reveal" style="justify-content:center;">Parlem</span>
+    <h2 class="h2 reveal" data-d="1">Vendre bé també pot deixar empremta.</h2>
+    <p class="lead reveal" data-d="2">Et fem la valoració, t'expliquem com funcionaria Habitatge Just per a la teva propietat en concret, i tu decideixes amb calma.</p>
+    <div class="cta-row reveal" data-d="3">
+      <a href="index.html#descobreix" class="btn-primary">Valora la teva propietat
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://wa.me/34684411470?text=Hola%20NOVERA%2C%20vull%20saber%20m%C3%A9s%20sobre%20Habitatge%20Just." target="_blank" rel="noopener" class="btn-wsp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.7-6.1c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.4c.1-.1.2-.3.2-.5v-.5c0-.2-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1-.2-.3-.2-.5-.3z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:comercial@clubnovera.com" class="btn-ghost">comercial@clubnovera.com
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
+      </a>
+    </div>
+    <p class="cta-claim reveal">En NOVERA creiem que vendre bé comença per entendre bé.</p>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer data-screen-label="Footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-mark">NOVERA</div>
+      <p class="foot-claim">La nova manera de vendre propietats.</p>
+      <nav class="foot-links">
+        <a href="index.html#model">El model</a>
+        <a href="index.html#equip">L'equip</a>
+        <a href="impacte-compartit.html">Habitatge Just</a>
+        <a href="index.html#plans">Plans</a>
+        <a href="recursos/index.html">Guia</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 NOVERA · Tot va començar a Lloret.</span>
+      <span>clubnovera.com</span>
+    </div>
+    <div class="foot-legal">
+      <a href="legal.html#avis-legal">Avís legal</a><span class="sep">·</span>
+      <a href="legal.html#privacitat">Política de privacitat</a><span class="sep">·</span>
+      <a href="legal.html#cookies">Política de cookies</a>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="assets/i18n.js"></script>
+<script>
+(function(){
+  /* ── Nav scroll + mobile menu ──────────────────────────────── */
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 24);
+  onScroll(); window.addEventListener('scroll', onScroll, { passive:true });
+  const burger = document.getElementById('navBurger');
+  const navMobile = document.getElementById('navMobile');
+  if (burger && navMobile){
+    const setMenu = (open) => {
+      hdr.classList.toggle('menu-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navMobile.setAttribute('aria-hidden', open ? 'false' : 'true');
+    };
+    burger.addEventListener('click', () => setMenu(!hdr.classList.contains('menu-open')));
+    navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  }
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Hero entrance + parallax ─────────────────────────────── */
+  const hero = document.getElementById('top');
+  requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('in')));
+  if (!reduce && window.matchMedia('(pointer:fine)').matches){
+    const bg = hero.querySelector('.ic-hero-bg'); let raf=null,tx=0,ty=0;
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      tx = ((e.clientX-r.left)/r.width-0.5)*-22;
+      ty = ((e.clientY-r.top)/r.height-0.5)*-14;
+      if(!raf) raf = requestAnimationFrame(()=>{ bg.style.transform=`translate3d(${tx}px,${ty}px,0)`; raf=null; });
+    });
+    hero.addEventListener('pointerleave', () => { bg.style.transform='translate3d(0,0,0)'; });
+  }
+
+  /* ── Scroll reveal ─────────────────────────────────────────── */
+  const items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)){
+    items.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    items.forEach(el => io.observe(el));
+  }
+
+  /* ── CALCULADORA D'IMPACTE ─────────────────────────────────── */
+  const bIn = document.getElementById('baseInput'), bRn = document.getElementById('baseRange');
+  const fIn = document.getElementById('finalInput'), fRn = document.getElementById('finalRange');
+  const flMin = document.getElementById('flMin'), flMax = document.getElementById('flMax');
+  const overprice = document.getElementById('overprice');
+  const vizTotal = document.getElementById('vizTotal');
+  const segBase = document.getElementById('segBase'), segOwner = document.getElementById('segOwner'), segFund = document.getElementById('segFund');
+  const outCards = document.getElementById('outCards'), reassure = document.getElementById('reassure');
+  const rePos = document.getElementById('rePos'), reZero = document.getElementById('reZero');
+  const ownAmt = document.getElementById('ownAmt'), fundAmt = document.getElementById('fundAmt'), diffAmt = document.getElementById('diffAmt');
+
+  const fmt = n => Math.round(n).toLocaleString('ca-ES') + ' €';
+  const MAXOVER = 50000;                         /* extra màxim sobre el preu acordat */
+  const cl = (v,a,b) => Math.max(a, Math.min(b, v));
+  const ci = (v,a,b) => Math.round(cl(v,a,b));
+
+  /* animated count for the result figures (skipped while dragging) */
+  const animState = new WeakMap();
+  function setNum(el, target, animate){
+    target = Math.round(target);
+    const prefix = el.dataset.prefix || '';
+    if (!animate || reduce){ el.textContent = prefix + fmt(target); animState.set(el, target); return; }
+    const from = animState.get(el) ?? 0;
+    if (from === target){ el.textContent = prefix + fmt(target); return; }
+    const dur = 600; let start = null;
+    function tick(t){
+      if(start===null) start=t;
+      const p = Math.min((t-start)/dur, 1);
+      const eased = 1 - Math.pow(1-p, 3);
+      el.textContent = prefix + fmt(from + (target-from)*eased);
+      if(p<1) requestAnimationFrame(tick); else animState.set(el, target);
+    }
+    requestAnimationFrame(tick);
+  }
+  ownAmt.dataset.prefix = '+';
+
+  function render(animate, activeEl){
+    const base = ci(parseFloat(bIn.value)||0, 50000, 5000000);
+    const maxF = base + MAXOVER;
+    let final = ci(parseFloat(fIn.value)||base, base, maxF);
+
+    /* sliders always reflect state */
+    bRn.value = base;
+    fRn.min = base; fRn.max = maxF; fRn.step = 500; fRn.value = final;
+
+    /* don't clobber the field the user is actively typing in */
+    if (activeEl !== bIn) bIn.value = base;
+    if (activeEl !== fIn) fIn.value = final;
+
+    flMin.textContent = fmt(base) + ' (pactat)';
+    flMax.textContent = fmt(maxF) + ' (màx.)';
+
+    const diff = final - base;
+    const fund = Math.round(diff * 0.05);
+    const own  = diff - fund;
+    const pct  = base>0 ? Math.round(diff/base*1000)/10 : 0;
+
+    overprice.style.display = diff>0 ? 'inline-flex' : 'none';
+    if (diff>0) overprice.innerHTML = '+<b>'+ (pct % 1 === 0 ? pct.toFixed(0) : pct.toFixed(1)) +'%</b> sobre el preu acordat';
+
+    vizTotal.textContent = fmt(final);
+
+    if (diff <= 0){
+      segBase.style.width = '100%'; segOwner.style.width = '0%'; segFund.style.width = '0%';
+      outCards.style.display = 'none';
+      rePos.hidden = true; reZero.hidden = false;
+      reassure.style.justifyContent = 'flex-start';
+      return;
+    }
+
+    outCards.style.display = 'grid';
+    rePos.hidden = false; reZero.hidden = true;
+    reassure.style.justifyContent = 'center';
+    const pB = base/final*100;
+    const pO = own/final*100;
+    const pF = Math.max(0.5, fund/final*100);
+    segBase.style.width = pB+'%'; segOwner.style.width = pO+'%'; segFund.style.width = pF+'%';
+
+    setNum(ownAmt, own, animate);
+    setNum(fundAmt, fund, animate);
+    setNum(diffAmt, diff, animate);
+  }
+
+  bRn.addEventListener('input', ()=>{ bIn.value = bRn.value; render(false, bRn); });
+  fRn.addEventListener('input', ()=>{ fIn.value = fRn.value; render(false, fRn); });
+  bRn.addEventListener('change', ()=> render(true));
+  fRn.addEventListener('change', ()=> render(true));
+  /* while typing in a text field, leave it untouched (free entry) */
+  bIn.addEventListener('input', ()=> render(false, bIn));
+  fIn.addEventListener('input', ()=> render(false, fIn));
+  /* on blur / Enter, snap & format */
+  bIn.addEventListener('change', ()=> render(true));
+  fIn.addEventListener('change', ()=> render(true));
+  bIn.addEventListener('blur', ()=> render(true));
+  fIn.addEventListener('blur', ()=> render(true));
+
+  /* first paint + animate the calculator when scrolled into view */
+  render(false);
+  if (!reduce && 'IntersectionObserver' in window){
+    const calc = document.getElementById('calculadora');
+    const cio = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ render(true); cio.unobserve(e.target);} });
+    }, { threshold:0.35 });
+    cio.observe(calc);
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -25,6 +25,15 @@
   </url>
 
   <url>
+    <loc>https://clubnovera.com/impacte-compartit.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://clubnovera.com/impacte-compartit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://clubnovera.com/impacte-compartit.html"/>
+  </url>
+
+  <url>
     <loc>https://clubnovera.com/legal.html</loc>
     <lastmod>2026-06-04</lastmod>
     <changefreq>yearly</changefreq>
