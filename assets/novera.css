@@ -110,6 +110,7 @@ header.scrolled .wordmark{ color:var(--navy); }
 .nav-links a{
   font-size:0.86rem; font-weight:500; color:rgba(255,255,255,.74);
   letter-spacing:0.01em; transition:color .35s var(--ease);
+  white-space:nowrap; /* evita partir paraules quan el nav va just */
 }
 header.scrolled .nav-links a{ color:var(--ink-2); }
 .nav-links a:hover{ color:#fff; }
@@ -1153,3 +1154,16 @@ footer{ background:#081E36; color:#fff; padding-block:clamp(56px,7vw,88px); }
   .cookie-acts{ flex-direction:column; }
   .ck-btn{ width:100%; }
 }
+
+
+/* ── Enllaços del menú que porten a una altra pàgina (subtil) ── */
+.nav-links a.to-page::after,
+.nav-mobile a.to-page::after{
+  content:"\2197"; /* fletxa diagonal ↗ */
+  display:inline-block; margin-left:4px;
+  font-size:.72em; font-weight:700; line-height:0;
+  color:var(--amber); opacity:.8; vertical-align:.05em;
+  transition:transform .3s var(--ease), opacity .3s var(--ease);
+}
+.nav-links a.to-page:hover::after{ opacity:1; transform:translate(1px,-1px); }
+.nav-mobile a.to-page::after{ font-size:.66em; opacity:.85; }
