@@ -78,6 +78,15 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://clubnovera.com/recursos/el-preu-el-dicta-el-mercat.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://clubnovera.com/recursos/el-preu-el-dicta-el-mercat.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://clubnovera.com/recursos/el-preu-el-dicta-el-mercat.html"/>
+  </url>
+
+  <url>
     <loc>https://clubnovera.com/recursos/quant-es-triga-a-vendre-una-casa.html</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>

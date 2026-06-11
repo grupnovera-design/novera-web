@@ -230,3 +230,10 @@ body.rec .reveal{ opacity:1; transform:none; }
 @media (max-width:560px){
   .rec-grid{ grid-template-columns:1fr; }
 }
+
+
+/* ── Selector d'idioma visible sobre fons clar (pàgines Guia) ── */
+body.rec header .lang-switch{ background:rgba(43,124,196,.08); border-color:rgba(43,124,196,.30); }
+body.rec header .lang-switch button{ color:var(--blue-br); }
+body.rec header .lang-switch button:hover{ color:var(--navy); }
+body.rec header .lang-switch button.on{ background:var(--blue-br); color:#fff; box-shadow:0 2px 8px -3px rgba(43,124,196,.55); }

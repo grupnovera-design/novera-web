@@ -320,6 +320,63 @@ input[type=range].ic-range.gold::-webkit-slider-thumb{ box-shadow:0 4px 14px -2p
   .ex-needs{ grid-template-columns:repeat(2,1fr); }
 }
 
+/* ── COM S'EXECUTA — flux d'execució ─────────────────────────── */
+.exec{ background:var(--paper); }
+.exec-flow{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(10px,1.4vw,18px);
+  max-width:1160px; margin:0 auto clamp(20px,2.4vw,30px); align-items:stretch; }
+.exec-step{ position:relative; background:var(--paper); border:1px solid var(--line); border-radius:20px;
+  padding:clamp(22px,2.2vw,30px); box-shadow:0 26px 54px -42px rgba(10,37,64,.32);
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease); }
+.exec-step:hover{ transform:translateY(-5px); box-shadow:0 40px 76px -42px rgba(10,37,64,.4); }
+.exec-step:not(:last-child)::after{ content:''; position:absolute; top:50%; right:-13px; z-index:2;
+  width:22px; height:22px; border-radius:50%; background:var(--paper); border:1px solid var(--line);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232B7CC4' stroke-width='2.4'%3E%3Cpath d='M9 6l6 6-6 6'/%3E%3C/svg%3E");
+  background-size:13px; background-position:center; background-repeat:no-repeat;
+  transform:translateY(-50%); }
+.exec-ico{ width:50px; height:50px; border-radius:14px; display:grid; place-items:center;
+  background:var(--paper-2); border:1px solid var(--line); color:var(--blue-br); margin-bottom:18px; }
+.exec-ico svg{ width:24px; height:24px; }
+.exec-step:last-child .exec-ico{ color:var(--amber); background:rgba(226,161,75,.1); border-color:rgba(226,161,75,.3); }
+.exec-num{ display:block; font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3); margin-bottom:7px; }
+.exec-step h3{ font-size:1.08rem; font-weight:600; letter-spacing:-.02em; color:var(--navy); line-height:1.25; }
+.exec-step p{ font-size:.93rem; line-height:1.55; color:var(--ink-2); margin-top:9px; }
+
+/* clarificador d'abast + socis */
+.exec-scope{ max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1.05fr 1.95fr;
+  gap:clamp(18px,2.4vw,30px); align-items:stretch; }
+.exec-scope-intro{ background:linear-gradient(160deg,#0F3157,#0A2540); color:#fff; border-radius:22px;
+  padding:clamp(26px,2.8vw,38px); display:flex; flex-direction:column; }
+.exec-recent{ display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+  font-size:.74rem; font-weight:600; letter-spacing:.04em; color:var(--gold-2);
+  background:rgba(240,192,116,.12); border:1px solid rgba(240,192,116,.3); border-radius:99px; padding:6px 13px; margin-bottom:18px; }
+.exec-recent .rd{ width:7px; height:7px; border-radius:50%; background:var(--gold-2); box-shadow:0 0 0 4px rgba(240,192,116,.18); flex:none; }
+.exec-scope-intro h3{ font-size:1.3rem; font-weight:600; letter-spacing:-.02em; line-height:1.25; color:#fff; }
+.exec-scope-intro p{ font-size:.97rem; line-height:1.6; color:rgba(255,255,255,.74); margin-top:12px; }
+.exec-scope-intro p b{ color:#fff; font-weight:600; }
+
+.exec-partners{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,1.6vw,18px); }
+.exec-partner{ background:var(--paper); border:1px solid var(--line); border-radius:20px;
+  padding:clamp(22px,2.2vw,28px); display:flex; flex-direction:column;
+  transition:transform .5s var(--ease), border-color .5s; }
+.exec-partner:hover{ transform:translateY(-4px); border-color:rgba(43,124,196,.4); }
+.exec-partner .pico{ width:44px; height:44px; border-radius:12px; display:grid; place-items:center;
+  background:rgba(43,124,196,.1); color:var(--blue-br); margin-bottom:16px; }
+.exec-partner .pico svg{ width:22px; height:22px; }
+.exec-partner h4{ font-size:1.04rem; font-weight:600; color:var(--navy); }
+.exec-partner p{ font-size:.9rem; line-height:1.5; color:var(--ink-2); margin-top:8px; }
+
+@media (max-width:900px){
+  .exec-flow{ grid-template-columns:1fr 1fr; }
+  .exec-step:nth-child(2)::after{ display:none; }
+  .exec-scope{ grid-template-columns:1fr; }
+}
+@media (max-width:560px){
+  .exec-flow{ grid-template-columns:1fr; }
+  .exec-step::after{ display:none !important; }
+  .exec-partners{ grid-template-columns:1fr; }
+}
+
 /* ── HABITATGE JUST (secció navy) ────────────────────────────── */
 .fund-sec{ color:#fff; overflow:hidden;
   background:radial-gradient(110% 80% at 88% 0%, rgba(226,161,75,.22), transparent 55%), linear-gradient(165deg,#0A2540,#081E36); }
@@ -435,7 +492,7 @@ input[type=range].ic-range.gold::-webkit-slider-thumb{ box-shadow:0 4px 14px -2p
     <div class="sec-head reveal">
       <span class="kicker kicker--gold">Com funciona</span>
       <h2 class="h2">Senzill i transparent<br>des del primer dia.</h2>
-      <p class="lead">El mecanisme s'activa només quan venem per sobre del que havíem acordat. Mai surt del que ja és teu.</p>
+      <p class="lead">Com més valor aconseguim per a tu, millor per a tothom. Sempre ho intentem al màxim — encara que de vegades el mercat marca un altre ritme, mai del que ja és teu.</p>
     </div>
 
     <div class="how-steps">
@@ -620,13 +677,76 @@ input[type=range].ic-range.gold::-webkit-slider-thumb{ box-shadow:0 4px 14px -2p
   </div>
 </section>
 
+<!-- ░░ COM S'EXECUTA ░░ -->
+<section class="exec" id="com-sexecuta" data-screen-label="Com s'executa">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker kicker--blue">Com s'executa</span>
+      <h2 class="h2">De la venda a l'impacte,<br>pas a pas.</h2>
+      <p class="lead">Volem que s'entengui bé: això és exactament què passa amb aquest 5% i com acaba generant un impacte real al territori.</p>
+    </div>
+
+    <div class="exec-flow reveal">
+      <article class="exec-step">
+        <div class="exec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+        <span class="exec-num">Pas 1</span>
+        <h3>Es genera el 5%</h3>
+        <p>Quan la venda supera el preu acordat, el 5% del valor extra es reserva per al fons. Mai surt del que ja és teu.</p>
+      </article>
+      <article class="exec-step">
+        <div class="exec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 20l1-4.1A8.4 8.4 0 1 1 21 11.5z"/></svg></div>
+        <span class="exec-num">Pas 2</span>
+        <h3>Decidim el destí junts</h3>
+        <p>Escoltem el venedor: a quina causa o entitat del territori li agradaria que anessin aquests diners.</p>
+      </article>
+      <article class="exec-step">
+        <div class="exec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M11 17l-3.5 1 1-3.5L18 5.5a2.1 2.1 0 0 1 3 3L11.5 18z"/><path d="M3 21h7"/></svg></div>
+        <span class="exec-num">Pas 3</span>
+        <h3>S'envia a una entitat</h3>
+        <p>NOVERA transfereix l'import <b>directament</b> a una entitat pública o privada del sector de l'habitatge, en nom del venedor.</p>
+      </article>
+      <article class="exec-step">
+        <div class="exec-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 14l2 2 4-4"/></svg></div>
+        <span class="exec-num">Pas 4</span>
+        <h3>Es documenta i es publica</h3>
+        <p>Amb el permís de tothom, documentem on han anat els diners i ho fem públic. Traçable de principi a fi.</p>
+      </article>
+    </div>
+
+    <div class="exec-scope reveal" data-d="1">
+      <div class="exec-scope-intro">
+        <span class="exec-recent"><span class="rd"></span>Iniciativa recent</span>
+        <h3>No només lloguer jove. Tot el sector de l'habitatge.</h3>
+        <p>El fons cobreix <b>necessitats reals d'accés a l'habitatge</b> al territori — no es limita a un sol col·lectiu. És una iniciativa que tot just comencem i la idea és anar teixint acords amb <b>l'ajuntament</b> i amb <b>entitats privades</b> del sector per fer-la créixer amb sentit.</p>
+      </div>
+      <div class="exec-partners">
+        <div class="exec-partner">
+          <span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-5h6v5"/></svg></span>
+          <h4>Ajuntaments</h4>
+          <p>Col·laboració amb l'administració local per donar suport a programes públics d'habitatge.</p>
+        </div>
+        <div class="exec-partner">
+          <span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <h4>Entitats socials</h4>
+          <p>Fundacions i associacions del territori que ja treballen l'accés a l'habitatge.</p>
+        </div>
+        <div class="exec-partner">
+          <span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M6 21V11h4v10M14 21V7h4v14M9 7l3-3 3 3"/></svg></span>
+          <h4>Entitats privades</h4>
+          <p>Empreses i projectes del sector que volen sumar-se a un impacte concret i mesurable.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ░░ HABITATGE JUST ░░ -->
 <section class="fund-sec" id="habitatge-just" data-screen-label="NOVERA Habitatge Just">
   <div class="wrap fund-grid">
     <div class="fund-intro reveal">
       <span class="kicker">NOVERA Habitatge Just</span>
       <h2 class="h2">Un fons concret,<br>amb impacte traçable.</h2>
-      <p class="lead">Destinat exclusivament a facilitar l'accés a l'habitatge als joves de la província de Girona. Cada euro és traçable i cada acció és pública.</p>
+      <p class="lead">Destinat a facilitar l'accés a l'habitatge a la província de Girona. Cada euro és traçable i cada acció és pública.</p>
       <span class="fund-tag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg>
         Gestionat amb entitats locals del territori
@@ -637,10 +757,10 @@ input[type=range].ic-range.gold::-webkit-slider-thumb{ box-shadow:0 4px 14px -2p
       <article class="fund-card">
         <h3><span class="fc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>A on van els recursos</h3>
         <ul class="fund-list">
-          <li>Ajudes per a fiances de lloguer per a joves</li>
-          <li>Programes d'emancipació i orientació en habitatge</li>
-          <li>Assessorament gratuït sobre drets i opcions d'accés</li>
-          <li>Suport a projectes d'habitatge assequible a la zona</li>
+          <li>Fiances i despeses inicials d'accés a l'habitatge</li>
+          <li>Suport a l'emancipació i a situacions de vulnerabilitat</li>
+          <li>Projectes d'habitatge assequible al territori</li>
+          <li>Col·laboració amb ajuntaments i entitats del sector</li>
         </ul>
       </article>
 
