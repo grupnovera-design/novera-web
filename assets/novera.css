@@ -103,10 +103,10 @@ header.scrolled{
 .nav{ height:76px; display:flex; align-items:center; justify-content:space-between; }
 .wordmark{
   font-weight:700; font-size:1.14rem; letter-spacing:0.3em; padding-left:0.3em;
-  color:#fff; transition:color .5s var(--ease);
+  margin-right:clamp(20px,3vw,48px); color:#fff; transition:color .5s var(--ease);
 }
 header.scrolled .wordmark{ color:var(--navy); }
-.nav-links{ display:flex; align-items:center; gap:clamp(18px,2.6vw,40px); }
+.nav-links{ display:flex; align-items:center; gap:clamp(15px,1.5vw,24px); }
 .nav-links a{
   font-size:0.86rem; font-weight:500; color:rgba(255,255,255,.74);
   letter-spacing:0.01em; transition:color .35s var(--ease);
@@ -146,7 +146,7 @@ header.scrolled .lang-switch button:hover{ color:var(--navy); }
 .lang-switch button.on{ background:#fff; color:var(--navy); box-shadow:0 2px 8px -3px rgba(10,37,64,.4); }
 header.scrolled .lang-switch button.on{ background:var(--navy); color:#fff; }
 .lang-switch--mobile{
-  display:flex; width:max-content; margin:4px 0 14px;
+  display:none; width:max-content; margin:20px 0 2px;
   background:rgba(10,37,64,.06); border-color:var(--line);
 }
 .lang-switch--mobile button{ color:var(--ink-2); padding:8px 14px; font-size:12px; }
@@ -1067,11 +1067,18 @@ footer{ background:#081E36; color:#fff; padding-block:clamp(56px,7vw,88px); }
   .calc-compare{ grid-template-columns:1fr; gap:26px; }
   .calc-vs{ margin:0 auto; }
 }
-@media (max-width:640px){
-  body{ font-size:16px; }
+/* La navegació té molts enllaços i no hi caben còmodament fins a ~1180px:
+   per sota col·lapsa al menú hamburguesa perquè no s'amunteguin ni trepitgin
+   el logo. El selector d'idioma passa al menú desplegable. */
+@media (max-width:1180px){
   .nav-links .hide-sm{ display:none; }
   .nav-burger{ display:flex; }
   .nav-mobile{ display:flex; }
+  .nav-links > .lang-switch{ display:none; }   /* amaga el selector de la capçalera */
+  .lang-switch--mobile{ display:flex; }        /* i el mostra dins del menú */
+}
+@media (max-width:640px){
+  body{ font-size:16px; }
   .hero-foot{ flex-direction:column; align-items:flex-start; gap:28px; }
   .team-grid{ grid-template-columns:1fr; }
   .proc-row{ grid-template-columns:60px 1fr; }

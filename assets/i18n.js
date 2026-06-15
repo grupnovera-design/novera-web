@@ -1431,8 +1431,14 @@
       var burger = navLinks.querySelector(".nav-burger");
       navLinks.insertBefore(make(), burger || null);
     }
-    // Nota: no dupliquem el selector dins del menú mòbil; el de la capçalera
-    // ja és visible en mòbil (just a dalt), i així el menú guanya espai.
+    // Selector dins del menú desplegable (mòbil/tauleta): sota el CTA "Descobreix".
+    // En pantalles estretes el de la capçalera s'amaga via CSS perquè no tapi el logo.
+    var navMobile = document.querySelector(".nav-mobile");
+    if (navMobile) {
+      var ms = make();
+      ms.classList.add("lang-switch--mobile");
+      navMobile.appendChild(ms);
+    }
   }
 
   function start() {
