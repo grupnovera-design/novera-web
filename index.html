@@ -1,1454 +1,1045 @@
-/* ════════════════════════════════════════════════════════════
-   NOVERA — sistema visual
-   Mediterrani profund · daurats d'horabaixa · verds Costa Brava
-   ════════════════════════════════════════════════════════════ */
-:root{
-  /* base / paper */
-  --ink:      #15202E;
-  --ink-2:    #4A5A6B;
-  --ink-3:    #8593A1;
-  --paper:    #FCFBF8;
-  --paper-2:  #F4F1EA;
-  --line:     #E6E2D8;
-
-  /* Mediterrani */
-  --navy:     #0A2540;
-  --navy-2:   #0F3157;
-  --blue:     #16447A;
-  --blue-br:  #2B7CC4;
-  --blue-sky: #5CA8E0;
-
-  /* Horabaixa (daurats) */
-  --gold:     #E2A14B;
-  --gold-2:   #F0C074;
-  --amber:    #D9803A;
-  --terra:    #C2663B;
-
-  /* Costa Brava (verds) */
-  --green:    #2E8C63;
-  --green-d:  #226F4E;
-  --pine:     #1C5641;
-
-  --maxw: 1280px;
-  --pad: clamp(22px, 5.5vw, 110px);
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-soft: cubic-bezier(0.33, 0, 0.1, 1);
-}
-
-*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
-html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
-body{
-  font-family:'Montserrat',system-ui,sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-  font-size:17px;
-  line-height:1.65;
-  font-weight:400;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-  overflow-x:hidden;
-}
-::selection{ background:var(--gold); color:var(--navy); }
-a{ color:inherit; text-decoration:none; }
-img{ display:block; max-width:100%; }
-
-/* ── rhythm ──────────────────────────────────────────────────── */
-.wrap{ max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad); }
-section{ padding-block:clamp(76px, 8.5vw, 140px); position:relative; }
-
-.kicker{
-  font-size:12px; font-weight:600; letter-spacing:0.24em;
-  text-transform:uppercase; color:var(--ink-3);
-  display:inline-flex; align-items:center; gap:11px;
-}
-.kicker::before{
-  content:''; width:26px; height:1px; background:currentColor; opacity:.5;
-}
-.kicker--gold{ color:var(--amber); }
-.kicker--blue{ color:var(--blue-br); }
-.kicker--light{ color:rgba(255,255,255,.62); }
-
-h1,h2,h3{ font-weight:600; letter-spacing:-0.025em; line-height:1.05; text-wrap:balance; }
-
-/* títols +25% respecte la versió editorial anterior */
-.display{
-  font-weight:600; letter-spacing:-0.04em; line-height:1.0;
-  font-size:clamp(3.1rem, 8.8vw, 7rem);
-}
-.h2{
-  font-weight:600; letter-spacing:-0.028em; line-height:1.09;
-  font-size:clamp(2.4rem, 5.4vw, 4.15rem); text-wrap:balance;
-}
-.lead{
-  font-size:clamp(1.12rem, 1.55vw, 1.4rem);
-  line-height:1.6; color:var(--ink-2); font-weight:400; text-wrap:pretty;
-}
-.grad-text{
-  background:linear-gradient(105deg, var(--amber), var(--gold-2) 55%, var(--blue-br));
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-
-/* ── NAV ─────────────────────────────────────────────────────── */
-header{
-  position:fixed; inset:0 0 auto 0; z-index:60;
-  transition:background .6s var(--ease), border-color .6s var(--ease), box-shadow .6s var(--ease);
-  border-bottom:1px solid transparent;
-}
-header.scrolled{
-  background:rgba(252,251,248,0.72);
-  backdrop-filter:saturate(180%) blur(20px);
-  -webkit-backdrop-filter:saturate(180%) blur(20px);
-  border-bottom:1px solid var(--line);
-}
-.nav{ height:76px; display:flex; align-items:center; justify-content:space-between; }
-.wordmark{
-  font-weight:700; font-size:1.14rem; letter-spacing:0.3em; padding-left:0.3em;
-  margin-right:clamp(20px,3vw,48px); color:#fff; transition:color .5s var(--ease);
-}
-header.scrolled .wordmark{ color:var(--navy); }
-.nav-links{ display:flex; align-items:center; gap:clamp(15px,1.5vw,24px); }
-.nav-links a{
-  font-size:0.86rem; font-weight:500; color:rgba(255,255,255,.74);
-  letter-spacing:0.01em; transition:color .35s var(--ease);
-  white-space:nowrap; /* evita partir paraules quan el nav va just */
-}
-header.scrolled .nav-links a{ color:var(--ink-2); }
-.nav-links a:hover{ color:#fff; }
-header.scrolled .nav-links a:hover{ color:var(--navy); }
-.nav-cta{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:9px 18px; border-radius:100px;
-  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25);
-  color:#fff !important; font-weight:600 !important;
-  backdrop-filter:blur(8px); transition:background .4s var(--ease), border-color .4s, color .4s;
-}
-header.scrolled .nav-cta{
-  background:var(--navy); border-color:var(--navy); color:#fff !important;
-}
-.nav-cta .ar{ transition:transform .4s var(--ease); }
-.nav-cta:hover .ar{ transform:translateX(4px); }
-
-/* language switcher */
-.lang-switch{
-  display:inline-flex; align-items:center; gap:2px; padding:3px; border-radius:100px;
-  background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.24);
-  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-}
-header.scrolled .lang-switch{ background:rgba(10,37,64,.06); border-color:var(--line); }
-.lang-switch button{
-  font-family:inherit; font-size:11px; font-weight:700; letter-spacing:0.06em; cursor:pointer;
-  color:rgba(255,255,255,.78); background:none; border:none; border-radius:100px;
-  padding:6px 10px; line-height:1; transition:color .3s var(--ease), background .3s var(--ease);
-}
-header.scrolled .lang-switch button{ color:var(--ink-3); }
-.lang-switch button:hover{ color:#fff; }
-header.scrolled .lang-switch button:hover{ color:var(--navy); }
-.lang-switch button.on{ background:#fff; color:var(--navy); box-shadow:0 2px 8px -3px rgba(10,37,64,.4); }
-header.scrolled .lang-switch button.on{ background:var(--navy); color:#fff; }
-.lang-switch--mobile{
-  display:none; width:max-content; margin:20px 0 2px;
-  background:rgba(10,37,64,.06); border-color:var(--line);
-}
-.lang-switch--mobile button{ color:var(--ink-2); padding:8px 14px; font-size:12px; }
-.lang-switch--mobile button.on{ background:var(--navy); color:#fff; }
-
-/* mobile menu */
-.nav-burger{
-  display:none; width:44px; height:44px; border:none; background:none; cursor:pointer;
-  padding:11px; margin-right:-8px; flex-direction:column; justify-content:center; gap:5px;
-}
-.nav-burger span{
-  display:block; height:2px; width:22px; border-radius:2px; background:#fff;
-  transition:transform .4s var(--ease), opacity .3s var(--ease), background .5s var(--ease);
-}
-header.scrolled .nav-burger span{ background:var(--navy); }
-header.menu-open .nav-burger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-header.menu-open .nav-burger span:nth-child(2){ opacity:0; }
-header.menu-open .nav-burger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
-
-.nav-mobile{
-  display:none; flex-direction:column; gap:2px;
-  padding:0 var(--pad);
-  background:rgba(252,251,248,0.96);
-  backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px);
-  border-bottom:1px solid var(--line);
-  max-height:0; overflow:hidden; transition:max-height .5s var(--ease), padding .5s var(--ease);
-}
-header.menu-open .nav-mobile{ max-height:85vh; overflow-y:auto; padding-block:14px 22px; }
-/* llegibilitat del menú obert sobre el hero (capçalera transparent) */
-header.menu-open{
-  background:rgba(252,251,248,0.97);
-  backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px);
-  border-bottom:1px solid var(--line);
-}
-header.menu-open .wordmark{ color:var(--navy); }
-header.menu-open .nav-burger span{ background:var(--navy); }
-.nav-mobile a{
-  font-size:1.05rem; font-weight:500; color:var(--ink); padding:15px 4px;
-  border-bottom:1px solid var(--line);
-}
-.nav-mobile a:last-child{ border-bottom:none; }
-.nav-mobile .nm-cta{
-  margin-top:14px; display:inline-flex; align-items:center; justify-content:center; gap:9px;
-  background:linear-gradient(100deg, var(--green), var(--green-d)); color:#fff;
-  border-radius:100px; border:none; font-weight:600;
-  box-shadow:0 12px 28px -12px rgba(34,111,78,.5);
-}
-
-/* ── shared motion ───────────────────────────────────────────── */
-@keyframes drift{
-  from{ transform:translate(0,0) scale(1); }
-  to{ transform:translate(40px,-30px) scale(1.12); }
-}
-
-/* ── shared buttons ──────────────────────────────────────────── */
-.btn-primary{
-  display:inline-flex; align-items:center; gap:11px;
-  background:linear-gradient(100deg, var(--green), var(--green-d));
-  color:#fff; font-family:inherit; font-size:0.98rem; font-weight:600; letter-spacing:0.01em;
-  padding:16px 30px; border-radius:100px; border:none; cursor:pointer;
-  box-shadow:0 12px 34px -10px rgba(34,111,78,.6);
-  transition:transform .4s var(--ease), box-shadow .4s var(--ease), filter .4s;
-}
-.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 18px 44px -12px rgba(34,111,78,.7); filter:brightness(1.05); }
-.btn-primary svg{ width:15px; height:15px; }
-.btn-ghost{
-  display:inline-flex; align-items:center; gap:10px;
-  font-size:0.95rem; font-weight:600; color:#fff;
-  padding-bottom:5px; border-bottom:1px solid rgba(255,255,255,.45);
-  transition:gap .4s var(--ease), border-color .3s;
-}
-.btn-ghost:hover{ gap:15px; border-color:#fff; }
-.btn-ghost svg{ width:14px; height:14px; }
-
-/* WhatsApp button */
-.btn-wsp{
-  display:inline-flex; align-items:center; gap:10px;
-  font-family:inherit; font-size:0.98rem; font-weight:600; color:#fff; cursor:pointer;
-  padding:14px 26px; border-radius:100px; border:none; letter-spacing:0.005em;
-  background:#25D366; box-shadow:0 14px 32px -16px rgba(37,211,102,.65), inset 0 1px 0 rgba(255,255,255,.25);
-  transition:transform .35s var(--ease), filter .35s var(--ease), box-shadow .35s var(--ease);
-}
-.btn-wsp svg{ width:20px; height:20px; }
-.btn-wsp:hover{ transform:translateY(-2px); filter:brightness(1.04);
-  box-shadow:0 22px 44px -18px rgba(37,211,102,.75), inset 0 1px 0 rgba(255,255,255,.3); }
-
-/* quiz result — reassurança de contacte */
-.r-contact{
-  display:flex; align-items:center; justify-content:center; gap:11px;
-  margin:clamp(20px,2.6vw,28px) auto 0; max-width:48ch;
-  font-size:1rem; line-height:1.5; color:var(--ink-2); text-wrap:pretty;
-}
-.r-contact svg{ width:22px; height:22px; flex:none; color:var(--green); }
-
-/* ════════════════════════════════════════════════════════════
-   HERO — portada cinematogràfica premium
-   ════════════════════════════════════════════════════════════ */
-.hero{
-  position:relative; overflow:hidden;
-  background:linear-gradient(158deg,#0C2B4C 0%, #0A2540 52%, #071A30 100%);
-  min-height:100svh; display:flex; flex-direction:column; justify-content:center;
-  padding:clamp(116px,14vh,150px) 0 clamp(64px,9vh,96px);
-}
-/* layered photo: parallax wrapper + slow-zoom image */
-.hero-bg{
-  position:absolute; inset:-6% -4%; z-index:0; will-change:transform;
-  transform:translate3d(0,0,0); transition:transform .9s cubic-bezier(.2,.8,.2,1);
-}
-.hero-img{
-  position:absolute; inset:0; background-size:cover; background-position:50% 44%;
-  transform:scale(1.06);
-  animation:heroReveal 2s var(--ease-soft) both, heroZoom 26s ease-in-out 2s infinite alternate;
-}
-@keyframes heroReveal{ 0%{ transform:scale(1.26); opacity:.35; } 100%{ transform:scale(1.06); opacity:1; } }
-@keyframes heroZoom{ from{ transform:scale(1.06);} to{ transform:scale(1.13);} }
-.hero-grain{
-  position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
-}
-.hero-veil{
-  position:absolute; inset:0; z-index:1; pointer-events:none;
-  background:
-    linear-gradient(180deg, rgba(6,18,31,.46) 0%, rgba(6,18,31,0) 18%),
-    linear-gradient(74deg, rgba(5,13,24,.72) 0%, rgba(5,13,24,.30) 32%, rgba(5,13,24,0) 58%),
-    linear-gradient(0deg, rgba(4,11,20,.94) 0%, rgba(4,11,20,.66) 18%, rgba(4,11,20,.28) 38%, rgba(4,11,20,0) 60%);
-}
-.hero-inner{ position:relative; z-index:3; width:100%; max-width:var(--maxw);
-  display:grid; grid-template-columns:minmax(0,1.14fr) minmax(0,0.72fr);
-  gap:clamp(34px,4.5vw,72px); align-items:center; }
-.hero-copy{ min-width:0; }
-
-/* kicker */
-.hero-kicker{
-  display:inline-flex; align-items:center; gap:12px;
-  font-size:clamp(11px,0.92vw,13px); font-weight:600; letter-spacing:0.26em; text-transform:uppercase;
-  color:rgba(255,255,255,.82); margin-bottom:clamp(22px,3vw,34px);
-  text-shadow:0 1px 16px rgba(5,14,26,.8);
-}
-.hero-kicker .hk-dot{ width:7px; height:7px; border-radius:50%; flex:none;
-  background:var(--gold-2); box-shadow:0 0 0 4px rgba(240,192,116,.20); }
-
-/* the statement — huge editorial type */
-.hero-title{
-  color:#fff; font-weight:600; letter-spacing:-0.035em; line-height:1.0;
-  font-size:clamp(2.9rem, 7.7vw, 6.7rem); text-wrap:balance;
-  margin:0 0 clamp(24px,3.2vw,38px);
-  max-width:100%; overflow-wrap:break-word;
-}
-.hero-title .ht-line{ display:block; overflow:hidden; padding-bottom:0.04em; }
-.hero-title .ht-line > span{ display:block; will-change:transform; }
-.hero-title em{
-  font-style:normal;
-  background:linear-gradient(96deg, var(--gold-2) 4%, #FBE3B6 38%, var(--blue-sky) 96%);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.hero-sub{
-  max-width:50ch; color:rgba(255,255,255,.86); font-weight:400;
-  font-size:clamp(1.08rem,1.5vw,1.4rem); line-height:1.55; letter-spacing:-0.01em;
-  text-shadow:0 1px 18px rgba(5,14,26,.7);
-}
-
-/* CTA cluster — primary left, editorial link pushed right */
-.hero-cta{ display:flex; align-items:flex-end; justify-content:space-between;
-  gap:clamp(20px,3vw,44px); flex-wrap:wrap; width:100%;
-  margin-top:clamp(30px,4vw,46px); }
-.cta-left{ display:flex; flex-direction:column; align-items:flex-start; gap:clamp(15px,1.8vw,20px); }
-
-/* primary — tech-product pill */
-.cta-main{
-  position:relative; overflow:hidden; isolation:isolate;
-  display:inline-flex; align-items:center; gap:0;
-  padding:0 6px 0 30px; height:62px; border-radius:100px; cursor:pointer;
-  background:linear-gradient(100deg, #34A074 0%, var(--green) 48%, var(--green-d) 100%);
-  box-shadow:0 18px 44px -14px rgba(34,111,78,.62), inset 0 1px 0 rgba(255,255,255,.28);
-  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
-}
-.cta-main .cta-label{ color:#fff; font-size:1.04rem; font-weight:600; letter-spacing:0.005em; }
-.cta-main .cta-ico{
-  width:42px; height:42px; margin-left:18px; border-radius:50%; flex:none;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(255,255,255,.16); transition:background .45s var(--ease), transform .45s var(--ease);
-}
-.cta-main .cta-ico svg{ width:18px; height:18px; color:#fff; transition:transform .45s var(--ease); }
-.cta-main .cta-shine{
-  position:absolute; top:0; left:-60%; width:45%; height:100%; z-index:-1;
-  background:linear-gradient(105deg, transparent, rgba(255,255,255,.45), transparent);
-  transform:skewX(-18deg); opacity:0;
-}
-.cta-main:hover{ transform:translateY(-3px); box-shadow:0 26px 58px -16px rgba(34,111,78,.72), inset 0 1px 0 rgba(255,255,255,.32); }
-.cta-main:hover .cta-ico{ background:rgba(255,255,255,.26); transform:scale(1.06); }
-.cta-main:hover .cta-ico svg{ transform:translateX(3px); }
-.cta-main:hover .cta-shine{ animation:ctaShine 1.05s var(--ease) forwards; }
-@keyframes ctaShine{ 0%{ left:-60%; opacity:.0;} 18%{opacity:.9;} 100%{ left:130%; opacity:0;} }
-
-/* secondary — editorial link */
-.cta-sub{
-  display:inline-flex; align-items:center; gap:11px; position:relative;
-  align-self:flex-start; margin-top:20px;
-  color:#fff; font-size:1.02rem; font-weight:500; letter-spacing:0.005em; padding:6px 2px;
-  text-shadow:0 1px 14px rgba(5,14,26,.6);
-}
-.cta-sub span{ position:relative; }
-.cta-sub span::after{
-  content:''; position:absolute; left:0; bottom:-5px; height:1.5px; width:100%;
-  background:rgba(255,255,255,.55); transform:scaleX(0); transform-origin:left;
-  transition:transform .5s var(--ease);
-}
-.cta-sub svg{ width:16px; height:16px; transition:transform .45s var(--ease); }
-.cta-sub:hover span::after{ transform:scaleX(1); }
-.cta-sub:hover svg{ transform:translateX(5px); }
-
-/* buyer channel — quiet link */
-.hero-channel{
-  display:inline-flex; align-items:center; gap:7px; margin-top:2px;
-  font-size:0.92rem; color:rgba(255,255,255,.66); letter-spacing:0.005em;
-  transition:color .4s var(--ease);
-}
-.hero-channel strong{ font-weight:600; color:rgba(255,255,255,.9); }
-.hero-channel span{ transition:transform .4s var(--ease); display:inline-block; }
-.hero-channel:hover{ color:#fff; }
-.hero-channel:hover span{ transform:translateX(4px); }
-
-/* value meta bar — integrated, not badges */
-.hero-meta{
-  position:relative; z-index:3; width:100%; max-width:var(--maxw);
-  margin-top:clamp(34px,5vh,64px); padding-top:clamp(18px,2vw,24px);
-  border-top:1px solid rgba(255,255,255,.16);
-  display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
-}
-.hm-list{ list-style:none; display:flex; align-items:center; gap:clamp(20px,3.4vw,52px); flex-wrap:wrap; }
-.hm-list li{
-  display:inline-flex; align-items:center; gap:10px;
-  font-size:0.78rem; font-weight:600; letter-spacing:0.13em; text-transform:uppercase;
-  color:rgba(255,255,255,.74);
-}
-.hm-list .hm-dot{ width:5px; height:5px; border-radius:50%; flex:none;
-  background:var(--gold-2); box-shadow:0 0 0 3px rgba(240,192,116,.16); }
-.hm-cue{ display:inline-flex; align-items:center; gap:13px;
-  font-size:0.7rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,.5); }
-.hm-bar{ width:54px; height:1px; background:rgba(255,255,255,.4); position:relative; overflow:hidden; }
-.hm-bar::after{ content:''; position:absolute; inset:0; width:40%; background:#fff;
-  animation:hmSlide 2.6s ease-in-out infinite; }
-@keyframes hmSlide{ 0%{ transform:translateX(-110%);} 60%,100%{ transform:translateX(260%);} }
-
-/* ── cinematic entrance (load-driven) ─────────────────────────── */
-.hero-kicker, .hero-sub, .hero-cta, .hero-channel, .hero-meta{
-  opacity:0; transform:translateY(20px);
-}
-.hero-title .ht-line > span{ transform:translateY(112%); }
-.hero.hero-in .hero-kicker,
-.hero.hero-in .hero-sub,
-.hero.hero-in .hero-cta,
-.hero.hero-in .hero-channel,
-.hero.hero-in .hero-meta{
-  opacity:1; transform:none;
-  transition:opacity 1s var(--ease), transform 1.1s var(--ease);
-}
-.hero.hero-in .hero-title .ht-line > span{
-  transform:none; transition:transform 1.15s var(--ease-soft);
-}
-.hero.hero-in .hero-kicker{ transition-delay:.12s; }
-.hero.hero-in .hero-title .ht-line:nth-child(1) > span{ transition-delay:.26s; }
-.hero.hero-in .hero-title .ht-line:nth-child(2) > span{ transition-delay:.40s; }
-.hero.hero-in .hero-sub{ transition-delay:.62s; }
-.hero.hero-in .hero-cta{ transition-delay:.76s; }
-.hero.hero-in .hero-channel{ transition-delay:.88s; }
-.hero.hero-in .hero-meta{ transition-delay:.98s; }
-
-@media (max-width:760px){
-  .hero{ padding-top:clamp(104px,14vh,140px); }
-  .hero-title{ font-size:clamp(2.5rem,11vw,4rem); line-height:1.0; }
-  .hero-cta{ flex-direction:column; align-items:stretch; gap:14px; }
-  .cta-main{ height:58px; justify-content:space-between; padding-left:26px; }
-  .cta-sub{ justify-content:flex-start; }
-  .hero-meta{ gap:16px; }
-  .hm-cue{ display:none; }
-  .hm-list{ gap:14px 22px; }
-}
-@media (prefers-reduced-motion: reduce){
-  .hero-img{ animation:none; transform:scale(1.04); }
-  .hm-bar::after{ animation:none; }
-  .hero-bg{ transition:none; }
-  .hero-kicker, .hero-sub, .hero-cta, .hero-channel, .hero-meta{ opacity:1; transform:none; }
-  .hero-title .ht-line > span{ transform:none; }
-}
-
-/* ── editorial split hero (kinetic) ───────────────────────────── */
-.hero-glow{ position:absolute; z-index:0; border-radius:50%; filter:blur(80px);
-  pointer-events:none; opacity:.5; }
-.hero-glow-a{ width:52vw; height:52vw; max-width:720px; max-height:720px; top:-16%; right:-8%;
-  background:radial-gradient(circle, rgba(43,124,196,.55), transparent 68%); }
-.hero-glow-b{ width:46vw; height:46vw; max-width:620px; max-height:620px; bottom:-22%; left:-12%;
-  background:radial-gradient(circle, rgba(46,140,99,.42), transparent 68%); }
-
-.hero-copy{ position:relative; z-index:3; }
-.hero-copy .hero-title{
-  font-size:clamp(2.85rem,5.3vw,5.5rem); line-height:1.02; letter-spacing:-0.035em;
-  text-wrap:balance;
-  margin:0 0 clamp(20px,2.4vw,30px);
-}
-.hero-badge{ display:inline-flex; align-items:center; gap:9px; padding:9px 18px 9px 14px;
-  border-radius:100px; margin-bottom:clamp(20px,2.4vw,30px);
-  background:linear-gradient(100deg, rgba(240,192,116,.22), rgba(240,192,116,.10));
-  border:1px solid rgba(240,192,116,.5); color:var(--gold-2);
-  font-size:0.8rem; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; }
-.hero-badge svg{ width:15px; height:15px; }
-.hero-copy .hero-cta{ justify-content:flex-start; align-items:center; gap:clamp(16px,2.4vw,30px); }
-.hero-copy .cta-sub{ margin-top:0; align-self:center; }
-.ht-rotator{ display:inline-grid; vertical-align:top; }
-.ht-rotator .ht-word{
-  grid-area:1 / 1; white-space:nowrap;
-  background:linear-gradient(96deg, var(--gold-2) 4%, #FBE3B6 42%, var(--blue-sky) 98%);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  opacity:0; transform:translateY(0.5em); transition:opacity .55s var(--ease), transform .55s var(--ease);
-}
-.ht-rotator .ht-word.is-active{ opacity:1; transform:none; }
-.ht-rotator .ht-word.is-leaving{ opacity:0; transform:translateY(-0.5em); }
-
-.hero-tags{ list-style:none; display:flex; flex-wrap:wrap; gap:10px;
-  margin-top:clamp(26px,3vw,38px); }
-.hero-tags li{ display:inline-flex; align-items:center; gap:9px; padding:9px 16px; border-radius:100px;
-  border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.05);
-  font-size:0.82rem; font-weight:600; letter-spacing:0.03em; color:rgba(255,255,255,.84); }
-.hero-tags li::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--gold-2);
-  box-shadow:0 0 0 3px rgba(240,192,116,.18); }
-
-.hero-visual{ position:relative; z-index:3; }
-.hero-photo{ position:relative; border-radius:24px; overflow:hidden; aspect-ratio:4/5;
-  box-shadow:0 50px 110px -46px rgba(0,0,0,.72), inset 0 0 0 1px rgba(255,255,255,.08); }
-.hero-photo .hero-img{ inset:0; }
-.hero-photo::after{ content:''; position:absolute; inset:0; pointer-events:none;
-  background:linear-gradient(180deg, transparent 52%, rgba(6,18,31,.52)); }
-/* premium price stamp */
-.price-stamp{ position:absolute; right:-16px; bottom:26px; z-index:2;
-  display:flex; flex-direction:column; align-items:flex-start; padding:16px 24px 15px;
-  border-radius:18px; background:linear-gradient(158deg,#0E3054,#081F37 82%);
-  border:1px solid rgba(63,203,134,.34);
-  box-shadow:0 26px 58px -22px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.08);
-  animation:stampPop 1s var(--ease) .9s both, stampFloat 5.5s ease-in-out 2s infinite;
-  transition:transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease);
-  will-change:transform; }
-@keyframes stampPop{ 0%{ opacity:0; transform:translateY(18px) scale(.94); } 100%{ opacity:1; transform:none; } }
-@keyframes stampFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
-.price-stamp:hover{ animation-play-state:paused; transform:translateY(-9px) scale(1.03);
-  border-color:rgba(63,203,134,.6);
-  box-shadow:0 34px 70px -22px rgba(0,0,0,.8), 0 0 0 4px rgba(63,203,134,.12), inset 0 1px 0 rgba(255,255,255,.1); }
-.ps-from{ font-size:0.68rem; font-weight:800; letter-spacing:0.2em; text-transform:uppercase;
-  color:var(--gold-2); margin-bottom:3px; }
-/* the star: green fixed price */
-.ps-amount{ font-size:clamp(3rem,4vw,3.7rem); font-weight:800; line-height:.9; letter-spacing:-0.045em;
-  color:#3FCB86; font-variant-numeric:tabular-nums; display:flex; align-items:flex-start; gap:3px;
-  text-shadow:0 6px 26px rgba(63,203,134,.34); animation:priceGlow 3.6s var(--ease) infinite; }
-@keyframes priceGlow{ 0%,100%{ text-shadow:0 6px 24px rgba(63,203,134,.26); }
-  50%{ text-shadow:0 8px 38px rgba(63,203,134,.5); } }
-.ps-cur{ font-size:0.46em; font-weight:700; margin-top:.22em; color:#3FCB86; }
-@media (prefers-reduced-motion: reduce){ .price-stamp,.ps-amount{ animation:none; } }
-
-/* discreet buyer link */
-.hero-buyer{ display:inline-flex; align-items:center; gap:10px;
-  margin-top:clamp(22px,2.6vw,32px); font-size:0.92rem; color:rgba(255,255,255,.62);
-  transition:color .3s var(--ease); }
-.hero-buyer strong{ color:rgba(255,255,255,.92); font-weight:600; }
-.hero-buyer .hb-ico{ display:grid; place-items:center; width:30px; height:30px; border-radius:9px;
-  border:1px solid rgba(255,255,255,.18); background:rgba(255,255,255,.05); color:var(--gold-2); }
-.hero-buyer .hb-ico svg{ width:15px; height:15px; }
-.hero-buyer .hb-ar{ transition:transform .3s var(--ease); }
-.hero-buyer:hover{ color:#fff; }
-.hero-buyer:hover .hb-ar{ transform:translateX(4px); }
-
-/* trust marquee */
-.hero-trust{ position:relative; z-index:3; width:100%; max-width:var(--maxw);
-  margin:clamp(46px,6vh,76px) auto 0; padding-inline:var(--pad);
-  border-top:1px solid rgba(255,255,255,.12); border-bottom:1px solid rgba(255,255,255,.12);
-  padding-block:16px; overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
-  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
-.ht-track{ display:flex; align-items:center; gap:26px; width:max-content;
-  animation:htScroll 34s linear infinite; }
-.ht-item{ font-size:0.8rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
-  color:rgba(255,255,255,.68); white-space:nowrap; }
-.ht-sep{ width:5px; height:5px; border-radius:50%; background:var(--gold-2); opacity:.7; flex:none; }
-@keyframes htScroll{ to{ transform:translateX(-50%); } }
-@media (prefers-reduced-motion: reduce){ .ht-track{ animation:none; } }
-
-/* scroll cue */
-.hero-scroll{ position:absolute; left:50%; bottom:clamp(18px,3vh,30px); z-index:3;
-  transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:9px; }
-.hero-scroll .hs-line{ width:1px; height:36px; background:linear-gradient(180deg,var(--gold-2),transparent);
-  animation:scrollPulse 2.2s var(--ease) infinite; }
-.hero-scroll .hs-word{ font-size:0.66rem; font-weight:700; letter-spacing:0.28em; text-transform:uppercase;
-  color:rgba(255,255,255,.5); }
-@keyframes scrollPulse{ 0%,100%{ transform:scaleY(.5); opacity:.4; transform-origin:top; }
-  50%{ transform:scaleY(1); opacity:1; transform-origin:top; } }
-@media (prefers-reduced-motion: reduce){ .hero-scroll .hs-line{ animation:none; } }
-@media (max-width:860px){ .hero-scroll{ display:none; } .price-stamp{ right:16px; } }
-
-/* entrance additions */
-.hero-title, .hero-tags, .hero-visual{ opacity:0; transform:translateY(22px); }
-.hero.hero-in .hero-title,
-.hero.hero-in .hero-tags,
-.hero.hero-in .hero-visual{ opacity:1; transform:none;
-  transition:opacity 1s var(--ease), transform 1.1s var(--ease); }
-.hero.hero-in .hero-title{ transition-delay:.16s; }
-.hero.hero-in .hero-visual{ transition-delay:.3s; }
-.hero.hero-in .hero-tags{ transition-delay:.9s; }
-
-@media (max-width:860px){
-  .hero-inner{ grid-template-columns:1fr; gap:clamp(30px,7vw,46px); }
-  .hero-copy{ order:1; }
-  .hero-visual{ order:2; max-width:520px; }
-  .hero-photo{ aspect-ratio:16/11; }
-}
-@media (prefers-reduced-motion: reduce){
-  .hero-title, .hero-tags, .hero-visual{ opacity:1; transform:none; }
-  .ht-rotator .ht-word{ opacity:0; }
-  .ht-rotator .ht-word.is-active{ opacity:1; }
-}
-
-/* ── PLATE (full-bleed cinematic image) ──────────────────────── */
-.plate{ padding-block:0; background:var(--paper); }
-.plate-inner{ position:relative; }
-.plate image-slot{ width:100%; height:clamp(380px, 70vh, 820px); display:block; }
-.plate .scrim{
-  position:absolute; inset:auto 0 0 0; height:42%; pointer-events:none;
-  background:linear-gradient(transparent, rgba(10,37,64,.55));
-}
-.plate .cap{
-  max-width:var(--maxw); margin:0 auto; padding:20px var(--pad) 0;
-  font-size:0.82rem; color:var(--ink-3); letter-spacing:0.02em;
-  display:flex; justify-content:space-between; gap:24px;
-}
-
-/* ── MANIFEST ────────────────────────────────────────────────── */
-.manifest{ background:var(--paper); }
-.manifest .vs-head{ max-width:64ch; margin:0 auto clamp(44px,5.5vw,72px); text-align:center; }
-
-/* El model — integrated showcase: image + points as one block */
-.model-showcase{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(20px,2.6vw,40px);
-  align-items:stretch; max-width:1120px; margin:0 auto; }
-.ms-media{ position:relative; border-radius:22px; overflow:hidden; min-height:420px;
-  box-shadow:0 40px 80px -40px rgba(10,37,64,.42); }
-.ms-media image-slot{ position:absolute; inset:0; width:100%; height:100%; display:block;
-  transition:transform 1.1s var(--ease); }
-.ms-media::after{ content:''; position:absolute; inset:0; pointer-events:none; border-radius:22px;
-  box-shadow:inset 0 0 0 1px rgba(10,37,64,.07); }
-.model-showcase:hover .ms-media image-slot{ transform:scale(1.05); }
-.ms-pillars{ display:flex; flex-direction:column; justify-content:center; gap:0; }
-.ms-pillar{ position:relative; display:flex; align-items:flex-start; gap:18px;
-  padding:clamp(18px,2vw,26px) 4px; }
-.ms-pillar + .ms-pillar{ border-top:1px solid var(--line); }
-.ms-pillar .mp-ico{ flex:none; margin-bottom:0; }
-.ms-txt h3{ font-size:clamp(1.18rem,1.5vw,1.4rem); font-weight:600; letter-spacing:-0.02em;
-  color:var(--ink); margin-bottom:7px; }
-.ms-txt p{ font-size:clamp(0.98rem,1.1vw,1.08rem); line-height:1.5; color:var(--ink-2); text-wrap:pretty; }
-.mp-ico{ display:grid; place-items:center; width:48px; height:48px; border-radius:14px;
-  background:linear-gradient(150deg, rgba(43,124,196,.14), rgba(46,140,99,.12));
-  color:var(--blue); }
-.mp-ico svg{ width:23px; height:23px; }
-
-@media (prefers-reduced-motion: no-preference){
-  .model-showcase .ms-pillar{ opacity:0; transform:translateY(14px); }
-  .model-showcase.in .ms-pillar{ opacity:1; transform:none;
-    transition:opacity .55s var(--ease), transform .55s var(--ease); }
-  .model-showcase.in .ms-pillar:nth-child(2){ transition-delay:.1s; }
-  .model-showcase.in .ms-pillar:nth-child(3){ transition-delay:.2s; }
-  .model-showcase .ms-media{ opacity:0; transform:translateY(18px); }
-  .model-showcase.in .ms-media{ opacity:1; transform:none;
-    transition:opacity .7s var(--ease), transform .7s var(--ease); }
-}
-@media (max-width:860px){
-  .model-showcase{ grid-template-columns:1fr; }
-  .ms-media{ min-height:300px; order:-1; }
-}
-
-/* ── COMPARATIVA — model tradicional vs NOVERA ───────────────── */
-.vs{
-  overflow:hidden;
-  background:
-    radial-gradient(120% 70% at 82% -8%, rgba(43,124,196,0.07), transparent 58%),
-    radial-gradient(90% 60% at 8% 108%, rgba(46,140,99,0.06), transparent 55%),
-    linear-gradient(180deg, var(--paper) 0%, #F7F4ED 58%, var(--paper-2) 100%);
-}
-.vs-head{ max-width:64ch; margin:0 auto clamp(50px,6.5vw,88px); text-align:center; }
-.vs-head .kicker{ justify-content:center; }
-.vs-head h2{ margin-top:1.2rem; }
-.vs-head .lead{ margin-top:1.5rem; max-width:56ch; margin-inline:auto; }
-
-/* facing cards */
-.vs-cards{
-  display:grid; grid-template-columns:1fr 1.08fr; gap:clamp(18px,2.6vw,34px);
-  align-items:center; max-width:1080px; margin:0 auto;
-}
-.vs-card{
-  position:relative; border-radius:24px; padding:clamp(30px,3.4vw,50px);
-  transition:transform .6s var(--ease), box-shadow .6s var(--ease);
-}
-.vs-trad{
-  background:linear-gradient(180deg, #FBFAF6, #F3F0E8);
-  border:1px solid var(--line);
-  box-shadow:0 24px 54px -40px rgba(10,37,64,.28);
-}
-.vs-nov{
-  background:#fff; border:1px solid transparent; z-index:2;
-  padding:clamp(38px,4.4vw,62px) clamp(30px,3.4vw,52px);
-  box-shadow:0 40px 96px -42px rgba(22,68,122,.5), 0 0 70px -12px rgba(43,124,196,.18);
-}
-.vs-nov::before{
-  content:''; position:absolute; inset:0; border-radius:24px; padding:1.5px; pointer-events:none;
-  background:linear-gradient(150deg, var(--blue-br), rgba(46,140,99,.55) 52%, rgba(43,124,196,.25));
-  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor; mask-composite:exclude;
-}
-.vs-cards .vs-trad:hover{ transform:translateY(-4px); }
-.vs-cards .vs-nov:hover{ transform:translateY(-7px);
-  box-shadow:0 56px 120px -42px rgba(22,68,122,.6), 0 0 96px -10px rgba(43,124,196,.28); }
-
-.vs-tag{
-  display:inline-flex; align-items:center; gap:10px;
-  font-size:12px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
-  color:var(--ink-3); margin-bottom:clamp(22px,2.6vw,34px);
-}
-.vs-tag::before{ content:''; width:8px; height:8px; border-radius:50%;
-  background:var(--ink-3); opacity:.45; }
-.vs-nov .vs-tag{ color:var(--blue); }
-.vs-nov .vs-tag::before{ background:var(--blue-br); opacity:1;
-  box-shadow:0 0 0 4px rgba(43,124,196,.16); }
-
-.vs-list{ list-style:none; }
-.vs-list li{
-  position:relative; padding:17px 0 17px 36px;
-  border-top:1px solid var(--line);
-  font-size:clamp(1.02rem,1.2vw,1.16rem); line-height:1.45; letter-spacing:-0.012em;
-  text-wrap:pretty;
-}
-.vs-list li:first-child{ border-top:none; }
-.vs-trad .vs-list li{ color:var(--ink-2); }
-.vs-nov .vs-list li{ color:var(--ink); font-weight:500; }
-/* traditional marker — muted dash */
-.vs-trad .vs-list li::before{
-  content:''; position:absolute; left:4px; top:1.55em; width:16px; height:1.5px;
-  background:var(--ink-3); opacity:.5;
-}
-/* novera marker — green check */
-.vs-nov .vs-list li::before{
-  content:''; position:absolute; left:0; top:1.0em; width:22px; height:22px; border-radius:50%;
-  background:rgba(46,140,99,.13);
-}
-.vs-nov .vs-list li::after{
-  content:''; position:absolute; left:8px; top:1.4em; width:6px; height:11px;
-  border-right:2px solid var(--green); border-bottom:2px solid var(--green);
-  transform:rotate(40deg);
-}
-
-/* staggered reveal of NOVERA bullets (accessible) */
-@media (prefers-reduced-motion: no-preference){
-  .vs-nov .vs-list li{ opacity:0; transform:translateY(10px); }
-  .vs-nov.in .vs-list li{ opacity:1; transform:none;
-    transition:opacity .55s var(--ease), transform .55s var(--ease); }
-  .vs-nov.in .vs-list li:nth-child(1){ transition-delay:.14s; }
-  .vs-nov.in .vs-list li:nth-child(2){ transition-delay:.22s; }
-  .vs-nov.in .vs-list li:nth-child(3){ transition-delay:.30s; }
-  .vs-nov.in .vs-list li:nth-child(4){ transition-delay:.38s; }
-  .vs-nov.in .vs-list li:nth-child(5){ transition-delay:.46s; }
-}
-
-/* ── comparison ledger (paired contrast) ─────────── */
-.vs-ledger{ max-width:1000px; margin:0 auto; }
-.ledger-head{ display:grid; grid-template-columns:1fr clamp(84px,10vw,116px) 1fr; align-items:center; margin-bottom:12px; padding:0 26px; }
-.lh-trad, .lh-nov{ font-size:12px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase;
-  display:flex; align-items:center; gap:10px; }
-.lh-trad{ color:var(--ink-3); }
-.lh-trad::before{ content:''; width:8px; height:8px; border-radius:50%; background:var(--ink-3); opacity:.4; }
-.lh-nov{ color:var(--blue); justify-content:flex-end; }
-.lh-nov::after{ content:''; width:8px; height:8px; border-radius:50%; background:var(--blue-br);
-  box-shadow:0 0 0 4px rgba(43,124,196,.16); }
-
-.ledger-row{ display:grid; grid-template-columns:1fr clamp(84px,10vw,116px) 1fr; align-items:stretch; }
-.lr-trad, .lr-nov{ display:flex; align-items:center; gap:14px; padding:20px 26px;
-  font-size:clamp(1rem,1.15vw,1.14rem); line-height:1.4; letter-spacing:-0.012em; text-wrap:pretty; }
-.lr-trad{ color:var(--ink-2); border-top:1px solid var(--line); }
-.ledger-row:first-of-type .lr-trad{ border-top:none; }
-
-/* highlighted NOVERA lane */
-.lr-nov{ position:relative; color:var(--ink); font-weight:500;
-  background:linear-gradient(180deg, rgba(43,124,196,.07), rgba(46,140,99,.05));
-  transition:background .4s var(--ease); }
-.lr-nov::before{ content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
-  background:linear-gradient(180deg, var(--blue-br), var(--green)); opacity:.5; }
-.ledger-row:first-of-type .lr-nov{ border-radius:20px 20px 0 0; }
-.ledger-row:last-of-type .lr-nov{ border-radius:0 0 20px 20px; }
-.ledger-row:hover .lr-nov{ background:linear-gradient(180deg, rgba(43,124,196,.14), rgba(46,140,99,.09)); }
-
-/* markers */
-.lr-x, .lr-check{ flex:none; display:grid; place-items:center; border-radius:50%; }
-.lr-x{ width:22px; height:22px; background:rgba(133,147,161,.16); color:var(--ink-3); }
-.lr-x svg{ width:11px; height:11px; }
-.lr-check{ width:24px; height:24px; background:rgba(46,140,99,.15); color:var(--green); }
-.lr-check svg{ width:13px; height:13px; }
-
-/* centre theme tag + connector */
-.lr-theme{ position:relative; display:flex; align-items:center; justify-content:center; }
-.lr-theme::before{ content:''; position:absolute; left:50%; top:0; bottom:0; width:1px;
-  background:var(--line); transform:translateX(-.5px); }
-.lr-theme span{ position:relative; z-index:1; font-size:10px; font-weight:700; letter-spacing:0.12em;
-  text-transform:uppercase; color:var(--ink-3); background:var(--paper);
-  border:1px solid var(--line); border-radius:100px; padding:5px 12px; white-space:nowrap; }
-
-/* staggered reveal */
-@media (prefers-reduced-motion: no-preference){
-  .vs-ledger .ledger-row{ opacity:0; transform:translateY(14px); }
-  .vs-ledger.in .ledger-row{ opacity:1; transform:none;
-    transition:opacity .55s var(--ease), transform .55s var(--ease); }
-  .vs-ledger.in .ledger-row:nth-child(2){ transition-delay:.06s; }
-  .vs-ledger.in .ledger-row:nth-child(3){ transition-delay:.14s; }
-  .vs-ledger.in .ledger-row:nth-child(4){ transition-delay:.22s; }
-  .vs-ledger.in .ledger-row:nth-child(5){ transition-delay:.30s; }
-  .vs-ledger.in .ledger-row:nth-child(6){ transition-delay:.38s; }
-}
-
-@media (max-width:760px){
-  .ledger-head{ display:none; }
-  .ledger-row{ grid-template-columns:1fr; border:1px solid var(--line); border-radius:16px;
-    margin-bottom:14px; overflow:hidden; }
-  .lr-theme{ justify-content:flex-start; padding:14px 20px 0; order:-1; }
-  .lr-theme::before{ display:none; }
-  .lr-trad{ border-top:none; padding:12px 20px; }
-  .lr-nov{ border-radius:0 !important; padding:16px 20px; }
-}
-
-/* ── CALCULADORA (focal dark panel) ──────────────────────────── */
-.vs-calc{
-  position:relative; overflow:hidden; color:#fff;
-  max-width:1080px; margin:clamp(50px,6.5vw,90px) auto 0;
-  border-radius:30px; padding:clamp(40px,5.2vw,76px) clamp(26px,5vw,72px);
-  background:
-    radial-gradient(95% 130% at 100% 0%, rgba(43,124,196,.30), transparent 56%),
-    radial-gradient(85% 130% at 0% 100%, rgba(46,140,99,.22), transparent 55%),
-    linear-gradient(165deg, #0F3157 0%, #0A2540 68%, #081E36 100%);
-  box-shadow:0 56px 130px -52px rgba(8,26,48,.7);
-}
-.vs-calc::before{
-  content:''; position:absolute; inset:0; border-radius:30px; pointer-events:none;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.14);
-}
-.calc-head{ text-align:center; margin-bottom:clamp(34px,4.4vw,56px); position:relative; }
-.calc-head .kicker{ color:var(--gold-2); justify-content:center; }
-.calc-head h3{ color:#fff; margin-top:1rem;
-  font-size:clamp(1.5rem,2.7vw,2.15rem); letter-spacing:-0.025em; }
-
-.calc-compare{
-  display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
-  gap:clamp(16px,3vw,44px); position:relative;
-}
-.calc-side{ text-align:center; }
-.cs-label{ font-size:0.8rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase;
-  color:rgba(255,255,255,.55); }
-.calc-nov .cs-label{ color:#fff; }
-.cs-sub{ font-size:0.9rem; color:rgba(255,255,255,.48); margin-top:7px; }
-.cs-amount{ font-weight:600; letter-spacing:-0.04em; line-height:1; margin-top:18px;
-  font-variant-numeric:tabular-nums; }
-.calc-trad .cs-amount{ font-size:clamp(2rem,4vw,2.7rem); color:rgba(255,255,255,.56); font-weight:500; }
-.calc-nov .cs-amount{ font-size:clamp(2.9rem,7vw,4.6rem); color:#56CF99;
-  text-shadow:0 10px 40px rgba(46,140,99,.45); }
-.calc-vs{
-  width:48px; height:48px; flex:none; border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  font-size:0.74rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
-  color:rgba(255,255,255,.45); border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.04);
-}
-
-/* premium savings badge */
-.calc-badge-row{ display:flex; justify-content:center; margin-top:clamp(30px,3.8vw,46px); }
-.calc-badge{
-  display:inline-flex; align-items:center; gap:10px;
-  padding:12px 24px 12px 20px; border-radius:100px;
-  font-size:clamp(0.92rem,1.15vw,1.05rem); font-weight:600; letter-spacing:0.005em;
-  color:#0A2540; white-space:nowrap;
-  background:linear-gradient(105deg, #6FE0B0, #2E8C63 92%);
-  border:1px solid rgba(255,255,255,.28);
-  box-shadow:0 16px 40px -14px rgba(46,140,99,.6), inset 0 1px 0 rgba(255,255,255,.4);
-}
-.calc-badge svg{ width:17px; height:17px; color:#0A2540; opacity:.85; }
-@media (prefers-reduced-motion: no-preference){
-  .calc-badge-row .calc-badge{ opacity:0; transform:translateY(12px) scale(.94); transform-origin:center; }
-  .calc-badge-row .calc-badge.in{ opacity:1; transform:none;
-    transition:opacity .7s var(--ease), transform .7s var(--ease); transition-delay:.15s; }
-}
-
-.calc-saving{
-  text-align:center; margin-top:clamp(36px,4.6vw,58px);
-  padding-top:clamp(32px,4vw,52px); border-top:1px solid rgba(255,255,255,.14);
-}
-.saving-label{ font-size:0.84rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase;
-  color:rgba(255,255,255,.6); }
-.saving-amount{
-  margin-top:16px; font-weight:700; letter-spacing:-0.05em; line-height:0.92;
-  font-size:clamp(4.2rem,13vw,9rem); font-variant-numeric:tabular-nums;
-  background:linear-gradient(180deg, #6FE0B0, #2E8C63);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  filter:drop-shadow(0 14px 46px rgba(46,140,99,.5));
-}
-.calc-micro{
-  text-align:center; margin-top:clamp(28px,3.6vw,42px); max-width:46ch; margin-inline:auto;
-  font-size:clamp(1.06rem,1.5vw,1.32rem); line-height:1.5; font-weight:400;
-  letter-spacing:-0.01em; color:rgba(255,255,255,.82); text-wrap:pretty;
-}
-
-/* ── interactive slider ─────────────────────────── */
-.calc-head .calc-intro{
-  color:rgba(255,255,255,.62); margin-top:0.9rem; margin-inline:auto; max-width:44ch;
-  font-size:clamp(.98rem,1.35vw,1.12rem); line-height:1.55;
-}
-.calc-slider{ max-width:560px; margin:0 auto clamp(36px,4.6vw,56px); }
-.cslider-top{ display:flex; justify-content:space-between; align-items:baseline; gap:18px; margin-bottom:16px; }
-.cslider-label{ font-size:0.78rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
-  color:rgba(255,255,255,.55); }
-.cslider-value{ font-size:clamp(1.4rem,3vw,1.95rem); font-weight:700; letter-spacing:-0.03em;
-  color:var(--gold-2); font-variant-numeric:tabular-nums; }
-.calc-slider input[type=range]{
-  -webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:100px; cursor:pointer;
-  background:linear-gradient(90deg, var(--gold-2) 0%, var(--gold-2) var(--fill,7%), rgba(255,255,255,.16) var(--fill,7%));
-}
-.calc-slider input[type=range]:focus-visible{ outline:2px solid var(--gold-2); outline-offset:6px; }
-.calc-slider input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none; appearance:none; width:26px; height:26px; border-radius:50%;
-  background:#fff; border:6px solid var(--gold-2); box-shadow:0 6px 18px -4px rgba(0,0,0,.55); cursor:grab;
-}
-.calc-slider input[type=range]::-webkit-slider-thumb:active{ cursor:grabbing; }
-.calc-slider input[type=range]::-moz-range-thumb{
-  width:26px; height:26px; border:6px solid var(--gold-2); background:#fff; border-radius:50%; cursor:grab;
-  box-shadow:0 6px 18px -4px rgba(0,0,0,.55);
-}
-.cslider-scale{ display:flex; justify-content:space-between; margin-top:13px;
-  font-size:0.76rem; color:rgba(255,255,255,.4); font-variant-numeric:tabular-nums; }
-
-/* ── cost breakdown ─────────────────────────────── */
-.calc-break{ max-width:520px; margin:clamp(34px,4.4vw,52px) auto 0;
-  padding-top:clamp(28px,3.4vw,40px); border-top:1px solid rgba(255,255,255,.14); }
-.cb-row{ display:flex; justify-content:space-between; align-items:baseline; gap:20px;
-  padding:13px 0; font-size:1rem; color:rgba(255,255,255,.7);
-  border-bottom:1px solid rgba(255,255,255,.08); }
-.cb-row span:last-child{ font-variant-numeric:tabular-nums; font-weight:600; color:#fff; }
-.cb-total{ border-bottom:none; padding-top:16px; font-weight:700; font-size:1.12rem; color:#fff; }
-.cb-total span:last-child{ color:#56CF99; }
-.cb-bar{ position:relative; display:flex; align-items:center; height:36px; margin-top:16px;
-  border-radius:100px; background:rgba(255,255,255,.1); overflow:hidden; }
-.cb-fill{ position:absolute; left:0; top:0; height:100%; border-radius:100px;
-  background:linear-gradient(90deg,#2E8C63,#56CF99); transition:width .5s var(--ease); }
-.cb-pct{ position:relative; z-index:1; margin-left:auto; margin-right:16px;
-  font-weight:700; font-size:0.92rem; color:#fff; }
-
-/* ════════════════════════════════════════════════════════════
-   ★ DESCOBREIX — landing de captació (peça central)
-   ════════════════════════════════════════════════════════════ */
-.discover{
-  position:relative; overflow:hidden;
-  padding-block:clamp(72px,9vw,140px);
-  background:
-    radial-gradient(80% 70% at 12% 12%, rgba(43,124,196,0.40), transparent 55%),
-    radial-gradient(85% 75% at 90% 18%, rgba(240,192,116,0.34), transparent 52%),
-    radial-gradient(95% 90% at 75% 100%, rgba(46,140,99,0.40), transparent 55%),
-    linear-gradient(155deg, #0C2E52, #0A2540 60%, #0B2A47);
-}
-.discover-orb{
-  position:absolute; border-radius:50%; filter:blur(80px); opacity:.55;
-  pointer-events:none; mix-blend-mode:screen;
-  animation:drift 26s ease-in-out infinite alternate;
-}
-.discover-orb.d1{ width:520px;height:520px; top:-120px; left:-80px;
-  background:radial-gradient(circle, rgba(92,168,224,.6), transparent 68%); }
-.discover-orb.d2{ width:560px;height:560px; bottom:-160px; right:-120px;
-  background:radial-gradient(circle, rgba(240,192,116,.55), transparent 68%); animation-delay:-10s; }
-.discover-orb.d3{ width:440px;height:440px; bottom:-100px; left:30%;
-  background:radial-gradient(circle, rgba(46,140,99,.55), transparent 68%); animation-delay:-16s; }
-.discover .wrap{ position:relative; z-index:2; }
-.discover-head{ text-align:center; max-width:760px; margin:0 auto clamp(38px,5vw,58px); }
-.discover-head .kicker{ color:var(--gold-2); justify-content:center; }
-.discover-head h2{ color:#fff; margin-top:1.2rem; }
-.discover-head p{ color:rgba(255,255,255,.72); margin-top:1.1rem; font-size:clamp(1.05rem,1.4vw,1.25rem);
-  max-width:48ch; margin-inline:auto; }
-
-/* glass card */
-.quiz{
-  max-width:680px; margin:0 auto; position:relative;
-  border-radius:28px;
-  background:linear-gradient(165deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
-  border:1px solid rgba(255,255,255,.28);
-  backdrop-filter:blur(26px) saturate(150%);
-  -webkit-backdrop-filter:blur(26px) saturate(150%);
-  box-shadow:0 50px 120px -40px rgba(4,18,34,.7), inset 0 1px 0 rgba(255,255,255,.45);
-  padding:clamp(28px,4vw,52px);
-  overflow:hidden;
-}
-.quiz::before{
-  content:''; position:absolute; inset:0; pointer-events:none; border-radius:28px;
-  background:linear-gradient(120deg, rgba(255,255,255,.22), transparent 38%);
-  opacity:.7;
-}
-.quiz-top{ position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; gap:18px; margin-bottom:28px; }
-.quiz-steplabel{ font-size:12px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,.66); }
-.quiz-progress{ display:flex; gap:6px; flex:1; max-width:230px; }
-.quiz-progress .seg{ flex:1; height:3px; border-radius:3px; background:rgba(255,255,255,.2); overflow:hidden; }
-.quiz-progress .seg i{ display:block; height:100%; width:0;
-  background:linear-gradient(90deg, var(--gold-2), var(--green)); border-radius:3px;
-  transition:width .6s var(--ease); }
-.quiz-progress .seg.done i{ width:100%; }
-
-.quiz-stage{ position:relative; z-index:2; }
-.quiz-step{ display:none; }
-.quiz-step.active{ display:block; animation:stepIn .55s var(--ease) both; }
-@keyframes stepIn{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
-.quiz-step h3{
-  color:#fff; font-size:clamp(1.5rem,2.6vw,2rem); font-weight:600;
-  letter-spacing:-0.025em; line-height:1.12; margin-bottom:6px;
-}
-.quiz-step .qsub{ color:rgba(255,255,255,.62); font-size:0.96rem; margin-bottom:24px; }
-
-/* field */
-.quiz-field{ position:relative; margin-top:8px; }
-.quiz-field label{
-  display:flex; align-items:center; gap:8px;
-  font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
-  color:rgba(255,255,255,.62); margin-bottom:10px;
-}
-.quiz-input{
-  width:100%; font-family:inherit; font-size:1.05rem; color:#fff;
-  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.26);
-  border-radius:14px; padding:16px 18px; outline:none;
-  transition:border-color .35s, background .35s, box-shadow .35s;
-}
-.quiz-input::placeholder{ color:rgba(255,255,255,.42); }
-.quiz-input:focus{
-  border-color:var(--gold-2); background:rgba(255,255,255,.13);
-  box-shadow:0 0 0 4px rgba(240,192,116,.18);
-}
-.quiz-fields-grid{ display:grid; gap:14px; }
-
-/* options */
-.quiz-opts{ display:grid; gap:11px; }
-.quiz-opt{
-  display:flex; align-items:center; gap:15px; text-align:left; width:100%;
-  font-family:inherit; font-size:1.04rem; font-weight:500; color:#fff;
-  background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2);
-  border-radius:15px; padding:17px 19px; cursor:pointer;
-  transition:background .3s var(--ease), border-color .3s, transform .3s, box-shadow .3s;
-}
-.quiz-opt:hover{ background:rgba(255,255,255,.13); border-color:rgba(255,255,255,.4); transform:translateY(-1px); }
-.quiz-opt .tick{
-  width:22px; height:22px; flex:none; border-radius:50%;
-  border:1.5px solid rgba(255,255,255,.4); position:relative; transition:border-color .3s, background .3s;
-}
-.quiz-opt .tick::after{
-  content:''; position:absolute; inset:0; margin:auto; width:8px; height:8px; border-radius:50%;
-  background:var(--navy); transform:scale(0); transition:transform .3s var(--ease);
-}
-.quiz-opt.sel{
-  background:linear-gradient(150deg, rgba(240,192,116,.28), rgba(46,140,99,.18));
-  border-color:var(--gold-2); box-shadow:0 14px 34px -14px rgba(240,192,116,.5);
-}
-.quiz-opt.sel .tick{ background:var(--gold-2); border-color:var(--gold-2); }
-.quiz-opt.sel .tick::after{ transform:scale(1); }
-
-/* nav row */
-.quiz-nav{ position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:26px; }
-.quiz-back{
-  font-size:0.9rem; font-weight:500; color:rgba(255,255,255,.55); cursor:pointer;
-  background:none; border:none; font-family:inherit; padding:8px 0;
-  display:inline-flex; align-items:center; gap:8px; transition:color .3s; opacity:1;
-}
-.quiz-back:hover{ color:#fff; }
-.quiz-back[hidden]{ display:none; }
-.quiz-next{
-  display:inline-flex; align-items:center; gap:10px; margin-left:auto;
-  background:linear-gradient(100deg, var(--green), var(--green-d));
-  color:#fff; font-family:inherit; font-size:0.98rem; font-weight:600;
-  padding:14px 26px; border-radius:100px; border:none; cursor:pointer;
-  box-shadow:0 14px 34px -12px rgba(34,111,78,.6);
-  transition:transform .35s var(--ease), box-shadow .35s, filter .35s, opacity .3s;
-}
-.quiz-next:hover{ transform:translateY(-2px); filter:brightness(1.06); }
-.quiz-next:disabled{ opacity:.4; cursor:not-allowed; transform:none; filter:none; box-shadow:none; }
-.quiz-next svg{ width:15px; height:15px; }
-.quiz-fineprint{ position:relative; z-index:2; margin-top:18px; font-size:0.78rem; color:rgba(255,255,255,.5); text-align:center; line-height:1.5; }
-
-/* ── RESULT (premium) ────────────────────────────────────────── */
-.quiz-result{ display:none; position:relative; z-index:2; text-align:center; animation:stepIn .7s var(--ease) both; }
-.quiz-result.active{ display:block; }
-.result-badge{
-  display:inline-flex; align-items:center; gap:9px; margin:0 auto 22px;
-  padding:8px 16px; border-radius:100px;
-  background:rgba(240,192,116,.16); border:1px solid rgba(240,192,116,.4);
-  font-size:11px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-2);
-}
-.result-badge .dot{ width:7px;height:7px;border-radius:50%; background:var(--green);
-  box-shadow:0 0 0 4px rgba(46,140,99,.3); }
-.quiz-result .r-lead{ color:rgba(255,255,255,.7); font-size:1.0rem; }
-.quiz-result .r-plan{
-  font-size:clamp(2.6rem,6vw,4rem); font-weight:600; letter-spacing:-0.04em;
-  line-height:1.05; margin:8px 0 4px;
-  background:linear-gradient(100deg, var(--gold-2), #fff 55%, var(--blue-sky));
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.quiz-result .r-desc{ color:rgba(255,255,255,.78); font-size:1.06rem; line-height:1.6; max-width:40ch; margin:18px auto 0; }
-.result-meta{
-  display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:26px auto 0; max-width:520px;
-}
-.result-meta span{
-  font-size:0.82rem; color:rgba(255,255,255,.78);
-  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
-  padding:8px 14px; border-radius:100px;
-}
-.result-meta span b{ color:#fff; font-weight:600; }
-.result-actions{ display:flex; gap:18px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:30px; }
-.result-restart{ background:none; border:none; font-family:inherit; cursor:pointer;
-  font-size:0.9rem; font-weight:500; color:rgba(255,255,255,.6); transition:color .3s; }
-.result-restart:hover{ color:#fff; }
-
-/* ── EQUIP ───────────────────────────────────────────────────── */
-.team{ color:#fff; overflow:hidden;
-  background:radial-gradient(110% 80% at 90% 0%, rgba(46,140,99,.22), transparent 55%), linear-gradient(165deg,#0A2540,#081E36); }
-.team .head{ max-width:60ch; margin-bottom:clamp(52px,7vw,90px); }
-.team .head h2{ color:#fff; margin-top:1.3rem; }
-.team .head .lead{ color:rgba(255,255,255,.66); margin-top:1.4rem; }
-.team-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2vw,24px); }
-.team-item{
-  border-radius:18px; padding:clamp(24px,2.6vw,34px) clamp(22px,2.4vw,30px) clamp(30px,3vw,38px);
-  background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.13);
-  backdrop-filter:blur(12px); transition:transform .5s var(--ease), background .5s, border-color .5s;
-}
-.team-item:hover{ transform:translateY(-4px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.26); }
-.team-item .idx{
-  font-size:0.78rem; font-weight:600; letter-spacing:0.04em; margin-bottom:20px;
-  background:linear-gradient(90deg,var(--gold-2),var(--green)); -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.team-item h3{ font-size:1.18rem; font-weight:600; color:#fff; letter-spacing:-0.01em; margin-bottom:11px; }
-.team-item p{ font-size:0.95rem; line-height:1.6; color:rgba(255,255,255,.6); max-width:32ch; font-weight:400; }
-
-/* ── PROCÉS (timeline premium) ───────────────────────────────── */
-.proc{
-  background:
-    radial-gradient(120% 80% at 88% -6%, rgba(226,161,75,0.10), transparent 56%),
-    radial-gradient(90% 70% at 4% 106%, rgba(46,140,99,0.07), transparent 54%),
-    linear-gradient(180deg, #F7F3EA 0%, var(--paper-2) 100%);
-}
-.proc-grid{
-  display:grid; grid-template-columns:minmax(0,0.82fr) minmax(0,1.18fr);
-  gap:clamp(40px,6vw,104px); align-items:start;
-}
-.proc-intro{ position:sticky; top:clamp(96px,11vh,124px); }
-.proc-h2{ margin-top:1.2rem; line-height:1.06; }
-.proc-intro .lead{ margin-top:1.4rem; max-width:40ch; }
-.proc-badge{
-  margin-top:clamp(30px,3.6vw,44px); display:inline-flex; align-items:center; gap:18px;
-  padding:18px 24px 18px 20px; border-radius:18px; background:rgba(255,255,255,.7);
-  border:1px solid var(--line); box-shadow:0 24px 54px -40px rgba(10,37,64,.4);
-}
-.pb-num{ font-size:2.6rem; font-weight:700; letter-spacing:-0.04em; line-height:1;
-  background:linear-gradient(125deg, var(--amber), var(--gold-2) 55%, var(--green));
-  -webkit-background-clip:text; background-clip:text; color:transparent; font-variant-numeric:tabular-nums; }
-.pb-txt{ font-size:0.92rem; font-weight:500; line-height:1.4; color:var(--ink-2); }
-
-/* timeline */
-.proc-timeline{ list-style:none; position:relative; padding-left:6px; }
-.proc-timeline::before{
-  content:''; position:absolute; left:22px; top:14px; bottom:14px; width:2px;
-  background:linear-gradient(180deg, var(--amber), var(--gold-2) 40%, var(--green));
-  opacity:.45;
-}
-.proc-node{ position:relative; display:grid; grid-template-columns:46px minmax(0,1fr);
-  gap:clamp(16px,2vw,26px); align-items:start; padding-bottom:clamp(14px,1.6vw,20px); }
-.proc-node:last-child{ padding-bottom:0; }
-.pn-dot{
-  position:relative; z-index:2; width:46px; height:46px; border-radius:50%;
-  display:grid; place-items:center; font-size:0.92rem; font-weight:700; letter-spacing:0.01em;
-  font-variant-numeric:tabular-nums; color:var(--navy);
-  background:#fff; border:1.5px solid var(--line);
-  box-shadow:0 10px 24px -12px rgba(10,37,64,.4); transition:all .45s var(--ease);
-}
-.pn-dot.pn-last{ background:linear-gradient(145deg, var(--green), var(--green-d)); color:#fff; border-color:transparent; }
-.pn-card{
-  background:#fff; border:1px solid var(--line); border-radius:16px;
-  padding:18px 22px; box-shadow:0 18px 40px -34px rgba(10,37,64,.45);
-  transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s var(--ease);
-}
-.proc-node:hover .pn-card{ transform:translateX(5px); box-shadow:0 30px 60px -36px rgba(10,37,64,.5); border-color:transparent; }
-.proc-node:hover .pn-dot{ transform:scale(1.08); border-color:var(--gold-2); box-shadow:0 14px 30px -12px rgba(226,161,75,.55); }
-.proc-node:hover .pn-dot.pn-last{ border-color:transparent; }
-.pn-card h3{ font-size:1.16rem; font-weight:600; letter-spacing:-0.02em; line-height:1.2; }
-.pn-card p{ font-size:0.96rem; color:var(--ink-2); line-height:1.55; margin-top:6px; }
-
-@media (max-width:900px){
-  .proc-grid{ grid-template-columns:1fr; gap:clamp(34px,6vw,48px); }
-  .proc-intro{ position:static; }
-  .proc-intro .lead{ max-width:54ch; }
-}
-@media (max-width:520px){
-  .proc-node{ grid-template-columns:40px minmax(0,1fr); gap:14px; }
-  .pn-dot{ width:40px; height:40px; font-size:0.84rem; }
-  .proc-timeline::before{ left:19px; }
-}
-
-/* ── FAQ ──────────────────────────────────────────────────────── */
-.faq{ background:var(--paper); }
-.faq-grid{
-  display:grid; grid-template-columns:minmax(0,0.82fr) minmax(0,1.18fr);
-  gap:clamp(40px,6vw,100px); align-items:start;
-}
-.faq-intro{ position:sticky; top:clamp(96px,11vh,124px); }
-.faq-intro h2{ margin-top:1.2rem; line-height:1.08; }
-.faq-intro .lead{ margin-top:1.4rem; max-width:40ch; }
-.faq-cta{
-  display:inline-flex; align-items:center; gap:9px; margin-top:clamp(26px,3vw,36px);
-  font-size:1rem; font-weight:600; color:var(--navy); transition:gap .4s var(--ease);
-}
-.faq-cta span{ transition:transform .4s var(--ease); }
-.faq-cta:hover{ gap:13px; }
-.faq-cta:hover span{ transform:translateX(3px); }
-
-.faq-list{ display:flex; flex-direction:column; gap:12px; }
-.faq-item{
-  border:1px solid var(--line); border-radius:16px; background:var(--paper);
-  overflow:hidden; transition:border-color .4s var(--ease), box-shadow .4s var(--ease), background .4s var(--ease);
-}
-.faq-item[open]{ border-color:transparent; background:var(--paper-2);
-  box-shadow:0 28px 60px -42px rgba(10,37,64,.5); }
-.faq-item summary{
-  display:flex; align-items:center; justify-content:space-between; gap:20px; cursor:pointer;
-  list-style:none; padding:22px clamp(20px,2.4vw,28px);
-  font-size:clamp(1.04rem,1.4vw,1.18rem); font-weight:600; letter-spacing:-0.015em; color:var(--ink);
-}
-.faq-item summary::-webkit-details-marker{ display:none; }
-.faq-item summary:hover{ color:var(--navy); }
-.faq-ico{ position:relative; width:20px; height:20px; flex:none; }
-.faq-ico::before, .faq-ico::after{
-  content:''; position:absolute; background:var(--amber); border-radius:2px;
-  transition:transform .4s var(--ease), opacity .4s var(--ease);
-}
-.faq-ico::before{ top:9px; left:0; width:20px; height:2px; }
-.faq-ico::after{ left:9px; top:0; width:2px; height:20px; }
-.faq-item[open] .faq-ico::after{ transform:scaleY(0); opacity:0; }
-.faq-a{ padding:0 clamp(20px,2.4vw,28px) 24px; }
-.faq-a p{ font-size:1.0rem; line-height:1.65; color:var(--ink-2); max-width:62ch; }
-.faq-a strong{ color:var(--ink); font-weight:600; }
-
-@media (max-width:900px){
-  .faq-grid{ grid-template-columns:1fr; gap:clamp(30px,6vw,42px); }
-  .faq-intro{ position:static; }
-  .faq-intro .lead{ max-width:54ch; }
-}
-
-/* ── PLANS ───────────────────────────────────────────────────── */
-.plans{ background:var(--paper); }
-.plans .head{ max-width:56ch; margin-bottom:clamp(46px,6vw,80px); }
-.plans .head h2{ margin-top:1.2rem; }
-.plans .head .lead{ margin-top:1.4rem; }
-.plan-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2.2vw,28px); align-items:stretch; }
-.plan{
-  border-radius:22px; padding:clamp(28px,2.8vw,40px); display:flex; flex-direction:column;
-  background:var(--paper); border:1px solid var(--line);
-  box-shadow:0 30px 60px -40px rgba(10,37,64,.3);
-  transition:transform .5s var(--ease), box-shadow .5s;
-}
-.plan:hover{ transform:translateY(-5px); box-shadow:0 44px 80px -40px rgba(10,37,64,.4); }
-.plan.feat{
-  color:#fff; border:none; position:relative;
-  background:linear-gradient(165deg, #14457C, #0A2540 80%);
-  box-shadow:0 40px 90px -34px rgba(10,37,64,.6);
-}
-.plan.feat::before{
-  content:''; position:absolute; inset:-1px; border-radius:22px; padding:1px; pointer-events:none;
-  background:linear-gradient(150deg, var(--gold-2), rgba(46,140,99,.6), transparent);
-  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor; mask-composite:exclude;
-}
-.plan .pname{ display:flex; align-items:center; gap:12px; font-size:1.06rem; font-weight:600; letter-spacing:0.01em; margin-bottom:20px; }
-.plan.feat .pname{ color:#fff; }
-.plan .rec{
-  font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
-  color:var(--navy); background:var(--gold-2); padding:4px 10px; border-radius:100px;
-}
-.plan .price{ font-size:clamp(2.1rem,3vw,2.8rem); font-weight:600; letter-spacing:-0.04em; line-height:1; }
-.plan.feat .price{ color:#fff; }
-.plan .price small{ font-size:1.05rem; font-weight:500; color:var(--ink-3); letter-spacing:0; }
-.plan.feat .price small{ color:rgba(255,255,255,.6); }
-.plan .prange{ font-size:0.84rem; color:var(--ink-3); margin-top:10px; }
-.plan.feat .prange{ color:rgba(255,255,255,.55); }
-.plan .pdesc{
-  font-size:0.97rem; color:var(--ink-2); line-height:1.55; margin-top:22px;
-  padding-top:22px; border-top:1px solid var(--line); max-width:32ch;
-}
-.plan.feat .pdesc{ color:rgba(255,255,255,.72); border-top-color:rgba(255,255,255,.16); }
-.plan ul{ list-style:none; margin-top:24px; margin-bottom:28px; flex:1; }
-.plan li{ font-size:0.93rem; color:var(--ink-2); line-height:1.45; padding:10px 0 10px 26px; position:relative; }
-.plan.feat li{ color:rgba(255,255,255,.84); }
-.plan li::before{
-  content:''; position:absolute; left:0; top:0.65em; width:14px; height:14px; border-radius:50%;
-  background:rgba(46,140,99,.14);
-}
-.plan li::after{
-  content:''; position:absolute; left:4px; top:1.02em; width:6px; height:3px;
-  border-left:1.5px solid var(--green); border-bottom:1.5px solid var(--green);
-  transform:rotate(-45deg);
-}
-.plan.feat li::before{ background:rgba(240,192,116,.22); }
-.plan.feat li::after{ border-color:var(--gold-2); }
-.plan li.off{ color:var(--ink-3); }
-.plan li.off::before{ background:var(--line); }
-.plan li.off::after{ display:none; }
-/* opcional / extra de pagament */
-.plan li.extra{ color:var(--ink-2); }
-.plan li.extra::before{ background:rgba(217,128,58,.16); }
-.plan li.extra::after{ content:''; left:3.5px; top:0.86em; width:7px; height:7px;
-  border:none; background:
-    linear-gradient(var(--amber),var(--amber)) center/7px 1.6px no-repeat,
-    linear-gradient(var(--amber),var(--amber)) center/1.6px 7px no-repeat; }
-.plan .ex-price{ display:inline-block; margin-left:6px; padding:2px 9px; border-radius:100px;
-  font-size:0.72rem; font-weight:700; letter-spacing:0.02em; white-space:nowrap;
-  background:rgba(217,128,58,.14); color:var(--amber); vertical-align:middle; }
-.plan.feat li.extra .ex-price{ background:rgba(240,192,116,.2); color:var(--gold-2); }
-.plan .pbtn{
-  display:inline-flex; align-items:center; justify-content:center; gap:9px;
-  font-family:inherit; font-size:0.92rem; font-weight:600; cursor:pointer;
-  padding:13px 22px; border-radius:100px; transition:background .35s, transform .35s, color .35s;
-  border:1px solid var(--line); background:var(--paper); color:var(--ink);
-}
-.plan .pbtn:hover{ transform:translateY(-2px); background:var(--navy); color:#fff; border-color:var(--navy); }
-.plan.feat .pbtn{ background:var(--gold-2); border-color:var(--gold-2); color:var(--navy); }
-.plan.feat .pbtn:hover{ background:#fff; border-color:#fff; }
-.plans-foot{
-  margin-top:clamp(38px,5vw,60px); display:flex; align-items:baseline; justify-content:space-between;
-  gap:28px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:30px;
-}
-.plans-foot p{ font-size:1.05rem; color:var(--ink); max-width:44ch; }
-.plans-foot p strong{ font-weight:600; }
-.plans-foot .note{ font-size:0.82rem; color:var(--ink-3); }
-
-/* ── CTA ─────────────────────────────────────────────────────── */
-.cta{
-  text-align:center; color:#fff; overflow:hidden;
-  background:
-    radial-gradient(80% 80% at 20% 0%, rgba(240,192,116,.3), transparent 55%),
-    radial-gradient(80% 90% at 90% 100%, rgba(46,140,99,.32), transparent 55%),
-    linear-gradient(160deg, #14457C, #0A2540 70%);
-}
-.cta .wrap{ max-width:900px; position:relative; z-index:2; }
-.cta h2{ color:#fff; margin-top:1.3rem; }
-.cta .lead{ color:rgba(255,255,255,.74); margin:1.5rem auto 0; max-width:48ch; }
-.cta-row{ display:flex; gap:20px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:clamp(34px,4.5vw,50px); }
-.cta-contact{ margin-top:clamp(34px,4.5vw,48px); font-size:0.92rem; color:rgba(255,255,255,.6);
-  display:flex; gap:10px 26px; justify-content:center; flex-wrap:wrap; }
-.cta-contact a{ color:rgba(255,255,255,.85); border-bottom:1px solid rgba(255,255,255,.3); padding-bottom:2px; transition:border-color .3s; }
-.cta-contact a:hover{ border-color:#fff; }
-.cta-claim{
-  margin-top:clamp(46px,6vw,76px); padding-top:clamp(34px,4.5vw,50px);
-  border-top:1px solid rgba(255,255,255,.16);
-  font-size:clamp(1.15rem,1.8vw,1.45rem); font-weight:400; letter-spacing:-0.01em;
-  color:rgba(255,255,255,.82); max-width:32ch; margin-inline:auto;
-}
-
-/* ── FOOTER ──────────────────────────────────────────────────── */
-footer{ background:#081E36; color:#fff; padding-block:clamp(56px,7vw,88px); }
-.foot-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap;
-  padding-bottom:46px; border-bottom:1px solid rgba(255,255,255,.12); }
-.foot-mark{ font-weight:700; font-size:1.08rem; letter-spacing:0.3em; padding-left:0.3em; }
-.foot-claim{ font-size:1.1rem; color:rgba(255,255,255,.6); max-width:24ch; letter-spacing:-0.01em; }
-.foot-links{ display:flex; gap:clamp(22px,4vw,52px); flex-wrap:wrap; }
-.foot-links a{ font-size:0.88rem; color:rgba(255,255,255,.6); transition:color .3s; }
-.foot-links a:hover{ color:#fff; }
-.foot-bottom{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
-  padding-top:30px; font-size:0.8rem; color:rgba(255,255,255,.38); }
-
-/* ── reveal ──────────────────────────────────────────────────── */
-.reveal{ opacity:0; transform:translateY(28px); }
-.reveal.in{ opacity:1; transform:none; transition:opacity 1.1s var(--ease), transform 1.1s var(--ease); }
-.reveal[data-d="1"].in{ transition-delay:.09s; }
-.reveal[data-d="2"].in{ transition-delay:.18s; }
-.reveal[data-d="3"].in{ transition-delay:.27s; }
-.reveal[data-d="4"].in{ transition-delay:.36s; }
-
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-  .reveal{ opacity:1; transform:none; transition:none; }
-  .hero-orb,.discover-orb,.scroll-cue .bar{ animation:none; }
-}
-
-/* ── responsive ──────────────────────────────────────────────── */
-@media (max-width:900px){
-  .manifest .grid{ grid-template-columns:1fr; gap:36px; }
-  .compare{ grid-template-columns:1fr; }
-  .team-grid{ grid-template-columns:1fr 1fr; }
-  .plan-grid{ grid-template-columns:1fr; max-width:480px; margin-inline:auto; }
-  .vs-cards{ grid-template-columns:1fr; max-width:520px; }
-  .vs-nov{ transform:none; }
-  .vs-nov:hover{ transform:translateY(-6px); }
-  .calc-compare{ grid-template-columns:1fr; gap:26px; }
-  .calc-vs{ margin:0 auto; }
-}
-/* La navegació té molts enllaços i no hi caben còmodament fins a ~1180px:
-   per sota col·lapsa al menú hamburguesa perquè no s'amunteguin ni trepitgin
-   el logo. El selector d'idioma passa al menú desplegable. */
-@media (max-width:1180px){
-  .nav-links .hide-sm{ display:none; }
-  .nav-burger{ display:flex; }
-  .nav-mobile{ display:flex; }
-  .nav-links > .lang-switch{ display:none; }   /* amaga el selector de la capçalera */
-  .lang-switch--mobile{ display:flex; }        /* i el mostra dins del menú */
-}
-@media (max-width:640px){
-  body{ font-size:16px; }
-  .hero-foot{ flex-direction:column; align-items:flex-start; gap:28px; }
-  .team-grid{ grid-template-columns:1fr; }
-  .proc-row{ grid-template-columns:60px 1fr; }
-  .proc-row p{ grid-column:2; }
-  .quiz{ padding:24px 20px; }
-  .quiz-top{ flex-direction:column; align-items:flex-start; gap:12px; }
-  .quiz-progress{ max-width:none; width:100%; }
-  .result-actions{ flex-direction:column; }
-}
-
-/* ════════════════════════════════════════════════════════════
-   LEGAL — footer legal · banner cookies · consentiment
-   ════════════════════════════════════════════════════════════ */
-.foot-legal{
-  display:flex; flex-wrap:wrap; gap:8px 24px; align-items:center;
-  padding-top:26px; margin-top:30px; border-top:1px solid rgba(255,255,255,.12);
-}
-.foot-legal a{ font-size:0.8rem; color:rgba(255,255,255,.5); transition:color .3s; }
-.foot-legal a:hover{ color:#fff; }
-.foot-legal .sep{ color:rgba(255,255,255,.2); font-size:0.8rem; }
-
-/* cookie banner */
-.cookie-banner{
-  position:fixed; z-index:80; left:clamp(16px,3vw,28px); right:clamp(16px,3vw,28px);
-  bottom:clamp(16px,3vw,28px); max-width:560px; margin-inline:auto;
-  border-radius:20px; padding:clamp(22px,2.6vw,30px);
-  background:linear-gradient(165deg, rgba(255,255,255,.94), rgba(244,241,234,.92));
-  border:1px solid rgba(10,37,64,.1);
-  backdrop-filter:blur(20px) saturate(160%); -webkit-backdrop-filter:blur(20px) saturate(160%);
-  box-shadow:0 40px 90px -34px rgba(10,37,64,.5);
-  transform:translateY(140%); opacity:0; transition:transform .7s var(--ease), opacity .7s var(--ease);
-  pointer-events:none;
-}
-.cookie-banner.show{ transform:none; opacity:1; pointer-events:auto; }
-.cookie-banner h4{ font-size:1.06rem; font-weight:600; letter-spacing:-0.02em; color:var(--navy); margin-bottom:9px; }
-.cookie-banner p{ font-size:0.88rem; line-height:1.55; color:var(--ink-2); margin-bottom:18px; }
-.cookie-banner p a{ color:var(--blue); border-bottom:1px solid var(--line); }
-.cookie-acts{ display:flex; flex-wrap:wrap; gap:10px; }
-.ck-btn{ font-family:inherit; font-size:0.88rem; font-weight:600; cursor:pointer; border-radius:100px;
-  padding:11px 20px; border:1px solid var(--line); background:var(--paper); color:var(--ink); transition:all .3s var(--ease); }
-.ck-btn:hover{ transform:translateY(-1px); }
-.ck-btn.primary{ background:linear-gradient(100deg,var(--green),var(--green-d)); color:#fff; border-color:transparent;
-  box-shadow:0 12px 28px -12px rgba(34,111,78,.5); }
-.ck-btn.ghost:hover{ border-color:var(--navy); }
-.ck-btn.link{ border:none; background:none; color:var(--ink-2); padding:11px 8px; }
-.ck-btn.link:hover{ color:var(--navy); }
-/* config panel */
-.cookie-config{ display:none; margin:16px 0 4px; border-top:1px solid var(--line); padding-top:16px; }
-.cookie-config.open{ display:block; animation:stepIn .4s var(--ease) both; }
-.ck-row{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:11px 0; border-bottom:1px solid var(--line); }
-.ck-row:last-child{ border-bottom:none; }
-.ck-row .t{ font-size:0.9rem; font-weight:600; color:var(--ink); }
-.ck-row .d{ font-size:0.8rem; color:var(--ink-3); line-height:1.45; margin-top:2px; max-width:42ch; }
-.ck-toggle{ position:relative; width:42px; height:24px; flex:none; border-radius:100px; background:var(--line);
-  border:none; cursor:pointer; transition:background .3s; margin-top:2px; }
-.ck-toggle::after{ content:''; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%;
-  background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.2); transition:transform .3s var(--ease); }
-.ck-toggle.on{ background:var(--green); }
-.ck-toggle.on::after{ transform:translateX(18px); }
-.ck-toggle.locked{ background:var(--blue-2); opacity:.6; cursor:not-allowed; }
-
-/* consent checkbox (forms) */
-.consent{ display:flex; align-items:flex-start; gap:12px; margin-top:20px; cursor:pointer; }
-.consent input{ position:absolute; opacity:0; width:0; height:0; }
-.consent .cbox{ width:22px; height:22px; flex:none; border-radius:7px; border:1.5px solid var(--line);
-  position:relative; transition:border-color .25s, background .25s; margin-top:1px; }
-.consent .cbox::after{ content:''; position:absolute; left:7px; top:3px; width:5px; height:10px;
-  border-right:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(45deg) scale(0); transition:transform .25s var(--ease); }
-.consent input:checked + .cbox{ background:var(--green); border-color:var(--green); }
-.consent input:checked + .cbox::after{ transform:rotate(45deg) scale(1); }
-.consent input:focus-visible + .cbox{ box-shadow:0 0 0 4px rgba(46,140,99,.2); }
-.consent .ctext{ font-size:0.86rem; line-height:1.5; color:var(--ink-2); }
-.consent .ctext a{ color:var(--blue); border-bottom:1px solid var(--line); }
-/* consent on dark glass (quiz) */
-.consent.on-dark .cbox{ border-color:rgba(255,255,255,.4); }
-.consent.on-dark .ctext{ color:rgba(255,255,255,.66); }
-.consent.on-dark .ctext a{ color:var(--gold-2); border-bottom-color:rgba(240,192,116,.4); }
-
-@media (max-width:640px){
-  .cookie-acts{ flex-direction:column; }
-  .ck-btn{ width:100%; }
-}
-
-
-/* ── Enllaços del menú que porten a una altra pàgina (subtil) ── */
-.nav-links a.to-page::after,
-.nav-mobile a.to-page::after{
-  content:"\2197"; /* fletxa diagonal ↗ */
-  display:inline-block; margin-left:4px;
-  font-size:.72em; font-weight:700; line-height:0;
-  color:var(--amber); opacity:.8; vertical-align:.05em;
-  transition:transform .3s var(--ease), opacity .3s var(--ease);
-}
-.nav-links a.to-page:hover::after{ opacity:1; transform:translate(1px,-1px); }
-.nav-mobile a.to-page::after{ font-size:.66em; opacity:.85; }
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ░░ SEO · primary ░░ -->
+<title>Vendre propietats a la Costa Brava sense comissions | NOVERA</title>
+<meta name="description" content="NOVERA és el nou model immobiliari de la Costa Brava: ven la teva propietat amb preu fix i sense percentatges sobre la venda. Valoració gratuïta a Lloret de Mar, Blanes, Tossa, Begur i tota la costa.">
+<meta name="keywords" content="vendre propietat Costa Brava, vendre pis Lloret de Mar, vendre casa Costa Brava, immobiliària sense comissions, honoraris immobiliaris, valorar habitatge, quant val casa meva">
+<meta name="author" content="NOVERA">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#0A2540">
+<link rel="canonical" href="https://clubnovera.com/">
+
+<!-- ░░ hreflang ░░ -->
+<link rel="alternate" hreflang="ca" href="https://clubnovera.com/">
+<link rel="alternate" hreflang="es" href="https://clubnovera.com/?lang=es">
+<link rel="alternate" hreflang="en" href="https://clubnovera.com/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://clubnovera.com/">
+
+<!-- ░░ icons · manifest ░░ -->
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- ░░ Open Graph ░░ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NOVERA">
+<meta property="og:title" content="Vendre propietats a la Costa Brava sense comissions | NOVERA">
+<meta property="og:description" content="El nou model immobiliari de la Costa Brava. Preu fix, sense percentatges sobre la venda. Valoració gratuïta de la teva propietat.">
+<meta property="og:url" content="https://clubnovera.com/">
+<meta property="og:image" content="https://clubnovera.com/assets/og-novera.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NOVERA — un nou model immobiliari a la Costa Brava">
+<meta property="og:locale" content="ca_ES">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="en_GB">
+
+<!-- ░░ Twitter ░░ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vendre propietats a la Costa Brava sense comissions | NOVERA">
+<meta name="twitter:description" content="El nou model immobiliari de la Costa Brava. Preu fix, sense percentatges sobre la venda.">
+<meta name="twitter:image" content="https://clubnovera.com/assets/og-novera.jpg">
+
+<!-- ░░ performance ░░ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/novera-hero.webp" fetchpriority="high">
+<link rel="preload" as="style" href="assets/novera.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/novera.css">
+<link rel="stylesheet" href="assets/equip.css">
+
+<!-- ░░ Schema.org · Organization + RealEstateAgent + WebSite ░░ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://clubnovera.com/#organization",
+      "name": "NOVERA",
+      "alternateName": "Club NOVERA",
+      "url": "https://clubnovera.com/",
+      "logo": "https://clubnovera.com/assets/favicon-512.png",
+      "image": "https://clubnovera.com/assets/og-novera.jpg",
+      "email": "comercial@clubnovera.com",
+      "telephone": "+34684411470",
+      "slogan": "La nova manera de vendre propietats.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carrer Comte Ramon Borrell, 6",
+        "addressLocality": "Lloret de Mar",
+        "addressRegion": "Girona",
+        "postalCode": "17310",
+        "addressCountry": "ES"
+      },
+      "areaServed": ["Lloret de Mar","Blanes","Tossa de Mar","Platja d'Aro","Begur","Palafrugell","Sant Feliu de Guíxols","Costa Brava","Girona"],
+      "sameAs": [
+        "https://www.instagram.com/clubnovera/",
+        "https://novera.cat",
+        "https://clubnovera.es"
+      ]
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://clubnovera.com/#localbusiness",
+      "name": "NOVERA",
+      "url": "https://clubnovera.com/",
+      "image": "https://clubnovera.com/assets/og-novera.jpg",
+      "logo": "https://clubnovera.com/assets/favicon-512.png",
+      "email": "comercial@clubnovera.com",
+      "telephone": "+34684411470",
+      "priceRange": "€€",
+      "currenciesAccepted": "EUR",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Carrer Comte Ramon Borrell, 6",
+        "addressLocality": "Lloret de Mar",
+        "addressRegion": "Girona",
+        "postalCode": "17310",
+        "addressCountry": "ES"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 41.6995, "longitude": 2.8456 },
+      "areaServed": [
+        { "@type": "City", "name": "Lloret de Mar" },
+        { "@type": "City", "name": "Blanes" },
+        { "@type": "City", "name": "Tossa de Mar" },
+        { "@type": "City", "name": "Platja d'Aro" },
+        { "@type": "City", "name": "Begur" },
+        { "@type": "City", "name": "Palafrugell" },
+        { "@type": "City", "name": "Sant Feliu de Guíxols" }
+      ],
+      "parentOrganization": { "@id": "https://clubnovera.com/#organization" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://clubnovera.com/#website",
+      "url": "https://clubnovera.com/",
+      "name": "NOVERA",
+      "inLanguage": "ca",
+      "publisher": { "@id": "https://clubnovera.com/#organization" }
+    }
+  ]
+}
+</script>
+
+<!-- ░░ Schema.org · FAQPage + BreadcrumbList ░░ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Quant costa vendre un habitatge amb NOVERA?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A NOVERA treballem amb un preu fix i transparent des del primer dia, en funció del servei que tries. No apliquem cap percentatge sobre el preu de venda: els teus honoraris immobiliaris no pugen encara que la teva propietat valgui més." } },
+    { "@type": "Question", "name": "NOVERA cobra comissió sobre el preu de venda?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. A diferència de les comissions immobiliàries tradicionals (que solen oscil·lar entre el 3% i el 5% del preu), els nostres honoraris són fixos i pactats per endavant. Saps exactament què pagaràs abans de començar." } },
+    { "@type": "Question", "name": "A quines zones de la Costa Brava opera NOVERA?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Estem començant: som una empresa jove que està provant i perfeccionant el procés per fer-lo tan òptim com sigui possible. Comencem per Lloret de Mar, el nostre punt de partida, i anirem ampliant zona a zona per tota la Costa Brava (Blanes, Tossa de Mar, Platja d'Aro, Begur i més) a mesura que ho puguem abastar amb la màxima qualitat i control." } },
+    { "@type": "Question", "name": "Com puc saber quant val casa meva?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Et fem una valoració gratuïta i sense compromís. Analitzem la teva propietat, la zona i el mercat actual, i t'expliquem amb honestedat a quin preu es pot vendre i en quant de temps." } },
+    { "@type": "Question", "name": "Quina diferència hi ha amb una immobiliària tradicional?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Un sol equip coordina tot el procés —valoració, estudi legal, fotografia, visites i notaria— amb un únic punt de contacte i honoraris basats en la feina, no en el preu de venda." } }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inici", "item": "https://clubnovera.com/" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ░░ NAV ░░ -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="wordmark" aria-label="NOVERA — inici">NOVERA</a>
+    <nav class="nav-links">
+      <a href="#model" class="hide-sm">El model</a>
+      <a href="#equip" class="hide-sm">L'equip</a>
+      <a href="#plans" class="hide-sm">Plans</a>
+      <a href="recursos/index.html" class="hide-sm to-page">Guia</a>
+      <a href="Impacte-Compartit.html" class="hide-sm to-page">Habitatge Just</a>
+      <a href="Canal Compradors.html" class="hide-sm to-page">Canal Compradors</a>
+      <a href="#descobreix" class="nav-cta hide-sm">Descobreix <span class="ar">→</span></a>
+      <button class="nav-burger" id="navBurger" aria-label="Obrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+  <div class="nav-mobile" id="navMobile" aria-hidden="true">
+    <a href="#model">El model</a>
+    <a href="#equip">L'equip</a>
+    <a href="#proces">El procés</a>
+    <a href="#plans">Plans</a>
+    <a href="recursos/index.html" class="to-page">Guia</a>
+    <a href="Impacte-Compartit.html" class="to-page">Habitatge Just</a>
+    <a href="Canal Compradors.html" class="to-page">Canal Compradors</a>
+    <a href="#descobreix" class="nm-cta">Descobreix el teu camí <span>→</span></a>
+  </div>
+</header>
+
+<!-- ░░ HERO — editorial split, kinetic ░░ -->
+<section class="hero" id="top" data-screen-label="Hero">
+  <div class="hero-glow hero-glow-a" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-b" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+
+  <div class="hero-inner wrap">
+    <div class="hero-copy">
+      <span class="hero-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z"/></svg>Gratis fins al tancament</span>
+
+      <h1 class="hero-title">Ven
+        <span class="ht-rotator" aria-label="casa teva">
+          <span class="ht-word is-active">casa teva</span>
+          <span class="ht-word">el teu pis</span>
+          <span class="ht-word">la teva vil·la</span>
+          <span class="ht-word">el teu àtic</span>
+        </span>
+        <br><span class="ht-tail">sense comissions.</span></h1>
+
+      <p class="hero-sub">Preu fix, zero percentatges, un sol equip. Pagues només quan es ven.</p>
+
+      <div class="hero-cta">
+        <a href="#descobreix" class="cta-main">
+          <span class="cta-label">Valora la teva propietat</span>
+          <span class="cta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="cta-shine" aria-hidden="true"></span>
+        </a>
+        <a href="#model" class="cta-sub">
+          <span>Descobreix el model</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <a href="Canal Compradors.html" class="hero-buyer">
+        <span class="hb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg></span>
+        Ets comprador? Entra al <strong>Canal de compradors</strong>
+        <span class="hb-ar">→</span>
+      </a>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-photo">
+        <div class="hero-img" style="background-image:url('assets/novera-hero.webp')"></div>
+      </div>
+      <div class="price-stamp" id="priceStamp">
+        <span class="ps-from">Des de</span>
+        <span class="ps-amount">2.990<span class="ps-cur">€</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-trust" aria-hidden="true">
+    <div class="ht-track">
+      <span class="ht-item">0% comissió sobre la venda</span><span class="ht-sep"></span>
+      <span class="ht-item">Preu fix i transparent</span><span class="ht-sep"></span>
+      <span class="ht-item">Un sol equip coordinant-ho tot</span><span class="ht-sep"></span>
+      <span class="ht-item">Comencem per la Costa Brava · escalant amb qualitat</span><span class="ht-sep"></span>
+      <span class="ht-item">Valoració gratuïta i sense compromís</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">0% comissió sobre la venda</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">Preu fix i transparent</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">Un sol equip coordinant-ho tot</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">Comencem per la Costa Brava · escalant amb qualitat</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">Valoració gratuïta i sense compromís</span><span class="ht-sep"></span>
+    </div>
+  </div>
+
+  <a href="#model" class="hero-scroll" aria-label="Baixa per veure més">
+    <span class="hs-line"></span>
+    <span class="hs-word">Descobreix</span>
+  </a>
+</section>
+
+<!-- ░░ MANIFEST ░░ -->
+<section class="manifest" id="model" data-screen-label="El model">
+  <div class="wrap">
+    <div class="vs-head reveal">
+      <span class="kicker kicker--gold">El model</span>
+      <h2 class="h2">NOVERA no ve a competir.<br>Ve a canviar la manera de fer-ho.</h2>
+      <p class="lead">El mercat porta dècades amb les mateixes regles: processos lents, informació poc clara i uns costos que ningú entén del tot. El propietari d'avui busca una altra cosa.</p>
+    </div>
+
+    <div class="model-showcase reveal">
+      <div class="ms-media">
+        <image-slot id="manifest-fig" shape="rect" fit="cover" src="assets/manifest-fig.webp"
+          placeholder="Detall arquitectònic o interior luminós"></image-slot>
+      </div>
+      <div class="ms-pillars">
+        <article class="ms-pillar">
+          <span class="mp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <div class="ms-txt">
+            <h3>Transparència</h3>
+            <p>Saps què pagues i per què des del primer dia. Sense percentatges ni lletra petita.</p>
+          </div>
+        </article>
+        <article class="ms-pillar">
+          <span class="mp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><circle cx="4" cy="12" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="20" cy="14" r="2"/></svg></span>
+          <div class="ms-txt">
+            <h3>Control</h3>
+            <p>Nosaltres coordinem cada pas, però la decisió sempre és teva.</p>
+          </div>
+        </article>
+        <article class="ms-pillar">
+          <span class="mp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div class="ms-txt">
+            <h3>Tranquil·litat</h3>
+            <p>Un únic equip s'ocupa de tot el procés, de la valoració a la notaria.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ COMPARATIVA — model tradicional vs NOVERA ░░ -->
+<section class="vs" id="comparativa" data-screen-label="Model tradicional vs NOVERA">
+  <div class="wrap">
+    <div class="vs-head reveal">
+      <span class="kicker kicker--gold">La comparativa</span>
+      <h2 class="h2">Quant pots estalviar?</h2>
+      <p class="lead">El model tradicional cobra un percentatge. NOVERA, un preu fix. Mira la diferència amb la teva propietat.</p>
+    </div>
+
+    <div class="vs-ledger reveal">
+      <div class="ledger-head">
+        <div class="lh-trad">Model tradicional</div>
+        <div class="lh-mid"></div>
+        <div class="lh-nov">Model NOVERA</div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Percentatges sobre el valor de la propietat.
+        </div>
+        <div class="lr-theme"><span>Preu</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Preu fix i transparent des del primer dia.
+        </div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Diversos interlocutors durant el procés.
+        </div>
+        <div class="lr-theme"><span>Equip</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Un únic equip coordinant tot el procés.
+        </div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Costos que augmenten amb el preu de venda.
+        </div>
+        <div class="lr-theme"><span>Costos</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Honoraris basats en la feina realitzada.
+        </div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Informació dispersa entre diferents professionals.
+        </div>
+        <div class="lr-theme"><span>Seguiment</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Seguiment clar de cada etapa del procés.
+        </div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          El propietari s'adapta al sistema.
+        </div>
+        <div class="lr-theme"><span>Enfocament</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          El sistema s'adapta al propietari.
+        </div>
+      </div>
+    </div>
+
+    <!-- CALCULADORA — exemple real interactiu -->
+    <div class="vs-calc reveal">
+      <div class="calc-head">
+        <span class="kicker">Un exemple real</span>
+        <h3>Mou el valor de casa teva</h3>
+        <p class="calc-intro">Compara la comissió tradicional del 5% amb el preu fix de NOVERA.</p>
+      </div>
+
+      <div class="calc-slider">
+        <div class="cslider-top">
+          <span class="cslider-label">Preu de venda de la propietat</span>
+          <span class="cslider-value" id="calcPrice">200.000 €</span>
+        </div>
+        <input type="range" id="calcRange" min="150000" max="2000000" step="10000" value="200000" aria-label="Preu de venda de la propietat">
+        <div class="cslider-scale"><span>150.000 €</span><span>2.000.000 €</span></div>
+      </div>
+
+      <div class="calc-compare">
+        <div class="calc-side calc-trad">
+          <div class="cs-label">Comissió tradicional</div>
+          <div class="cs-sub">5% sobre el preu</div>
+          <div class="cs-amount" id="calcTrad">10.000 €</div>
+        </div>
+        <div class="calc-vs" aria-hidden="true">vs</div>
+        <div class="calc-side calc-nov">
+          <div class="cs-label">NOVERA Pro</div>
+          <div class="cs-sub">preu fix</div>
+          <div class="cs-amount" id="calcNov">4.990 €</div>
+        </div>
+      </div>
+
+      <div class="calc-badge-row">
+        <span class="calc-badge reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6M21 7h-6"/></svg>
+          <span id="calcPct">50</span>% d'estalvi
+        </span>
+      </div>
+
+      <div class="calc-saving">
+        <div class="saving-label">El teu estalvi estimat</div>
+        <div class="saving-amount" id="calcSave">5.010 €</div>
+      </div>
+
+      <div class="calc-break">
+        <div class="cb-row"><span>Comissió tradicional (5%)</span><span id="cbTrad">10.000 €</span></div>
+        <div class="cb-row"><span>Menys: preu fix NOVERA</span><span id="cbNov">−4.990 €</span></div>
+        <div class="cb-row cb-total"><span>Estalvies</span><span id="cbSave">5.010 €</span></div>
+        <div class="cb-bar"><div class="cb-fill" id="cbFill"></div><span class="cb-pct" id="cbPct">50%</span></div>
+      </div>
+
+      <p class="calc-micro">No pagues més perquè la teva propietat val més. Paga per la feina feta. Preus orientatius; la valoració concreta es fa sobre cada immoble.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ EQUIP — el nucli de coordinació ░░ -->
+<section class="team" id="equip" data-screen-label="L'equip">
+  <div class="wrap">
+    <div class="team-intro">
+      <span class="kicker kicker--light reveal">L'equip</span>
+      <h2 class="h2 reveal" data-d="1">Una propietat.<br>Un equip complet.</h2>
+      <p class="lead reveal" data-d="2">No creiem en la figura d'una sola persona intentant fer-ho tot. Cada operació activa els professionals que realment necessita, coordinats al voltant d'un únic objectiu: vendre bé la teva propietat.</p>
+    </div>
+
+    <div class="system reveal" data-d="1">
+      <div class="system-frame">
+        <span class="sf-corner tl"></span><span class="sf-corner tr"></span>
+        <span class="sf-corner bl"></span><span class="sf-corner br"></span>
+        <div class="sf-label"><span class="sf-dot"></span>La tranquil·litat de tenir-ho tot.</div>
+        <div class="system-orbit" id="systemOrbit"></div>
+        <p class="system-hint">Passa el cursor per cada especialitat</p>
+      </div>
+    </div>
+
+    <div class="team-reinforce">
+      <h3 class="reveal">Ningú ho fa tot.</h3>
+      <p class="reveal" data-d="1">Per això hem construït una estructura on cada especialista treballa en allò que millor sap fer. Mentre tu tens un únic punt de contacte, darrere hi ha un equip complet coordinant cada fase del procés.</p>
+    </div>
+
+    <div class="team-benefits">
+      <div class="benefit reveal">
+        <div class="b-bar"></div>
+        <div class="b-title">Més control</div>
+        <p class="b-text">Cada fase és gestionada per l'especialista adequat.</p>
+      </div>
+      <div class="benefit reveal" data-d="1">
+        <div class="b-bar"></div>
+        <div class="b-title">Menys errors</div>
+        <p class="b-text">La documentació, els aspectes legals i els processos tècnics estan coordinats.</p>
+      </div>
+      <div class="benefit reveal" data-d="2">
+        <div class="b-bar"></div>
+        <div class="b-title">Més valor</div>
+        <p class="b-text">Cada decisió busca maximitzar el resultat final de la venda.</p>
+      </div>
+    </div>
+
+    <div class="team-close reveal">
+      <p>No contractes una immobiliària.<br><span class="grad">Actives una estructura completa al servei de la teva propietat.</span></p>
+    </div>
+
+    <div class="team-network reveal">
+      <div class="tn-copy">
+        <span class="kicker kicker--light">La nostra xarxa</span>
+        <h3>Tot el que necessites,<br>en un sol lloc.</h3>
+        <p>Una compravenda no acaba amb trobar un comprador. Al voltant de cada operació hi intervenen diferents professionals, i nosaltres ens encarreguem de coordinar-los perquè tot avanci amb seguretat i sense complicacions.</p>
+        <p>Treballem amb una xarxa de confiança formada per agents immobiliaris, arquitectes, interioristes, professionals de reformes, serveis legals i financers. Si els necessites, t'ajudem a trobar el professional adequat. Tu decideixes sempre amb qui vols treballar.</p>
+        <p>El nostre objectiu és simple: que tant tu com el comprador tingueu tot el necessari, ben coordinat i sense haver de buscar res pel vostre compte.</p>
+      </div>
+      <div class="tn-cta">
+        <span class="tn-eyebrow"><span class="tn-dot"></span>Estem en expansió</span>
+        <h4 class="tn-title">Uneix-te a la xarxa NOVERA.</h4>
+        <p class="tn-lead">Si ets agent immobiliari, arquitecte, interiorista o professional dels serveis legals, financers o de reformes, ens agradarà conèixer-te.</p>
+        <p class="tn-lead tn-lead--soft">Estem construint una xarxa de col·laboradors de confiança a la Costa Brava per oferir un servei més complet, coordinat i de màxima qualitat als nostres clients.</p>
+        <p class="tn-ask">Vols formar-ne part? Parlem.</p>
+        <a class="tn-btn" href="mailto:comercial@clubnovera.com?subject=Vull%20treballar%20amb%20NOVERA&body=Hola%2C%20soc%20professional%20del%20sector%20i%20m%27agradaria%20formar%20part%20de%20la%20vostra%20xarxa%20de%20col%C2%B7laboradors.%0A%0AServei%3A%20%0AZona%3A%20%0ATel%C3%A8fon%3A%20">
+          <span>Treballa amb nosaltres</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <span class="tn-mail">comercial@clubnovera.com</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ PROCÉS ░░ -->
+<section class="proc" id="proces" data-screen-label="El procés">
+  <div class="wrap proc-grid">
+    <div class="proc-intro">
+      <span class="kicker kicker--gold reveal">El procés</span>
+      <h2 class="h2 proc-h2 reveal" data-d="1">Deu passos.<br>Tu, sempre acompanyat.</h2>
+      <p class="lead reveal" data-d="2">Del primer contacte fins a la firma a notaria. Cada pas coordinat, sense que t'hagis de preocupar per res.</p>
+      <div class="proc-badge reveal" data-d="3">
+        <span class="pb-num">10</span>
+        <span class="pb-txt">passos coordinats<br>per un sol equip</span>
+      </div>
+    </div>
+
+    <ol class="proc-timeline">
+      <li class="proc-node reveal"><span class="pn-dot">01</span><div class="pn-card"><h3>Contacte</h3><p>Ens escrius i et responem en menys de 24 hores.</p></div></li>
+      <li class="proc-node reveal"><span class="pn-dot">02</span><div class="pn-card"><h3>Conversa</h3><p>Ens expliques l'immoble i la teva situació, sense compromís.</p></div></li>
+      <li class="proc-node reveal"><span class="pn-dot">03</span><div class="pn-card"><h3>Visita i valoració</h3><p>Visitem, valorem i t'expliquem el preu amb honestedat.</p></div></li>
+      <li class="proc-node reveal"><span class="pn-dot">04</span><div class="pn-card"><h3>Estudi legal</h3><p>L'advocat ho revisa tot. Sense sorpreses més endavant.</p></div></li>
+      <li class="proc-node reveal"><span class="pn-dot">05</span><div class="pn-card"><h3>Encàrrec</h3><p>Un document simple i un preu fix. Comencem a treballar.</p></div></li>
+      <li class="proc-node reveal"><span class="pn-dot">06</span><div class="pn-card"><h3>Preparació</h3><p>Fotografia, vídeo i posada a punt de l'immoble.</p></div></li>
+      <li class="proc-node reveal"><span class="pn-dot">07</span><div class="pn-card"><h3>Publicació</h3><p>Portals, xarxes i la nostra base de compradors.</p></div></li>
+      <li class="proc-node reveal"><span class="pn-dot">08</span><div class="pn-card"><h3>Oferta</h3><p>Negociem en nom teu i tu decideixes si l'acceptes.</p></div></li>
+      <li class="proc-node reveal"><span class="pn-dot">09</span><div class="pn-card"><h3>Arres</h3><p>L'advocat redacta i gestiona tota la documentació.</p></div></li>
+      <li class="proc-node reveal"><span class="pn-dot pn-last">10</span><div class="pn-card"><h3>Notaria</h3><p>Coordinació completa fins a la firma. Fet.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ░░ ★ DESCOBREIX — landing de captació ░░ -->
+<section class="discover" id="descobreix" data-screen-label="Descobreix">
+  <div class="discover-orb d1"></div>
+  <div class="discover-orb d2"></div>
+  <div class="discover-orb d3"></div>
+  <div class="wrap">
+    <div class="discover-head reveal">
+      <span class="kicker">Anàlisi personalitzada</span>
+      <h2 class="h2">Descobreix quin és el millor camí per vendre la teva propietat.</h2>
+      <p>En menys de 2 minuts analitzem la teva situació i et recomanem el model NOVERA més adequat.</p>
+    </div>
+
+    <div class="quiz reveal" id="quiz" data-d="1">
+      <!-- top bar -->
+      <div class="quiz-top">
+        <span class="quiz-steplabel">Pas 1 de 6</span>
+        <div class="quiz-progress" aria-hidden="true">
+          <div class="seg"><i></i></div><div class="seg"><i></i></div><div class="seg"><i></i></div>
+          <div class="seg"><i></i></div><div class="seg"><i></i></div><div class="seg"><i></i></div>
+        </div>
+      </div>
+
+      <div class="quiz-stage">
+        <!-- STEP 1 — adreça -->
+        <div class="quiz-step active" data-field="adreca">
+          <h3>On es troba la teva propietat?</h3>
+          <p class="qsub">Comencem pel principi. La ubicació ho explica gairebé tot.</p>
+          <div class="quiz-field">
+            <label>📍 Adreça de l'immoble</label>
+            <input class="quiz-input" type="text" autocomplete="off"
+              placeholder="Carrer, número i població">
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back" hidden>← Enrere</button>
+            <button class="quiz-next" disabled>Començar anàlisi
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2 — situació -->
+        <div class="quiz-step" data-field="situacio">
+          <h3>Quina és la teva situació?</h3>
+          <p class="qsub">No hi ha respostes bones ni dolentes. Només la teva.</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-val="ara"><span class="tick"></span> Vull vendre ara</button>
+            <button class="quiz-opt" data-val="mesos"><span class="tick"></span> Vull vendre en els pròxims mesos</button>
+            <button class="quiz-opt" data-val="explorant"><span class="tick"></span> Estic explorant opcions</button>
+            <button class="quiz-opt" data-val="curiositat"><span class="tick"></span> Només vull saber què faria NOVERA</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back">← Enrere</button>
+            <button class="quiz-next" disabled>Continuar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3 — gestió actual -->
+        <div class="quiz-step" data-field="gestio">
+          <h3>Com gestiones actualment la venda?</h3>
+          <p class="qsub">Volem entendre des d'on partim.</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-val="no_iniciat"><span class="tick"></span> Encara no he començat</button>
+            <button class="quiz-opt" data-val="compte"><span class="tick"></span> Ho faig pel meu compte</button>
+            <button class="quiz-opt" data-val="immobiliaria"><span class="tick"></span> Treballo amb una immobiliària</button>
+            <button class="quiz-opt" data-val="provat"><span class="tick"></span> He provat vendre i no ho he aconseguit</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back">← Enrere</button>
+            <button class="quiz-next" disabled>Continuar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4 — prioritat -->
+        <div class="quiz-step" data-field="important">
+          <h3>Què és el més important per a tu?</h3>
+          <p class="qsub">Tria el que pesa més en la teva decisió.</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-val="preu"><span class="tick"></span> Vendre al millor preu</button>
+            <button class="quiz-opt" data-val="rapid"><span class="tick"></span> Vendre ràpid</button>
+            <button class="quiz-opt" data-val="legals"><span class="tick"></span> Evitar problemes legals</button>
+            <button class="quiz-opt" data-val="delegar"><span class="tick"></span> Delegar tot el procés</button>
+            <button class="quiz-opt" data-val="costos"><span class="tick"></span> Reduir costos</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back">← Enrere</button>
+            <button class="quiz-next" disabled>Continuar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 5 — tipus -->
+        <div class="quiz-step" data-field="tipus">
+          <h3>Quin tipus d'immoble és?</h3>
+          <p class="qsub">Cada tipologia té el seu comprador ideal.</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-val="pis"><span class="tick"></span> Pis</button>
+            <button class="quiz-opt" data-val="casa"><span class="tick"></span> Casa</button>
+            <button class="quiz-opt" data-val="xalet"><span class="tick"></span> Xalet</button>
+            <button class="quiz-opt" data-val="villa"><span class="tick"></span> Villa</button>
+            <button class="quiz-opt" data-val="terreny"><span class="tick"></span> Terreny</button>
+            <button class="quiz-opt" data-val="local"><span class="tick"></span> Local</button>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back">← Enrere</button>
+            <button class="quiz-next" disabled>Continuar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 6 — dades -->
+        <div class="quiz-step" data-kind="form">
+          <h3>Ja gairebé estem.</h3>
+          <p class="qsub">On t'enviem la teva proposta personalitzada?</p>
+          <div class="quiz-fields-grid">
+            <div class="quiz-field"><label>Nom</label>
+              <input class="quiz-input" name="nom" type="text" required placeholder="El teu nom"></div>
+            <div class="quiz-field"><label>Correu electrònic</label>
+              <input class="quiz-input" name="email" type="email" required placeholder="nom@correu.com"></div>
+            <div class="quiz-field"><label>Telèfon</label>
+              <input class="quiz-input" name="tel" type="tel" required placeholder="+34 ___ __ __ __"></div>
+          </div>
+          <div class="quiz-nav">
+            <button class="quiz-back">← Enrere</button>
+            <button class="quiz-next" disabled>Rebre proposta personalitzada
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          <p class="quiz-fineprint">Sense compromís. Les teves dades només s'utilitzen per preparar la teva proposta.</p>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="quiz-result">
+        <div class="result-badge"><span class="dot"></span> Proposta personalitzada</div>
+        <p class="r-lead r-hello">El teu camí és clar.</p>
+        <div class="r-plan">NOVERA Pro</div>
+        <p class="r-lead r-tag">El nostre model més equilibrat</p>
+        <p class="r-desc"></p>
+        <div class="result-meta"></div>
+        <p class="r-contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg> <span style="color: #ffffff;">Hem rebut les teves dades. Et contactarem en menys de 24 h per parlar de la teva proposta personalitzada.</span></p>
+        <div class="result-actions">
+          <a href="https://wa.me/34684411470?text=Hola%20NOVERA%2C%20vull%20informaci%C3%B3%20sobre%20la%20meva%20proposta%20de%20venda." target="_blank" rel="noopener" class="btn-wsp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.7-6.1c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.4c.1-.1.2-.3.2-.5v-.5c0-.2-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1-.2-.3-.2-.5-.3z"/></svg>
+            Parlem per WhatsApp
+          </a>
+          <button class="result-restart">Tornar a començar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ PLANS ░░ -->
+<section class="plans" id="plans" data-screen-label="Plans">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker kicker--gold reveal">Plans</span>
+      <h2 class="h2 reveal" data-d="1">Tria fins on vols arribar.</h2>
+      <p class="lead reveal" data-d="2">Tots els plans inclouen valoració, estudi legal, fotografia professional i acompanyament durant tot el procés. Cap percentatge sobre la venda.</p>
+    </div>
+    <div class="plan-grid">
+      <div class="plan reveal">
+        <div class="pname">Basic</div>
+        <div class="price">2.990 <small>€</small></div>
+        <div class="prange">fins a 3.490 €</div>
+        <p class="pdesc">Vendre amb suport professional i seguretat legal des del primer moment.</p>
+        <ul>
+          <li>Valoració professional</li>
+          <li>Fotografia i publicació a portals</li>
+          <li>Documentació i contracte d'arres</li>
+          <li>Acompanyament durant tot el procés</li>
+          <li class="extra">Gestió de visites <span class="ex-price">+100 €/visita</span></li>
+          <li class="off">Negociació i notaria</li>
+        </ul>
+        <a href="#descobreix" class="pbtn">Veure si encaixa</a>
+      </div>
+      <div class="plan feat reveal" data-d="1">
+        <div class="pname">Pro <span class="rec">Recomanat</span></div>
+        <div class="price">4.990 <small>€</small></div>
+        <div class="prange">fins a 5.990 €</div>
+        <p class="pdesc">Tu només decideixes si acceptes l'oferta. De la resta, ens n'ocupem nosaltres.</p>
+        <ul>
+          <li>Tot el que inclou Basic</li>
+          <li>Gestió completa de visites</li>
+          <li>Negociació i estudi de solvència</li>
+          <li>Estratègia de posicionament de preu</li>
+          <li>Coordinació amb gestoria i notaria</li>
+          <li>Acompanyament fins a la firma</li>
+        </ul>
+        <a href="#descobreix" class="pbtn">Veure si encaixa</a>
+      </div>
+      <div class="plan reveal" data-d="2">
+        <div class="pname">Premium</div>
+        <div class="price">7.990 <small>€</small></div>
+        <div class="prange">fins a 9.990 €</div>
+        <p class="pdesc">Ens ocupem absolutament de tot perquè venguis amb la màxima tranquil·litat.</p>
+        <ul>
+          <li>Tot el que inclou Pro</li>
+          <li>Reportatge premium: foto, vídeo i tour</li>
+          <li>Estratègia de sortida personalitzada</li>
+          <li>Gestió de certificats i tràmits</li>
+          <li>Seguiment fins a la postfirma</li>
+        </ul>
+        <a href="#descobreix" class="pbtn">Veure si encaixa</a>
+      </div>
+    </div>
+    <div class="plans-foot reveal">
+      <p><strong>Cap percentatge sobre la venda.</strong> Pagues per la feina, no pel preu de casa teva.</p>
+      <span class="note">Preus orientatius. La valoració concreta es fa sobre cada immoble.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FAQ ░░ -->
+<section class="faq" id="faq" data-screen-label="Preguntes freqüents">
+  <div class="wrap faq-grid">
+    <div class="faq-intro">
+      <span class="kicker kicker--gold reveal">Preguntes freqüents</span>
+      <h2 class="h2 reveal" data-d="1">Tot el que vols<br>saber abans de vendre.</h2>
+      <p class="lead reveal" data-d="2">Resolem els dubtes més habituals sobre honoraris, comissions i com funciona vendre amb NOVERA a la Costa Brava.</p>
+      <a href="#contacte" class="faq-cta reveal" data-d="3">Tens un altre dubte? Parlem-ne <span>→</span></a>
+    </div>
+
+    <div class="faq-list reveal" data-d="1">
+      <details class="faq-item" open>
+        <summary><span>Quant costa vendre un habitatge amb NOVERA?</span><i class="faq-ico"></i></summary>
+        <div class="faq-a"><p>A NOVERA treballem amb un <strong>preu fix i transparent</strong> des del primer dia, en funció del servei que tries. No apliquem cap percentatge sobre el preu de venda: els teus honoraris immobiliaris no pugen encara que la teva propietat valgui més.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>NOVERA cobra comissió sobre el preu de venda?</span><i class="faq-ico"></i></summary>
+        <div class="faq-a"><p>No. A diferència de les comissions immobiliàries tradicionals (que solen oscil·lar entre el 3% i el 5% del preu), els nostres honoraris són <strong>fixos i pactats per endavant</strong>. Saps exactament què pagaràs abans de començar.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>A quines zones de la Costa Brava opera NOVERA?</span><i class="faq-ico"></i></summary>
+        <div class="faq-a"><p>Estem començant. Som una empresa jove que està provant i perfeccionant el procés per fer-lo tan òptim com sigui possible. Comencem per <strong>Lloret de Mar</strong>, el nostre punt de partida, i anirem ampliant zona a zona per tota la Costa Brava —Blanes, Tossa de Mar, Platja d'Aro, Begur i més— a mesura que ho puguem abastar amb la màxima qualitat i control.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>Com puc saber quant val casa meva?</span><i class="faq-ico"></i></summary>
+        <div class="faq-a"><p>Et fem una <strong>valoració gratuïta i sense compromís</strong>. Analitzem la teva propietat, la zona i el mercat actual, i t'expliquem amb honestedat a quin preu es pot vendre i en quant de temps.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>Quina diferència hi ha amb una immobiliària tradicional?</span><i class="faq-ico"></i></summary>
+        <div class="faq-a"><p>Un sol equip coordina tot el procés —valoració, estudi legal, fotografia, visites i notaria— amb un <strong>únic punt de contacte</strong> i honoraris basats en la feina, no en el preu de venda. És una alternativa real a les immobiliàries tradicionals.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CTA ░░ -->
+<section class="cta" id="contacte" data-screen-label="Parlem">
+  <div class="cta-orb"></div>
+  <div class="wrap">
+    <span class="kicker kicker--light reveal" style="justify-content:center;">Parlem</span>
+    <h2 class="h2 reveal" data-d="1">Comença per una conversa. Sense compromís.</h2>
+    <p class="lead reveal" data-d="2">Et fem la valoració, t'expliquem com funcionaria per a la teva propietat en concret, i tu decideixes amb calma.</p>
+    <div class="cta-row reveal" data-d="3">
+      <a href="#descobreix" class="btn-primary">Descobreix el teu camí
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://wa.me/34684411470?text=Hola%20NOVERA%2C%20vull%20informaci%C3%B3%20per%20vendre%20la%20meva%20propietat." target="_blank" rel="noopener" class="btn-wsp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.7-6.1c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.6l.4-.4c.1-.1.2-.3.2-.5v-.5c0-.2-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1-.2-.3-.2-.5-.3z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:comercial@clubnovera.com" class="btn-ghost">comercial@clubnovera.com
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
+      </a>
+    </div>
+    <div class="cta-contact reveal" data-d="3">
+      <a href="https://wa.me/34684411470" target="_blank" rel="noopener">+34 684 41 14 70</a>
+      <a href="mailto:comercial@clubnovera.com">comercial@clubnovera.com</a>
+    </div>
+    <p class="cta-claim reveal">En NOVERA creiem que vendre bé comença per entendre bé.</p>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer data-screen-label="Footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-mark">NOVERA</div>
+      <p class="foot-claim">La nova manera de vendre propietats.</p>
+      <nav class="foot-links">
+        <a href="#model">El model</a>
+        <a href="#equip">L'equip</a>
+        <a href="#proces">El procés</a>
+        <a href="#descobreix">Descobreix</a>
+        <a href="#plans">Plans</a>
+        <a href="Impacte-Compartit.html">Habitatge Just</a>
+        <a href="recursos/index.html">Guia</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 NOVERA · Tot va començar a Lloret.
+</span>
+      <span>clubnovera.com</span>
+    </div>
+    <div class="foot-legal">
+      <a href="Legal.html#avis-legal">Avís legal</a><span class="sep">·</span>
+      <a href="Legal.html#privacitat">Política de privacitat</a><span class="sep">·</span>
+      <a href="Legal.html#cookies">Política de cookies</a><span class="sep">·</span>
+      <a href="#" data-open-cookies>Configurar cookies</a><span class="sep">·</span>
+      <a href="Legal.html#canal-etic">Canal ètic</a><span class="sep">·</span>
+      <a href="Legal.html#baixa">Baixa del Canal Compradors</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ░░ COOKIE BANNER ░░ -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Consentiment de cookies">
+  <h4>Respectem la teva privacitat</h4>
+  <p>Fem servir cookies tècniques necessàries i, amb el teu permís, cookies analítiques i de màrqueting. Pots acceptar-les, rebutjar-les o configurar-les. Més informació a la <a href="Legal.html#cookies">Política de cookies</a>.</p>
+  <div class="cookie-config">
+    <div class="ck-row">
+      <div><div class="t">Tècniques (necessàries)</div><div class="d">Imprescindibles perquè el web funcioni. Sempre actives.</div></div>
+      <button class="ck-toggle on locked" aria-disabled="true" title="Sempre actives"></button>
+    </div>
+    <div class="ck-row">
+      <div><div class="t">Analítiques</div><div class="d">Ens ajuden a entendre l'ús del web de manera agregada i anònima.</div></div>
+      <button class="ck-toggle" data-cat="analytics" aria-label="Activar analítiques"></button>
+    </div>
+    <div class="ck-row">
+      <div><div class="t">Màrqueting</div><div class="d">Permeten mostrar comunicacions rellevants sobre el sistema NOVERA.</div></div>
+      <button class="ck-toggle" data-cat="marketing" aria-label="Activar màrqueting"></button>
+    </div>
+    <button class="ck-btn primary" data-ck="save" style="margin-top:16px;">Desar preferències</button>
+  </div>
+  <div class="cookie-acts">
+    <button class="ck-btn primary" data-ck="accept">Acceptar-ho tot</button>
+    <button class="ck-btn ghost" data-ck="reject">Rebutjar</button>
+    <button class="ck-btn link" data-ck="config">Configurar</button>
+  </div>
+</div>
+
+<script src="image-slot.js"></script>
+<script src="assets/forms.js"></script>
+<script src="assets/equip.js"></script>
+<script src="assets/questionnaire.js"></script>
+<script src="assets/legal.js"></script>
+<script src="assets/i18n.js"></script>
+<script>
+  // Nav background on scroll
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 24);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  // Mobile menu
+  const burger = document.getElementById('navBurger');
+  const navMobile = document.getElementById('navMobile');
+  if (burger && navMobile){
+    const setMenu = (open) => {
+      hdr.classList.toggle('menu-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navMobile.setAttribute('aria-hidden', open ? 'false' : 'true');
+    };
+    burger.addEventListener('click', () => setMenu(!hdr.classList.contains('menu-open')));
+    navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  }
+
+  // Hero — cinematic entrance + soft parallax
+  const heroEl = document.getElementById('top');
+  const heroReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroEl){
+    requestAnimationFrame(() => requestAnimationFrame(() => heroEl.classList.add('hero-in')));
+    if (!heroReduce && window.matchMedia('(pointer:fine)').matches){
+      const bg = heroEl.querySelector('.hero-bg');
+      let raf = null, tx = 0, ty = 0;
+      heroEl.addEventListener('pointermove', (e) => {
+        const r = heroEl.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * -24;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * -16;
+        if (!raf) raf = requestAnimationFrame(() => { bg.style.transform = `translate3d(${tx}px,${ty}px,0)`; raf = null; });
+      });
+      heroEl.addEventListener('pointerleave', () => { bg.style.transform = 'translate3d(0,0,0)'; });
+    }
+  }
+
+  // Slow, elegant scroll reveal
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(el => io.observe(el));
+  }
+
+  // Count-up for the calculator figures (the savings number is the hero)
+  const fmtEur = n => n.toLocaleString('ca-ES') + ' €';
+  function countUp(el){
+    const target = parseInt(el.dataset.count, 10);
+    const dur = el.classList.contains('saving-amount') ? 1700 : 1300;
+    let start = null;
+    function tick(t){
+      if (start === null) start = t;
+      const p = Math.min((t - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmtEur(Math.round(target * eased));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const nums = document.querySelectorAll('[data-count]');
+  if (!reduce && 'IntersectionObserver' in window) {
+    const nio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { countUp(e.target); nio.unobserve(e.target); }
+      });
+    }, { threshold: 0.45 });
+    nums.forEach(n => nio.observe(n));
+  }
+
+  // Hero kinetic word rotator
+  (function(){
+    const rot = document.querySelector('.ht-rotator');
+    if (!rot) return;
+    const words = [...rot.querySelectorAll('.ht-word')];
+    if (words.length < 2 || reduce) return;
+    let i = 0;
+    setInterval(() => {
+      const cur = words[i];
+      i = (i + 1) % words.length;
+      const nxt = words[i];
+      cur.classList.add('is-leaving'); cur.classList.remove('is-active');
+      nxt.classList.remove('is-leaving'); nxt.classList.add('is-active');
+      setTimeout(() => cur.classList.remove('is-leaving'), 600);
+    }, 2400);
+  })();
+
+  // Scroll-driven parallax (subtle) for tagged elements
+  const parEls = document.querySelectorAll('[data-parallax]');
+  if (!reduce && parEls.length){
+    let pRaf = null;
+    const runPar = () => {
+      const vh = window.innerHeight;
+      parEls.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -120 || r.top > vh + 120) return;
+        const center = r.top + r.height / 2;
+        const prog = (center - vh / 2) / vh;              // ~ -0.5 … 0.5
+        const amt = parseFloat(el.dataset.parallax) || 60;
+        el.style.transform = `translate3d(0, ${(-prog * amt).toFixed(1)}px, 0)`;
+      });
+      pRaf = null;
+    };
+    window.addEventListener('scroll', () => { if (!pRaf) pRaf = requestAnimationFrame(runPar); }, { passive:true });
+    window.addEventListener('resize', () => { if (!pRaf) pRaf = requestAnimationFrame(runPar); }, { passive:true });
+    runPar();
+  }
+
+  // Interactive savings calculator
+  (function(){
+    const range = document.getElementById('calcRange');
+    if (!range) return;
+    const FEE = 4990, RATE = 0.05;
+    const eur = n => Math.round(n).toLocaleString('ca-ES') + ' €';
+    const el = id => document.getElementById(id);
+    const price = el('calcPrice'), trad = el('calcTrad'), nov = el('calcNov'),
+          pct = el('calcPct'), save = el('calcSave'),
+          cbTrad = el('cbTrad'), cbNov = el('cbNov'), cbSave = el('cbSave'),
+          cbFill = el('cbFill'), cbPct = el('cbPct');
+    function update(){
+      const p = +range.value;
+      const t = p * RATE;
+      const s = Math.max(0, t - FEE);
+      const pc = t > 0 ? Math.round(s / t * 100) : 0;
+      price.textContent = eur(p);
+      trad.textContent = eur(t);
+      nov.textContent = eur(FEE);
+      pct.textContent = pc;
+      save.textContent = eur(s);
+      cbTrad.textContent = eur(t);
+      cbNov.textContent = '−' + eur(FEE);
+      cbSave.textContent = eur(s);
+      cbPct.textContent = pc + '%';
+      cbFill.style.width = pc + '%';
+      const fill = (p - range.min) / (range.max - range.min) * 100;
+      range.style.setProperty('--fill', fill + '%');
+    }
+    range.addEventListener('input', update);
+    update();
+  })();
+</script>
+
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+.cap >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-family: Montserrat !important }
+span >[data-start="837"] { width: 1px !important }
+span >[data-start="837"] { width: 150px !important }
+span >[data-start="837"] { width: 155px !important }
+span >[data-start="837"] { width: 15px !important }
+span >[data-start="837"] { width: 1px !important }
+span >[data-start="837"] { width: 16px !important }
+span >[data-start="837"] { width: 17px !important }
+span >[data-start="837"] { width: 17px !important }
+span >[data-start="837"] { width: 180px !important }
+#quiz :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 6px !important }
+#quiz :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 6px !important }
+#quiz :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 15px !important }
+</style>
