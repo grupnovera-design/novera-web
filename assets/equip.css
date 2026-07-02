@@ -308,7 +308,9 @@
 .tn-btn:hover{ transform:translateY(-2px); filter:brightness(1.05);
   box-shadow:0 20px 44px -14px rgba(34,111,78,.7); }
 .tn-btn:hover svg{ transform:translateX(4px); }
-.tn-mail{ font-size:.86rem; color:rgba(255,255,255,.5); letter-spacing:.01em; }
+.tn-mail{ font-size:.86rem; color:rgba(255,255,255,.5); letter-spacing:.01em;
+  transition:color .3s var(--ease); }
+.tn-mail:hover{ color:var(--gold-2); }
 
 @media (max-width:860px){
   .team-network{ grid-template-columns:1fr; }
