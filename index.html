@@ -136,6 +136,8 @@
   "mainEntity": [
     { "@type": "Question", "name": "Quant costa vendre un habitatge amb NOVERA?",
       "acceptedAnswer": { "@type": "Answer", "text": "A NOVERA treballem amb un preu fix i transparent des del primer dia, en funció del servei que tries. No apliquem cap percentatge sobre el preu de venda: els teus honoraris immobiliaris no pugen encara que la teva propietat valgui més." } },
+    { "@type": "Question", "name": "Què és el segell verificat NOVERA?",
+      "acceptedAnswer": { "@type": "Answer", "text": "És el Passaport digital de l'immoble: abans de posar cap propietat a la venda la verifiquem a fons (estat legal, registral i real) i li emetem un segell de confiança. Sense segell, no venem. El comprador rep un informe previ complet abans de la visita i té la seguretat que el que veu és exactament el que compra. És un distintiu únic al sector a Espanya." } },
     { "@type": "Question", "name": "NOVERA cobra comissió sobre el preu de venda?",
       "acceptedAnswer": { "@type": "Answer", "text": "No. A diferència de les comissions immobiliàries tradicionals (que solen oscil·lar entre el 3% i el 5% del preu), els nostres honoraris són fixos i pactats per endavant. Saps exactament què pagaràs abans de començar." } },
     { "@type": "Question", "name": "A quines zones de la Costa Brava opera NOVERA?",
@@ -156,6 +158,123 @@
   ]
 }
 </script>
+
+<!-- ░░ Segell verificat — estils ░░ -->
+<style>
+.segell{background:linear-gradient(178deg,#0A2540,#07182B);color:#fff;overflow:hidden;}
+.segell .vs-head{max-width:840px;margin:0 auto clamp(40px,5vw,66px);text-align:center;}
+.segell .vs-head .kicker{justify-content:center;color:var(--gold-2);}
+.segell .vs-head .h2{color:#fff;}
+.segell .vs-head .lead{color:rgba(255,255,255,.74);}
+.seg-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,4vw,58px);align-items:center;max-width:1080px;margin:0 auto;}
+@media(max-width:900px){.seg-grid{grid-template-columns:1fr;}}
+.seg-rule{display:flex;gap:16px;align-items:center;padding:20px 22px;border-radius:16px;
+  background:linear-gradient(120deg,rgba(240,192,116,.16),rgba(240,192,116,.04));
+  border:1px solid rgba(240,192,116,.38);margin-bottom:26px;}
+.seg-rule .sr-ic{width:48px;height:48px;border-radius:13px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--gold-2),var(--gold));color:var(--navy);}
+.seg-rule .sr-ic svg{width:25px;height:25px;}
+.seg-rule b{font-size:1.12rem;color:#fff;letter-spacing:-0.01em;display:block;}
+.seg-rule small{color:rgba(255,255,255,.68);font-size:.92rem;}
+.seg-steps{list-style:none;display:grid;gap:0;margin-bottom:28px;}
+.seg-steps li{display:flex;gap:15px;align-items:flex-start;padding:16px 0;border-top:1px solid rgba(255,255,255,.1);}
+.seg-steps li:last-child{border-bottom:1px solid rgba(255,255,255,.1);}
+.seg-steps .si{width:36px;height:36px;border-radius:10px;flex:none;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(150deg,var(--blue-br),var(--blue));}
+.seg-steps .si svg{width:18px;height:18px;}
+.seg-steps b{display:block;color:#fff;font-size:1.04rem;letter-spacing:-0.01em;}
+.seg-steps span{color:rgba(255,255,255,.64);font-size:.92rem;line-height:1.45;}
+.seg-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:100px;font-weight:600;
+  background:linear-gradient(100deg,var(--gold-2),var(--gold));color:var(--navy);
+  box-shadow:0 16px 36px -14px rgba(226,161,75,.55);transition:transform .4s var(--ease);}
+.seg-cta:hover{transform:translateY(-2px);}
+.seg-cta svg{width:18px;height:18px;}
+.seg-card{position:relative;border-radius:24px;overflow:hidden;
+  background:linear-gradient(165deg,#0E345C,#081F38 84%);
+  border:1px solid rgba(46,140,99,.3);
+  box-shadow:0 50px 110px -50px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.08);}
+.seg-photo{position:relative;height:150px;
+  background:linear-gradient(180deg,transparent 40%,rgba(8,31,56,.92)),linear-gradient(120deg,#1C5641,#2B7CC4 90%);}
+.seg-photo .tag{position:absolute;left:18px;top:14px;font-size:.64rem;font-weight:600;letter-spacing:.06em;
+  color:#fff;background:rgba(7,24,43,.5);backdrop-filter:blur(6px);padding:6px 11px;border-radius:100px;
+  border:1px solid rgba(255,255,255,.22);text-transform:uppercase;font-family:ui-monospace,monospace;}
+.seg-photo .addr{position:absolute;left:18px;bottom:13px;right:18px;}
+.seg-photo .addr b{display:block;font-size:1.12rem;color:#fff;letter-spacing:-0.01em;}
+.seg-photo .addr small{color:rgba(255,255,255,.72);font-size:.82rem;}
+.seg-body{padding:22px;}
+.seg-score{display:flex;align-items:center;gap:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:15px;}
+.seg-ring{width:80px;height:80px;flex:none;border-radius:50%;position:relative;
+  background:conic-gradient(var(--green) 100%,rgba(255,255,255,.1) 0);}
+.seg-ring::after{content:'';position:absolute;inset:7px;border-radius:50%;background:#0A2540;}
+.seg-ring span{position:absolute;inset:0;display:grid;place-items:center;z-index:1;font-size:1.34rem;font-weight:700;color:#fff;font-family:ui-monospace,monospace;}
+.seg-score .k{font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-2);}
+.seg-score .st{font-size:1.06rem;font-weight:600;color:#fff;margin-top:3px;}
+.seg-score .sub{font-size:.8rem;color:rgba(255,255,255,.6);margin-top:2px;}
+.seg-checks{list-style:none;display:grid;gap:10px;}
+.seg-checks li{display:flex;align-items:center;gap:12px;font-size:.9rem;color:#fff;}
+.seg-checks .box{width:22px;height:22px;flex:none;border-radius:7px;background:var(--green);display:grid;place-items:center;}
+.seg-checks .box svg{width:13px;height:13px;color:#fff;}
+.seg-checks .hash{margin-left:auto;font-size:.64rem;color:rgba(255,255,255,.3);font-family:ui-monospace,monospace;}
+.seg-verified{margin-top:16px;padding:13px 15px;border-radius:13px;display:flex;gap:11px;align-items:center;
+  background:linear-gradient(150deg,rgba(46,140,99,.26),rgba(46,140,99,.08));border:1px solid rgba(46,140,99,.45);}
+.seg-verified svg{width:21px;height:21px;color:#3FCB86;flex:none;}
+.seg-verified b{font-size:.9rem;color:#fff;}
+.seg-verified small{display:block;color:rgba(255,255,255,.62);font-size:.75rem;font-family:ui-monospace,monospace;}
+.seg-seal{display:flex;width:fit-content;margin:0 auto 20px;align-items:center;gap:9px;padding:7px 15px 7px 9px;border-radius:100px;
+  background:rgba(63,203,134,.12);border:1px solid rgba(63,203,134,.42);
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;color:#7BE0AE;text-transform:uppercase;
+  font-family:ui-monospace,monospace;margin-bottom:22px;}
+.seg-seal .ss-tick{width:20px;height:20px;border-radius:50%;background:#3FCB86;display:grid;place-items:center;flex:none;
+  animation:hsbPulse 3s ease-out infinite;}
+.seg-seal .ss-tick svg{width:12px;height:12px;color:#062616;}
+/* world proof marquee */
+.seg-world{max-width:1080px;margin:0 auto clamp(38px,4.5vw,58px);text-align:center;}
+.seg-world .sw-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:#3FCB86;margin-bottom:20px;}
+.seg-world .sw-eyebrow::before,.seg-world .sw-eyebrow::after{content:'';width:24px;height:1px;background:currentColor;opacity:.5;}
+.seg-mq{position:relative;width:100%;overflow:hidden;
+  mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);}
+.seg-mq-track{display:flex;gap:38px;width:max-content;animation:segScroll 36s linear infinite;}
+.seg-mq-track .mq{font-family:ui-monospace,monospace;font-size:.84rem;letter-spacing:.03em;
+  color:rgba(255,255,255,.5);display:inline-flex;align-items:center;gap:12px;white-space:nowrap;}
+.seg-mq-track .mq b{color:#fff;font-weight:600;}
+.seg-mq-track .mq::after{content:'';width:5px;height:5px;border-radius:50%;background:#3FCB86;opacity:.7;}
+@keyframes segScroll{to{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.seg-mq-track{animation:none;}}
+/* full-page link band */
+.seg-more{max-width:1080px;margin:clamp(34px,4vw,52px) auto 0;padding:clamp(24px,3vw,34px) clamp(26px,3.5vw,42px);
+  border-radius:20px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:space-between;
+  background:linear-gradient(120deg,rgba(43,124,196,.16),rgba(46,140,99,.12));
+  border:1px solid rgba(63,203,134,.32);}
+.seg-more .sm-tx b{display:block;font-size:clamp(1.1rem,1.8vw,1.4rem);color:#fff;letter-spacing:-0.02em;}
+.seg-more .sm-tx span{color:rgba(255,255,255,.68);font-size:.95rem;}
+.seg-more .sm-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:100px;font-weight:600;
+  background:linear-gradient(100deg,#3FCB86,var(--green));color:#062616;white-space:nowrap;
+  box-shadow:0 16px 38px -14px rgba(63,203,134,.55);transition:transform .4s var(--ease);}
+.seg-more .sm-btn:hover{transform:translateY(-2px);}
+.seg-more .sm-btn svg{width:18px;height:18px;}
+/* hero novelty seal badge */
+.hero-seal-badge{display:inline-flex;align-items:center;gap:12px;margin-top:22px;
+  padding:9px 18px 9px 11px;border-radius:100px;text-decoration:none;position:relative;overflow:hidden;
+  background:linear-gradient(100deg,rgba(63,203,134,.2),rgba(63,203,134,.05));
+  border:1px solid rgba(63,203,134,.5);transition:transform .4s var(--ease),border-color .4s var(--ease);}
+.hero-seal-badge:hover{transform:translateY(-2px);border-color:rgba(63,203,134,.85);}
+.hsb-tick{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:#3FCB86;box-shadow:0 0 0 4px rgba(63,203,134,.18);animation:hsbPulse 3s ease-out infinite;}
+@keyframes hsbPulse{0%{box-shadow:0 0 0 0 rgba(63,203,134,.5);}70%{box-shadow:0 0 0 10px rgba(63,203,134,0);}100%{box-shadow:0 0 0 0 rgba(63,203,134,0);}}
+@media(prefers-reduced-motion:reduce){.hsb-tick{animation:none;box-shadow:0 0 0 4px rgba(63,203,134,.18);}}
+.hsb-tick svg{width:16px;height:16px;color:#062616;}
+.hsb-tx{display:flex;flex-direction:column;line-height:1.15;}
+.hsb-tx .k{font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#7BE0AE;}
+.hsb-tx .m{font-size:.95rem;font-weight:600;color:#fff;}
+.hsb-ar{color:#7BE0AE;font-weight:700;font-size:1.1rem;margin-left:2px;}
+.hero-seal-badge .hsb-shine{position:absolute;top:0;left:-60%;width:40%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-18deg);animation:hsbShine 4.8s ease-in-out infinite;pointer-events:none;}
+@keyframes hsbShine{0%,58%{left:-60%;}100%{left:135%;}}
+@media(prefers-reduced-motion:reduce){.hero-seal-badge .hsb-shine{display:none;}}
+</style>
 </head>
 <body>
 
@@ -165,6 +284,7 @@
     <a href="#top" class="wordmark" aria-label="NOVERA — inici">NOVERA</a>
     <nav class="nav-links">
       <a href="#model" class="hide-sm">El model</a>
+      <a href="#segell" class="hide-sm">El segell</a>
       <a href="#equip" class="hide-sm">L'equip</a>
       <a href="#plans" class="hide-sm">Plans</a>
       <a href="recursos/index.html" class="hide-sm to-page">Guia</a>
@@ -178,6 +298,7 @@
   </div>
   <div class="nav-mobile" id="navMobile" aria-hidden="true">
     <a href="#model">El model</a>
+    <a href="#segell">El segell</a>
     <a href="#equip">L'equip</a>
     <a href="#proces">El procés</a>
     <a href="#plans">Plans</a>
@@ -188,52 +309,124 @@
   </div>
 </header>
 
-<!-- ░░ HERO — portada cinematogràfica ░░ -->
+<!-- ░░ HERO — editorial split, kinetic ░░ -->
 <section class="hero" id="top" data-screen-label="Hero">
-  <div class="hero-bg"><div class="hero-img" style="background-image:url('assets/novera-hero.webp')"></div></div>
+  <div class="hero-glow hero-glow-a" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-b" aria-hidden="true"></div>
   <div class="hero-grain" aria-hidden="true"></div>
-  <div class="hero-veil"></div>
 
   <div class="hero-inner wrap">
-    <span class="hero-kicker" style="font-size: 10px">PER QUÈ VENDRE UNA PROPIETAT HA DE SER TAN COMPLICAT?</span>
+    <div class="hero-copy">
+      <span class="hero-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z"/></svg>Gratis fins al tancament</span>
 
-    <h1 class="hero-title">
-      <span class="ht-line"><span>Una nova manera</span></span>
-      <span class="ht-line"><span>de vendre <em>casa teva</em>.</span></span>
-    </h1>
+      <h1 class="hero-title">Ven
+        <span class="ht-rotator" aria-label="casa teva">
+          <span class="ht-word is-active">casa teva</span>
+          <span class="ht-word">el teu pis</span>
+          <span class="ht-word">la teva vil·la</span>
+          <span class="ht-word">el teu àtic</span>
+        </span>
+        <br><span class="ht-tail">sense comissions.</span></h1>
 
-    <p class="hero-sub" style="font-size: 19px">Sense percentatges sobre la venda. Un preu just per la feina ben feta — i tu sempre amb el control.</p>
+      <p class="hero-sub">Preu fix, zero percentatges, un sol equip. Pagues només quan es ven.</p>
 
-    <div class="hero-cta">
-      <div class="cta-left">
+      <a href="#segell" class="hero-seal-badge">
+        <span class="hsb-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <span class="hsb-tx"><span class="k">Novetat · únic a Espanya</span><span class="m">Passaport Verificat de l'immoble</span></span>
+        <span class="hsb-ar">→</span>
+        <span class="hsb-shine" aria-hidden="true"></span>
+      </a>
+
+      <div class="hero-cta">
         <a href="#descobreix" class="cta-main">
           <span class="cta-label">Valora la teva propietat</span>
           <span class="cta-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           <span class="cta-shine" aria-hidden="true"></span>
         </a>
-        <a href="compradors.html" class="hero-channel">Ets comprador? Entra al <strong>Canal de compradors</strong> <span>→</span></a>
+        <a href="#model" class="cta-sub">
+          <span>Descobreix el model</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
-      <a href="#model" class="cta-sub">
-        <span>Descobreix el model</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+
+      <a href="compradors.html" class="hero-buyer">
+        <span class="hb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5"/><path d="M5 9v11h14V9"/><path d="M9 20v-6h6v6"/></svg></span>
+        Ets comprador? Entra al <strong>Canal de compradors</strong>
+        <span class="hb-ar">→</span>
       </a>
     </div>
+
+    <div class="hero-visual">
+      <div class="hero-photo">
+        <div class="hero-img" style="background-image:url('assets/novera-hero.webp')"></div>
+      </div>
+      <div class="price-stamp" id="priceStamp">
+        <span class="ps-from">Des de</span>
+        <span class="ps-amount">2.990<span class="ps-cur">€</span></span>
+      </div>
+    </div>
   </div>
+
+  <div class="hero-trust" aria-hidden="true">
+    <div class="ht-track">
+      <span class="ht-item">0% comissió sobre la venda</span><span class="ht-sep"></span>
+      <span class="ht-item">Preu fix i transparent</span><span class="ht-sep"></span>
+      <span class="ht-item">Un sol equip coordinant-ho tot</span><span class="ht-sep"></span>
+      <span class="ht-item">Comencem per la Costa Brava · escalant amb qualitat</span><span class="ht-sep"></span>
+      <span class="ht-item">Valoració gratuïta i sense compromís</span><span class="ht-sep"></span>
+      <span class="ht-item">Cada immoble amb segell verificat NOVERA</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">0% comissió sobre la venda</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">Preu fix i transparent</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">Un sol equip coordinant-ho tot</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">Comencem per la Costa Brava · escalant amb qualitat</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">Valoració gratuïta i sense compromís</span><span class="ht-sep"></span>
+      <span class="ht-item" aria-hidden="true">Cada immoble amb segell verificat NOVERA</span><span class="ht-sep"></span>
+    </div>
+  </div>
+
+  <a href="#model" class="hero-scroll" aria-label="Baixa per veure més">
+    <span class="hs-line"></span>
+    <span class="hs-word">Descobreix</span>
+  </a>
 </section>
 
 <!-- ░░ MANIFEST ░░ -->
 <section class="manifest" id="model" data-screen-label="El model">
-  <div class="wrap grid">
-    <div class="body">
-      <span class="kicker kicker--gold reveal" style="margin-bottom:1.6rem;">El model</span>
-      <p class="reveal" data-d="1">El mercat porta dècades amb les mateixes regles. <span class="dim">Processos lents, informació poc clara i uns costos que ningú entén del tot.</span></p>
-      <p class="reveal" data-d="2">El propietari d'avui busca una altra cosa: <span class="grad-text">transparència, control i tranquil·litat.</span></p>
-      <p class="reveal" data-d="3">NOVERA no ve a competir. Ve a canviar la manera de fer-ho.</p>
+  <div class="wrap">
+    <div class="vs-head reveal">
+      <span class="kicker kicker--gold">El model</span>
+      <h2 class="h2">NOVERA no ve a competir.<br>Ve a canviar la manera de fer-ho.</h2>
+      <p class="lead">El mercat porta dècades amb les mateixes regles: processos lents, informació poc clara i uns costos que ningú entén del tot. El propietari d'avui busca una altra cosa.</p>
     </div>
-    <div class="figure reveal" data-d="2">
-      <image-slot id="manifest-fig" shape="rect" fit="cover" src="assets/manifest-fig.webp"
-        placeholder="Detall arquitectònic o interior luminós"></image-slot>
-      <div class="frame"></div>
+
+    <div class="model-showcase reveal">
+      <div class="ms-media">
+        <image-slot id="manifest-fig" shape="rect" fit="cover" src="assets/manifest-fig.webp"
+          placeholder="Detall arquitectònic o interior luminós"></image-slot>
+      </div>
+      <div class="ms-pillars">
+        <article class="ms-pillar">
+          <span class="mp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <div class="ms-txt">
+            <h3>Transparència</h3>
+            <p>Saps què pagues i per què des del primer dia. Sense percentatges ni lletra petita.</p>
+          </div>
+        </article>
+        <article class="ms-pillar">
+          <span class="mp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><circle cx="4" cy="12" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="20" cy="14" r="2"/></svg></span>
+          <div class="ms-txt">
+            <h3>Control</h3>
+            <p>Nosaltres coordinem cada pas, però la decisió sempre és teva.</p>
+          </div>
+        </article>
+        <article class="ms-pillar">
+          <span class="mp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div class="ms-txt">
+            <h3>Tranquil·litat</h3>
+            <p>Un únic equip s'ocupa de tot el procés, de la valoració a la notaria.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -243,70 +436,223 @@
   <div class="wrap">
     <div class="vs-head reveal">
       <span class="kicker kicker--gold">La comparativa</span>
-      <h2 class="h2">Els honoraris no haurien de dependre del valor de casa teva.</h2>
-      <p class="lead">El model tradicional cobra un percentatge sobre el valor de casa teva. NOVERA cobra un preu fix per la feina feta. Mira la diferència.</p>
+      <h2 class="h2">Quant pots estalviar?</h2>
+      <p class="lead">El model tradicional cobra un percentatge. NOVERA, un preu fix. Mira la diferència amb la teva propietat.</p>
     </div>
 
-    <div class="vs-cards">
-      <!-- TRADICIONAL -->
-      <article class="vs-card vs-trad reveal">
-        <div class="vs-tag">Model tradicional</div>
-        <ul class="vs-list">
-          <li>Percentatges sobre el valor de la propietat.</li>
-          <li>Diversos interlocutors durant el procés.</li>
-          <li>Costos que augmenten amb el preu de venda.</li>
-          <li>Informació dispersa entre diferents professionals.</li>
-          <li>El propietari s'adapta al sistema.</li>
-        </ul>
-      </article>
+    <div class="vs-ledger reveal">
+      <div class="ledger-head">
+        <div class="lh-trad">Model tradicional</div>
+        <div class="lh-mid"></div>
+        <div class="lh-nov">Model NOVERA</div>
+      </div>
 
-      <!-- NOVERA -->
-      <article class="vs-card vs-nov reveal" data-d="1">
-        <div class="vs-tag">Model NOVERA</div>
-        <ul class="vs-list">
-          <li>Preu fix i transparent des del primer dia.</li>
-          <li>Un únic equip coordinant tot el procés.</li>
-          <li>Honoraris basats en la feina realitzada.</li>
-          <li>Seguiment clar de cada etapa.</li>
-          <li>El sistema s'adapta al propietari.</li>
-        </ul>
-      </article>
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Percentatges sobre el valor de la propietat.
+        </div>
+        <div class="lr-theme"><span>Preu</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Preu fix i transparent des del primer dia.
+        </div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Diversos interlocutors durant el procés.
+        </div>
+        <div class="lr-theme"><span>Equip</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Un únic equip coordinant tot el procés.
+        </div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Costos que augmenten amb el preu de venda.
+        </div>
+        <div class="lr-theme"><span>Costos</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Honoraris basats en la feina realitzada.
+        </div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Informació dispersa entre diferents professionals.
+        </div>
+        <div class="lr-theme"><span>Seguiment</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Seguiment clar de cada etapa del procés.
+        </div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          El propietari s'adapta al sistema.
+        </div>
+        <div class="lr-theme"><span>Enfocament</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          El sistema s'adapta al propietari.
+        </div>
+      </div>
     </div>
 
-    <!-- CALCULADORA — exemple real -->
+    <!-- CALCULADORA — exemple real interactiu -->
     <div class="vs-calc reveal">
       <div class="calc-head">
         <span class="kicker">Un exemple real</span>
-        <h3>Venda d'un immoble de 200.000 €</h3>
+        <h3>Mou el valor de casa teva</h3>
+        <p class="calc-intro">Compara la comissió tradicional del 5% amb el preu fix de NOVERA.</p>
+      </div>
+
+      <div class="calc-slider">
+        <div class="cslider-top">
+          <span class="cslider-label">Preu de venda de la propietat</span>
+          <span class="cslider-value" id="calcPrice">200.000 €</span>
+        </div>
+        <input type="range" id="calcRange" min="150000" max="2000000" step="10000" value="200000" aria-label="Preu de venda de la propietat">
+        <div class="cslider-scale"><span>150.000 €</span><span>2.000.000 €</span></div>
       </div>
 
       <div class="calc-compare">
         <div class="calc-side calc-trad">
-          <div class="cs-label">Model tradicional</div>
-          <div class="cs-sub">5% de comissió</div>
-          <div class="cs-amount" data-count="10000">10.000 €</div>
+          <div class="cs-label">Comissió tradicional</div>
+          <div class="cs-sub">5% sobre el preu</div>
+          <div class="cs-amount" id="calcTrad">10.000 €</div>
         </div>
         <div class="calc-vs" aria-hidden="true">vs</div>
         <div class="calc-side calc-nov">
           <div class="cs-label">NOVERA Pro</div>
           <div class="cs-sub">preu fix</div>
-          <div class="cs-amount" data-count="4990">4.990 €</div>
+          <div class="cs-amount" id="calcNov">4.990 €</div>
         </div>
       </div>
 
       <div class="calc-badge-row">
         <span class="calc-badge reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6M21 7h-6"/></svg>
-          Més d'un 50% d'estalvi
+          <span id="calcPct">50</span>% d'estalvi
         </span>
       </div>
 
       <div class="calc-saving">
-        <div class="saving-label">Estalvi potencial</div>
-        <div class="saving-amount" data-count="5010">5.010 €</div>
+        <div class="saving-label">El teu estalvi estimat</div>
+        <div class="saving-amount" id="calcSave">5.010 €</div>
       </div>
 
-      <p class="calc-micro">No pagues més perquè la teva propietat val més. Paga per la feina feta.</p>
+      <div class="calc-break">
+        <div class="cb-row"><span>Comissió tradicional (5%)</span><span id="cbTrad">10.000 €</span></div>
+        <div class="cb-row"><span>Menys: preu fix NOVERA</span><span id="cbNov">−4.990 €</span></div>
+        <div class="cb-row cb-total"><span>Estalvies</span><span id="cbSave">5.010 €</span></div>
+        <div class="cb-bar"><div class="cb-fill" id="cbFill"></div><span class="cb-pct" id="cbPct">50%</span></div>
+      </div>
+
+      <p class="calc-micro">No pagues més perquè la teva propietat val més. Paga per la feina feta. Preus orientatius; la valoració concreta es fa sobre cada immoble.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ SEGELL VERIFICAT — el Passaport NOVERA ░░ -->
+<section class="segell" id="segell" data-screen-label="El segell verificat">
+  <div class="wrap">
+    <div class="vs-head reveal">
+      <span class="seg-seal"><span class="ss-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>NOVERA Verified</span>
+      <span class="kicker kicker--gold">El segell NOVERA · únic al sector</span>
+      <h2 class="h2">El primer immoble amb <span class="grad-text">segell verificat</span> d'Espanya.</h2>
+      <p class="lead">Al món ja ho han validat; ara arriba a Espanya: verificar un cop i comprar amb confiança. NOVERA emet un <strong>Passaport digital</strong> que certifica l'immoble abans de vendre'l i el connecta amb compradors ja verificats. <strong style="color:#fff;">Zero sorpreses. Tancaments en dies.</strong></p>
+    </div>
+
+    <div class="seg-world reveal">
+      <span class="sw-eyebrow">El món ja ho valida</span>
+      <div class="seg-mq">
+        <div class="seg-mq-track">
+          <span class="mq"><b>PROPY</b> · EUA — +4.000 M$ verificats</span>
+          <span class="mq"><b>SUMUTASU</b> · Japó — ven en 2 dies</span>
+          <span class="mq"><b>LANDEED</b> · Índia — “the blue tick for property”</span>
+          <span class="mq"><b>WALLET ERA</b> · Europa 2026 — passaport del comprador</span>
+          <span class="mq"><b>DOMA</b> · EUA — títol instantani</span>
+          <span class="mq"><b>PROPY</b> · EUA — +4.000 M$ verificats</span>
+          <span class="mq"><b>SUMUTASU</b> · Japó — ven en 2 dies</span>
+          <span class="mq"><b>LANDEED</b> · Índia — “the blue tick for property”</span>
+          <span class="mq"><b>WALLET ERA</b> · Europa 2026 — passaport del comprador</span>
+          <span class="mq"><b>DOMA</b> · EUA — títol instantani</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="seg-grid reveal">
+      <div class="seg-copy">
+        <div class="seg-rule">
+          <span class="sr-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div><b>Sense segell, no venem.</b><small>És la nostra regla, no un extra. Primer la qualitat.</small></div>
+        </div>
+        <ul class="seg-steps">
+          <li>
+            <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+            <div><b>Estudi previ</b><span>Analitzem documentació, aspectes legals, registre i estat real de l'immoble.</span></div>
+          </li>
+          <li>
+            <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <div><b>Verificació i segell</b><span>Segellem cada punt verificat. Si hi ha millores possibles, les valorem amb la propietat i estudiem la possibilitat de dur-les a terme: disposem del servei.</span></div>
+          </li>
+          <li>
+            <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span>
+            <div><b>Informe previ per al comprador</b><span>El rep abans de la visita. Tot a la vista, res amagat: preu ferm i zero sorpreses.</span></div>
+          </li>
+        </ul>
+        <a href="#descobreix" class="seg-cta">Verifica el teu immoble
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="seg-card">
+        <div class="seg-photo">
+          <span class="tag">Passaport · NV-0427 · verificat</span>
+          <div class="addr"><b>Habitatge unifamiliar</b><small>Propietat verificada · Costa Brava</small></div>
+        </div>
+        <div class="seg-body">
+          <div class="seg-score">
+            <div class="seg-ring"><span>100</span></div>
+            <div>
+              <div class="k">Índex de confiança</div>
+              <div class="st">Verificat 100%</div>
+              <div class="sub">Segell NOVERA emès · dossier disponible</div>
+            </div>
+          </div>
+          <ul class="seg-checks">
+            <li><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Nota simple registral<span class="hash">0x8f2a</span></li>
+            <li><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Càrregues i deutes<span class="hash">0x41c7</span></li>
+            <li><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Cèdula d'habitabilitat<span class="hash">0xa903</span></li>
+            <li><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Certificat energètic<span class="hash">0x1de6</span></li>
+            <li><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Estat legal i urbanístic<span class="hash">0x77b0</span></li>
+          </ul>
+          <div class="seg-verified">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+            <div><b>Immoble verificat · Llest per comprar</b><small>segell · 0x8f2a41c7a903</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="seg-more reveal">
+      <div class="sm-tx">
+        <b>Descobreix d'on ve el segell i com funciona.</b>
+        <span>La idea que ja triomfa al món, explicada pas a pas i adaptada a Espanya.</span>
+      </div>
+      <a href="segell.html" class="sm-btn">Entra a El Segell NOVERA
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -321,8 +667,13 @@
     </div>
 
     <div class="system reveal" data-d="1">
-      <div class="system-orbit" id="systemOrbit"></div>
-      <p class="system-hint">Passa el cursor per cada especialitat</p>
+      <div class="system-frame">
+        <span class="sf-corner tl"></span><span class="sf-corner tr"></span>
+        <span class="sf-corner bl"></span><span class="sf-corner br"></span>
+        <div class="sf-label"><span class="sf-dot"></span>La tranquil·litat de tenir-ho tot.</div>
+        <div class="system-orbit" id="systemOrbit"></div>
+        <p class="system-hint">Passa el cursor per cada especialitat</p>
+      </div>
     </div>
 
     <div class="team-reinforce">
@@ -350,6 +701,28 @@
 
     <div class="team-close reveal">
       <p>No contractes una immobiliària.<br><span class="grad">Actives una estructura completa al servei de la teva propietat.</span></p>
+    </div>
+
+    <div class="team-network reveal">
+      <div class="tn-copy">
+        <span class="kicker kicker--light">La nostra xarxa</span>
+        <h3>Tot el que necessites,<br>en un sol lloc.</h3>
+        <p>Una compravenda no acaba amb trobar un comprador. Al voltant de cada operació hi intervenen diferents professionals, i nosaltres ens encarreguem de coordinar-los perquè tot avanci amb seguretat i sense complicacions.</p>
+        <p>Treballem amb una xarxa de confiança formada per agents immobiliaris, arquitectes, interioristes, professionals de reformes, serveis legals i financers. Si els necessites, t'ajudem a trobar el professional adequat. Tu decideixes sempre amb qui vols treballar.</p>
+        <p>El nostre objectiu és simple: que tant tu com el comprador tingueu tot el necessari, ben coordinat i sense haver de buscar res pel vostre compte.</p>
+      </div>
+      <div class="tn-cta">
+        <span class="tn-eyebrow"><span class="tn-dot"></span>Estem en expansió</span>
+        <h4 class="tn-title">Uneix-te a la xarxa NOVERA.</h4>
+        <p class="tn-lead">Si ets agent immobiliari, arquitecte, interiorista o professional dels serveis legals, financers o de reformes, ens agradarà conèixer-te.</p>
+        <p class="tn-lead tn-lead--soft">Estem construint una xarxa de col·laboradors de confiança a la Costa Brava per oferir un servei més complet, coordinat i de màxima qualitat als nostres clients.</p>
+        <p class="tn-ask">Vols formar-ne part? Parlem.</p>
+        <a class="tn-btn" href="#contacte">
+          <span>Treballa amb nosaltres</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="tn-mail" href="mailto:comercial@clubnovera.com?subject=Vull%20treballar%20amb%20NOVERA&body=Hola%2C%20soc%20professional%20del%20sector%20i%20m%27agradaria%20formar%20part%20de%20la%20vostra%20xarxa%20de%20col%C2%B7laboradors.%0A%0AServei%3A%20%0AZona%3A%20%0ATel%C3%A8fon%3A%20">comercial@clubnovera.com</a>
+      </div>
     </div>
   </div>
 </section>
@@ -379,6 +752,16 @@
       <li class="proc-node reveal"><span class="pn-dot">09</span><div class="pn-card"><h3>Arres</h3><p>L'advocat redacta i gestiona tota la documentació.</p></div></li>
       <li class="proc-node reveal"><span class="pn-dot pn-last">10</span><div class="pn-card"><h3>Notaria</h3><p>Coordinació completa fins a la firma. Fet.</p></div></li>
     </ol>
+
+    <div class="zone-cta reveal">
+      <div class="zc-text">
+        <h3>No saps per on començar?</h3>
+        <p>Fes l'anàlisi i et diem quin camí encaixa millor amb tu.</p>
+      </div>
+      <a href="#descobreix" class="zc-btn">Fes l'anàlisi gratuïta
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -389,9 +772,15 @@
   <div class="discover-orb d3"></div>
   <div class="wrap">
     <div class="discover-head reveal">
-      <span class="kicker">Anàlisi personalitzada</span>
+      <span class="discover-eyebrow"><span class="de-dot"></span>Anàlisi personalitzada</span>
       <h2 class="h2">Descobreix quin és el millor camí per vendre la teva propietat.</h2>
       <p>En menys de 2 minuts analitzem la teva situació i et recomanem el model NOVERA més adequat.</p>
+      <ul class="discover-chips">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>2 minuts</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>100% gratuït</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>Sense compromís</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.5z"/></svg>Resposta en 24 h</li>
+      </ul>
     </div>
 
     <div class="quiz reveal" id="quiz" data-d="1">
@@ -559,7 +948,7 @@
           <li>Fotografia i publicació a portals</li>
           <li>Documentació i contracte d'arres</li>
           <li>Acompanyament durant tot el procés</li>
-          <li class="off">Gestió de visites</li>
+          <li class="extra">Gestió de visites <span class="ex-price">+100 €/visita</span></li>
           <li class="off">Negociació i notaria</li>
         </ul>
         <a href="#descobreix" class="pbtn">Veure si encaixa</a>
@@ -589,7 +978,6 @@
           <li>Reportatge premium: foto, vídeo i tour</li>
           <li>Estratègia de sortida personalitzada</li>
           <li>Gestió de certificats i tràmits</li>
-          <li>Assessorament fiscal previ a la venda</li>
           <li>Seguiment fins a la postfirma</li>
         </ul>
         <a href="#descobreix" class="pbtn">Veure si encaixa</a>
@@ -598,6 +986,16 @@
     <div class="plans-foot reveal">
       <p><strong>Cap percentatge sobre la venda.</strong> Pagues per la feina, no pel preu de casa teva.</p>
       <span class="note">Preus orientatius. La valoració concreta es fa sobre cada immoble.</span>
+    </div>
+
+    <div class="zone-cta zone-cta--light reveal">
+      <div class="zc-text">
+        <h3>No saps quin pla és el teu?</h3>
+        <p>Respon 6 preguntes i et recomanem el que millor s'adapta a tu.</p>
+      </div>
+      <a href="#descobreix" class="zc-btn">Fes l'anàlisi gratuïta
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -609,13 +1007,20 @@
       <span class="kicker kicker--gold reveal">Preguntes freqüents</span>
       <h2 class="h2 reveal" data-d="1">Tot el que vols<br>saber abans de vendre.</h2>
       <p class="lead reveal" data-d="2">Resolem els dubtes més habituals sobre honoraris, comissions i com funciona vendre amb NOVERA a la Costa Brava.</p>
-      <a href="#contacte" class="faq-cta reveal" data-d="3">Tens un altre dubte? Parlem-ne <span>→</span></a>
+      <div class="faq-actions reveal" data-d="3">
+        <a href="#contacte" class="faq-cta">Tens un altre dubte? Parlem-ne <span>→</span></a>
+        <a href="recursos/index.html" class="faq-guide to-page">Consulta la guia per vendre <span>→</span></a>
+      </div>
     </div>
 
     <div class="faq-list reveal" data-d="1">
       <details class="faq-item" open>
         <summary><span>Quant costa vendre un habitatge amb NOVERA?</span><i class="faq-ico"></i></summary>
         <div class="faq-a"><p>A NOVERA treballem amb un <strong>preu fix i transparent</strong> des del primer dia, en funció del servei que tries. No apliquem cap percentatge sobre el preu de venda: els teus honoraris immobiliaris no pugen encara que la teva propietat valgui més.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span>Què és el segell verificat NOVERA?</span><i class="faq-ico"></i></summary>
+        <div class="faq-a"><p>És el nostre <strong>Passaport digital</strong> de l'immoble: abans de posar cap propietat a la venda la verifiquem a fons —estat legal, registral i real— i li emetem un segell de confiança. <strong>Sense segell, no venem.</strong> Així el comprador rep un informe previ complet abans de la visita i tanca amb la seguretat que el que veu és exactament el que compra. És un distintiu únic al sector a Espanya.</p></div>
       </details>
       <details class="faq-item">
         <summary><span>NOVERA cobra comissió sobre el preu de venda?</span><i class="faq-ico"></i></summary>
@@ -656,10 +1061,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
       </a>
     </div>
-    <div class="cta-contact reveal" data-d="3">
-      <a href="https://wa.me/34684411470" target="_blank" rel="noopener">+34 684 41 14 70</a>
-      <a href="mailto:comercial@clubnovera.com">comercial@clubnovera.com</a>
-    </div>
     <p class="cta-claim reveal">En NOVERA creiem que vendre bé comença per entendre bé.</p>
   </div>
 </section>
@@ -672,6 +1073,7 @@
       <p class="foot-claim">La nova manera de vendre propietats.</p>
       <nav class="foot-links">
         <a href="#model">El model</a>
+        <a href="#segell">El segell</a>
         <a href="#equip">L'equip</a>
         <a href="#proces">El procés</a>
         <a href="#descobreix">Descobreix</a>
@@ -804,6 +1206,77 @@
     }, { threshold: 0.45 });
     nums.forEach(n => nio.observe(n));
   }
+
+  // Hero kinetic word rotator
+  (function(){
+    const rot = document.querySelector('.ht-rotator');
+    if (!rot) return;
+    const words = [...rot.querySelectorAll('.ht-word')];
+    if (words.length < 2 || reduce) return;
+    let i = 0;
+    setInterval(() => {
+      const cur = words[i];
+      i = (i + 1) % words.length;
+      const nxt = words[i];
+      cur.classList.add('is-leaving'); cur.classList.remove('is-active');
+      nxt.classList.remove('is-leaving'); nxt.classList.add('is-active');
+      setTimeout(() => cur.classList.remove('is-leaving'), 600);
+    }, 2400);
+  })();
+
+  // Scroll-driven parallax (subtle) for tagged elements
+  const parEls = document.querySelectorAll('[data-parallax]');
+  if (!reduce && parEls.length){
+    let pRaf = null;
+    const runPar = () => {
+      const vh = window.innerHeight;
+      parEls.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -120 || r.top > vh + 120) return;
+        const center = r.top + r.height / 2;
+        const prog = (center - vh / 2) / vh;              // ~ -0.5 … 0.5
+        const amt = parseFloat(el.dataset.parallax) || 60;
+        el.style.transform = `translate3d(0, ${(-prog * amt).toFixed(1)}px, 0)`;
+      });
+      pRaf = null;
+    };
+    window.addEventListener('scroll', () => { if (!pRaf) pRaf = requestAnimationFrame(runPar); }, { passive:true });
+    window.addEventListener('resize', () => { if (!pRaf) pRaf = requestAnimationFrame(runPar); }, { passive:true });
+    runPar();
+  }
+
+  // Interactive savings calculator
+  (function(){
+    const range = document.getElementById('calcRange');
+    if (!range) return;
+    const FEE = 4990, RATE = 0.05;
+    const eur = n => Math.round(n).toLocaleString('ca-ES') + ' €';
+    const el = id => document.getElementById(id);
+    const price = el('calcPrice'), trad = el('calcTrad'), nov = el('calcNov'),
+          pct = el('calcPct'), save = el('calcSave'),
+          cbTrad = el('cbTrad'), cbNov = el('cbNov'), cbSave = el('cbSave'),
+          cbFill = el('cbFill'), cbPct = el('cbPct');
+    function update(){
+      const p = +range.value;
+      const t = p * RATE;
+      const s = Math.max(0, t - FEE);
+      const pc = t > 0 ? Math.round(s / t * 100) : 0;
+      price.textContent = eur(p);
+      trad.textContent = eur(t);
+      nov.textContent = eur(FEE);
+      pct.textContent = pc;
+      save.textContent = eur(s);
+      cbTrad.textContent = eur(t);
+      cbNov.textContent = '−' + eur(FEE);
+      cbSave.textContent = eur(s);
+      cbPct.textContent = pc + '%';
+      cbFill.style.width = pc + '%';
+      const fill = (p - range.min) / (range.max - range.min) * 100;
+      range.style.setProperty('--fill', fill + '%');
+    }
+    range.addEventListener('input', update);
+    update();
+  })();
 </script>
 
 </body>
@@ -820,4 +1293,7 @@ span >[data-start="837"] { width: 16px !important }
 span >[data-start="837"] { width: 17px !important }
 span >[data-start="837"] { width: 17px !important }
 span >[data-start="837"] { width: 180px !important }
+#quiz :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 6px !important }
+#quiz :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 6px !important }
+#quiz :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 15px !important }
 </style>

@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Segell Verificat · Passaport digital de l'immoble | NOVERA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15202E; --ink-2:#4A5A6B; --ink-3:#8593A1;
+  --paper:#FCFBF8; --paper-2:#F4F1EA; --line:#E6E2D8;
+  --navy:#07182B; --navy-2:#0A2540; --blue:#16447A; --blue-br:#2B7CC4; --blue-sky:#5CA8E0;
+  --gold:#E2A14B; --gold-2:#F0C074; --amber:#D9803A;
+  --green:#2E8C63; --green-d:#226F4E; --emer:#3FCB86; --emer-2:#7BE0AE;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',system-ui,sans-serif;background:var(--navy);color:#fff;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+::selection{background:var(--emer);color:#062616;}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(22px,5vw,64px);}
+.kicker{display:inline-flex;align-items:center;gap:11px;font-size:12px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--emer-2);}
+.kicker::before{content:'';width:26px;height:1px;background:currentColor;opacity:.6;}
+.kicker.gold{color:var(--gold-2);}
+h1,h2,h3{font-weight:600;letter-spacing:-0.03em;line-height:1.04;text-wrap:balance;}
+.grad{background:linear-gradient(102deg,var(--emer-2),#fff 46%,var(--blue-sky));
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.grad-gold{background:linear-gradient(102deg,var(--gold-2),#fff 50%,var(--emer-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.mono{font-family:var(--mono);}
+
+/* concept ribbon */
+.ribbon{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;
+  justify-content:space-between;gap:12px;padding:7px clamp(14px,4vw,28px);
+  background:linear-gradient(90deg,var(--emer-2),var(--emer));}
+.rb-home{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#062616;
+  text-decoration:none;transition:opacity .3s var(--ease);}
+.rb-home:hover{opacity:.72;}
+.rb-home .rb-ar{opacity:.72;}
+.lang-switch{display:inline-flex;align-items:center;gap:2px;padding:3px;border-radius:100px;flex:none;
+  background:rgba(6,38,22,.14);border:1px solid rgba(6,38,22,.28);}
+.lang-switch button{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;
+  color:rgba(6,38,22,.72);background:none;border:none;border-radius:100px;padding:5px 9px;line-height:1;
+  transition:color .3s var(--ease),background .3s var(--ease);}
+.lang-switch button:hover{color:#062616;}
+.lang-switch button.on{background:#062616;color:var(--emer-2);}
+
+/* verified seal motif */
+.seal{display:inline-flex;align-items:center;gap:9px;padding:7px 14px 7px 10px;border-radius:100px;
+  background:rgba(63,203,134,.12);border:1px solid rgba(63,203,134,.4);font-family:var(--mono);
+  font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--emer-2);}
+.seal .tick{width:20px;height:20px;border-radius:50%;background:var(--emer);display:grid;place-items:center;flex:none;
+  animation:sealPulse 3s ease-out infinite;}
+@keyframes sealPulse{0%{box-shadow:0 0 0 0 rgba(63,203,134,.55);}70%{box-shadow:0 0 0 9px rgba(63,203,134,0);}100%{box-shadow:0 0 0 0 rgba(63,203,134,0);}}
+.seal .tick svg{width:12px;height:12px;color:#062616;}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:clamp(120px,15vh,180px) 0 clamp(64px,8vw,110px);
+  background:
+    radial-gradient(120% 90% at 84% 4%, rgba(43,124,196,.42), transparent 52%),
+    radial-gradient(90% 80% at 6% 104%, rgba(46,140,99,.4), transparent 58%),
+    linear-gradient(162deg,#0A2A4C,#07182B 66%);}
+.hero-grid-lines{position:absolute;inset:0;opacity:.5;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:54px 54px;mask-image:radial-gradient(80% 70% at 60% 20%,#000,transparent 80%);}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(30px,4vw,60px);align-items:center;}
+.hero h1{font-size:clamp(2.6rem,5.4vw,4.5rem);color:#fff;margin:1.3rem 0 1.2rem;line-height:.98;}
+.hero p.lead{font-size:clamp(1.08rem,1.5vw,1.32rem);color:rgba(255,255,255,.78);max-width:46ch;line-height:1.55;}
+.hero-note{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;}
+.hero-note span{display:inline-flex;align-items:center;gap:8px;font-size:.84rem;font-weight:600;
+  color:rgba(255,255,255,.88);padding:8px 15px;border-radius:100px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);}
+.hero-note svg{width:15px;height:15px;color:var(--emer);}
+.hero-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;}
+.btn-ghost{background:rgba(255,255,255,.05);color:#fff;border:1px solid rgba(255,255,255,.22);}
+.btn-ghost:hover{transform:translateY(-2px);border-color:var(--emer);background:rgba(63,203,134,.1);}
+.hero-trust{margin-top:16px;font-size:.82rem;color:rgba(255,255,255,.55);display:flex;align-items:center;gap:8px;}
+.hero-trust svg{width:15px;height:15px;color:var(--emer);flex:none;}
+
+/* PASSPORT CARD */
+.pass{position:relative;border-radius:26px;overflow:hidden;
+  background:linear-gradient(165deg,#0E345C,#081F38 84%);
+  border:1px solid rgba(63,203,134,.22);
+  box-shadow:0 50px 110px -50px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,255,255,.08);}
+.pass-photo{position:relative;height:172px;background:
+  linear-gradient(180deg,transparent 38%,rgba(8,31,56,.92)),
+  linear-gradient(120deg,#1C5641,#2B7CC4 90%);}
+.pass-photo .tag{position:absolute;left:18px;top:15px;font-family:var(--mono);font-size:.66rem;font-weight:600;
+  letter-spacing:.06em;color:#fff;background:rgba(7,24,43,.55);backdrop-filter:blur(6px);
+  padding:6px 11px;border-radius:100px;border:1px solid rgba(255,255,255,.22);}
+.pass-photo .addr{position:absolute;left:18px;bottom:14px;right:18px;}
+.pass-photo .addr b{display:block;font-size:1.15rem;font-weight:600;color:#fff;letter-spacing:-0.01em;}
+.pass-photo .addr small{color:rgba(255,255,255,.72);font-size:.82rem;}
+.pass-body{padding:22px 22px 24px;}
+.pass-scorewrap{display:flex;align-items:center;gap:18px;padding-bottom:18px;
+  border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:16px;}
+.ring{--v:0;position:relative;width:96px;height:96px;flex:none;border-radius:50%;
+  background:conic-gradient(var(--emer) calc(var(--v)*1%),rgba(255,255,255,.1) 0);
+  transition:background .12s linear;}
+.ring::after{content:'';position:absolute;inset:8px;border-radius:50%;background:#0A2540;}
+.ring .num{position:absolute;inset:0;display:grid;place-items:center;z-index:1;font-family:var(--mono);
+  font-size:1.5rem;font-weight:600;color:#fff;letter-spacing:-0.02em;}
+.pass-scoretext .k{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-2);}
+.pass-scoretext .st{font-size:1.1rem;font-weight:600;color:#fff;margin-top:3px;}
+.pass-scoretext .sub{font-size:.83rem;color:rgba(255,255,255,.6);margin-top:2px;}
+.checks{list-style:none;display:grid;gap:9px;}
+.checks li{display:flex;align-items:center;gap:12px;font-size:.9rem;color:rgba(255,255,255,.5);
+  transition:color .4s var(--ease);}
+.checks li .box{width:22px;height:22px;flex:none;border-radius:7px;border:1.5px solid rgba(255,255,255,.2);
+  display:grid;place-items:center;transition:background .4s var(--ease),border-color .4s var(--ease);}
+.checks li .box svg{width:13px;height:13px;color:#fff;opacity:0;transform:scale(.5);
+  transition:opacity .3s var(--ease),transform .3s var(--ease);}
+.checks li .hash{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:rgba(255,255,255,.28);opacity:0;transition:opacity .4s;}
+.checks li.ok{color:#fff;}
+.checks li.ok .box{background:var(--green);border-color:var(--green);}
+.checks li.ok .box svg{opacity:1;transform:none;}
+.checks li.ok .hash{opacity:1;}
+.pass-cta{margin-top:20px;}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 22px;
+  border-radius:100px;font-weight:600;font-size:.96rem;cursor:pointer;border:none;font-family:inherit;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),filter .35s var(--ease);}
+.btn svg{width:17px;height:17px;}
+.btn-full{width:100%;}
+.btn-gold{background:linear-gradient(100deg,var(--gold-2),var(--gold));color:var(--navy);
+  box-shadow:0 14px 32px -12px rgba(226,161,75,.6),inset 0 1px 0 rgba(255,255,255,.4);}
+.btn-gold:hover{transform:translateY(-2px);filter:brightness(1.04);}
+.btn-green{background:linear-gradient(100deg,var(--emer),var(--green));color:#062616;
+  box-shadow:0 14px 32px -12px rgba(63,203,134,.55),inset 0 1px 0 rgba(255,255,255,.3);}
+.btn-green:hover{transform:translateY(-2px);filter:brightness(1.05);}
+.pass-ready{display:none;margin-top:15px;padding:14px 16px;border-radius:14px;
+  background:linear-gradient(150deg,rgba(63,203,134,.2),rgba(63,203,134,.06));
+  border:1px solid rgba(63,203,134,.42);align-items:center;gap:11px;}
+.pass-ready.show{display:flex;animation:popIn .5s var(--ease);}
+@keyframes popIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.pass-ready svg{width:20px;height:20px;color:var(--emer);flex:none;}
+.pass-ready b{font-size:.92rem;color:#fff;}
+.pass-ready small{display:block;color:rgba(255,255,255,.62);font-size:.78rem;font-weight:400;font-family:var(--mono);}
+
+/* GLOBAL PROOF marquee + cards */
+.proof{background:linear-gradient(180deg,#07182B,#0A2440);border-block:1px solid rgba(255,255,255,.08);
+  padding-block:clamp(64px,8vw,110px);position:relative;overflow:hidden;}
+.marquee{position:relative;width:100%;overflow:hidden;margin-bottom:clamp(40px,5vw,64px);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.marquee-track{display:flex;gap:44px;width:max-content;animation:scroll 32s linear infinite;}
+.marquee-track span{font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:rgba(255,255,255,.4);
+  display:inline-flex;align-items:center;gap:14px;white-space:nowrap;}
+.marquee-track span::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--emer);opacity:.6;}
+@keyframes scroll{to{transform:translateX(-50%);}}
+.proof-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.pc{padding:24px 22px;border-radius:18px;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);transition:transform .5s var(--ease),border-color .5s;}
+.pc:hover{transform:translateY(-5px);border-color:rgba(63,203,134,.4);}
+.pc .flag{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-2);}
+.pc .stat{font-family:var(--mono);font-size:2rem;font-weight:600;color:#fff;letter-spacing:-0.03em;margin:10px 0 4px;line-height:1;}
+.pc .who{font-size:.94rem;font-weight:600;color:#fff;}
+.pc .desc{font-size:.85rem;color:rgba(255,255,255,.58);line-height:1.45;margin-top:6px;}
+.proof-punch{margin-top:clamp(34px,4vw,50px);text-align:center;font-size:clamp(1.3rem,2.4vw,1.95rem);
+  font-weight:600;color:#fff;letter-spacing:-0.02em;max-width:26ch;margin-inline:auto;line-height:1.2;}
+
+/* DIFFERENTIATOR — vs any agency */
+.diff{background:linear-gradient(178deg,#0A2440,#081F38);}
+.diff-head h2 em{font-style:normal;color:var(--emer-2);}
+.diff-table{max-width:960px;margin:0 auto;border-radius:22px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);}
+.diff-th{display:grid;grid-template-columns:1.3fr 1fr 1fr;}
+.diff-th>div{padding:18px 22px;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.diff-th .lbl{color:rgba(255,255,255,.5);}
+.diff-th .col-old{color:var(--ink-3);text-align:center;background:rgba(255,255,255,.02);}
+.diff-th .col-nov{color:#062616;text-align:center;background:linear-gradient(100deg,var(--emer-2),var(--emer));
+  display:flex;align-items:center;justify-content:center;gap:8px;}
+.diff-th .col-nov svg{width:15px;height:15px;}
+.diff-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.08);align-items:center;}
+.diff-row .feat{padding:16px 22px;font-size:.98rem;font-weight:600;color:#fff;}
+.diff-row .old,.diff-row .nov{padding:16px 18px;font-size:.88rem;text-align:center;display:flex;flex-direction:column;
+  align-items:center;gap:6px;line-height:1.35;}
+.diff-row .old{color:rgba(255,255,255,.5);background:rgba(255,255,255,.02);}
+.diff-row .nov{color:#fff;background:rgba(63,203,134,.08);font-weight:600;}
+.diff-row .old svg{width:20px;height:20px;color:var(--amber);flex:none;}
+.diff-row .nov svg{width:20px;height:20px;color:var(--emer);flex:none;}
+.diff-punch{max-width:960px;margin:clamp(30px,3.5vw,44px) auto 0;padding:clamp(24px,3vw,36px) clamp(26px,3.5vw,44px);
+  border-radius:20px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:space-between;
+  background:linear-gradient(120deg,#0A2A4C,#07182B);box-shadow:0 40px 90px -55px rgba(7,24,43,.6);}
+.diff-punch b{font-size:clamp(1.15rem,2vw,1.5rem);color:#fff;letter-spacing:-0.02em;max-width:22ch;line-height:1.2;}
+.diff-punch b em{font-style:normal;color:var(--emer-2);}
+@media(max-width:720px){.diff-th,.diff-row{grid-template-columns:1fr;}.diff-row .old,.diff-row .nov,.diff-th .col-old,.diff-th .col-nov{text-align:left;flex-direction:row;justify-content:flex-start;}}
+
+/* SECTION shells */
+section{position:relative;}
+.pad{padding-block:clamp(70px,9vw,120px);}
+.sec-head{max-width:760px;margin:0 auto clamp(40px,5vw,64px);text-align:center;}
+.sec-head .kicker{justify-content:center;}
+.sec-head h2{font-size:clamp(2rem,4vw,3.2rem);color:#fff;margin-top:1.1rem;}
+.sec-head p{color:rgba(255,255,255,.7);margin-top:1rem;font-size:clamp(1.02rem,1.3vw,1.18rem);}
+.sec-head.dark h2{color:var(--ink);}
+.sec-head.dark p{color:var(--ink-2);}
+
+/* WHY / problem */
+.why{background:var(--paper);color:var(--ink);}
+.gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:960px;margin:0 auto;
+  border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fff;
+  box-shadow:0 40px 90px -60px rgba(10,37,64,.4);}
+.gap-col{padding:clamp(26px,3vw,40px);}
+.gap-col+.gap-col{border-left:1px solid var(--line);}
+.gap-col.old{background:linear-gradient(180deg,#fff,#FBFAF6);}
+.gap-col.new{background:linear-gradient(180deg,#F3FAF6,#EEF7F1);}
+.gap-lbl{display:inline-flex;align-items:center;gap:9px;font-size:.72rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px;}
+.gap-col.old .gap-lbl{color:var(--ink-3);}
+.gap-col.new .gap-lbl{color:var(--green-d);}
+.gap-col h3{font-size:1.3rem;color:var(--ink);margin-bottom:16px;letter-spacing:-0.02em;}
+.gap-list{list-style:none;display:grid;gap:13px;}
+.gap-list li{display:flex;gap:11px;font-size:.98rem;line-height:1.45;color:var(--ink-2);}
+.gap-list li svg{width:18px;height:18px;flex:none;margin-top:2px;}
+.gap-col.old li svg{color:var(--amber);}
+.gap-col.new li svg{color:var(--green);}
+.gap-col.new li{color:var(--ink);}
+.tl-compare{max-width:960px;margin:clamp(34px,4vw,50px) auto 0;display:grid;gap:18px;}
+.tl-row{display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center;}
+.tl-row .who{text-align:right;}
+.tl-row .who b{display:block;font-size:1rem;color:var(--ink);}
+.tl-row .who small{color:var(--ink-3);font-size:.82rem;}
+.tl-bar{height:46px;border-radius:12px;position:relative;overflow:hidden;display:flex;align-items:center;
+  padding-inline:16px;font-size:.86rem;font-weight:700;color:#fff;}
+.tl-bar.trad{width:100%;background:linear-gradient(90deg,#C2663B,#D9803A);}
+.tl-bar.nov{width:22%;min-width:140px;background:linear-gradient(90deg,var(--green-d),var(--emer));}
+
+/* THREE PILLARS mechanism */
+.mech{background:linear-gradient(178deg,#081F38,#0A2440);}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,22px);}
+.pillar{position:relative;padding:clamp(26px,2.8vw,36px);border-radius:22px;
+  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);overflow:hidden;}
+.pillar::before{content:'';position:absolute;inset:0;background:radial-gradient(120% 80% at 100% 0,rgba(63,203,134,.14),transparent 60%);pointer-events:none;}
+.pillar .pn{font-family:var(--mono);font-size:.78rem;color:var(--emer-2);letter-spacing:.06em;}
+.pillar .pic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;margin:14px 0 16px;
+  background:linear-gradient(150deg,rgba(43,124,196,.24),rgba(46,140,99,.2));color:var(--blue-sky);}
+.pillar .pic svg{width:25px;height:25px;}
+.pillar h3{font-size:1.34rem;color:#fff;letter-spacing:-0.02em;margin-bottom:10px;}
+.pillar p{font-size:.96rem;color:rgba(255,255,255,.66);line-height:1.5;}
+.pillar .ref{margin-top:16px;font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.4);
+  padding-top:14px;border-top:1px solid rgba(255,255,255,.1);}
+.pillar .ref b{color:var(--gold-2);font-weight:600;}
+
+/* MATCH interactive */
+.match{background:var(--paper-2);color:var(--ink);}
+.match-stage{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;
+  gap:clamp(14px,2.4vw,30px);align-items:center;}
+.mcard{padding:clamp(22px,2.4vw,30px);border-radius:20px;background:#fff;border:1px solid var(--line);
+  box-shadow:0 30px 70px -50px rgba(10,37,64,.35);position:relative;}
+.mcard .mhead{display:flex;align-items:center;gap:11px;margin-bottom:16px;}
+.mcard .mic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff;flex:none;}
+.mcard.home .mic{background:linear-gradient(150deg,var(--blue-br),var(--blue));}
+.mcard.buyer .mic{background:linear-gradient(150deg,var(--gold),var(--amber));}
+.mcard .mhead b{font-size:1.06rem;color:var(--ink);}
+.mcard .mhead small{display:block;font-family:var(--mono);font-size:.7rem;color:var(--ink-3);}
+.mrow{display:flex;align-items:center;gap:9px;font-size:.9rem;color:var(--ink-2);padding:7px 0;}
+.mrow svg{width:17px;height:17px;color:var(--green);flex:none;}
+.mrow .badge{margin-left:auto;font-family:var(--mono);font-size:.66rem;font-weight:600;color:var(--green-d);
+  background:rgba(46,140,99,.12);padding:3px 8px;border-radius:100px;}
+.match-mid{display:grid;place-items:center;gap:12px;}
+.match-plug{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--emer),var(--green));color:#062616;
+  box-shadow:0 16px 40px -14px rgba(63,203,134,.6);transition:transform .5s var(--ease);}
+.match-plug svg{width:30px;height:30px;}
+.match.on .match-plug{transform:scale(1.12) rotate(360deg);}
+.match-result{max-width:960px;margin:clamp(24px,3vw,36px) auto 0;padding:22px 26px;border-radius:20px;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:space-between;
+  background:linear-gradient(120deg,#0A2540,#123761);color:#fff;opacity:.4;filter:grayscale(.6);
+  transition:opacity .6s var(--ease),filter .6s var(--ease);}
+.match.on .match-result{opacity:1;filter:none;}
+.match-result .mr-t b{font-size:1.15rem;color:#fff;display:block;}
+.match-result .mr-t small{color:rgba(255,255,255,.7);font-size:.86rem;}
+.match-result .mr-time{font-family:var(--mono);font-size:1.5rem;font-weight:600;color:var(--emer-2);}
+.match-btn-wrap{text-align:center;margin-top:clamp(26px,3vw,38px);}
+
+/* WHO benefits */
+.who2{background:linear-gradient(178deg,#0A2440,#081F38);}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin:0 auto;}
+.duo-card{padding:clamp(28px,3vw,40px);border-radius:22px;background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.12);}
+.duo-card .tt{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.duo-card .tt .ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:#fff;flex:none;}
+.duo-card.s .ic{background:linear-gradient(150deg,var(--gold),var(--amber));}
+.duo-card.b .ic{background:linear-gradient(150deg,var(--blue-br),var(--blue));}
+.duo-card .tt b{font-size:1.25rem;color:#fff;letter-spacing:-0.02em;}
+.duo-list{list-style:none;display:grid;gap:12px;}
+.duo-list li{display:flex;gap:11px;font-size:.98rem;color:rgba(255,255,255,.74);line-height:1.45;}
+.duo-list li svg{width:18px;height:18px;color:var(--emer);flex:none;margin-top:2px;}
+
+/* CLOSE */
+.close{background:
+  radial-gradient(90% 90% at 50% 0,rgba(43,124,196,.3),transparent 60%),
+  linear-gradient(170deg,#0A2A4C,#07182B);text-align:center;}
+.close .seal{margin-bottom:24px;}
+.close h2{font-size:clamp(2.1rem,4.4vw,3.5rem);color:#fff;max-width:20ch;margin:0 auto;}
+.close p{color:rgba(255,255,255,.72);margin:1.3rem auto 0;max-width:54ch;font-size:1.12rem;}
+.close .disc{margin-top:30px;font-family:var(--mono);font-size:.76rem;color:rgba(255,255,255,.38);}
+
+/* PRINCIPLE + REPORT */
+.principle{background:
+  radial-gradient(90% 70% at 50% 0,#FBFAF6,var(--paper) 60%),var(--paper);color:var(--ink);}
+/* distinctive trio */
+.trio{max-width:1000px;margin:0 auto clamp(40px,4.5vw,60px);display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.trio-card{padding:22px 22px 20px;border-radius:16px;background:#fff;border:1px solid var(--line);
+  box-shadow:0 24px 60px -50px rgba(10,37,64,.4);text-align:left;position:relative;overflow:hidden;}
+.trio-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--emer),var(--green));}
+.trio-card .ti{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;margin-bottom:13px;
+  background:linear-gradient(150deg,#0A2A4C,#07182B);color:var(--emer-2);}
+.trio-card .ti svg{width:19px;height:19px;}
+.trio-card b{display:block;font-size:1.02rem;color:var(--ink);letter-spacing:-0.01em;}
+.trio-card small{display:block;color:var(--ink-2);font-size:.86rem;line-height:1.4;margin-top:5px;}
+.trio-card .tnum{position:absolute;right:16px;top:14px;font-family:var(--mono);font-size:.72rem;color:var(--ink-3);}
+/* repair callout */
+.repair{max-width:1060px;margin:clamp(30px,3.5vw,44px) auto 0;padding:clamp(24px,2.8vw,34px) clamp(24px,3vw,40px);
+  border-radius:20px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+  background:linear-gradient(120deg,#0A2A4C,#07182B);color:#fff;position:relative;overflow:hidden;
+  box-shadow:0 40px 90px -55px rgba(7,24,43,.6);}
+.repair::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(70% 120% at 8% 0,rgba(240,192,116,.2),transparent 55%);}
+.repair .ric{width:56px;height:56px;border-radius:15px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--gold-2),var(--gold));color:var(--navy);position:relative;z-index:1;}
+.repair .ric svg{width:28px;height:28px;}
+.repair .rtx{flex:1;min-width:240px;position:relative;z-index:1;}
+.repair .rtx b{font-size:1.15rem;color:#fff;letter-spacing:-0.01em;}
+.repair .rtx p{color:rgba(255,255,255,.72);font-size:.98rem;margin-top:5px;line-height:1.5;}
+.repair .rtx .em{color:var(--gold-2);font-weight:600;}
+.principle-banner{max-width:900px;margin:0 auto clamp(44px,5vw,66px);text-align:center;position:relative;
+  padding:clamp(32px,4vw,48px) clamp(24px,4vw,52px);border-radius:24px;
+  background:linear-gradient(160deg,#0A2A4C,#07182B);color:#fff;overflow:hidden;
+  box-shadow:0 40px 90px -50px rgba(7,24,43,.6);}
+.principle-banner::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(80% 90% at 50% -10%,rgba(63,203,134,.22),transparent 60%);}
+.principle-banner .seal{margin-bottom:20px;}
+.principle-banner h3{font-size:clamp(1.6rem,3vw,2.5rem);color:#fff;letter-spacing:-0.03em;line-height:1.1;max-width:20ch;margin-inline:auto;}
+.principle-banner h3 em{font-style:normal;color:var(--emer-2);}
+.principle-banner p{color:rgba(255,255,255,.72);margin-top:16px;max-width:52ch;margin-inline:auto;font-size:1.05rem;}
+.report-wrap{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:.92fr 1.08fr;
+  gap:clamp(26px,4vw,52px);align-items:center;}
+.report-copy .kicker{color:var(--amber);}
+.report-copy h2{font-size:clamp(1.8rem,3.4vw,2.7rem);color:var(--ink);margin:1rem 0 1.1rem;letter-spacing:-0.03em;}
+.report-copy p{color:var(--ink-2);font-size:1.05rem;line-height:1.6;}
+.report-copy .flow{list-style:none;margin-top:24px;display:grid;gap:2px;}
+.report-copy .flow li{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line);}
+.report-copy .flow li:last-child{border-bottom:1px solid var(--line);}
+.report-copy .flow .fi{width:30px;height:30px;border-radius:9px;flex:none;display:grid;place-items:center;
+  font-family:var(--mono);font-size:.82rem;font-weight:600;color:#fff;background:linear-gradient(150deg,var(--blue-br),var(--blue));}
+.report-copy .flow b{color:var(--ink);font-size:1rem;display:block;}
+.report-copy .flow small{color:var(--ink-3);font-size:.88rem;}
+.report-copy .price-line{margin-top:24px;display:inline-flex;align-items:center;gap:11px;font-weight:600;
+  color:var(--green-d);font-size:1rem;padding:11px 18px;border-radius:100px;
+  background:rgba(46,140,99,.1);border:1px solid rgba(46,140,99,.28);}
+.report-copy .price-line svg{width:18px;height:18px;}
+/* the document mock */
+.doc{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  box-shadow:0 40px 90px -50px rgba(10,37,64,.45);transform:rotate(-0.6deg);}
+.doc-top{padding:20px 24px;background:linear-gradient(160deg,#F7F5EF,#F1EEE5);border-bottom:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:14px;}
+.doc-top .dt-l .dt-k{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase;}
+.doc-top .dt-l b{display:block;font-size:1.12rem;color:var(--ink);letter-spacing:-0.02em;margin-top:3px;}
+.doc-top .dt-l small{color:var(--ink-3);font-size:.82rem;}
+.doc-seal{flex:none;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;text-align:center;
+  background:radial-gradient(circle,#fff,#F1FAF4);border:2px dashed var(--green);color:var(--green-d);
+  font-family:var(--mono);font-size:.52rem;font-weight:600;line-height:1.15;letter-spacing:.02em;}
+.doc-body{padding:20px 24px 24px;}
+.doc-sec{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:4px 0 10px;}
+.doc-line{display:flex;align-items:center;gap:11px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.92rem;color:var(--ink);}
+.doc-line:last-of-type{border-bottom:none;}
+.doc-line . dot{}
+.doc-line .ic{width:20px;height:20px;border-radius:50%;flex:none;display:grid;place-items:center;}
+.doc-line .ic.ok{background:rgba(46,140,99,.14);color:var(--green-d);}
+.doc-line .ic.warn{background:rgba(217,128,58,.14);color:var(--amber);}
+.doc-line .ic svg{width:12px;height:12px;}
+.doc-line .st{margin-left:auto;font-family:var(--mono);font-size:.72rem;font-weight:600;}
+.doc-line .st.ok{color:var(--green-d);}
+.doc-line .st.warn{color:var(--amber);}
+.doc-note{margin-top:14px;padding:13px 15px;border-radius:11px;background:#FBF6EE;border:1px solid #EFE3CE;
+  font-size:.85rem;color:#8A6A3A;line-height:1.45;display:flex;gap:10px;}
+.doc-note svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--amber);}
+.doc-foot{padding:14px 24px;background:#F7F5EF;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:.68rem;color:var(--ink-3);}
+.doc-foot .conf{color:var(--green-d);font-weight:600;}
+@media(max-width:900px){ .report-wrap{grid-template-columns:1fr;} .doc{transform:none;} }
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;}
+  .proof-cards{grid-template-columns:1fr 1fr;}
+  .pillars{grid-template-columns:1fr;}
+  .gap-grid,.duo{grid-template-columns:1fr;}
+  .gap-col+.gap-col{border-left:none;border-top:1px solid var(--line);}
+  .match-stage{grid-template-columns:1fr;}
+  .match-mid{transform:rotate(90deg);margin:6px 0;}
+  .tl-row{grid-template-columns:1fr;gap:8px;}
+  .tl-row .who{text-align:left;}
+  .tl-bar.nov{width:55%;}
+}
+@media(max-width:560px){ .proof-cards{grid-template-columns:1fr;} }
+@media(prefers-reduced-motion:reduce){*{animation:none!important;}.reveal{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<div class="ribbon">
+  <a class="rb-home" href="index.html">NOVERA · El segell verificat <span class="rb-ar">— torna a l'inici →</span></a>
+  <div class="nav-links"></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="seal"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>NOVERA&nbsp;VERIFIED</span>
+      <h1>El primer immoble <span class="grad">amb segell verificat</span> d'Espanya.</h1>
+      <p class="lead">Verifiquem cada immoble <strong>abans</strong> de posar-lo a la venda i l'emetem amb un <strong>Passaport digital</strong>: així el comprador sap exactament què compra —estat legal, registral i real— i tanca en dies, no en mesos. El que al món ja funciona —verificar un cop, comprar amb confiança— per fi arriba a Espanya.</p>
+      <div class="hero-note">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Due diligence per avançat</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>Registre blindat</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Reserva instantània</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#match" class="btn btn-gold">Vull vendre amb segell NOVERA
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#diff" class="btn btn-ghost">Com ens diferenciem</a>
+      </div>
+      <div class="hero-trust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>Sense segell no venem. És la nostra regla, no un extra.</div>
+    </div>
+
+    <!-- interactive passport -->
+    <div class="pass" id="pass">
+      <div class="pass-photo">
+        <span class="tag">PASSPORT · NV-0427 · verified</span>
+        <div class="addr"><b>Habitatge unifamiliar</b><small>Propietat verificada · Espanya</small></div>
+      </div>
+      <div class="pass-body">
+        <div class="pass-scorewrap">
+          <div class="ring" id="ring"><span class="num" id="ringNum">0</span></div>
+          <div class="pass-scoretext">
+            <div class="k">Índex de confiança</div>
+            <div class="st" id="scoreState">Sense verificar</div>
+            <div class="sub" id="scoreSub">Inicia la verificació NOVERA</div>
+          </div>
+        </div>
+        <ul class="checks" id="checks">
+          <li data-w="18"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Nota simple registral<span class="hash">0x8f2a</span></li>
+          <li data-w="16"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Càrregues i deutes<span class="hash">0x41c7</span></li>
+          <li data-w="16"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Cèdula d'habitabilitat<span class="hash">0xa903</span></li>
+          <li data-w="16"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Certificat energètic<span class="hash">0x1de6</span></li>
+          <li data-w="18"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Estat legal i urbanístic<span class="hash">0x77b0</span></li>
+          <li data-w="16"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>IBI i despeses al corrent<span class="hash">0x2e54</span></li>
+        </ul>
+        <div class="pass-cta">
+          <button class="btn btn-gold btn-full" id="verifyBtn">Iniciar verificació NOVERA
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div class="pass-ready" id="ready">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div><b>Immoble verificat · Llest per comprar</b><small id="sealHash">segell · 0x8f2a41c7a903</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL PROOF -->
+<section class="proof">
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>PROPY · +4.000 M$ verificats en cadena</span>
+      <span>SUMUTASU · ven en 2 dies</span>
+      <span>LANDEED · "the blue tick for property"</span>
+      <span>PROPTECH 2026 · the Wallet Era</span>
+      <span>DOMA · títol i assegurança instantanis</span>
+      <span>PROPY · +4.000 M$ verificats en cadena</span>
+      <span>SUMUTASU · ven en 2 dies</span>
+      <span>LANDEED · "the blue tick for property"</span>
+      <span>PROPTECH 2026 · the Wallet Era</span>
+      <span>DOMA · títol i assegurança instantanis</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">El món ja ho està provant</span>
+      <h2>La idea funciona fora. <span class="grad-gold">Ningú l'ha unificat a Espanya.</span></h2>
+      <p>Les proptech líders demostren cada peça per separat. NOVERA les uneix en un sol servei i les porta a Espanya.</p>
+    </div>
+    <div class="proof-cards">
+      <div class="pc reveal">
+        <div class="flag">🇺🇸 Estats Units</div>
+        <div class="stat">4.000M$</div>
+        <div class="who">Propy</div>
+        <div class="desc">Transaccions verificades i registrades en cadena a 38 països. Registre anti-frau, tancaments 24/7.</div>
+      </div>
+      <div class="pc reveal">
+        <div class="flag">🇯🇵 Japó</div>
+        <div class="stat">2 dies</div>
+        <div class="who">Sumutasu</div>
+        <div class="desc">Ven un habitatge en dos dies, valoració en 1 hora i sense comissió, amb xarxa de bancs i reformes.</div>
+      </div>
+      <div class="pc reveal">
+        <div class="flag">🇮🇳 Índia</div>
+        <div class="stat">✓ blue tick</div>
+        <div class="who">Landeed</div>
+        <div class="desc">"El tic blau de la propietat": due diligence de grau legal que converteix papers dispersos en estat verificat.</div>
+      </div>
+      <div class="pc reveal">
+        <div class="flag">🇪🇺 Europa</div>
+        <div class="stat">2026</div>
+        <div class="who">Wallet Era</div>
+        <div class="desc">La indústria preveu un "passaport digital" del comprador: verificar-se un cop i portar-ho a cada operació.</div>
+      </div>
+    </div>
+    <p class="proof-punch reveal">NOVERA seria la primera del sector a Espanya amb <span class="grad">inventari pre-verificat</span>.</p>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why pad">
+  <div class="wrap">
+    <div class="sec-head dark reveal">
+      <span class="kicker gold" style="color:var(--amber)">El buit del mercat</span>
+      <h2>A Espanya, la verificació arriba tard</h2>
+      <p>Es posa a la venda i després es busquen els papers. Per això les operacions s'allarguen o cauen. NOVERA ho gira.</p>
+    </div>
+    <div class="gap-grid reveal">
+      <div class="gap-col old">
+        <span class="gap-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>Model tradicional</span>
+        <h3>Es ven primer, es comprova després</h3>
+        <ul class="gap-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>El comprador oferta sense saber l'estat real</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Els papers apareixen (o falten) a mitja operació</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Càrregues o vicis legals descoberts tard</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Setmanes de bloqueig i operacions que cauen</li>
+        </ul>
+      </div>
+      <div class="gap-col new">
+        <span class="gap-lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/></svg>Passaport NOVERA</span>
+        <h3>Es verifica primer, es ven amb confiança</h3>
+        <ul class="gap-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Documentació validada abans de publicar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Índex de confiança visible per al comprador</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>El que veus és exactament el que compres</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Tancament en dies, no en mesos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-compare reveal">
+      <div class="tl-row">
+        <div class="who"><b>Venda tradicional</b><small>de l'oferta a la firma</small></div>
+        <div class="tl-bar trad">2 – 4 mesos · risc de caiguda</div>
+      </div>
+      <div class="tl-row">
+        <div class="who"><b>Amb Passaport</b><small>de l'oferta a la firma</small></div>
+        <div class="tl-bar nov">Dies</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECHANISM -->
+<section class="mech pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">El sistema</span>
+      <h2>Tres capes, un immoble blindat</h2>
+      <p>Agafem el millor de cada líder mundial i ho unim en el flux NOVERA.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <span class="pn">01</span>
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Passaport verificat</h3>
+        <p>El nostre equip legal valida cada document i emet un índex de confiança visible. El "tic blau" de l'immoble.</p>
+        <div class="ref">inspirat en <b>Landeed</b> · Índia</div>
+      </div>
+      <div class="pillar reveal">
+        <span class="pn">02</span>
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+        <h3>Registre blindat</h3>
+        <p>Cada document segellat amb empremta única i verificable. Historial immutable que viatja amb la propietat, anti-frau.</p>
+        <div class="ref">inspirat en <b>Propy</b> · EUA</div>
+      </div>
+      <div class="pillar reveal">
+        <span class="pn">03</span>
+        <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Comprador verificat</h3>
+        <p>Identitat i finançament validats un sol cop. Un comprador verificat + un immoble verificat = reserva instantània.</p>
+        <div class="ref">inspirat en <b>Wallet Era</b> · Europa 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR -->
+<section class="diff pad" id="diff">
+  <div class="wrap">
+    <div class="sec-head reveal diff-head">
+      <span class="kicker gold" style="color:var(--gold-2)">Per què NOVERA</span>
+      <h2>No som una <em>immobiliària més</em>. Som un segell de confiança.</h2>
+      <p>Les altres publiquen anuncis i esperen. Nosaltres verifiquem, blindem i garantim cada immoble abans que surti al mercat.</p>
+    </div>
+    <div class="diff-table reveal">
+      <div class="diff-th">
+        <div class="lbl">A l'hora de comprar o vendre</div>
+        <div class="col-old">Una immobiliària normal</div>
+        <div class="col-nov"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>NOVERA</div>
+      </div>
+      <div class="diff-row">
+        <div class="feat">Verificació dels papers</div>
+        <div class="old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>A mitja operació, si surt</div>
+        <div class="nov"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Abans de publicar, amb segell</div>
+      </div>
+      <div class="diff-row">
+        <div class="feat">Què sap el comprador</div>
+        <div class="old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>El que li expliquen</div>
+        <div class="nov"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Informe complet abans de visitar</div>
+      </div>
+      <div class="diff-row">
+        <div class="feat">Millores i detalls</div>
+        <div class="old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>Regateig d'última hora</div>
+        <div class="nov"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Valorades amb la propietat · disposem del servei</div>
+      </div>
+      <div class="diff-row">
+        <div class="feat">Temps fins a la firma</div>
+        <div class="old"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>2 – 4 mesos, amb risc de caiguda</div>
+        <div class="nov"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Dies, amb reserva instantània</div>
+      </div>
+    </div>
+    <div class="diff-punch reveal">
+      <b>El resultat: <em>preu ferm, zero sorpreses</em> i tancaments que no cauen.</b>
+      <a href="#match" class="btn btn-green">Ho vull per al meu immoble
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLE + PRE-VISIT REPORT -->
+<section class="principle pad">
+  <div class="wrap">
+    <div class="principle-banner reveal">
+      <span class="seal"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>REGLA NOVERA</span>
+      <h3>Sense verificació prèvia i segell, <em>no venem cap immoble.</em></h3>
+      <p>No és un extra: és la condició. Cada propietat passa per la verificació documental, legal, registral i visual abans d'entrar al mercat. Si no supera el segell, no la publiquem. Punt.</p>
+    </div>
+
+    <div class="trio reveal">
+      <div class="trio-card">
+        <span class="tnum">01</span>
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <b>Estudi previ</b>
+        <small>Analitzem la propietat a fons: documentació, legal, registre i estat real.</small>
+      </div>
+      <div class="trio-card">
+        <span class="tnum">02</span>
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <b>Verificació prèvia</b>
+        <small>Segellem cada punt. Si hi ha millores possibles, les valorem amb la propietat.</small>
+      </div>
+      <div class="trio-card">
+        <span class="tnum">03</span>
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
+        <b>Informe previ</b>
+        <small>El comprador el rep abans de la visita. Tot a la vista, res amagat.</small>
+      </div>
+    </div>
+
+    <div class="report-wrap">
+      <div class="report-copy reveal">
+        <span class="kicker gold" style="color:var(--amber)">El distintiu NOVERA · Informe previ</span>
+        <h2>El comprador ho sap tot <em style="font-style:normal;color:var(--green-d)">abans</em> d'entrar per la porta</h2>
+        <p>De cada immoble en fem un dossier complet amb tota la informació verificada. Abans de qualsevol visita, l'interessat rep una versió <strong>sense dades confidencials del client</strong>: només l'estat real, certificat. Tots anem de cares.</p>
+        <ul class="flow">
+          <li><span class="fi">1</span><div><b>Rep l'informe previ</b><small>Estat legal, registral i visual verificat. Res amagat.</small></div></li>
+          <li><span class="fi">2</span><div><b>Decideix amb criteri</b><small>Si li encaixa, visita. Si no, no perd el temps — ni nosaltres.</small></div></li>
+          <li><span class="fi">3</span><div><b>El preu és el que és</b><small>Sense sorpreses ni regateig per defectes: ja estaven sobre la taula.</small></div></li>
+        </ul>
+        <span class="price-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Transparència total = preu ferm i defensat</span>
+      </div>
+
+      <!-- the pre-visit document mock -->
+      <div class="doc reveal">
+        <div class="doc-top">
+          <div class="dt-l">
+            <span class="dt-k">Informe previ · NV-0427</span>
+            <b>Habitatge unifamiliar · verificat</b>
+            <small>Document per a l'interessat · sense dades del propietari</small>
+          </div>
+          <div class="doc-seal">NOVERA<br>VERIFIED</div>
+        </div>
+        <div class="doc-body">
+          <div class="doc-sec">Verificació</div>
+          <div class="doc-line"><span class="ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Legal · sense afectacions<span class="st ok">OK</span></div>
+          <div class="doc-line"><span class="ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Registral · sense càrregues<span class="st ok">OK</span></div>
+          <div class="doc-line"><span class="ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Urbanístic · en regla<span class="st ok">OK</span></div>
+          <div class="doc-line"><span class="ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Inspecció visual realitzada<span class="st ok">OK</span></div>
+          <div class="doc-line"><span class="ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Millores valorades amb la propietat<span class="st ok">SERVEI</span></div>
+          <div class="doc-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9L2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+            <span><b>Observació registrada:</b> lleugera humitat al lavabo de la segona planta. Valorada amb la propietat; disposem de servei per resoldre-la si s'acorda. Sense afectació estructural. Tot documentat i a la vista.</span>
+          </div>
+        </div>
+        <div class="doc-foot"><span class="conf">✓ Certificat NOVERA</span><span>segell 0x8f2a41c7</span></div>
+      </div>
+    </div>
+
+    <div class="repair reveal">
+      <div class="ric"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.1-.6-.6-2.1 2.1-2.7z"/></svg></div>
+      <div class="rtx">
+        <b>Si hi ha millores possibles, les valorem amb tu — disposem del servei.</b>
+        <p>Estudiem la proposta amb la propietat i valorem <span class="em">la possibilitat de dur-les a terme abans de posar l'immoble al mercat</span>. Així arriba al comprador en el millor estat possible i el preu queda defensat, sense sorpreses d'última hora.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATCH interactive -->
+<section class="match pad" id="match">
+  <div class="wrap">
+    <div class="sec-head dark reveal">
+      <span class="kicker" style="color:var(--blue-br)">La màgia</span>
+      <h2>Verificat + verificat = tancat</h2>
+      <p>Quan les dues bandes ja estan verificades, la reserva deixa de ser una cursa d'obstacles.</p>
+    </div>
+    <div class="match-stage reveal">
+      <div class="mcard home">
+        <div class="mhead"><span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5"/><path d="M5 9v11h14V9"/></svg></span><div><b>Immoble</b><small>CB-0427 · Begur</small></div></div>
+        <div class="mrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Documentació<span class="badge">verificat</span></div>
+        <div class="mrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Estat legal<span class="badge">verificat</span></div>
+        <div class="mrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Índex confiança<span class="badge">100%</span></div>
+      </div>
+      <div class="match-mid">
+        <div class="match-plug"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      </div>
+      <div class="mcard buyer">
+        <div class="mhead"><span class="mic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg></span><div><b>Comprador</b><small>wallet · 0xC0MPRA</small></div></div>
+        <div class="mrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Identitat<span class="badge">verificat</span></div>
+        <div class="mrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Finançament<span class="badge">pre-aprovat</span></div>
+        <div class="mrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Perfil de cerca<span class="badge">match</span></div>
+      </div>
+    </div>
+    <div class="match-result" id="matchResult">
+      <div class="mr-t"><b id="matchTitle">Encara sense connectar</b><small id="matchSub">Prem el botó per simular el match verificat</small></div>
+      <div class="mr-time" id="matchTime">—</div>
+    </div>
+    <div class="match-btn-wrap">
+      <button class="btn btn-green" id="matchBtn">Simular reserva instantània
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who2 pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Per a qui</span>
+      <h2>Guanya el venedor i guanya el comprador</h2>
+    </div>
+    <div class="duo reveal">
+      <div class="duo-card s">
+        <div class="tt"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5"/><path d="M5 9v11h14V9"/></svg></span><b>Venedor</b></div>
+        <ul class="duo-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>La teva propietat destaca com a "verificada"</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Atreu compradors seriosos i ofertes fermes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Menys negociacions a la baixa per "sorpreses"</li>
+        </ul>
+      </div>
+      <div class="duo-card b">
+        <div class="tt"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><b>Comprador</b></div>
+        <ul class="duo-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Sap exactament què compra abans d'ofertar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Reserva online amb confiança total</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Estalvia setmanes de gestions i incertesa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close pad">
+  <div class="wrap">
+    <span class="seal"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>NOVERA&nbsp;VERIFIED</span>
+    <h2>Vendre bé comença per <span class="grad">generar confiança</span>.</h2>
+    <p>El Passaport NOVERA converteix la transparència de la marca en un actiu concret — i posiciona NOVERA com la primera del sector a Espanya amb inventari pre-verificat, seguint el que el món ja demostra que funciona.</p>
+    <div class="hero-cta" style="justify-content:center;margin-top:32px;">
+      <a href="#pass" class="btn btn-gold">Verifica el teu immoble
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#diff" class="btn btn-ghost">Per què som diferents</a>
+    </div>
+    <p class="disc">Un model inspirat en els líders mundials del sector —Propy, Sumutasu, Landeed— i adaptat a Espanya per NOVERA.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  /* ── strings localitzades (dinàmiques) ── */
+  const L = () => {
+    try{ var q=new URLSearchParams(location.search).get('lang'); if(q&&['ca','es','en'].indexOf(q)!==-1) return q; }catch(e){}
+    try{ var s=localStorage.getItem('novera_lang'); if(s&&['ca','es','en'].indexOf(s)!==-1) return s; }catch(e){}
+    return document.documentElement.lang || 'ca';
+  };
+  const TX = {
+    verifyingBtn:{ca:'Verificant… ',es:'Verificando… ',en:'Verifying… '},
+    verifying:{ca:'Verificant…',es:'Verificando…',en:'Verifying…'},
+    validating:{ca:'Validant documentació registral i legal',es:'Validando documentación registral y legal',en:'Validating registry and legal documentation'},
+    verified100:{ca:'Verificat 100%',es:'Verificado 100%',en:'Verified 100%'},
+    sealIssued:{ca:'Segell NOVERA emès · dossier disponible',es:'Sello NOVERA emitido · dosier disponible',en:'NOVERA seal issued · dossier available'},
+    connecting:{ca:'Connectant…',es:'Conectando…',en:'Connecting…'},
+    checking:{ca:'Comprovant compatibilitat verificada',es:'Comprobando compatibilidad verificada',en:'Checking verified compatibility'},
+    booked:{ca:'Reserva confirmada · immoble bloquejat',es:'Reserva confirmada · inmueble bloqueado',en:'Booking confirmed · property locked'},
+    signed:{ca:'Firma coordinada per NOVERA. De l\'oferta a arres sense fricció.',es:'Firma coordinada por NOVERA. De la oferta a arras sin fricción.',en:'Signing coordinated by NOVERA. From offer to deposit without friction.'}
+  };
+  const t = (k) => (TX[k][L()] || TX[k].ca);
+
+  /* ── passport verification ── */
+  const items = Array.from(document.querySelectorAll('#checks li'));
+  const ring = document.getElementById('ring');
+  const ringNum = document.getElementById('ringNum');
+  const state = document.getElementById('scoreState');
+  const sub = document.getElementById('scoreSub');
+  const btn = document.getElementById('verifyBtn');
+  const ready = document.getElementById('ready');
+  let running=false, done=false;
+  const setScore=v=>{ring.style.setProperty('--v',v);ringNum.textContent=Math.round(v);};
+  function run(){
+    if(running||done)return; running=true; btn.disabled=true; btn.style.opacity=.55;
+    btn.querySelector('svg').style.display='none'; btn.childNodes[0].nodeValue=t('verifyingBtn');
+    state.textContent=t('verifying'); sub.textContent=t('validating');
+    let acc=0,i=0;
+    const step=()=>{ if(i>=items.length){finish();return;}
+      const li=items[i]; li.classList.add('ok'); acc+=parseFloat(li.dataset.w); setScore(acc); i++;
+      setTimeout(step,440); };
+    setTimeout(step,340);
+  }
+  function finish(){ setScore(100); state.textContent=t('verified100');
+    sub.textContent=t('sealIssued');
+    running=false; done=true; ready.classList.add('show'); btn.style.display='none'; }
+  btn.addEventListener('click',run);
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){setTimeout(run,500);io.disconnect();}});},{threshold:.5});
+  io.observe(document.getElementById('pass'));
+
+  /* ── match simulation ── */
+  const match=document.getElementById('match');
+  const mBtn=document.getElementById('matchBtn');
+  const mTitle=document.getElementById('matchTitle');
+  const mSub=document.getElementById('matchSub');
+  const mTime=document.getElementById('matchTime');
+  let mDone=false;
+  mBtn.addEventListener('click',()=>{
+    if(mDone)return; mDone=true;
+    mBtn.disabled=true; mBtn.style.opacity=.55;
+    mTitle.textContent=t('connecting'); mSub.textContent=t('checking');
+    let t=0; const tick=setInterval(()=>{ t+=Math.floor(Math.random()*7)+3; if(t>72)t=72; mTime.textContent=t+'h'; },60);
+    setTimeout(()=>{ clearInterval(tick);
+      match.classList.add('on');
+      mTitle.textContent=t('booked');
+      mSub.textContent=t('signed');
+      mTime.textContent='72h';
+      mBtn.style.display='none';
+    },1500);
+  });
+
+  /* ── reveal ── */
+  const rio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rio.unobserve(e.target);}});},{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>rio.observe(el));
+
+  /* ── re-localitza els textos dinàmics en canviar d'idioma ── */
+  function refreshDynamic(){
+    if(done){ state.textContent=t('verified100'); sub.textContent=t('sealIssued'); }
+    if(mDone){ mTitle.textContent=t('booked'); mSub.textContent=t('signed'); }
+  }
+  document.addEventListener('click',(e)=>{
+    const b=e.target.closest && e.target.closest('.lang-switch [data-lang]');
+    if(b) setTimeout(refreshDynamic,0);
+  });
+})();
+</script>
+<script src="assets/i18n.js"></script>
+</body>
+</html>
