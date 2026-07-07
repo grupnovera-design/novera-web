@@ -1517,34 +1517,50 @@ footer{ background:#081E36; color:#fff; padding-block:clamp(38px,4.6vw,58px); }
 .nav-mobile a.to-page::after{ font-size:.66em; opacity:.85; }
 
 /* ════════════════════════════════════════════════════════════
-   MÒBIL — hero refinat (només ≤760px; desktop intacte)
-   · Ritme editorial i minimalisme del badge "Gratis" fins al tancament
-   · "Ets comprador?" reposicionat SOTA la imatge
-   · Menys soroll visual → càrrega i lectura més netes
+   MÒBIL — portada neta i integrada (només ≤760px; desktop intacte)
+   · Copy sobre el navy + imatge com a targeta emmarcada amb el preu
+   · Compacte perquè es llegeixi com UN sol hero, no dues portades
    ════════════════════════════════════════════════════════════ */
 @media (max-width:760px){
-  .hero{ padding-top:clamp(94px,13vh,124px); padding-bottom:clamp(42px,9vw,64px); }
+  .hero{ display:block; min-height:auto;
+    padding-top:clamp(96px,13vh,122px); padding-bottom:clamp(40px,9vw,58px); }
+  .hero-glow{ opacity:.4; filter:blur(60px); }
+  .hero-grain{ opacity:.4; }
 
-  /* aplanem la columna de text perquè "ets comprador" pugui anar sota la imatge */
   .hero-inner{ display:flex; flex-direction:column; gap:0; align-items:stretch; }
   .hero-copy{ display:contents; }
 
-  /* 1 · badge gratis — subtil, no cridaner */
-  .hero-badge{ order:1; margin:0 0 22px; align-self:flex-start;
-    font-size:.7rem; letter-spacing:.1em; padding:8px 15px 8px 12px;
-    background:rgba(240,192,116,.12); border-color:rgba(240,192,116,.42); }
+  /* 1 · badge */
+  .hero-badge{ order:1; align-self:flex-start; margin:0 0 18px;
+    font-size:.72rem; letter-spacing:.1em; padding:8px 15px 8px 12px;
+    background:rgba(240,192,116,.14); border-color:rgba(240,192,116,.46); }
   .hero-badge svg{ width:13px; height:13px; }
 
-  /* 2 · titular — més aire, tancat i editorial */
-  .hero-copy .hero-title{ order:2; margin:0; font-size:clamp(2.65rem,12.5vw,3.6rem);
-    line-height:.98; letter-spacing:-.042em; }
+  /* 2 · titular compacte */
+  .hero-copy .hero-title{ order:2; margin:0;
+    font-size:clamp(2.6rem,12vw,3.5rem); line-height:.98; letter-spacing:-.042em; }
 
-  /* 3 · subtítol curt i llegible */
-  .hero-sub{ order:3; margin:18px 0 0; max-width:34ch;
-    font-size:1.05rem; line-height:1.52; color:rgba(255,255,255,.82); }
+  /* 3 · subtítol breu */
+  .hero-sub{ order:3; margin:15px 0 0; max-width:32ch;
+    font-size:1.05rem; line-height:1.5; color:rgba(255,255,255,.84); }
 
-  /* 4 · segell — versió neta, sense caixa forta ni brillantor */
-  .hero-seal-badge{ order:4; margin:24px 0 0; width:100%; padding:14px 16px;
+  /* 4 · imatge com a targeta emmarcada (no a sang) amb el preu */
+  .hero-visual{ order:4; margin:22px 0 0; max-width:none; }
+  .hero-photo{ aspect-ratio:16/12; border-radius:20px; box-shadow:0 30px 64px -36px rgba(0,0,0,.65),
+    inset 0 0 0 1px rgba(255,255,255,.08);
+    -webkit-mask-image:none; mask-image:none; }
+  .hero-photo::after{ background:linear-gradient(180deg, transparent 50%, rgba(6,18,31,.6)); }
+  .price-stamp{ right:14px; bottom:14px; left:auto; top:auto;
+    padding:12px 18px 11px; border-radius:15px; animation:stampPop 1s var(--ease) .9s both; }
+  .ps-amount{ font-size:clamp(2.4rem,8vw,3rem); }
+
+  /* 5 · CTA */
+  .hero-copy .hero-cta{ order:5; margin-top:20px; flex-direction:column; align-items:stretch; gap:12px; }
+  .cta-main{ width:100%; height:58px; border-radius:15px; justify-content:space-between; padding-left:24px; }
+  .cta-sub{ justify-content:center; opacity:.86; font-size:.94rem; }
+
+  /* 6 · segell verificat */
+  .hero-seal-badge{ order:6; margin:20px 0 0; width:100%; padding:14px 16px;
     border-radius:14px; background:rgba(255,255,255,.05); border-color:rgba(63,203,134,.3); }
   .hero-seal-badge .hsb-shine{ display:none; }
   .hsb-tick{ width:26px; height:26px; }
@@ -1552,42 +1568,39 @@ footer{ background:#081E36; color:#fff; padding-block:clamp(38px,4.6vw,58px); }
   .hsb-tx .m{ font-size:.9rem; }
   .hsb-ar{ margin-left:auto; }
 
-  /* 5 · CTA — un sol botó protagonista, l'enllaç secundari silenciat */
-  .hero-copy .hero-cta{ order:5; margin-top:26px; flex-direction:column; align-items:stretch; gap:14px; }
-  .cta-main{ width:100%; height:58px; border-radius:15px; justify-content:space-between; padding-left:24px; }
-  .cta-sub{ justify-content:center; opacity:.82; font-size:.94rem; }
-
-  /* 6 · imatge — integrada: full-bleed que es fon amb el fons del hero */
-  .hero-visual{ order:6; margin-top:30px; max-width:none;
-    margin-inline:calc(var(--pad) * -1); }
-  .hero-photo{ aspect-ratio:4/5; border-radius:0; box-shadow:none;
-    -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);
-    mask-image:linear-gradient(180deg,#000 72%,transparent 100%); }
-  .hero-photo::after{ background:linear-gradient(180deg, transparent 42%, rgba(7,20,36,.8)); }
-  .price-stamp{ right:var(--pad); bottom:26px; padding:12px 18px 11px; border-radius:15px;
-    animation:stampPop 1s var(--ease) .9s both; }
-
-  /* 7 · "ets comprador?" — ara SOTA la imatge, com a peu net i tocable */
-  .hero-buyer{ order:7; margin:20px 0 0; width:100%; justify-content:center;
-    padding:16px 18px; min-height:54px; border-radius:14px;
-    border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.03);
-    font-size:.95rem; color:rgba(255,255,255,.74); }
-  .hero-buyer .hb-ico{ width:32px; height:32px; }
-
-  /* menys soroll de fons → aspecte més premium i càrrega més lleugera */
-  .hero-glow{ opacity:.32; filter:blur(58px); }
-  .hero-grain{ opacity:.34; }
+  /* 7 · ets comprador? */
+  .hero-buyer{ order:7; margin:16px 0 0; width:100%; justify-content:center;
+    padding:14px 16px; min-height:50px; border-radius:14px;
+    border:1px solid rgba(255,255,255,.13); background:rgba(255,255,255,.03);
+    font-size:.92rem; color:rgba(255,255,255,.72); }
+  .hero-buyer .hb-ico{ width:30px; height:30px; }
 }
 
 /* ── App-like: ritme, targets tàctils i barra d'acció fixa (només ≤760px) ── */
 html{ -webkit-tap-highlight-color:transparent; }
 .m-dock{ display:none; }
 
-/* ── Botó flotant persistent "Et truquem?" (tota la web, amagable) ── */
-.call-fab{ position:fixed; right:22px; bottom:22px; z-index:58;
-  display:flex; align-items:center;
+/* ── Botons flotants persistents (tota la web, amagables, apilats) ── */
+.fab-stack{ position:fixed; right:22px; bottom:22px; z-index:58;
+  display:flex; flex-direction:column; align-items:flex-end; gap:12px; }
+.call-fab{ position:relative; display:flex; align-items:center;
   transition:transform .55s var(--ease), opacity .4s var(--ease); }
 .call-fab.collapsed{ transform:translateX(calc(100% - 46px)); }
+.plan-fab .cf-btn{ background:linear-gradient(100deg, var(--gold), var(--gold-2)); color:#231403; font-weight:700;
+  position:relative; overflow:hidden;
+  box-shadow:0 20px 44px -12px rgba(226,161,75,.7), inset 0 1px 0 rgba(255,255,255,.45);
+  animation:fabBreathe 5s ease-in-out infinite; }
+.plan-fab .cf-btn:hover{ animation-play-state:paused; transform:translateY(-2px);
+  box-shadow:0 26px 56px -14px rgba(226,161,75,.82), inset 0 1px 0 rgba(255,255,255,.55); }
+.plan-fab .cf-btn::before{ content:''; position:absolute; top:0; left:-60%; width:42%; height:100%;
+  background:linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+  transform:skewX(-18deg); animation:fabShine 4.6s ease-in-out infinite; pointer-events:none; }
+.plan-fab .cf-ico{ background:rgba(35,20,3,.16); }
+.plan-fab .cf-ico::after{ display:none; }
+@keyframes fabBreathe{ 0%,86%,100%{ transform:none; } 92%{ transform:scale(1.05); } }
+@keyframes fabShine{ 0%,58%{ left:-60%; } 100%{ left:140%; } }
+@media (prefers-reduced-motion: reduce){
+  .plan-fab .cf-btn{ animation:none; } .plan-fab .cf-btn::before{ display:none; } }
 .call-fab.collapsed .cf-close{ opacity:0; pointer-events:none; transform:scale(.6); }
 .call-fab.collapsed .cf-btn{ cursor:pointer; padding-right:18px; }
 .cf-btn{ display:inline-flex; align-items:center; gap:11px; height:54px; padding:0 22px 0 15px;
@@ -1651,9 +1664,9 @@ html{ -webkit-tap-highlight-color:transparent; }
   }
   .m-dock-alt svg{ width:23px; height:23px; }
 
-  /* el botó flotant puja per no xocar amb la barra d'acció */
-  .call-fab{ right:14px; bottom:calc(84px + env(safe-area-inset-bottom)); }
-  .cf-btn{ height:50px; font-size:.9rem; }
+  /* els botons flotants s'ajusten al mòbil */
+  .fab-stack{ right:14px; bottom:calc(14px + env(safe-area-inset-bottom)); gap:10px; }
+  .cf-btn{ height:50px; font-size:.88rem; padding:0 18px 0 13px; }
 }
 @media (prefers-reduced-motion: reduce){
   .m-dock{ transition:opacity .3s linear; }

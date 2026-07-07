@@ -503,6 +503,7 @@
       "Una nova manera": "Una nueva manera", "de vendre": "de vender", "casa teva": "tu casa",
       "Sense percentatges sobre la venda. Un preu just per la feina ben feta — i tu sempre amb el control.": "Sin porcentajes sobre la venta. Un precio justo por el trabajo bien hecho — y tú siempre con el control.",
       "Valora la teva propietat": "Valora tu propiedad",
+      "Quin pla encaixa amb tu?": "¿Qué plan encaja contigo?",
       "Ets comprador? Entra al": "¿Eres comprador? Entra en el",
       "Canal de compradors": "Canal de compradores", "Descobreix el model": "Descubre el modelo",
       // Hero — nova portada
@@ -1432,6 +1433,7 @@
       "Una nova manera": "A new way", "de vendre": "to sell", "casa teva": "your home",
       "Sense percentatges sobre la venda. Un preu just per la feina ben feta — i tu sempre amb el control.": "No percentages on the sale. A fair price for work well done — and you always in control.",
       "Valora la teva propietat": "Value your property",
+      "Quin pla encaixa amb tu?": "Which plan fits you?",
       "Ets comprador? Entra al": "Are you a buyer? Enter the",
       "Canal de compradors": "Buyers Channel", "Descobreix el model": "Discover the model",
       "Gratis fins al tancament": "Free until closing",
