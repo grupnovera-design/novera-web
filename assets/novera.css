@@ -485,11 +485,23 @@ header.menu-open .nav-burger span{ background:var(--navy); }
   border-radius:18px; background:linear-gradient(158deg,#0E3054,#081F37 82%);
   border:1px solid rgba(63,203,134,.34);
   box-shadow:0 26px 58px -22px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,255,255,.08);
-  animation:stampPop 1s var(--ease) .9s both, stampFloat 5.5s ease-in-out 2s infinite;
+  animation:stampFly 1.35s var(--ease-soft) .7s both, stampDrift 8s ease-in-out 2.6s infinite;
   transition:transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease);
   will-change:transform; }
 @keyframes stampPop{ 0%{ opacity:0; transform:translateY(18px) scale(.94); } 100%{ opacity:1; transform:none; } }
 @keyframes stampFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
+/* entra “volant” des de fora de la imatge i s'assenta */
+@keyframes stampFly{
+  0%{ opacity:0; transform:translate(72px,34px) rotate(7deg) scale(.86); }
+  55%{ opacity:1; }
+  78%{ transform:translate(-6px,-4px) rotate(-1.4deg) scale(1.015); }
+  100%{ opacity:1; transform:translate(0,0) rotate(0) scale(1); } }
+/* deriva lenta en diagonal sobre la foto — viu però subtil */
+@keyframes stampDrift{
+  0%,100%{ transform:translate(0,0) rotate(0); }
+  22%{ transform:translate(-11px,-9px) rotate(-1.3deg); }
+  50%{ transform:translate(2px,-16px) rotate(.3deg); }
+  76%{ transform:translate(10px,-7px) rotate(1.2deg); } }
 .price-stamp:hover{ animation-play-state:paused; transform:translateY(-9px) scale(1.03);
   border-color:rgba(63,203,134,.6);
   box-shadow:0 34px 70px -22px rgba(0,0,0,.8), 0 0 0 4px rgba(63,203,134,.12), inset 0 1px 0 rgba(255,255,255,.1); }
@@ -1503,3 +1515,146 @@ footer{ background:#081E36; color:#fff; padding-block:clamp(38px,4.6vw,58px); }
 }
 .nav-links a.to-page:hover::after{ opacity:1; transform:translate(1px,-1px); }
 .nav-mobile a.to-page::after{ font-size:.66em; opacity:.85; }
+
+/* ════════════════════════════════════════════════════════════
+   MÒBIL — hero refinat (només ≤760px; desktop intacte)
+   · Ritme editorial i minimalisme del badge "Gratis" fins al tancament
+   · "Ets comprador?" reposicionat SOTA la imatge
+   · Menys soroll visual → càrrega i lectura més netes
+   ════════════════════════════════════════════════════════════ */
+@media (max-width:760px){
+  .hero{ padding-top:clamp(94px,13vh,124px); padding-bottom:clamp(42px,9vw,64px); }
+
+  /* aplanem la columna de text perquè "ets comprador" pugui anar sota la imatge */
+  .hero-inner{ display:flex; flex-direction:column; gap:0; align-items:stretch; }
+  .hero-copy{ display:contents; }
+
+  /* 1 · badge gratis — subtil, no cridaner */
+  .hero-badge{ order:1; margin:0 0 22px; align-self:flex-start;
+    font-size:.7rem; letter-spacing:.1em; padding:8px 15px 8px 12px;
+    background:rgba(240,192,116,.12); border-color:rgba(240,192,116,.42); }
+  .hero-badge svg{ width:13px; height:13px; }
+
+  /* 2 · titular — més aire, tancat i editorial */
+  .hero-copy .hero-title{ order:2; margin:0; font-size:clamp(2.65rem,12.5vw,3.6rem);
+    line-height:.98; letter-spacing:-.042em; }
+
+  /* 3 · subtítol curt i llegible */
+  .hero-sub{ order:3; margin:18px 0 0; max-width:34ch;
+    font-size:1.05rem; line-height:1.52; color:rgba(255,255,255,.82); }
+
+  /* 4 · segell — versió neta, sense caixa forta ni brillantor */
+  .hero-seal-badge{ order:4; margin:24px 0 0; width:100%; padding:14px 16px;
+    border-radius:14px; background:rgba(255,255,255,.05); border-color:rgba(63,203,134,.3); }
+  .hero-seal-badge .hsb-shine{ display:none; }
+  .hsb-tick{ width:26px; height:26px; }
+  .hsb-tx .k{ font-size:.64rem; letter-spacing:.12em; }
+  .hsb-tx .m{ font-size:.9rem; }
+  .hsb-ar{ margin-left:auto; }
+
+  /* 5 · CTA — un sol botó protagonista, l'enllaç secundari silenciat */
+  .hero-copy .hero-cta{ order:5; margin-top:26px; flex-direction:column; align-items:stretch; gap:14px; }
+  .cta-main{ width:100%; height:58px; border-radius:15px; justify-content:space-between; padding-left:24px; }
+  .cta-sub{ justify-content:center; opacity:.82; font-size:.94rem; }
+
+  /* 6 · imatge — integrada: full-bleed que es fon amb el fons del hero */
+  .hero-visual{ order:6; margin-top:30px; max-width:none;
+    margin-inline:calc(var(--pad) * -1); }
+  .hero-photo{ aspect-ratio:4/5; border-radius:0; box-shadow:none;
+    -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);
+    mask-image:linear-gradient(180deg,#000 72%,transparent 100%); }
+  .hero-photo::after{ background:linear-gradient(180deg, transparent 42%, rgba(7,20,36,.8)); }
+  .price-stamp{ right:var(--pad); bottom:26px; padding:12px 18px 11px; border-radius:15px;
+    animation:stampPop 1s var(--ease) .9s both; }
+
+  /* 7 · "ets comprador?" — ara SOTA la imatge, com a peu net i tocable */
+  .hero-buyer{ order:7; margin:20px 0 0; width:100%; justify-content:center;
+    padding:16px 18px; min-height:54px; border-radius:14px;
+    border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.03);
+    font-size:.95rem; color:rgba(255,255,255,.74); }
+  .hero-buyer .hb-ico{ width:32px; height:32px; }
+
+  /* menys soroll de fons → aspecte més premium i càrrega més lleugera */
+  .hero-glow{ opacity:.32; filter:blur(58px); }
+  .hero-grain{ opacity:.34; }
+}
+
+/* ── App-like: ritme, targets tàctils i barra d'acció fixa (només ≤760px) ── */
+html{ -webkit-tap-highlight-color:transparent; }
+.m-dock{ display:none; }
+
+/* ── Botó flotant persistent "Et truquem?" (tota la web, amagable) ── */
+.call-fab{ position:fixed; right:22px; bottom:22px; z-index:58;
+  display:flex; align-items:center;
+  transition:transform .55s var(--ease), opacity .4s var(--ease); }
+.call-fab.collapsed{ transform:translateX(calc(100% - 46px)); }
+.call-fab.collapsed .cf-close{ opacity:0; pointer-events:none; transform:scale(.6); }
+.call-fab.collapsed .cf-btn{ cursor:pointer; padding-right:18px; }
+.cf-btn{ display:inline-flex; align-items:center; gap:11px; height:54px; padding:0 22px 0 15px;
+  border-radius:100px; color:#fff; font-weight:600; font-size:.95rem; letter-spacing:-.01em;
+  background:linear-gradient(100deg, var(--green), var(--green-d));
+  box-shadow:0 18px 40px -14px rgba(34,111,78,.66), inset 0 1px 0 rgba(255,255,255,.22);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease); }
+.cf-btn:hover{ transform:translateY(-2px); box-shadow:0 24px 52px -16px rgba(34,111,78,.75), inset 0 1px 0 rgba(255,255,255,.28); }
+.cf-ico{ position:relative; width:32px; height:32px; border-radius:50%; flex:none;
+  display:grid; place-items:center; background:rgba(255,255,255,.2); }
+.cf-ico svg{ width:16px; height:16px; }
+.cf-ico::after{ content:''; position:absolute; inset:0; border-radius:50%;
+  box-shadow:0 0 0 0 rgba(255,255,255,.5); animation:cfPulse 2.8s ease-out infinite; }
+@keyframes cfPulse{ 0%{ box-shadow:0 0 0 0 rgba(255,255,255,.45);} 70%{ box-shadow:0 0 0 9px rgba(255,255,255,0);} 100%{ box-shadow:0 0 0 0 rgba(255,255,255,0);} }
+.cf-close{ position:absolute; top:-8px; right:-6px; width:22px; height:22px; border-radius:50%;
+  border:1px solid rgba(255,255,255,.2); cursor:pointer; background:var(--navy); color:#fff;
+  font-size:14px; line-height:1; display:grid; place-items:center;
+  box-shadow:0 5px 12px rgba(0,0,0,.32); opacity:.9; transition:opacity .3s, transform .3s; }
+.cf-close:hover{ opacity:1; transform:scale(1.08); }
+@media (prefers-reduced-motion: reduce){ .cf-ico::after{ animation:none; } }
+
+@media (max-width:760px){
+  /* ritme vertical més compacte, propi de mòbil */
+  section{ padding-block:clamp(56px,13vw,88px); }
+  .h2{ font-size:clamp(2.05rem,8.6vw,2.75rem); line-height:1.08; }
+  .lead{ font-size:1.06rem; line-height:1.58; }
+  .display{ font-size:clamp(2.7rem,13vw,3.6rem); }
+
+  /* targets tàctils còmodes */
+  .cta-main,.nav-cta,.zc-btn,.sm-btn,.nm-cta{ min-height:52px; }
+
+  /* "Un exemple real" — més compacte en mòbil (sense treure res) */
+  .calc-head h3{ font-size:clamp(1.35rem,6vw,1.75rem); }
+  .calc-head{ margin-bottom:clamp(26px,7vw,38px); }
+  .saving-amount{ font-size:clamp(3.1rem,15vw,4.4rem); margin-top:12px; }
+  .calc-saving{ padding-block:clamp(20px,5vw,28px); }
+  .calc-nov .cs-amount{ font-size:clamp(2.4rem,9vw,3.4rem); }
+  .calc-trad .cs-amount{ font-size:clamp(1.7rem,6vw,2.2rem); }
+
+  /* barra d'acció fixa tipus app — apareix en fer scroll */
+  .m-dock{
+    display:flex; gap:10px; align-items:stretch;
+    position:fixed; left:12px; right:12px; z-index:55;
+    bottom:calc(12px + env(safe-area-inset-bottom));
+    transform:translateY(150%); opacity:0; pointer-events:none;
+    transition:transform .55s var(--ease), opacity .4s var(--ease);
+  }
+  .m-dock.show{ transform:none; opacity:1; pointer-events:auto; }
+  .m-dock-cta{
+    flex:1; display:flex; align-items:center; justify-content:center; gap:10px;
+    height:58px; border-radius:17px; font-weight:700; font-size:1.04rem; letter-spacing:-.01em;
+    color:#231403; background:linear-gradient(100deg,var(--gold),var(--gold-2));
+    box-shadow:0 16px 36px -12px rgba(226,161,75,.62), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .m-dock-cta svg{ width:20px; height:20px; }
+  .m-dock-alt{
+    flex:none; width:58px; height:58px; border-radius:17px; display:grid; place-items:center;
+    color:var(--gold-2); background:rgba(9,26,44,.82); border:1px solid rgba(255,255,255,.14);
+    backdrop-filter:saturate(160%) blur(16px); -webkit-backdrop-filter:saturate(160%) blur(16px);
+    box-shadow:0 16px 36px -16px rgba(0,0,0,.6);
+  }
+  .m-dock-alt svg{ width:23px; height:23px; }
+
+  /* el botó flotant puja per no xocar amb la barra d'acció */
+  .call-fab{ right:14px; bottom:calc(84px + env(safe-area-inset-bottom)); }
+  .cf-btn{ height:50px; font-size:.9rem; }
+}
+@media (prefers-reduced-motion: reduce){
+  .m-dock{ transition:opacity .3s linear; }
+}
