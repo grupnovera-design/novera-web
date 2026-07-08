@@ -33,6 +33,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/novera.css">
 <link rel="stylesheet" href="../assets/recursos.css">
+<style>
+/* ── Cercador intel·ligent de guies ── */
+.gfinder{ margin-top:clamp(34px,5vw,52px); }
+.gfinder-box{ position:relative; display:flex; align-items:center; gap:12px; border:1px solid var(--line); background:#fff; border-radius:100px; padding:6px 8px 6px 22px; box-shadow:0 18px 40px -30px rgba(10,37,64,.4); transition:border-color .3s var(--ease), box-shadow .3s var(--ease); }
+.gfinder-box:focus-within{ border-color:var(--gold); box-shadow:0 20px 46px -26px rgba(226,161,75,.5); }
+.gfinder-box svg.gf-ic{ width:22px; height:22px; color:var(--amber); flex:none; }
+.gfinder-box input{ flex:1; border:none; outline:none; background:transparent; font-family:inherit; font-size:1.02rem; color:var(--ink); padding:14px 0; min-width:0; }
+.gfinder-box input::placeholder{ color:var(--ink-3); }
+.gf-clear{ border:none; background:var(--paper-2); color:var(--ink-2); width:38px; height:38px; border-radius:50%; cursor:pointer; font-size:1.1rem; line-height:1; flex:none; display:none; }
+.gf-clear:hover{ background:var(--line); }
+.gfinder.has-q .gf-clear{ display:block; }
+.gf-chips{ display:flex; flex-wrap:wrap; gap:9px; margin-top:16px; }
+.gf-chip{ border:1px solid var(--line); background:var(--paper-2); color:var(--ink-2); border-radius:100px; padding:8px 16px; font-size:.86rem; font-family:inherit; cursor:pointer; transition:all .25s var(--ease); }
+.gf-chip:hover{ border-color:var(--gold); color:var(--navy); background:#fff; }
+.gf-result{ display:none; margin-top:22px; padding:20px 22px; border:1px solid rgba(46,140,99,.35); background:rgba(46,140,99,.06); border-radius:16px; }
+.gfinder.has-q .gf-result{ display:block; }
+.gf-result .gf-r-lbl{ font-size:.72rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--green-d); margin:0 0 10px; }
+.gf-result a.gf-best{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--navy); font-weight:600; font-size:1.12rem; letter-spacing:-.01em; }
+.gf-result a.gf-best .ar{ margin-left:auto; color:var(--amber); flex:none; }
+.gf-result .gf-none{ color:var(--ink-2); font-size:.98rem; margin:0; }
+.gf-result .gf-none a{ color:var(--blue); }
+/* ── Apartats ── */
+.rec-section{ margin-top:clamp(52px,6vw,78px); }
+.rec-section-h{ display:flex; align-items:baseline; gap:14px; border-top:1px solid var(--line); padding-top:26px; margin-bottom:4px; }
+.rec-section-h h2{ font-size:clamp(1.3rem,2vw,1.7rem); font-weight:600; letter-spacing:-.02em; color:var(--navy); margin:0; }
+.rec-section-h .rec-count{ font-size:.8rem; color:var(--ink-3); }
+.rec-section .rec-grid{ margin-top:clamp(24px,3vw,34px); }
+.rec-card.is-hidden{ display:none; }
+.rec-section.is-empty{ display:none; }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,10 +76,26 @@
     "url": "https://clubnovera.com/"
   },
   "hasPart": [
+
     {
       "@type": "Article",
-      "headline": "Com vendre un pis a Lloret de Mar: la guia completa",
+      "headline": "Vendre un pis a Lloret de Mar: la guia definitiva",
       "url": "https://clubnovera.com/recursos/com-vendre-un-pis-a-lloret-de-mar.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "Vendre un pis a Tossa de Mar: la guia completa",
+      "url": "https://clubnovera.com/recursos/com-vendre-un-pis-a-tossa-de-mar.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "Vendre un pis a Blanes: la guia completa",
+      "url": "https://clubnovera.com/recursos/com-vendre-un-pis-a-blanes.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "Vendre un pis a Girona: la guia completa",
+      "url": "https://clubnovera.com/recursos/com-vendre-un-pis-a-girona.html"
     },
     {
       "@type": "Article",
@@ -139,35 +185,83 @@
 
     <div class="rec-zones reveal" data-d="3">
       <span class="rec-zone is-live"><span class="dot"></span> Lloret de Mar <span class="st">· Actiu</span></span>
-      <span class="rec-zone is-soon"><span class="dot"></span> Blanes · Tossa · Costa Brava <span class="st">· En expansió</span></span>
-      <span class="rec-zone is-next"><span class="dot"></span> Girona <span class="st">· Properament 2026</span></span>
+      <span class="rec-zone is-live"><span class="dot"></span> Tossa de Mar <span class="st">· Actiu</span></span>
+      <span class="rec-zone is-live"><span class="dot"></span> Blanes <span class="st">· Actiu</span></span>
+      <span class="rec-zone is-soon"><span class="dot"></span> Girona <span class="st">· En expansió</span></span>
+      <span class="rec-zone is-soon"><span class="dot"></span> Costa Brava <span class="st">· En expansió</span></span>
+    </div>
+
+    <div class="gfinder reveal" data-d="4" id="gfinder">
+      <div class="gfinder-box">
+        <svg class="gf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
+        <input id="gfInput" type="search" autocomplete="off" aria-label="Cerca la teva guia" placeholder="Explica què vols fer i et trobo la guia — ex.: «impostos quan vengui a Tossa»">
+        <button class="gf-clear" id="gfClear" type="button" aria-label="Esborrar">×</button>
+      </div>
+      <div class="gf-chips" id="gfChips">
+        <button class="gf-chip" type="button" data-q="Vull vendre un pis a Tossa de Mar">Vendre a Tossa</button>
+        <button class="gf-chip" type="button" data-q="Quant pagaré d'impostos quan vengui">Impostos del venedor</button>
+        <button class="gf-chip" type="button" data-q="Quant es triga a vendre">Quant es triga</button>
+        <button class="gf-chip" type="button" data-q="Quins documents necessito per vendre">Documents</button>
+        <button class="gf-chip" type="button" data-q="Quant val casa meva">Quant val casa meva</button>
+        <button class="gf-chip" type="button" data-q="Quant cobra una immobiliària">Comissions</button>
+      </div>
+      <div class="gf-result" id="gfResult" aria-live="polite"></div>
     </div>
   </div>
 
   <div class="wrap">
-    <div class="rec-grid">
 
-      <a class="rec-card reveal" href="com-vendre-un-pis-a-lloret-de-mar.html">
+    <section class="rec-section" data-cat="local">
+      <div class="rec-section-h"><h2>Guies per municipi</h2><span class="rec-count">Costa Brava i Girona</span></div>
+      <div class="rec-grid">
+
+      <a class="rec-card reveal" data-kw="lloret de mar vendre pis casa costa brava impostos plusvalua irpf documents preu estiu internacional" href="com-vendre-un-pis-a-lloret-de-mar.html">
         <span class="rec-tag">Lloret de Mar</span>
-        <h3>Com vendre un pis a Lloret de Mar: la guia completa</h3>
-        <p>Vendre bé a Lloret no és qüestió de sort. És preu, documentació i presentació. T'expliquem el procés sencer, sense lletra petita.</p>
+        <h3>Vendre un pis a Lloret de Mar: la guia definitiva</h3>
+        <p>Preu, documentació, impostos i terminis. El procés sencer per vendre bé a Lloret, sense lletra petita.</p>
         <div class="rec-meta">
-          <span>9 min de lectura</span>
+          <span>12 min de lectura</span>
           <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
 
-      <a class="rec-card reveal" href="quant-cobra-una-immobiliaria-a-catalunya.html">
-        <span class="rec-tag">Catalunya</span>
-        <h3>Quant cobra una immobiliària a Catalunya?</h3>
-        <p>Comissions tradicionals, honoraris fixos i la pregunta que de veritat importa: què hi guanyes tu.</p>
+      <a class="rec-card reveal" data-kw="tossa de mar vila vella premium internacional cales impostos plusvalua vendre pis casa preu" href="com-vendre-un-pis-a-tossa-de-mar.html">
+        <span class="rec-tag">Tossa de Mar</span>
+        <h3>Vendre un pis a Tossa de Mar: la guia completa</h3>
+        <p>Un mercat premium i internacional, amb la Vila Vella com a segell. Preu, impostos i particularitats.</p>
         <div class="rec-meta">
-          <span>7 min de lectura</span>
+          <span>11 min de lectura</span>
           <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
 
-      <a class="rec-card reveal" href="quant-val-casa-meva-valoracio.html">
+      <a class="rec-card reveal" data-kw="blanes porta costa brava familiar tot any marimurtra impostos plusvalua vendre pis casa preu" href="com-vendre-un-pis-a-blanes.html">
+        <span class="rec-tag">Blanes</span>
+        <h3>Vendre un pis a Blanes: la guia completa</h3>
+        <p>La porta de la Costa Brava: un mercat més familiar i de tot l'any. Preu, documentació i impostos.</p>
+        <div class="rec-meta">
+          <span>11 min de lectura</span>
+          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="rec-card reveal" data-kw="girona ciutat barri vell eixample urba universitari lloguer impostos plusvalua vendre pis casa preu" href="com-vendre-un-pis-a-girona.html">
+        <span class="rec-tag">Girona</span>
+        <h3>Vendre un pis a Girona: la guia completa</h3>
+        <p>Un mercat urbà, universitari i de tot l'any. Preu per barri, documentació, impostos i terminis.</p>
+        <div class="rec-meta">
+          <span>11 min de lectura</span>
+          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <section class="rec-section" data-cat="preu">
+      <div class="rec-section-h"><h2>Preu i valoració</h2><span class="rec-count">Posa el preu correcte</span></div>
+      <div class="rec-grid">
+
+      <a class="rec-card reveal" data-kw="valoracio valorar quant val casa meva valor tasacio tasar preu mercat gratuita" href="quant-val-casa-meva-valoracio.html">
         <span class="rec-tag">Costa Brava</span>
         <h3>Quant val casa meva?</h3>
         <p>Com es valora de veritat una propietat a la Costa Brava —i per què el preu que tens al cap sovint no és el de mercat.</p>
@@ -177,7 +271,33 @@
         </div>
       </a>
 
-      <a class="rec-card reveal" href="com-funciona-exclusiva-immobiliaria.html">
+      <a class="rec-card reveal" data-kw="preu sortida mercat sobrevalorar rebaixa preu correcte somni error" href="el-preu-el-dicta-el-mercat.html">
+        <span class="rec-tag">Preu i mercat</span>
+        <h3>El preu el dicta el mercat, no el somni</h3>
+        <p>Somiar alt amb el preu de sortida és l'error que més diners costa. T'ho expliquem amb dades reals dels EUA i d'Europa.</p>
+        <div class="rec-meta">
+          <span>8 min de lectura</span>
+          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <section class="rec-section" data-cat="costos">
+      <div class="rec-section-h"><h2>Costos, comissions i contractes</h2><span class="rec-count">Què pagues i què signes</span></div>
+      <div class="rec-grid">
+
+      <a class="rec-card reveal" data-kw="comissio comissions honoraris quant cobra immobiliaria percentatge cost agencia preu fix" href="quant-cobra-una-immobiliaria-a-catalunya.html">
+        <span class="rec-tag">Catalunya</span>
+        <h3>Quant cobra una immobiliària a Catalunya?</h3>
+        <p>Comissions tradicionals, honoraris fixos i la pregunta que de veritat importa: què hi guanyes tu.</p>
+        <div class="rec-meta">
+          <span>7 min de lectura</span>
+          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="rec-card reveal" data-kw="exclusiva contracte encarrec exclusivitat signar" href="com-funciona-exclusiva-immobiliaria.html">
         <span class="rec-tag">Vendre</span>
         <h3>Què és l'exclusiva immobiliària (i quan val la pena)</h3>
         <p>El contracte que més desconfiança genera, explicat sense por: què guanyes, què cedeixes i què hauries d'exigir.</p>
@@ -186,8 +306,14 @@
           <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
+      </div>
+    </section>
 
-      <a class="rec-card reveal" href="documents-per-vendre-una-casa.html">
+    <section class="rec-section" data-cat="docs">
+      <div class="rec-section-h"><h2>Documents i terminis</h2><span class="rec-count">El procés, pas a pas</span></div>
+      <div class="rec-grid">
+
+      <a class="rec-card reveal" data-kw="documents cedula habitabilitat certificat energetic nota simple ibi escriptura notaria paperassa" href="documents-per-vendre-una-casa.html">
         <span class="rec-tag">Catalunya</span>
         <h3>Quins documents necessites per vendre una casa a Catalunya</h3>
         <p>La checklist completa perquè la teva venda no s'aturi el dia de la notaria per un paper que faltava.</p>
@@ -197,17 +323,7 @@
         </div>
       </a>
 
-      <a class="rec-card reveal" href="el-preu-el-dicta-el-mercat.html">
-        <span class="rec-tag">Preu i mercat</span>
-        <h3>El preu el dicta el mercat, no el somni</h3>
-        <p>Somiar alt amb el preu de sortida és l'error que més diners costa. T'ho expliquem amb dades reals dels EUA i d'Europa.</p>
-        <div class="rec-meta">
-          <span>8 min de lectura</span>
-          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-        </div>
-      </a>
-
-      <a class="rec-card reveal" href="quant-es-triga-a-vendre-una-casa.html">
+      <a class="rec-card reveal" data-kw="temps triga trigar quant tarda terminis setmanes mesos velocitat rapid vendre" href="quant-es-triga-a-vendre-una-casa.html">
         <span class="rec-tag">Costa Brava</span>
         <h3>Quant es triga a vendre una casa a la Costa Brava?</h3>
         <p>El temps de venda no és atzar: és preu, presentació i moment. T'expliquem què el mou i com escurçar-lo.</p>
@@ -216,7 +332,8 @@
           <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
-    </div>
+      </div>
+    </section>
   </div>
 </main>
 
@@ -268,6 +385,46 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     items.forEach(el => io.observe(el));
   }
+</script>
+<script>
+(function(){
+  const input=document.getElementById('gfInput');
+  const clear=document.getElementById('gfClear');
+  const result=document.getElementById('gfResult');
+  const finder=document.getElementById('gfinder');
+  const chips=document.getElementById('gfChips');
+  if(!input) return;
+  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  const SYN={
+    impost:'impostos plusvalua irpf', impuesto:'impostos plusvalua irpf', impuestos:'impostos plusvalua irpf', hacienda:'impostos', plusvalia:'impostos plusvalua', plusvalua:'impostos plusvalua', irpf:'impostos irpf',
+    comision:'comissio honoraris', comisiones:'comissio honoraris', comissio:'comissio honoraris', honorarios:'comissio honoraris', cobra:'comissio honoraris', agencia:'comissio', comissions:'comissio honoraris',
+    documento:'documents', documentos:'documents', papeles:'documents', cedula:'documents cedula', certificado:'documents certificat', notaria:'documents notaria', escritura:'documents escriptura', papers:'documents',
+    valor:'valoracio valor', valorar:'valoracio', valoracion:'valoracio', tasacion:'valoracio', tasar:'valoracio', vale:'valoracio',
+    tarda:'temps triga', tardar:'temps triga', tiempo:'temps triga', plazo:'temps terminis', plazos:'temps terminis', rapido:'temps', triga:'temps triga', temps:'temps triga',
+    precio:'preu mercat', sobrevalorar:'preu', exclusividad:'exclusiva', contrato:'exclusiva contracte', contracte:'exclusiva',
+    piso:'pis', vender:'vendre', lloret:'lloret', tossa:'tossa', blanes:'blanes', girona:'girona'
+  };
+  const cards=[...document.querySelectorAll('.rec-card')].map(a=>({el:a, hay:norm((a.dataset.kw||'')+' '+a.querySelector('h3').textContent+' '+(a.querySelector('.rec-tag')?a.querySelector('.rec-tag').textContent:'')), title:a.querySelector('h3').textContent, href:a.getAttribute('href'), score:0}));
+  const sections=[...document.querySelectorAll('.rec-section')];
+  function expand(q){ const t=norm(q); const out=new Set(t.split(/[^a-z0-9]+/).filter(w=>w.length>2)); Object.keys(SYN).forEach(k=>{ if(t.indexOf(k)>-1){ SYN[k].split(' ').forEach(x=>out.add(x)); } }); return [...out]; }
+  function run(q){
+    if(!q.trim()){ finder.classList.remove('has-q'); cards.forEach(c=>c.el.classList.remove('is-hidden')); sections.forEach(s=>s.classList.remove('is-empty')); result.innerHTML=''; return; }
+    finder.classList.add('has-q');
+    const toks=expand(q); let best=null, bestScore=0;
+    cards.forEach(c=>{ let s=0; toks.forEach(t=>{ if(c.hay.indexOf(t)>-1) s++; }); c.score=s; if(s>bestScore){ bestScore=s; best=c; } });
+    if(bestScore>0){
+      cards.forEach(c=> c.el.classList.toggle('is-hidden', c.score===0));
+      sections.forEach(sec=>{ const vis=[...sec.querySelectorAll('.rec-card')].some(a=>!a.classList.contains('is-hidden')); sec.classList.toggle('is-empty', !vis); });
+      result.innerHTML='<p class="gf-r-lbl">La guia més adequada per a tu</p><a class="gf-best" href="'+best.href+'">'+best.title+'<span class="ar" aria-hidden="true">→</span></a>';
+    } else {
+      cards.forEach(c=>c.el.classList.remove('is-hidden')); sections.forEach(s=>s.classList.remove('is-empty'));
+      result.innerHTML='<p class="gf-none">No hem trobat una guia exacta. Prova amb altres paraules o <a href="../index.html#descobreix">demana una valoració gratuïta</a> i t\'ajudem personalment.</p>';
+    }
+  }
+  input.addEventListener('input',()=>run(input.value));
+  clear.addEventListener('click',()=>{ input.value=''; run(''); input.focus(); });
+  chips.addEventListener('click',e=>{ const b=e.target.closest('.gf-chip'); if(!b) return; input.value=b.dataset.q; run(b.dataset.q); });
+})();
 </script>
   <script src="../assets/i18n.js"></script>
 </body>

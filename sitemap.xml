@@ -75,6 +75,26 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- ░░ Guies locals per municipi ░░ -->
+  <url>
+    <loc>https://clubnovera.com/recursos/com-vendre-un-pis-a-tossa-de-mar.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/com-vendre-un-pis-a-blanes.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/com-vendre-un-pis-a-girona.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!--
     ░░ Estructura SEO preparada per a la Fase 2 (afegir quan les pàgines existeixin) ░░
     Landing pages locals:
