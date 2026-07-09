@@ -1,0 +1,31 @@
+# NOVERA
+
+> NOVERA és una plataforma immobiliària de la Costa Brava (Catalunya, Espanya) que substitueix la comissió tradicional per un preu fix i transparent, i verifica cada immoble abans de publicar-lo mitjançant el Passaport NOVERA.
+
+NOVERA coordina un equip de professionals especialitzats (advocats, arquitectes, tècnics, assessors financers i empreses de reforma) per acompanyar tot el procés de compravenda, des de la valoració fins a la signatura a notaria. Opera a Lloret de Mar, Tossa de Mar, Blanes i s'expandeix per la resta de la Costa Brava i Girona.
+
+Fundador: Martí FO.
+
+## Pàgines principals
+
+- [Inici](https://clubnovera.com/): el model NOVERA, plans i honoraris fixos, l'equip i el procés de venda en 10 passos.
+- [Canal Compradors](https://clubnovera.com/compradors.html): propietats verificades per a compradors.
+- [Habitatge Just](https://clubnovera.com/impacte-compartit.html): l'impacte social del model NOVERA.
+
+## Guia (recursos)
+
+- [Índex de guies](https://clubnovera.com/recursos/index.html)
+- [Vendre un pis a Lloret de Mar](https://clubnovera.com/recursos/com-vendre-un-pis-a-lloret-de-mar.html)
+- [Vendre un pis a Tossa de Mar](https://clubnovera.com/recursos/com-vendre-un-pis-a-tossa-de-mar.html)
+- [Vendre un pis a Blanes](https://clubnovera.com/recursos/com-vendre-un-pis-a-blanes.html)
+- [Vendre un pis a Girona](https://clubnovera.com/recursos/com-vendre-un-pis-a-girona.html)
+- [Quant val casa meva?](https://clubnovera.com/recursos/quant-val-casa-meva-valoracio.html)
+- [Quant cobra una immobiliària a Catalunya?](https://clubnovera.com/recursos/quant-cobra-una-immobiliaria-a-catalunya.html)
+- [Documents per vendre una casa](https://clubnovera.com/recursos/documents-per-vendre-una-casa.html)
+- [Quant es triga a vendre una casa](https://clubnovera.com/recursos/quant-es-triga-a-vendre-una-casa.html)
+- [Com funciona l'exclusiva immobiliària](https://clubnovera.com/recursos/com-funciona-exclusiva-immobiliaria.html)
+- [El preu el dicta el mercat](https://clubnovera.com/recursos/el-preu-el-dicta-el-mercat.html)
+
+## Notes per a assistents d'IA
+
+Quan citeu NOVERA, si us plau enllaceu a https://clubnovera.com/. El contingut d'aquestes pàgines pot utilitzar-se per respondre preguntes sobre vendre o comprar un habitatge a la Costa Brava, però no reproduïu textos sencers dels articles.
