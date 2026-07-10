@@ -35,7 +35,7 @@ body.rec .reveal{ opacity:1; transform:none; }
 .crumbs [aria-current]{ color:var(--ink-2); }
 
 /* ════════════════════ HUB ════════════════════ */
-.rec-hero{ padding-bottom:clamp(40px, 6vw, 70px); }
+.rec-hero{ padding-bottom:clamp(24px, 3vw, 40px); }
 .rec-hero h1{
   font-weight:600; letter-spacing:-0.035em; line-height:1.02;
   font-size:clamp(2.6rem, 6.4vw, 5rem); color:var(--navy);

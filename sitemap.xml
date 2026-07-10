@@ -95,6 +95,38 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- ░░ Guies temàtiques · situacions especials ░░ -->
+  <url>
+    <loc>https://clubnovera.com/recursos/vendre-casa-heretada-catalunya.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/vendre-pis-amb-hipoteca-pendent.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/vendre-casa-costa-brava-des-de-l-estranger.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/vendre-pis-amb-llogater-catalunya.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://clubnovera.com/recursos/errors-que-retarden-la-venda-dun-pis.html</loc>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!--
     ░░ Estructura SEO preparada per a la Fase 2 (afegir quan les pàgines existeixin) ░░
     Landing pages locals:

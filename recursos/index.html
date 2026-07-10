@@ -10,6 +10,8 @@
 <meta name="theme-color" content="#0A2540">
 <link rel="canonical" href="https://clubnovera.com/recursos/">
 <link rel="alternate" hreflang="ca" href="https://clubnovera.com/recursos/">
+<link rel="alternate" hreflang="es" href="https://clubnovera.com/recursos/?lang=es">
+<link rel="alternate" hreflang="en" href="https://clubnovera.com/recursos/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://clubnovera.com/recursos/">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -55,13 +57,39 @@
 .gf-result .gf-none{ color:var(--ink-2); font-size:.98rem; margin:0; }
 .gf-result .gf-none a{ color:var(--blue); }
 /* ── Apartats ── */
-.rec-section{ margin-top:clamp(52px,6vw,78px); }
-.rec-section-h{ display:flex; align-items:baseline; gap:14px; border-top:1px solid var(--line); padding-top:26px; margin-bottom:4px; }
-.rec-section-h h2{ font-size:clamp(1.3rem,2vw,1.7rem); font-weight:600; letter-spacing:-.02em; color:var(--navy); margin:0; }
-.rec-section-h .rec-count{ font-size:.8rem; color:var(--ink-3); }
-.rec-section .rec-grid{ margin-top:clamp(24px,3vw,34px); }
+.rec-section{ margin-top:clamp(18px,2vw,26px); padding-block:0 !important; }
+.rec-section-h{ display:flex; align-items:center; gap:14px; border-top:1px solid var(--line); padding-top:16px; margin-bottom:4px; }
+.rec-section-ico{
+  width:40px; height:40px; border-radius:12px; flex:none;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--paper-2); border:1px solid var(--line); color:var(--amber);
+  transition:transform .4s var(--ease), border-color .4s var(--ease);
+}
+.rec-section-ico svg{ width:19px; height:19px; }
+.rec-section:hover .rec-section-ico{ border-color:rgba(226,161,75,.4); transform:scale(1.06); }
+.rec-section-h h2{ font-size:clamp(1.24rem,1.8vw,1.55rem); font-weight:600; letter-spacing:-.02em; color:var(--navy); margin:0; }
+.rec-section-h .rec-count{
+  margin-left:auto; font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--ink-3); background:var(--paper-2); border:1px solid var(--line);
+  padding:7px 15px; border-radius:100px; white-space:nowrap;
+}
+.rec-section .rec-grid{ margin-top:clamp(18px,2vw,26px); }
 .rec-card.is-hidden{ display:none; }
 .rec-section.is-empty{ display:none; }
+
+/* ── Cercador: comptador en viu + xip actiu ── */
+.gf-count{
+  display:none; align-items:center; gap:7px; margin-top:14px;
+  font-size:.82rem; color:var(--ink-3); font-weight:500;
+}
+.gf-count strong{ color:var(--navy); font-weight:700; }
+.gfinder.has-q .gf-count{ display:flex; }
+.gf-chip.is-active{ border-color:var(--gold); background:#fff; color:var(--navy); box-shadow:0 8px 20px -14px rgba(226,161,75,.6); }
+
+@media (max-width:560px){
+  .rec-section-h{ flex-wrap:wrap; }
+  .rec-section-h .rec-count{ margin-left:54px; }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -126,6 +154,31 @@
       "@type": "Article",
       "headline": "El preu el dicta el mercat, no el somni",
       "url": "https://clubnovera.com/recursos/el-preu-el-dicta-el-mercat.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "Vendre una casa heretada a Catalunya: la guia completa",
+      "url": "https://clubnovera.com/recursos/vendre-casa-heretada-catalunya.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "Vendre un pis amb hipoteca pendent",
+      "url": "https://clubnovera.com/recursos/vendre-pis-amb-hipoteca-pendent.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "Vendre casa a la Costa Brava vivint a l'estranger",
+      "url": "https://clubnovera.com/recursos/vendre-casa-costa-brava-des-de-l-estranger.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "Vendre un pis amb llogater a Catalunya",
+      "url": "https://clubnovera.com/recursos/vendre-pis-amb-llogater-catalunya.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "9 errors que retarden (o enfonsen) la venda d'un pis",
+      "url": "https://clubnovera.com/recursos/errors-que-retarden-la-venda-dun-pis.html"
     }
   ]
 }
@@ -205,6 +258,7 @@
         <button class="gf-chip" type="button" data-q="Quant val casa meva">Quant val casa meva</button>
         <button class="gf-chip" type="button" data-q="Quant cobra una immobiliària">Comissions</button>
       </div>
+      <p class="gf-count" id="gfCount" aria-live="polite"></p>
       <div class="gf-result" id="gfResult" aria-live="polite"></div>
     </div>
   </div>
@@ -212,7 +266,10 @@
   <div class="wrap">
 
     <section class="rec-section" data-cat="local">
-      <div class="rec-section-h"><h2>Guies per municipi</h2><span class="rec-count">Costa Brava i Girona</span></div>
+      <div class="rec-section-h">
+        <span class="rec-section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <h2>Guies per municipi</h2><span class="rec-count">Costa Brava i Girona</span>
+      </div>
       <div class="rec-grid">
 
       <a class="rec-card reveal" data-kw="lloret de mar vendre pis casa costa brava impostos plusvalua irpf documents preu estiu internacional" href="com-vendre-un-pis-a-lloret-de-mar.html">
@@ -258,7 +315,10 @@
     </section>
 
     <section class="rec-section" data-cat="preu">
-      <div class="rec-section-h"><h2>Preu i valoració</h2><span class="rec-count">Posa el preu correcte</span></div>
+      <div class="rec-section-h">
+        <span class="rec-section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <h2>Preu i valoració</h2><span class="rec-count">Posa el preu correcte</span>
+      </div>
       <div class="rec-grid">
 
       <a class="rec-card reveal" data-kw="valoracio valorar quant val casa meva valor tasacio tasar preu mercat gratuita" href="quant-val-casa-meva-valoracio.html">
@@ -284,7 +344,10 @@
     </section>
 
     <section class="rec-section" data-cat="costos">
-      <div class="rec-section-h"><h2>Costos, comissions i contractes</h2><span class="rec-count">Què pagues i què signes</span></div>
+      <div class="rec-section-h">
+        <span class="rec-section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span>
+        <h2>Costos, comissions i contractes</h2><span class="rec-count">Què pagues i què signes</span>
+      </div>
       <div class="rec-grid">
 
       <a class="rec-card reveal" data-kw="comissio comissions honoraris quant cobra immobiliaria percentatge cost agencia preu fix" href="quant-cobra-una-immobiliaria-a-catalunya.html">
@@ -310,7 +373,10 @@
     </section>
 
     <section class="rec-section" data-cat="docs">
-      <div class="rec-section-h"><h2>Documents i terminis</h2><span class="rec-count">El procés, pas a pas</span></div>
+      <div class="rec-section-h">
+        <span class="rec-section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1Z"/><rect x="5" y="5" width="14" height="16" rx="2"/><path d="M9 12h6M9 16h4"/></svg></span>
+        <h2>Documents i terminis</h2><span class="rec-count">El procés, pas a pas</span>
+      </div>
       <div class="rec-grid">
 
       <a class="rec-card reveal" data-kw="documents cedula habitabilitat certificat energetic nota simple ibi escriptura notaria paperassa" href="documents-per-vendre-una-casa.html">
@@ -329,6 +395,65 @@
         <p>El temps de venda no és atzar: és preu, presentació i moment. T'expliquem què el mou i com escurçar-lo.</p>
         <div class="rec-meta">
           <span>6 min de lectura</span>
+          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <section class="rec-section" data-cat="especials">
+      <div class="rec-section-h">
+        <span class="rec-section-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3Z"/></svg></span>
+        <h2>Situacions especials</h2><span class="rec-count">Herència, hipoteca, llogater i estranger</span>
+      </div>
+      <div class="rec-grid">
+
+      <a class="rec-card reveal" data-kw="herencia heretada hereus successions germans repartiment impost successions" href="vendre-casa-heretada-catalunya.html">
+        <span class="rec-tag">Herència</span>
+        <h3>Vendre una casa heretada a Catalunya</h3>
+        <p>Acceptació de l'herència, impost de successions, terminis i repartiment entre hereus.</p>
+        <div class="rec-meta">
+          <span>10 min de lectura</span>
+          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="rec-card reveal" data-kw="hipoteca pendent deute cancellar subrogar prestec banc" href="vendre-pis-amb-hipoteca-pendent.html">
+        <span class="rec-tag">Hipoteca</span>
+        <h3>Vendre un pis amb hipoteca pendent</h3>
+        <p>Com funciona cancel·lar o subrogar una hipoteca en el moment de vendre.</p>
+        <div class="rec-meta">
+          <span>9 min de lectura</span>
+          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="rec-card reveal" data-kw="estranger no resident nie poder notarial retencio 3% distancia" href="vendre-casa-costa-brava-des-de-l-estranger.html">
+        <span class="rec-tag">No residents</span>
+        <h3>Vendre casa a la Costa Brava vivint a l'estranger</h3>
+        <p>Poders notarials, NIE, retenció del 3% i com vendre a distància sense trepitjar Espanya.</p>
+        <div class="rec-meta">
+          <span>10 min de lectura</span>
+          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="rec-card reveal" data-kw="llogater inquili lloguer tanteig retracte ocupat arrendament" href="vendre-pis-amb-llogater-catalunya.html">
+        <span class="rec-tag">Llogater</span>
+        <h3>Vendre un pis amb llogater a Catalunya</h3>
+        <p>Dret de tanteig i retracte, contractes i com vendre sense conflictes amb l'inquilí.</p>
+        <div class="rec-meta">
+          <span>9 min de lectura</span>
+          <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="rec-card reveal" data-kw="errors habituals no es ven per que preu emocional fotografia venda lenta" href="errors-que-retarden-la-venda-dun-pis.html">
+        <span class="rec-tag">Vendre</span>
+        <h3>9 errors que retarden (o enfonsen) la venda d'un pis</h3>
+        <p>Els errors més habituals —i com evitar-los— perquè la teva venda no s'eternitzi.</p>
+        <div class="rec-meta">
+          <span>10 min de lectura</span>
           <span class="arrow">Llegir <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </div>
       </a>
@@ -393,6 +518,7 @@
   const result=document.getElementById('gfResult');
   const finder=document.getElementById('gfinder');
   const chips=document.getElementById('gfChips');
+  const count=document.getElementById('gfCount');
   if(!input) return;
   const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   const SYN={
@@ -402,22 +528,30 @@
     valor:'valoracio valor', valorar:'valoracio', valoracion:'valoracio', tasacion:'valoracio', tasar:'valoracio', vale:'valoracio',
     tarda:'temps triga', tardar:'temps triga', tiempo:'temps triga', plazo:'temps terminis', plazos:'temps terminis', rapido:'temps', triga:'temps triga', temps:'temps triga',
     precio:'preu mercat', sobrevalorar:'preu', exclusividad:'exclusiva', contrato:'exclusiva contracte', contracte:'exclusiva',
-    piso:'pis', vender:'vendre', lloret:'lloret', tossa:'tossa', blanes:'blanes', girona:'girona'
+    piso:'pis', vender:'vendre', lloret:'lloret', tossa:'tossa', blanes:'blanes', girona:'girona',
+    herencia:'herencia hereus successions', herència:'herencia hereus successions', heredada:'herencia heretada', heredado:'herencia heretada', hereus:'herencia hereus', sucesiones:'herencia successions',
+    hipoteca:'hipoteca pendent deute', hipotecado:'hipoteca pendent', hipotecada:'hipoteca pendent', prestamo:'hipoteca prestec', cancelar:'hipoteca cancellar',
+    extranjero:'estranger no resident', extranger:'estranger no resident', 'no residente':'estranger no resident', nie:'estranger nie', resident:'estranger no resident',
+    inquilino:'llogater inquili lloguer', inquilina:'llogater inquili', arrendatario:'llogater arrendament', tanteo:'llogater tanteig', retracto:'llogater retracte', llogater:'llogater inquili lloguer',
+    error:'errors habituals', errores:'errors habituals', errors:'errors habituals', lento:'errors lenta venda', lenta:'errors lenta venda'
   };
   const cards=[...document.querySelectorAll('.rec-card')].map(a=>({el:a, hay:norm((a.dataset.kw||'')+' '+a.querySelector('h3').textContent+' '+(a.querySelector('.rec-tag')?a.querySelector('.rec-tag').textContent:'')), title:a.querySelector('h3').textContent, href:a.getAttribute('href'), score:0}));
   const sections=[...document.querySelectorAll('.rec-section')];
   function expand(q){ const t=norm(q); const out=new Set(t.split(/[^a-z0-9]+/).filter(w=>w.length>2)); Object.keys(SYN).forEach(k=>{ if(t.indexOf(k)>-1){ SYN[k].split(' ').forEach(x=>out.add(x)); } }); return [...out]; }
   function run(q){
-    if(!q.trim()){ finder.classList.remove('has-q'); cards.forEach(c=>c.el.classList.remove('is-hidden')); sections.forEach(s=>s.classList.remove('is-empty')); result.innerHTML=''; return; }
+    chips.querySelectorAll('.gf-chip').forEach(b=>b.classList.toggle('is-active', b.dataset.q===q));
+    if(!q.trim()){ finder.classList.remove('has-q'); cards.forEach(c=>c.el.classList.remove('is-hidden')); sections.forEach(s=>s.classList.remove('is-empty')); result.innerHTML=''; count.innerHTML=''; return; }
     finder.classList.add('has-q');
-    const toks=expand(q); let best=null, bestScore=0;
-    cards.forEach(c=>{ let s=0; toks.forEach(t=>{ if(c.hay.indexOf(t)>-1) s++; }); c.score=s; if(s>bestScore){ bestScore=s; best=c; } });
+    const toks=expand(q); let best=null, bestScore=0, matches=0;
+    cards.forEach(c=>{ let s=0; toks.forEach(t=>{ if(c.hay.indexOf(t)>-1) s++; }); c.score=s; if(s>0) matches++; if(s>bestScore){ bestScore=s; best=c; } });
     if(bestScore>0){
       cards.forEach(c=> c.el.classList.toggle('is-hidden', c.score===0));
       sections.forEach(sec=>{ const vis=[...sec.querySelectorAll('.rec-card')].some(a=>!a.classList.contains('is-hidden')); sec.classList.toggle('is-empty', !vis); });
+      count.innerHTML='<strong>'+matches+'</strong> '+(matches===1?'guia relacionada':'guies relacionades');
       result.innerHTML='<p class="gf-r-lbl">La guia més adequada per a tu</p><a class="gf-best" href="'+best.href+'">'+best.title+'<span class="ar" aria-hidden="true">→</span></a>';
     } else {
       cards.forEach(c=>c.el.classList.remove('is-hidden')); sections.forEach(s=>s.classList.remove('is-empty'));
+      count.innerHTML='';
       result.innerHTML='<p class="gf-none">No hem trobat una guia exacta. Prova amb altres paraules o <a href="../index.html#descobreix">demana una valoració gratuïta</a> i t\'ajudem personalment.</p>';
     }
   }
