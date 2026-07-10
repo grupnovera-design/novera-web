@@ -296,8 +296,9 @@
     <nav class="nav-links">
       <a href="#model" class="hide-sm">El model</a>
       <a href="#segell" class="hide-sm">El segell</a>
-      <a href="#equip" class="hide-sm">L'equip</a>
+      <a href="#equip" class="hide-sm">El mètode</a>
       <a href="#plans" class="hide-sm">Plans</a>
+      <a href="#private" class="hide-sm">Private</a>
       <a href="recursos/index.html" class="hide-sm to-page">Guia</a>
       <a href="impacte-compartit.html" class="hide-sm to-page">Habitatge Just</a>
       <a href="compradors.html" class="hide-sm to-page">Canal Compradors</a>
@@ -310,9 +311,10 @@
   <div class="nav-mobile" id="navMobile" aria-hidden="true">
     <a href="#model">El model</a>
     <a href="#segell">El segell</a>
-    <a href="#equip">L'equip</a>
+    <a href="#equip">El mètode</a>
     <a href="#proces">El procés</a>
     <a href="#plans">Plans</a>
+    <a href="#private">Private</a>
     <a href="recursos/index.html" class="to-page">Guia</a>
     <a href="impacte-compartit.html" class="to-page">Habitatge Just</a>
     <a href="compradors.html" class="to-page">Canal Compradors</a>
@@ -391,6 +393,7 @@
       <span class="ht-item">Comencem per la Costa Brava · escalant amb qualitat</span><span class="ht-sep"></span>
       <span class="ht-item">Valoració gratuïta i sense compromís</span><span class="ht-sep"></span>
       <span class="ht-item">Cada immoble amb segell verificat NOVERA</span><span class="ht-sep"></span>
+      <span class="ht-item">Un mètode, 5 fases</span><span class="ht-sep"></span>
       <span class="ht-item" aria-hidden="true">0% comissió sobre la venda</span><span class="ht-sep"></span>
       <span class="ht-item" aria-hidden="true">Preu fix i transparent</span><span class="ht-sep"></span>
       <span class="ht-item" aria-hidden="true">Un sol equip coordinant-ho tot</span><span class="ht-sep"></span>
@@ -520,6 +523,29 @@
         <div class="lr-nov">
           <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
           El sistema s'adapta al propietari.
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Problemes legals o registrals que apareixen a mig procés.
+        </div>
+        <div class="lr-theme"><span>Verificació</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Segell NOVERA: tot verificat abans de sortir al mercat.
+        </div>
+      </div>
+
+      <div class="ledger-row">
+        <div class="lr-trad">
+          <span class="lr-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          Cada agent treballa a la seva manera, sense un ordre clar.
+        </div>
+        <div class="lr-theme"><span>Mètode</span></div>
+        <div class="lr-nov">
+          <span class="lr-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+          Un mètode de 5 fases: cap comença sense tancar l'anterior.
         </div>
       </div>
     </div>
@@ -674,27 +700,47 @@
 </section>
 
 <!-- ░░ EQUIP — el nucli de coordinació ░░ -->
-<section class="team" id="equip" data-screen-label="L'equip">
+<section class="team" id="equip" data-screen-label="El mètode">
   <div class="wrap">
     <div class="team-intro">
-      <span class="kicker kicker--light reveal">L'equip</span>
-      <h2 class="h2 reveal" data-d="1">Una propietat.<br>Un equip complet.</h2>
-      <p class="lead reveal" data-d="2">No creiem en la figura d'una sola persona intentant fer-ho tot. Cada operació activa els professionals que realment necessita, coordinats al voltant d'un únic objectiu: vendre bé la teva propietat.</p>
+      <span class="kicker kicker--light reveal">El mètode</span>
+      <h2 class="h2 reveal" data-d="1">Cinc fases.<br>Cap improvisació.</h2>
+      <p class="lead reveal" data-d="2">NOVERA segueix un mètode organitzat en cinc fases. Cada fase té un propòsit concret i no comença fins que l'anterior està completament tancada. Dins de cada fase intervenen els especialistes que calen — mai a l'inrevés.</p>
     </div>
 
-    <div class="system reveal" data-d="1">
-      <div class="system-frame">
-        <span class="sf-corner tl"></span><span class="sf-corner tr"></span>
-        <span class="sf-corner bl"></span><span class="sf-corner br"></span>
-        <div class="sf-label"><span class="sf-dot"></span>La tranquil·litat de tenir-ho tot.</div>
-        <div class="system-orbit" id="systemOrbit"></div>
-        <p class="system-hint">Passa el cursor per cada especialitat</p>
+    <div class="phase-method reveal" data-d="1">
+      <span class="pm-label">Qui intervé, i en quina fase</span>
+      <div class="phase-team-grid">
+        <div class="phase-team-card">
+          <span class="ptc-phase">Fase 1–3</span>
+          <h3 class="ptc-role">Diagnòstic, valoració i estratègia</h3>
+          <p class="ptc-desc">Diagnòstic de l'immoble, anàlisi de mercat, preu amb criteri. Estratègia definida abans de moure res — i cap fase avança sense el Segell NOVERA.</p>
+          <span class="ptc-team">Agent del venedor</span>
+        </div>
+        <div class="phase-team-card">
+          <span class="ptc-phase">Fase 3</span>
+          <h3 class="ptc-role">Fotografia, contingut i posicionament</h3>
+          <p class="ptc-desc">Contingut visual d'impacte. Posicionament als canals adequats. Cap acció sense estratègia.</p>
+          <span class="ptc-team">Equip de màrqueting</span>
+        </div>
+        <div class="phase-team-card">
+          <span class="ptc-phase">Fase 4</span>
+          <h3 class="ptc-role">Visites, filtrat i negociació</h3>
+          <p class="ptc-desc">Filtrat rigorós. Només visites amb compradors qualificats. Negociació amb dades.</p>
+          <span class="ptc-team">Agents del comprador</span>
+        </div>
+        <div class="phase-team-card">
+          <span class="ptc-phase">Fase 4–5</span>
+          <h3 class="ptc-role">Documentació, contractes i notaria</h3>
+          <p class="ptc-desc">Cada fase es tanca abans de passar a la següent.</p>
+          <span class="ptc-team">Equip de coordinació</span>
+        </div>
       </div>
     </div>
 
     <div class="team-reinforce">
       <h3 class="reveal">Ningú ho fa tot.</h3>
-      <p class="reveal" data-d="1">Per això hem construït una estructura on cada especialista treballa en allò que millor sap fer. Mentre tu tens un únic punt de contacte, darrere hi ha un equip complet coordinant cada fase del procés.</p>
+      <p class="reveal" data-d="1">Per això el mètode reparteix cada fase entre els especialistes que la saben fer bé. Mentre tu tens un únic punt de contacte, cada fase avança amb qui correspon.</p>
     </div>
 
     <div class="team-benefits">
@@ -716,7 +762,7 @@
     </div>
 
     <div class="team-close reveal">
-      <p>No contractes una immobiliària.<br><span class="grad">Actives una estructura completa al servei de la teva propietat.</span></p>
+      <p>No contractes una immobiliària.<br><span class="grad">Actives un mètode complet al servei de la teva propietat.</span></p>
     </div>
 
     <div class="team-network reveal">
@@ -748,23 +794,32 @@
   <div class="wrap proc-grid">
     <div class="proc-intro">
       <span class="kicker kicker--gold reveal">El procés</span>
-      <h2 class="h2 proc-h2 reveal" data-d="1">Deu passos.<br>Tu, sempre acompanyat.</h2>
-      <p class="lead reveal" data-d="2">Del primer contacte fins a la firma a notaria. Cada pas coordinat, sense que t'hagis de preocupar per res.</p>
+      <h2 class="h2 proc-h2 reveal" data-d="1">Cinc fases.<br>Cap se salta.</h2>
+      <p class="lead reveal" data-d="2">Cada fase es tanca abans de començar la següent. Del primer contacte fins a la firma a notaria, tu sempre acompanyat.</p>
       <div class="proc-badge reveal" data-d="3">
-        <span class="pb-num">10</span>
-        <span class="pb-txt">passos coordinats<br>per un sol equip</span>
+        <span class="pb-num">5</span>
+        <span class="pb-txt">fases seqüencials,<br>deu passos concrets</span>
       </div>
     </div>
 
     <ol class="proc-timeline">
+      <li class="proc-phase reveal" data-phase="1"><span class="pp-dot">I</span><div class="pp-body"><span class="pp-eyebrow">Fase 1</span><h3>Diagnòstic</h3></div></li>
       <li class="proc-node reveal"><span class="pn-dot">01</span><div class="pn-card"><h3>Contacte</h3><p>Ens escrius i et responem en menys de 24 hores.</p></div></li>
       <li class="proc-node reveal"><span class="pn-dot">02</span><div class="pn-card"><h3>Conversa</h3><p>Ens expliques l'immoble i la teva situació, sense compromís.</p></div></li>
+
+      <li class="proc-phase reveal" data-phase="2"><span class="pp-dot">II</span><div class="pp-body"><span class="pp-eyebrow">Fase 2</span><h3>Valoració i verificació</h3></div></li>
       <li class="proc-node reveal"><span class="pn-dot">03</span><div class="pn-card"><h3>Visita i valoració</h3><p>Visitem, valorem i t'expliquem el preu amb honestedat.</p></div></li>
       <li class="proc-node reveal"><span class="pn-dot">04</span><div class="pn-card"><h3>Estudi legal</h3><p>L'advocat ho revisa tot. Sense sorpreses més endavant.</p></div></li>
-      <li class="proc-node reveal"><span class="pn-dot">05</span><div class="pn-card"><h3>Encàrrec</h3><p>Un document simple i un preu fix. Comencem a treballar.</p></div></li>
+
+      <li class="proc-phase reveal" data-phase="3"><span class="pp-dot">III</span><div class="pp-body"><span class="pp-eyebrow">Fase 3</span><h3>Estratègia i sortida al mercat</h3><span class="pp-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 11.8l2 2 4-4.4"/></svg>Emissió del Segell NOVERA</span></div></li>
+      <li class="proc-node reveal"><span class="pn-dot">05</span><div class="pn-card"><h3>Encàrrec</h3><p>Un document simple i un preu fix. Comencem a treballar.</p><span class="pn-seal">Un cop firmat, s'emet el Segell NOVERA</span></div></li>
       <li class="proc-node reveal"><span class="pn-dot">06</span><div class="pn-card"><h3>Preparació</h3><p>Fotografia, vídeo i posada a punt de l'immoble.</p></div></li>
       <li class="proc-node reveal"><span class="pn-dot">07</span><div class="pn-card"><h3>Publicació</h3><p>Portals, xarxes i la nostra base de compradors.</p></div></li>
+
+      <li class="proc-phase reveal" data-phase="4"><span class="pp-dot">IV</span><div class="pp-body"><span class="pp-eyebrow">Fase 4</span><h3>Negociació</h3></div></li>
       <li class="proc-node reveal"><span class="pn-dot">08</span><div class="pn-card"><h3>Oferta</h3><p>Negociem en nom teu i tu decideixes si l'acceptes.</p></div></li>
+
+      <li class="proc-phase reveal" data-phase="5"><span class="pp-dot">V</span><div class="pp-body"><span class="pp-eyebrow">Fase 5</span><h3>Tancament</h3></div></li>
       <li class="proc-node reveal"><span class="pn-dot">09</span><div class="pn-card"><h3>Arres</h3><p>L'advocat redacta i gestiona tota la documentació.</p></div></li>
       <li class="proc-node reveal"><span class="pn-dot pn-last">10</span><div class="pn-card"><h3>Notaria</h3><p>Coordinació completa fins a la firma. Fet.</p></div></li>
     </ol>
@@ -1004,6 +1059,11 @@
       <span class="note">Preus orientatius. La valoració concreta es fa sobre cada immoble.</span>
     </div>
 
+    <a href="#private" class="private-tease reveal">
+      <span class="pt-t">La teva operació és diferent?</span>
+      <span class="pt-l">Descobreix NOVERA Private <span>→</span></span>
+    </a>
+
     <div class="zone-cta zone-cta--light reveal">
       <div class="zc-text">
         <h3>No saps quin pla és el teu?</h3>
@@ -1012,6 +1072,40 @@
       <a href="#descobreix" class="zc-btn">Fes l'anàlisi gratuïta
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ NOVERA PRIVATE ░░ -->
+<section class="private" id="private" data-screen-label="NOVERA Private">
+  <span class="private-watermark" aria-hidden="true">PRIVATE</span>
+  <div class="wrap private-wrap">
+    <div class="private-col private-col--main">
+      <span class="kicker kicker--private reveal">NOVERA Private</span>
+      <h2 class="h2 reveal" data-d="1">Algunes propietats requereixen una altra manera de treballar. Alguns propietaris també.</h2>
+      <p class="private-lead reveal" data-d="2">Quan una operació requereix una estratègia diferent, activem NOVERA Private: una estructura especialitzada creada al voltant de la teva propietat.</p>
+      <p class="private-note reveal" data-d="3">Coordinem els professionals, l'estratègia i els recursos necessaris perquè cada operació rebi exactament el nivell d'atenció que requereix.</p>
+
+      <div class="private-foot reveal" data-d="4">
+        <span class="private-badge">Estudi confidencial · Honoraris personalitzats</span>
+        <button type="button" class="private-btn" id="privateOpenBtn">Parlem-ne en confidencialitat
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="private-col private-col--list reveal" data-d="2">
+      <span class="pw-label">Quan té sentit</span>
+      <p class="pw-intro">Cada operació és diferent. Per això NOVERA Private no segueix un pla: construeix una estratègia específica per a cada propietat.</p>
+      <ol class="private-when">
+        <li><span class="pw-n">01</span><span>Propietats d'alt valor o estratègiques</span></li>
+        <li><span class="pw-n">02</span><span>Herències i diversos propietaris</span></li>
+        <li><span class="pw-n">03</span><span>Usufructes, nua propietat i extincions de condomini</span></li>
+        <li><span class="pw-n">04</span><span>Regularitzacions registrals i urbanístiques</span></li>
+        <li><span class="pw-n">05</span><span>Edificis, finques, promocions i actius singulars</span></li>
+        <li><span class="pw-n">06</span><span>Compradors internacionals o màxima discreció</span></li>
+      </ol>
+      <p class="private-statement">No és un pla més.<br><span class="grad">És una altra manera de treballar.</span></p>
     </div>
   </div>
 </section>
@@ -1090,11 +1184,12 @@
       <nav class="foot-links">
         <a href="#model">El model</a>
         <a href="#segell">El segell</a>
-        <a href="#equip">L'equip</a>
+        <a href="#equip">El mètode</a>
         <a href="#proces">El procés</a>
         <a href="#descobreix">Descobreix</a>
         <a href="#plans">Plans</a>
-        <a href="impacte-compartit.html">Habitatge Just</a>
+        <a href="#private">Private</a>
+        <a href="impacte-compartit.html">Habitatge Just <span class="soon-tag">Pròximament</span></a>
         <a href="recursos/index.html">Guia</a>
       </nav>
     </div>
@@ -1122,6 +1217,46 @@
       <span class="cf-tx">Quin pla encaixa amb tu?</span>
     </a>
     <button class="cf-close" aria-label="Amaga el botó">&times;</button>
+  </div>
+</div>
+
+<!-- ░░ NOVERA PRIVATE — contacte confidencial ░░ -->
+<div class="priv-modal" id="privModal" aria-hidden="true">
+  <div class="priv-modal-backdrop" id="privModalBackdrop"></div>
+  <div class="priv-modal-panel" role="dialog" aria-modal="true" aria-labelledby="privModalTitle">
+    <button type="button" class="priv-modal-close" id="privModalClose" aria-label="Tanca">&times;</button>
+    <span class="priv-modal-kicker">NOVERA Private</span>
+    <h3 id="privModalTitle">Parlem-ne en confidencialitat</h3>
+    <p class="priv-modal-sub">Digue'ns com prefereixes que et contactem. La resta, ho parlem en privat.</p>
+
+    <form class="priv-modal-form" id="privModalForm">
+      <div class="priv-field-group">
+        <label class="priv-label">Com vols que et contactem?</label>
+        <div class="priv-radio-row">
+          <label class="priv-radio"><input type="radio" name="privMethod" value="Trucada" checked><span>Trucada</span></label>
+          <label class="priv-radio"><input type="radio" name="privMethod" value="WhatsApp"><span>WhatsApp</span></label>
+          <label class="priv-radio"><input type="radio" name="privMethod" value="Correu electrònic"><span>Correu</span></label>
+        </div>
+      </div>
+      <div class="priv-field">
+        <label for="privEmail">Correu electrònic</label>
+        <input type="email" id="privEmail" placeholder="el.teu@correu.com">
+      </div>
+      <div class="priv-field">
+        <label for="privPhone">Telèfon</label>
+        <input type="tel" id="privPhone" placeholder="+34 ...">
+      </div>
+      <button type="submit" class="priv-modal-submit">Enviar sol·licitud confidencial
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <p class="priv-modal-fine">Resposta discreta en menys de 24 hores.</p>
+    </form>
+
+    <div class="priv-modal-done" id="privModalDone" hidden>
+      <span class="priv-done-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+      <h3>Rebut.</h3>
+      <p>Hem rebut la teva sol·licitud. Et contactarem en confidencialitat en menys de 24 hores.</p>
+    </div>
   </div>
 </div>
 
@@ -1153,7 +1288,6 @@
 
 <script src="image-slot.js"></script>
 <script src="assets/forms.js"></script>
-<script src="assets/equip.js"></script>
 <script src="assets/questionnaire.js"></script>
 <script src="assets/legal.js"></script>
 <script src="assets/i18n.js"></script>
@@ -1187,6 +1321,45 @@
       });
     }
   });
+
+  // NOVERA Private — modal de contacte confidencial
+  (function(){
+    const modal = document.getElementById('privModal');
+    const openBtn = document.getElementById('privateOpenBtn');
+    const closeBtn = document.getElementById('privModalClose');
+    const backdrop = document.getElementById('privModalBackdrop');
+    const form = document.getElementById('privModalForm');
+    const done = document.getElementById('privModalDone');
+    if (!modal || !openBtn) return;
+    function open(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function close(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    openBtn.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    backdrop.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const method = form.querySelector('input[name="privMethod"]:checked').value;
+      const email = document.getElementById('privEmail').value.trim();
+      const phone = document.getElementById('privPhone').value.trim();
+      const submitBtn = form.querySelector('.priv-modal-submit');
+      submitBtn.disabled = true;
+      window.NOVERAforms.send({
+        subject: 'NOVERA Private — sol·licitud confidencial',
+        replyto: email,
+        fields: {
+          'Formulari': 'NOVERA Private',
+          'Com contactar': method,
+          'Correu': email,
+          'Telèfon': phone
+        }
+      }).finally(() => {
+        submitBtn.disabled = false;
+        form.hidden = true;
+        done.hidden = false;
+      });
+    });
+  })();
 
   // Mobile menu
   const burger = document.getElementById('navBurger');
@@ -1273,6 +1446,23 @@
       nxt.classList.remove('is-leaving'); nxt.classList.add('is-active');
       setTimeout(() => cur.classList.remove('is-leaving'), 600);
     }, 2400);
+  })();
+
+  // NOVERA Private — cursor-follow spotlight
+  (function(){
+    const priv = document.querySelector('.private');
+    if (!priv || reduce || !window.matchMedia('(pointer:fine)').matches) return;
+    let raf = null, mx = 50, my = 30;
+    priv.addEventListener('pointermove', (e) => {
+      const r = priv.getBoundingClientRect();
+      mx = ((e.clientX - r.left) / r.width) * 100;
+      my = ((e.clientY - r.top) / r.height) * 100;
+      if (!raf) raf = requestAnimationFrame(() => {
+        priv.style.setProperty('--mx', mx.toFixed(1) + '%');
+        priv.style.setProperty('--my', my.toFixed(1) + '%');
+        raf = null;
+      });
+    });
   })();
 
   // Scroll-driven parallax (subtle) for tagged elements
